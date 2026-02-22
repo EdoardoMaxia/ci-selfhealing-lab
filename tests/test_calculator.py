@@ -5,7 +5,7 @@ def test_add_positivi():
     assert add(2, 3) == 5
 
 def test_add_negativi():
-    assert add(-1, -1) == -2
+    assert add(-1, -1) == -24
 
 def test_divide_normale():
     assert divide(10, 2) == 5.0
