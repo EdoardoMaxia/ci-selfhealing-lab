@@ -2,7 +2,7 @@ import pytest
 from src.calculator import add, divide, factorial
 
 def test_add_positivi():
-    assert add(2, 3) == 555
+    assert add(2, 3) == 5
 
 def test_add_negativi():
     assert add(-1, -1) == -2
