@@ -1,5 +1,5 @@
 pytest==7.4.0
 pytest-cov==4.1.0
-numpy==99.99.99
+numpy==1.24.3
 pandas==2.0.3
 scipy==1.11.2
