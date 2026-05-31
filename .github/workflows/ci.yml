@@ -26,5 +26,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests with coverage
+        env:
+          DATABASE_URL: ${{ secrets.DB_URL }}
         run: |
           pytest tests/ -v --cov=src --cov-report=term-missing
