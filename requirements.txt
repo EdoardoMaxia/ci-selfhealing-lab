@@ -1,5 +1,5 @@
 pytest==7.4.0
 pytest-cov==4.1.0
-numpy==1.24.3
-pandas==2.0.3
-scipy==1.11.2
+thinc>=8.2.2,<8.3.0
+spacy-legacy>=3.0.11
+cymem>=2.0.2
