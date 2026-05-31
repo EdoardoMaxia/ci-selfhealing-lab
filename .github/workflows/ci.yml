@@ -10,6 +10,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     name: Run Tests
+    permissions:
+      contents: read
+      deployments: write
 
     steps:
       - name: Checkout code
