@@ -1,0 +1,669 @@
+2026-05-31 08:47:08,783 [INFO] Dataset: 60 errori selezionati
+2026-05-31 08:47:08,783 [ERROR] Nessun modello selezionato — controlla --provider e --ollama-model
+2026-05-31 08:47:55,225 [INFO] Dataset: 60 errori selezionati
+2026-05-31 08:47:55,225 [INFO] Modelli: ['GPT-4o']
+2026-05-31 08:47:55,225 [INFO] Modalità: dry-run | memoria: OFF
+2026-05-31 08:47:55,225 [INFO] 
+▶ Avvio: GPT-4o
+2026-05-31 08:47:55,225 [INFO] 
+============================================================
+2026-05-31 08:47:55,225 [INFO] MODELLO: GPT-4o (openai_gpt4o)
+2026-05-31 08:47:55,225 [INFO] Errori: 60 | Timeout: 300s | dry-run: True | no-memory: True
+2026-05-31 08:47:55,225 [INFO] ============================================================
+2026-05-31 08:47:55,225 [INFO] 
+[1/60] dep_001 (dependency / easy)
+2026-05-31 08:48:00,420 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:48:02,024 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:48:23,412 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 26.37s
+2026-05-31 08:48:25,415 [INFO] 
+[2/60] dep_002 (dependency / easy)
+2026-05-31 08:48:26,195 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:48:26,763 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:49:04,241 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 38.75s
+2026-05-31 08:49:06,243 [INFO] 
+[3/60] dep_003 (dependency / easy)
+2026-05-31 08:49:07,141 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:49:07,971 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:49:45,722 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 39.41s
+2026-05-31 08:49:47,738 [INFO] 
+[4/60] dep_004 (dependency / easy)
+2026-05-31 08:49:48,569 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:49:49,139 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:50:10,710 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 22.9s
+2026-05-31 08:50:12,713 [INFO] 
+[5/60] dep_005 (dependency / easy)
+2026-05-31 08:50:13,566 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:50:14,114 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:50:35,761 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 22.98s
+2026-05-31 08:50:37,765 [INFO] 
+[6/60] dep_006 (dependency / easy)
+2026-05-31 08:50:38,588 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:50:39,178 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:51:32,748 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 54.89s
+2026-05-31 08:51:34,749 [INFO] 
+[7/60] dep_007 (dependency / easy)
+2026-05-31 08:51:35,799 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:51:37,039 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:52:14,272 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 39.44s
+2026-05-31 08:52:16,275 [INFO] 
+[8/60] dep_008 (dependency / easy)
+2026-05-31 08:52:17,037 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:52:18,603 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:52:56,246 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 39.91s
+2026-05-31 08:52:58,246 [INFO] 
+[9/60] dep_009 (dependency / medium)
+2026-05-31 08:52:59,161 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:52:59,805 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:53:36,662 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:54:14,185 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 2 | 75.88s
+2026-05-31 08:54:16,201 [INFO] 
+[10/60] dep_010 (dependency / medium)
+2026-05-31 08:54:16,960 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:54:17,610 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:55:26,958 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 70.69s
+2026-05-31 08:55:28,963 [INFO] 
+[11/60] dep_011 (dependency / medium)
+2026-05-31 08:55:29,703 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:55:30,384 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:55:51,567 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:56:13,082 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:56:32,878 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 63.85s
+2026-05-31 08:56:34,884 [INFO] 
+[12/60] dep_012 (dependency / medium)
+2026-05-31 08:56:35,846 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:56:36,576 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:56:57,120 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:57:18,144 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:57:37,861 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 62.92s
+2026-05-31 08:57:39,863 [INFO] 
+[13/60] dep_013 (dependency / medium)
+2026-05-31 08:57:44,266 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:57:44,789 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:58:06,131 [INFO]   ✅ fixed | router: dependency (90%) | attempts: 1 | 26.2s
+2026-05-31 08:58:08,147 [INFO] 
+[14/60] dep_014 (dependency / medium)
+2026-05-31 08:58:08,954 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:58:09,554 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:58:30,179 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:58:51,012 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:59:10,638 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 62.41s
+2026-05-31 08:59:12,653 [INFO] 
+[15/60] dep_015 (dependency / medium)
+2026-05-31 08:59:13,527 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:59:14,096 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:59:35,572 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 22.86s
+2026-05-31 08:59:37,574 [INFO] 
+[16/60] dep_016 (dependency / hard)
+2026-05-31 08:59:38,401 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 08:59:39,505 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:00:17,312 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 39.67s
+2026-05-31 09:00:19,325 [INFO] 
+[17/60] dep_017 (dependency / hard)
+2026-05-31 09:00:20,269 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:00:20,889 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:00:58,347 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 38.96s
+2026-05-31 09:01:00,360 [INFO] 
+[18/60] dep_018 (dependency / hard)
+2026-05-31 09:01:01,277 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:01:01,977 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:01:23,672 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 23.24s
+2026-05-31 09:01:25,676 [INFO] 
+[19/60] dep_019 (dependency / hard)
+2026-05-31 09:01:26,825 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:01:27,592 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:02:04,410 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:02:41,900 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:03:17,783 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 112.04s
+2026-05-31 09:03:19,793 [INFO] 
+[20/60] dep_020 (dependency / hard)
+2026-05-31 09:03:20,765 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:03:21,384 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:03:43,333 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 23.47s
+2026-05-31 09:03:45,346 [INFO] 
+[21/60] test_001 (test / easy)
+2026-05-31 09:03:46,221 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:03:47,615 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:04:25,478 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 40.07s
+2026-05-31 09:04:27,494 [INFO] 
+[22/60] test_002 (test / easy)
+2026-05-31 09:04:28,444 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:04:29,838 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:05:07,536 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 39.97s
+2026-05-31 09:05:09,547 [INFO] 
+[23/60] test_003 (test / easy)
+2026-05-31 09:05:10,635 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:05:11,964 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:05:49,761 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 40.14s
+2026-05-31 09:05:51,763 [INFO] 
+[24/60] test_004 (test / easy)
+2026-05-31 09:05:52,873 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:05:54,023 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:06:31,658 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 39.82s
+2026-05-31 09:06:33,667 [INFO] 
+[25/60] test_005 (test / easy)
+2026-05-31 09:06:34,571 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:06:36,382 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:07:13,864 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 40.12s
+2026-05-31 09:07:15,877 [INFO] 
+[26/60] test_006 (test / easy)
+2026-05-31 09:07:16,678 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:07:17,309 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:07:55,154 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 39.22s
+2026-05-31 09:07:57,156 [INFO] 
+[27/60] test_007 (test / easy)
+2026-05-31 09:07:57,972 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:07:58,721 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:08:36,370 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 39.13s
+2026-05-31 09:08:38,374 [INFO] 
+[28/60] test_008 (test / easy)
+2026-05-31 09:08:40,291 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:08:40,895 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:09:18,314 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 39.87s
+2026-05-31 09:09:20,327 [INFO] 
+[29/60] test_009 (test / medium)
+2026-05-31 09:09:21,148 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:09:22,112 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:09:59,556 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 39.16s
+2026-05-31 09:10:01,561 [INFO] 
+[30/60] test_010 (test / medium)
+2026-05-31 09:10:02,480 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:10:05,386 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:10:42,936 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 41.31s
+2026-05-31 09:10:44,940 [INFO] 
+[31/60] test_011 (test / medium)
+2026-05-31 09:10:46,248 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:10:47,015 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:11:24,801 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 39.8s
+2026-05-31 09:11:26,802 [INFO] 
+[32/60] test_012 (test / medium)
+2026-05-31 09:11:27,616 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:11:28,266 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:12:05,815 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 38.95s
+2026-05-31 09:12:07,824 [INFO] 
+[33/60] test_013 (test / medium)
+2026-05-31 09:12:08,596 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:12:10,533 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:12:48,235 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 40.35s
+2026-05-31 09:12:50,243 [INFO] 
+[34/60] test_014 (test / medium)
+2026-05-31 09:12:51,202 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:12:52,119 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:13:30,038 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 39.73s
+2026-05-31 09:13:32,039 [INFO] 
+[35/60] test_015 (test / medium)
+2026-05-31 09:13:33,000 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:13:34,133 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:14:11,554 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 39.45s
+2026-05-31 09:14:13,556 [INFO] 
+[36/60] test_016 (test / hard)
+2026-05-31 09:14:14,603 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:14:15,848 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:14:53,568 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 39.94s
+2026-05-31 09:14:55,569 [INFO] 
+[37/60] test_017 (test / hard)
+2026-05-31 09:14:56,435 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:14:57,679 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:15:35,338 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 39.7s
+2026-05-31 09:15:37,343 [INFO] 
+[38/60] test_018 (test / hard)
+2026-05-31 09:15:38,214 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:15:40,537 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:16:18,016 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 40.6s
+2026-05-31 09:16:20,018 [INFO] 
+[39/60] test_019 (test / hard)
+2026-05-31 09:16:20,861 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:16:21,595 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:16:59,147 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 39.06s
+2026-05-31 09:17:01,149 [INFO] 
+[40/60] test_020 (test / hard)
+2026-05-31 09:17:02,114 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:17:03,551 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:17:40,846 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 39.63s
+2026-05-31 09:17:42,854 [INFO] 
+[41/60] conf_001 (config / easy)
+2026-05-31 09:17:43,710 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:17:45,144 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:18:22,344 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 39.42s
+2026-05-31 09:18:24,347 [INFO] 
+[42/60] conf_002 (config / easy)
+2026-05-31 09:18:25,054 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:18:26,344 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:18:47,764 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:19:09,183 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:19:28,958 [INFO]   ❌ escalated | router: config (90%) | attempts: 3 | 64.54s
+2026-05-31 09:19:30,960 [INFO] 
+[43/60] conf_003 (config / easy)
+2026-05-31 09:19:31,893 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:19:33,124 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:19:54,183 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:20:15,488 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:20:35,135 [INFO]   ❌ escalated | router: config (90%) | attempts: 3 | 64.11s
+2026-05-31 09:20:37,142 [INFO] 
+[44/60] conf_004 (config / easy)
+2026-05-31 09:20:37,856 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:20:39,068 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:21:00,224 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:21:37,363 [INFO]   ✅ fixed | router: config (100%) | attempts: 2 | 60.15s
+2026-05-31 09:21:39,372 [INFO] 
+[45/60] conf_005 (config / easy)
+2026-05-31 09:21:40,563 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:21:41,974 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:22:19,133 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 39.69s
+2026-05-31 09:22:21,138 [INFO] 
+[46/60] conf_006 (config / easy)
+2026-05-31 09:22:21,933 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:22:23,203 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:23:00,468 [INFO]   ✅ fixed | router: config (100%) | attempts: 1 | 39.26s
+2026-05-31 09:23:02,469 [INFO] 
+[47/60] conf_007 (config / easy)
+2026-05-31 09:23:03,660 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:23:04,863 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:23:42,394 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 39.86s
+2026-05-31 09:23:44,396 [INFO] 
+[48/60] conf_008 (config / easy)
+2026-05-31 09:23:45,372 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:23:46,602 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:24:23,958 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 39.5s
+2026-05-31 09:24:25,959 [INFO] 
+[49/60] conf_009 (config / medium)
+2026-05-31 09:24:26,957 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:24:28,152 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:25:05,642 [INFO]   ✅ fixed | router: config (100%) | attempts: 1 | 39.6s
+2026-05-31 09:25:07,647 [INFO] 
+[50/60] conf_010 (config / medium)
+2026-05-31 09:25:08,478 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:25:09,642 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:25:47,336 [INFO]   ✅ fixed | router: config (100%) | attempts: 1 | 39.62s
+2026-05-31 09:25:49,340 [INFO] 
+[51/60] conf_011 (config / medium)
+2026-05-31 09:25:50,084 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:25:51,482 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:26:29,072 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 39.67s
+2026-05-31 09:26:31,073 [INFO] 
+[52/60] conf_012 (config / medium)
+2026-05-31 09:26:32,040 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:26:34,216 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:26:55,118 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:27:32,494 [INFO]   ✅ fixed | router: config (100%) | attempts: 2 | 61.35s
+2026-05-31 09:27:34,498 [INFO] 
+[53/60] conf_013 (config / medium)
+2026-05-31 09:27:35,440 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:27:36,092 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:27:57,602 [INFO]   ✅ fixed | router: dependency (90%) | attempts: 1 | 23.04s
+2026-05-31 09:27:59,604 [INFO] 
+[54/60] conf_014 (config / medium)
+2026-05-31 09:28:00,835 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:28:02,033 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:28:22,990 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:29:00,435 [INFO]   ✅ fixed | router: config (100%) | attempts: 2 | 60.76s
+2026-05-31 09:29:02,436 [INFO] 
+[55/60] conf_015 (config / medium)
+2026-05-31 09:29:03,247 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:29:05,166 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:29:42,686 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 40.18s
+2026-05-31 09:29:44,688 [INFO] 
+[56/60] conf_016 (config / hard)
+2026-05-31 09:29:45,445 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:29:47,406 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:30:24,458 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:31:02,441 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:31:22,080 [INFO]   ❌ escalated | router: config (100%) | attempts: 3 | 97.32s
+2026-05-31 09:31:24,081 [INFO] 
+[57/60] conf_017 (config / hard)
+2026-05-31 09:31:24,976 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:31:26,350 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:32:03,694 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 39.55s
+2026-05-31 09:32:05,697 [INFO] 
+[58/60] conf_018 (config / hard)
+2026-05-31 09:32:06,550 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:32:07,660 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:32:29,360 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:32:50,730 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:33:10,362 [INFO]   ❌ escalated | router: config (90%) | attempts: 3 | 64.59s
+2026-05-31 09:33:12,363 [INFO] 
+[59/60] conf_019 (config / hard)
+2026-05-31 09:33:13,197 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:33:14,710 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:33:52,162 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:34:29,840 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:34:49,770 [INFO]   ❌ escalated | router: config (95%) | attempts: 3 | 97.34s
+2026-05-31 09:34:51,776 [INFO] 
+[60/60] conf_020 (config / hard)
+2026-05-31 09:34:53,000 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:34:54,420 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:35:31,769 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 39.93s
+2026-05-31 09:35:33,780 [INFO] Salvati 60 risultati → benchmark_20260531_084755_dryrun.csv
+2026-05-31 09:35:33,780 [INFO] ✓ GPT-4o completato — risultati salvati
+2026-05-31 09:35:36,782 [INFO] Salvati 60 risultati → benchmark_20260531_084755_dryrun.csv
+2026-05-31 09:40:26,504 [INFO] Dataset: 60 errori selezionati
+2026-05-31 09:40:26,504 [INFO] Modelli: ['Llama 3.3 70B (Groq)']
+2026-05-31 09:40:26,504 [INFO] Modalità: dry-run | memoria: OFF
+2026-05-31 09:40:26,504 [INFO] 
+▶ Avvio: Llama 3.3 70B (Groq)
+2026-05-31 09:40:26,504 [INFO] 
+============================================================
+2026-05-31 09:40:26,504 [INFO] MODELLO: Llama 3.3 70B (Groq) (groq_llama70b)
+2026-05-31 09:40:26,504 [INFO] Errori: 60 | Timeout: 300s | dry-run: True | no-memory: True
+2026-05-31 09:40:26,504 [INFO] ============================================================
+2026-05-31 09:40:26,504 [INFO] 
+[1/60] dep_001 (dependency / easy)
+2026-05-31 09:40:29,351 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:40:29,978 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:40:51,288 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 22.98s
+2026-05-31 09:40:52,294 [INFO] 
+[2/60] dep_002 (dependency / easy)
+2026-05-31 09:40:53,014 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:40:53,623 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:41:31,148 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 38.79s
+2026-05-31 09:41:32,158 [INFO] 
+[3/60] dep_003 (dependency / easy)
+2026-05-31 09:41:32,881 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:41:33,506 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:42:11,088 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 38.86s
+2026-05-31 09:42:12,097 [INFO] 
+[4/60] dep_004 (dependency / easy)
+2026-05-31 09:42:12,833 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:42:13,422 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:42:34,918 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 22.75s
+2026-05-31 09:42:35,924 [INFO] 
+[5/60] dep_005 (dependency / easy)
+2026-05-31 09:42:36,627 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:42:37,240 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:42:58,738 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 22.75s
+2026-05-31 09:42:59,742 [INFO] 
+[6/60] dep_006 (dependency / easy)
+2026-05-31 09:43:00,478 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:43:01,077 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:43:54,319 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 54.52s
+2026-05-31 09:43:55,320 [INFO] 
+[7/60] dep_007 (dependency / easy)
+2026-05-31 09:43:56,077 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:43:56,735 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:44:18,292 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 22.91s
+2026-05-31 09:44:19,294 [INFO] 
+[8/60] dep_008 (dependency / easy)
+2026-05-31 09:44:19,989 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:44:20,647 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:44:41,987 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 22.62s
+2026-05-31 09:44:42,989 [INFO] 
+[9/60] dep_009 (dependency / medium)
+2026-05-31 09:44:43,744 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:44:44,582 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:45:21,210 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:45:58,629 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 2 | 75.56s
+2026-05-31 09:45:59,630 [INFO] 
+[10/60] dep_010 (dependency / medium)
+2026-05-31 09:46:00,526 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:46:01,141 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:46:54,172 [INFO]   ✅ fixed | router: dependency (90%) | attempts: 1 | 54.47s
+2026-05-31 09:46:55,174 [INFO] 
+[11/60] dep_011 (dependency / medium)
+2026-05-31 09:46:55,872 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:46:56,492 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:47:16,846 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:48:10,337 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:48:45,856 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 110.61s
+2026-05-31 09:48:46,861 [INFO] 
+[12/60] dep_012 (dependency / medium)
+2026-05-31 09:48:47,604 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:48:48,301 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:49:08,670 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:49:29,496 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:49:49,206 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 62.28s
+2026-05-31 09:49:50,213 [INFO] 
+[13/60] dep_013 (dependency / medium)
+2026-05-31 09:49:50,953 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:49:51,606 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:50:13,138 [INFO]   ✅ fixed | router: dependency (90%) | attempts: 1 | 22.86s
+2026-05-31 09:50:14,139 [INFO] 
+[14/60] dep_014 (dependency / medium)
+2026-05-31 09:50:14,866 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:50:15,493 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:50:35,786 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:50:56,959 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:51:16,602 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 62.4s
+2026-05-31 09:51:17,605 [INFO] 
+[15/60] dep_015 (dependency / medium)
+2026-05-31 09:51:18,332 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:51:18,995 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:51:39,418 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:52:00,315 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:52:19,958 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 62.29s
+2026-05-31 09:52:20,962 [INFO] 
+[16/60] dep_016 (dependency / hard)
+2026-05-31 09:52:21,665 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:52:22,357 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:52:59,692 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 38.67s
+2026-05-31 09:53:00,693 [INFO] 
+[17/60] dep_017 (dependency / hard)
+2026-05-31 09:53:01,383 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:53:01,996 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:53:39,235 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 38.48s
+2026-05-31 09:53:40,238 [INFO] 
+[18/60] dep_018 (dependency / hard)
+2026-05-31 09:53:41,010 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:53:41,703 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:54:35,051 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 54.75s
+2026-05-31 09:54:36,051 [INFO] 
+[19/60] dep_019 (dependency / hard)
+2026-05-31 09:54:36,885 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:54:37,550 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:55:13,887 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:55:50,674 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:56:10,477 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 94.36s
+2026-05-31 09:56:11,478 [INFO] 
+[20/60] dep_020 (dependency / hard)
+2026-05-31 09:56:12,199 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:56:12,838 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:56:34,254 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 1 | 22.72s
+2026-05-31 09:56:35,258 [INFO] 
+[21/60] test_001 (test / easy)
+2026-05-31 09:56:36,074 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:56:36,974 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:57:14,294 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 38.97s
+2026-05-31 09:57:15,297 [INFO] 
+[22/60] test_002 (test / easy)
+2026-05-31 09:57:16,194 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:57:17,044 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:57:54,300 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 38.94s
+2026-05-31 09:57:55,301 [INFO] 
+[23/60] test_003 (test / easy)
+2026-05-31 09:57:56,078 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:57:56,966 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:58:34,553 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 39.19s
+2026-05-31 09:58:35,562 [INFO] 
+[24/60] test_004 (test / easy)
+2026-05-31 09:58:36,363 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:58:37,112 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:59:14,504 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 38.88s
+2026-05-31 09:59:15,506 [INFO] 
+[25/60] test_005 (test / easy)
+2026-05-31 09:59:16,274 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:59:17,214 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:59:54,612 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 39.04s
+2026-05-31 09:59:55,614 [INFO] 
+[26/60] test_006 (test / easy)
+2026-05-31 09:59:56,488 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 09:59:57,175 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:00:34,508 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 38.84s
+2026-05-31 10:00:35,514 [INFO] 
+[27/60] test_007 (test / easy)
+2026-05-31 10:00:36,295 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:00:37,003 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:01:14,463 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 38.89s
+2026-05-31 10:01:15,464 [INFO] 
+[28/60] test_008 (test / easy)
+2026-05-31 10:01:16,196 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:01:16,815 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:01:55,454 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 39.92s
+2026-05-31 10:01:56,463 [INFO] 
+[29/60] test_009 (test / medium)
+2026-05-31 10:01:57,248 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:01:58,184 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:02:35,654 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 39.12s
+2026-05-31 10:02:36,655 [INFO] 
+[30/60] test_010 (test / medium)
+2026-05-31 10:02:37,454 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:02:38,433 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:03:15,922 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 39.2s
+2026-05-31 10:03:16,928 [INFO] 
+[31/60] test_011 (test / medium)
+2026-05-31 10:03:17,686 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:03:18,411 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:03:55,932 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 38.93s
+2026-05-31 10:03:56,934 [INFO] 
+[32/60] test_012 (test / medium)
+2026-05-31 10:03:57,662 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:03:58,346 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:04:36,042 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 39.05s
+2026-05-31 10:04:37,050 [INFO] 
+[33/60] test_013 (test / medium)
+2026-05-31 10:04:37,825 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:04:38,742 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:05:16,102 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 38.99s
+2026-05-31 10:05:17,107 [INFO] 
+[34/60] test_014 (test / medium)
+2026-05-31 10:05:17,862 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:05:18,605 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:05:56,124 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 38.95s
+2026-05-31 10:05:57,128 [INFO] 
+[35/60] test_015 (test / medium)
+2026-05-31 10:05:57,922 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:05:58,777 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:06:36,512 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 39.31s
+2026-05-31 10:06:37,520 [INFO] 
+[36/60] test_016 (test / hard)
+2026-05-31 10:06:38,281 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:06:39,162 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:07:16,729 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 39.15s
+2026-05-31 10:07:17,732 [INFO] 
+[37/60] test_017 (test / hard)
+2026-05-31 10:07:18,525 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:07:19,376 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:07:56,951 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 39.16s
+2026-05-31 10:07:57,953 [INFO] 
+[38/60] test_018 (test / hard)
+2026-05-31 10:07:58,723 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:07:59,941 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:08:37,532 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 39.51s
+2026-05-31 10:08:38,533 [INFO] 
+[39/60] test_019 (test / hard)
+2026-05-31 10:08:39,339 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:08:40,101 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:09:17,806 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 39.21s
+2026-05-31 10:09:18,809 [INFO] 
+[40/60] test_020 (test / hard)
+2026-05-31 10:09:19,591 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:09:20,532 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:09:58,206 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 39.33s
+2026-05-31 10:09:59,209 [INFO] 
+[41/60] conf_001 (config / easy)
+2026-05-31 10:09:59,969 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:10:00,548 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:10:22,381 [INFO]   ✅ fixed | router: dependency (90%) | attempts: 1 | 23.1s
+2026-05-31 10:10:23,382 [INFO] 
+[42/60] conf_002 (config / easy)
+2026-05-31 10:10:24,114 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:10:24,728 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:10:46,395 [INFO]   ✅ fixed | router: dependency (90%) | attempts: 1 | 22.95s
+2026-05-31 10:10:47,395 [INFO] 
+[43/60] conf_003 (config / easy)
+2026-05-31 10:10:48,110 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:10:48,721 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:11:09,183 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:11:29,810 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:11:49,742 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 62.29s
+2026-05-31 10:11:50,745 [INFO] 
+[44/60] conf_004 (config / easy)
+2026-05-31 10:11:51,452 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:11:52,328 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:12:29,880 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 39.07s
+2026-05-31 10:12:30,882 [INFO] 
+[45/60] conf_005 (config / easy)
+2026-05-31 10:12:31,622 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:12:32,462 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:13:10,150 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 39.2s
+2026-05-31 10:13:11,153 [INFO] 
+[46/60] conf_006 (config / easy)
+2026-05-31 10:13:11,853 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:13:12,710 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:13:49,952 [INFO]   ✅ fixed | router: config (100%) | attempts: 1 | 38.73s
+2026-05-31 10:13:50,959 [INFO] 
+[47/60] conf_007 (config / easy)
+2026-05-31 10:13:51,682 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:13:52,614 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:14:13,266 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:14:34,200 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:14:54,050 [INFO]   ❌ escalated | router: config (90%) | attempts: 3 | 63.03s
+2026-05-31 10:14:55,052 [INFO] 
+[48/60] conf_008 (config / easy)
+2026-05-31 10:14:55,780 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:14:56,375 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:15:18,067 [INFO]   ✅ fixed | router: dependency (90%) | attempts: 1 | 22.95s
+2026-05-31 10:15:19,070 [INFO] 
+[49/60] conf_009 (config / medium)
+2026-05-31 10:15:19,763 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:15:20,569 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:15:58,153 [INFO]   ✅ fixed | router: config (100%) | attempts: 1 | 39.01s
+2026-05-31 10:15:59,159 [INFO] 
+[50/60] conf_010 (config / medium)
+2026-05-31 10:15:59,981 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:16:00,839 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:16:37,975 [INFO]   ✅ fixed | router: config (100%) | attempts: 1 | 38.75s
+2026-05-31 10:16:38,978 [INFO] 
+[51/60] conf_011 (config / medium)
+2026-05-31 10:16:39,722 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:16:40,603 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:17:18,025 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 38.98s
+2026-05-31 10:17:19,028 [INFO] 
+[52/60] conf_012 (config / medium)
+2026-05-31 10:17:19,807 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:17:20,695 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:17:57,787 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 38.7s
+2026-05-31 10:17:58,788 [INFO] 
+[53/60] conf_013 (config / medium)
+2026-05-31 10:17:59,560 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:18:00,159 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:18:21,658 [INFO]   ✅ fixed | router: dependency (90%) | attempts: 1 | 22.8s
+2026-05-31 10:18:22,659 [INFO] 
+[54/60] conf_014 (config / medium)
+2026-05-31 10:18:23,399 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:18:24,246 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:19:01,720 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 38.99s
+2026-05-31 10:19:02,721 [INFO] 
+[55/60] conf_015 (config / medium)
+2026-05-31 10:19:03,444 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:19:04,322 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:19:41,576 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 38.79s
+2026-05-31 10:19:42,577 [INFO] 
+[56/60] conf_016 (config / hard)
+2026-05-31 10:19:43,322 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:19:44,308 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:20:21,329 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:20:58,568 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:21:34,166 [INFO]   ❌ escalated | router: config (90%) | attempts: 3 | 111.52s
+2026-05-31 10:21:35,167 [INFO] 
+[57/60] conf_017 (config / hard)
+2026-05-31 10:21:35,951 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:21:36,814 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:22:14,218 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 38.99s
+2026-05-31 10:22:15,226 [INFO] 
+[58/60] conf_018 (config / hard)
+2026-05-31 10:22:15,937 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:22:16,789 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:22:53,984 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 38.68s
+2026-05-31 10:22:54,985 [INFO] 
+[59/60] conf_019 (config / hard)
+2026-05-31 10:22:55,724 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:22:56,557 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:23:33,890 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 38.83s
+2026-05-31 10:23:34,891 [INFO] 
+[60/60] conf_020 (config / hard)
+2026-05-31 10:23:35,692 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:23:36,663 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:24:13,377 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:24:50,406 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-05-31 10:25:26,139 [INFO]   ❌ escalated | router: config (90%) | attempts: 3 | 111.18s
+2026-05-31 10:25:27,147 [INFO] Salvati 60 risultati → benchmark_20260531_094026_dryrun.csv
+2026-05-31 10:25:27,147 [INFO] ✓ Llama 3.3 70B (Groq) completato — risultati salvati
+2026-05-31 10:25:30,155 [INFO] Salvati 60 risultati → benchmark_20260531_094026_dryrun.csv

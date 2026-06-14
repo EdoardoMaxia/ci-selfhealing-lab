@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 g = Github(os.getenv("GITHUB_TOKEN"))
-repo = g.get_repo(os.getenv("GITHUB_REPO"))
+repo = g.get_repo(os.getenv("GITHUB_REPO")) #type: ignore
 
 # Prendi l'ultima run della CI
 runs = repo.get_workflow_runs()

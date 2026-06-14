@@ -1,0 +1,417 @@
+2026-05-30 16:59:18,456 [INFO] ChromaDB: salvataggio disabilitato (--no-memory)
+2026-05-30 16:59:18,457 [INFO] Dataset: 3 errori selezionati
+2026-05-30 16:59:18,457 [INFO] Modelli: ['Claude Haiku']
+2026-05-30 16:59:18,457 [INFO] Modalità: dry-run | memoria: OFF
+2026-05-30 16:59:18,457 [INFO] 
+▶ Avvio: Claude Haiku
+2026-05-30 16:59:18,457 [INFO] 
+============================================================
+2026-05-30 16:59:18,457 [INFO] MODELLO: Claude Haiku (anthropic_haiku)
+2026-05-30 16:59:18,457 [INFO] Errori: 3 | Timeout: 300s | dry-run: True | no-memory: True
+2026-05-30 16:59:18,458 [INFO] ============================================================
+2026-05-30 16:59:18,458 [INFO] 
+[1/3] dep_001 (dependency / easy)
+2026-05-30 16:59:20,619 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 16:59:22,323 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 16:59:43,323 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-30 16:59:45,399 [INFO]   ✅ fixed | router: dependency (99%) | attempts: 1 | 26.87s
+2026-05-30 16:59:46,406 [INFO] 
+[2/3] dep_002 (dependency / easy)
+2026-05-30 16:59:47,724 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 16:59:49,394 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:00:25,562 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-30 17:00:27,676 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 41.19s
+2026-05-30 17:00:28,686 [INFO] 
+[3/3] dep_003 (dependency / easy)
+2026-05-30 17:00:30,463 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:00:31,257 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:01:07,640 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-30 17:01:10,004 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 41.25s
+2026-05-30 17:01:11,013 [INFO] Salvati 3 risultati → benchmark_20260530_165918_dryrun.csv
+2026-05-30 17:01:11,013 [INFO] ✓ Claude Haiku completato — risultati salvati
+2026-05-30 17:01:14,014 [INFO] Salvati 3 risultati → benchmark_20260530_165918_dryrun.csv
+2026-05-30 17:07:05,407 [INFO] Dataset: 3 errori selezionati
+2026-05-30 17:07:05,407 [INFO] Modelli: ['Claude Haiku']
+2026-05-30 17:07:05,407 [INFO] Modalità: dry-run | memoria: OFF
+2026-05-30 17:07:05,408 [INFO] 
+▶ Avvio: Claude Haiku
+2026-05-30 17:07:05,408 [INFO] 
+============================================================
+2026-05-30 17:07:05,408 [INFO] MODELLO: Claude Haiku (anthropic_haiku)
+2026-05-30 17:07:05,408 [INFO] Errori: 3 | Timeout: 300s | dry-run: True | no-memory: True
+2026-05-30 17:07:05,408 [INFO] ============================================================
+2026-05-30 17:07:05,408 [INFO] 
+[1/3] dep_001 (dependency / easy)
+2026-05-30 17:07:09,215 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:07:10,104 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:07:31,813 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-30 17:07:34,042 [INFO]   ✅ fixed | router: dependency (99%) | attempts: 1 | 26.97s
+2026-05-30 17:07:35,054 [INFO] 
+[2/3] dep_002 (dependency / easy)
+2026-05-30 17:07:37,362 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:07:38,135 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:08:14,497 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-30 17:08:16,844 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 41.72s
+2026-05-30 17:08:17,845 [INFO] 
+[3/3] dep_003 (dependency / easy)
+2026-05-30 17:08:19,175 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:08:20,096 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:08:56,732 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-30 17:08:58,969 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 41.06s
+2026-05-30 17:08:59,973 [INFO] Salvati 3 risultati → benchmark_20260530_170705_dryrun.csv
+2026-05-30 17:08:59,973 [INFO] ✓ Claude Haiku completato — risultati salvati
+2026-05-30 17:09:02,977 [INFO] Salvati 3 risultati → benchmark_20260530_170705_dryrun.csv
+2026-05-30 17:45:16,792 [INFO] Dataset: 3 errori selezionati
+2026-05-30 17:45:16,792 [INFO] Modelli: ['Claude Haiku']
+2026-05-30 17:45:16,792 [INFO] Modalità: dry-run | memoria: OFF
+2026-05-30 17:45:16,793 [INFO] 
+▶ Avvio: Claude Haiku
+2026-05-30 17:45:16,793 [INFO] 
+============================================================
+2026-05-30 17:45:16,793 [INFO] MODELLO: Claude Haiku (anthropic_haiku)
+2026-05-30 17:45:16,793 [INFO] Errori: 3 | Timeout: 300s | dry-run: True | no-memory: True
+2026-05-30 17:45:16,793 [INFO] ============================================================
+2026-05-30 17:45:16,794 [INFO] 
+[1/3] dep_001 (dependency / easy)
+2026-05-30 17:45:21,264 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:45:22,100 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:45:43,762 [INFO]   ✅ fixed | router: dependency (99%) | attempts: 1 | 24.7s
+2026-05-30 17:45:44,764 [INFO] 
+[2/3] dep_002 (dependency / easy)
+2026-05-30 17:45:46,063 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:45:47,893 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:46:25,257 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 40.41s
+2026-05-30 17:46:26,258 [INFO] 
+[3/3] dep_003 (dependency / easy)
+2026-05-30 17:46:28,448 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:46:29,229 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 17:47:06,749 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 40.42s
+2026-05-30 17:47:07,753 [INFO] Salvati 3 risultati → benchmark_20260530_174516_dryrun.csv
+2026-05-30 17:47:07,753 [INFO] ✓ Claude Haiku completato — risultati salvati
+2026-05-30 17:47:10,758 [INFO] Salvati 3 risultati → benchmark_20260530_174516_dryrun.csv
+2026-05-30 18:01:35,389 [INFO] Dataset: 60 errori selezionati
+2026-05-30 18:01:35,389 [INFO] Modelli: ['Claude Haiku']
+2026-05-30 18:01:35,389 [INFO] Modalità: dry-run | memoria: OFF
+2026-05-30 18:01:35,389 [INFO] 
+▶ Avvio: Claude Haiku
+2026-05-30 18:01:35,389 [INFO] 
+============================================================
+2026-05-30 18:01:35,389 [INFO] MODELLO: Claude Haiku (anthropic_haiku)
+2026-05-30 18:01:35,392 [INFO] Errori: 60 | Timeout: 300s | dry-run: True | no-memory: True
+2026-05-30 18:01:35,392 [INFO] ============================================================
+2026-05-30 18:01:35,392 [INFO] 
+[1/60] dep_001 (dependency / easy)
+2026-05-30 18:01:39,289 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:01:40,328 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:02:02,295 [INFO]   ✅ fixed | router: dependency (99%) | attempts: 1 | 25.32s
+2026-05-30 18:02:03,300 [INFO] 
+[2/60] dep_002 (dependency / easy)
+2026-05-30 18:02:05,614 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:02:07,881 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:02:45,494 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 42.12s
+2026-05-30 18:02:46,495 [INFO] 
+[3/60] dep_003 (dependency / easy)
+2026-05-30 18:02:47,778 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:02:48,519 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:03:26,179 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 39.61s
+2026-05-30 18:03:27,183 [INFO] 
+[4/60] dep_004 (dependency / easy)
+2026-05-30 18:03:28,529 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:03:29,314 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:03:51,078 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 23.83s
+2026-05-30 18:03:52,079 [INFO] 
+[5/60] dep_005 (dependency / easy)
+2026-05-30 18:03:53,477 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:03:55,215 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:04:32,812 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 40.66s
+2026-05-30 18:04:33,819 [INFO] 
+[6/60] dep_006 (dependency / easy)
+2026-05-30 18:04:35,558 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:04:36,379 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:05:30,159 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 56.27s
+2026-05-30 18:05:31,162 [INFO] 
+[7/60] dep_007 (dependency / easy)
+2026-05-30 18:05:32,475 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:05:33,296 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:06:10,715 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 39.48s
+2026-05-30 18:06:11,717 [INFO] 
+[8/60] dep_008 (dependency / easy)
+2026-05-30 18:06:13,235 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:06:14,050 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:06:51,870 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 40.08s
+2026-05-30 18:06:52,874 [INFO] 
+[9/60] dep_009 (dependency / medium)
+2026-05-30 18:06:54,848 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:06:56,096 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:07:48,758 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:08:26,824 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 2 | 93.88s
+2026-05-30 18:08:27,828 [INFO] 
+[10/60] dep_010 (dependency / medium)
+2026-05-30 18:08:30,462 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:08:31,229 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:10:44,613 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 136.71s
+2026-05-30 18:10:45,614 [INFO] 
+[11/60] dep_011 (dependency / medium)
+2026-05-30 18:10:46,863 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:10:47,531 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:11:09,190 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 23.51s
+2026-05-30 18:11:10,191 [INFO] 
+[12/60] dep_012 (dependency / medium)
+2026-05-30 18:11:11,576 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:11:12,423 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:11:32,827 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:11:54,327 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:12:32,027 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 3 | 81.76s
+2026-05-30 18:12:33,037 [INFO] 
+[13/60] dep_013 (dependency / medium)
+2026-05-30 18:12:38,867 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:12:39,807 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:13:01,432 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 28.33s
+2026-05-30 18:13:02,436 [INFO] 
+[14/60] dep_014 (dependency / medium)
+2026-05-30 18:13:03,821 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:13:04,742 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:13:25,377 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:13:46,994 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:14:06,839 [INFO]   ❌ escalated | router: dependency (95%) | attempts: 3 | 64.33s
+2026-05-30 18:14:07,840 [INFO] 
+[15/60] dep_015 (dependency / medium)
+2026-05-30 18:14:09,251 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:14:09,956 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:14:31,436 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 23.53s
+2026-05-30 18:14:32,441 [INFO] 
+[16/60] dep_016 (dependency / hard)
+2026-05-30 18:14:33,820 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:14:34,666 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:15:11,386 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:15:33,006 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:15:53,026 [INFO]   ❌ escalated | router: dependency (99%) | attempts: 3 | 80.52s
+2026-05-30 18:15:54,028 [INFO] 
+[17/60] dep_017 (dependency / hard)
+2026-05-30 18:15:55,511 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:15:56,355 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:16:34,035 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 39.94s
+2026-05-30 18:16:35,036 [INFO] 
+[18/60] dep_018 (dependency / hard)
+2026-05-30 18:16:36,425 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:16:37,756 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:16:59,188 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 24.08s
+2026-05-30 18:17:00,194 [INFO] 
+[19/60] dep_019 (dependency / hard)
+2026-05-30 18:17:01,525 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:17:02,866 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:17:40,463 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 40.21s
+2026-05-30 18:17:41,464 [INFO] 
+[20/60] dep_020 (dependency / hard)
+2026-05-30 18:17:42,947 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:17:43,925 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:18:05,477 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 23.94s
+2026-05-30 18:18:06,478 [INFO] 
+[21/60] test_001 (test / easy)
+2026-05-30 18:18:07,830 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:18:09,116 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:18:46,555 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 40.01s
+2026-05-30 18:18:47,556 [INFO] 
+[22/60] test_002 (test / easy)
+2026-05-30 18:18:48,945 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:18:50,583 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:19:28,034 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 40.4s
+2026-05-30 18:19:29,035 [INFO] 
+[23/60] test_003 (test / easy)
+2026-05-30 18:19:30,586 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:19:31,885 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:20:09,314 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 40.21s
+2026-05-30 18:20:10,317 [INFO] 
+[24/60] test_004 (test / easy)
+2026-05-30 18:20:11,730 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:20:12,749 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:20:50,294 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 39.91s
+2026-05-30 18:20:51,300 [INFO] 
+[25/60] test_005 (test / easy)
+2026-05-30 18:20:52,592 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:20:54,343 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:21:31,834 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 40.46s
+2026-05-30 18:21:32,836 [INFO] 
+[26/60] test_006 (test / easy)
+2026-05-30 18:21:35,082 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:21:36,057 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:22:13,494 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 40.59s
+2026-05-30 18:22:14,505 [INFO] 
+[27/60] test_007 (test / easy)
+2026-05-30 18:22:15,788 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:22:16,824 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:22:54,174 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 39.61s
+2026-05-30 18:22:55,175 [INFO] 
+[28/60] test_008 (test / easy)
+2026-05-30 18:22:56,518 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:22:57,510 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:23:34,948 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 39.7s
+2026-05-30 18:23:35,953 [INFO] 
+[29/60] test_009 (test / medium)
+2026-05-30 18:23:39,430 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:23:40,814 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:24:18,244 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 42.23s
+2026-05-30 18:24:19,245 [INFO] 
+[30/60] test_010 (test / medium)
+2026-05-30 18:24:21,230 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:24:23,057 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:25:00,722 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 41.41s
+2026-05-30 18:25:01,723 [INFO] 
+[31/60] test_011 (test / medium)
+2026-05-30 18:25:03,022 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:25:04,414 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:25:41,883 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 40.08s
+2026-05-30 18:25:42,885 [INFO] 
+[32/60] test_012 (test / medium)
+2026-05-30 18:25:44,311 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:25:45,860 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:26:23,131 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 40.18s
+2026-05-30 18:26:24,136 [INFO] 
+[33/60] test_013 (test / medium)
+2026-05-30 18:26:25,742 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:26:28,550 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:27:05,811 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 41.6s
+2026-05-30 18:27:06,818 [INFO] 
+[34/60] test_014 (test / medium)
+2026-05-30 18:27:08,312 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:27:09,592 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:27:46,895 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 40.0s
+2026-05-30 18:27:47,897 [INFO] 
+[35/60] test_015 (test / medium)
+2026-05-30 18:27:49,488 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:27:51,595 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:28:29,089 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 41.13s
+2026-05-30 18:28:30,089 [INFO] 
+[36/60] test_016 (test / hard)
+2026-05-30 18:28:33,430 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:28:35,103 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:29:12,718 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 42.55s
+2026-05-30 18:29:13,718 [INFO] 
+[37/60] test_017 (test / hard)
+2026-05-30 18:29:15,351 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:29:17,128 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:29:54,390 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 40.61s
+2026-05-30 18:29:55,391 [INFO] 
+[38/60] test_018 (test / hard)
+2026-05-30 18:29:56,990 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:30:03,097 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:30:40,470 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 45.01s
+2026-05-30 18:30:41,470 [INFO] 
+[39/60] test_019 (test / hard)
+2026-05-30 18:30:43,053 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:30:44,802 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:31:22,018 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 40.48s
+2026-05-30 18:31:23,027 [INFO] 
+[40/60] test_020 (test / hard)
+2026-05-30 18:31:24,307 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:31:27,258 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:32:04,889 [INFO]   ✅ fixed | router: test (95%) | attempts: 1 | 41.79s
+2026-05-30 18:32:05,897 [INFO] 
+[41/60] conf_001 (config / easy)
+2026-05-30 18:32:07,284 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:32:08,515 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:32:46,051 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 40.07s
+2026-05-30 18:32:47,053 [INFO] 
+[42/60] conf_002 (config / easy)
+2026-05-30 18:32:48,621 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:32:49,889 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:33:11,130 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:33:32,599 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:33:52,237 [INFO]   ❌ escalated | router: config (95%) | attempts: 3 | 65.11s
+2026-05-30 18:33:53,238 [INFO] 
+[43/60] conf_003 (config / easy)
+2026-05-30 18:33:55,174 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:33:56,469 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:34:33,867 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 40.56s
+2026-05-30 18:34:34,868 [INFO] 
+[44/60] conf_004 (config / easy)
+2026-05-30 18:34:36,121 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:34:37,369 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:35:15,130 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 40.19s
+2026-05-30 18:35:16,131 [INFO] 
+[45/60] conf_005 (config / easy)
+2026-05-30 18:35:18,439 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:35:19,848 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:35:57,149 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 40.94s
+2026-05-30 18:35:58,150 [INFO] 
+[46/60] conf_006 (config / easy)
+2026-05-30 18:36:00,428 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:36:02,057 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:36:39,516 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 41.29s
+2026-05-30 18:36:40,518 [INFO] 
+[47/60] conf_007 (config / easy)
+2026-05-30 18:36:41,811 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:36:43,298 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:37:20,648 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 40.07s
+2026-05-30 18:37:21,652 [INFO] 
+[48/60] conf_008 (config / easy)
+2026-05-30 18:37:22,933 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:37:24,147 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:38:01,474 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 39.76s
+2026-05-30 18:38:02,477 [INFO] 
+[49/60] conf_009 (config / medium)
+2026-05-30 18:38:04,301 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:38:05,672 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:38:42,716 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 40.18s
+2026-05-30 18:38:43,718 [INFO] 
+[50/60] conf_010 (config / medium)
+2026-05-30 18:38:45,836 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:38:47,503 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:39:24,978 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 41.19s
+2026-05-30 18:39:25,980 [INFO] 
+[51/60] conf_011 (config / medium)
+2026-05-30 18:39:27,311 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:39:28,822 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:40:06,098 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 40.05s
+2026-05-30 18:40:07,100 [INFO] 
+[52/60] conf_012 (config / medium)
+2026-05-30 18:40:08,981 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:40:10,299 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:40:47,601 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 40.43s
+2026-05-30 18:40:48,602 [INFO] 
+[53/60] conf_013 (config / medium)
+2026-05-30 18:40:50,071 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:40:51,126 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:41:28,548 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | 39.87s
+2026-05-30 18:41:29,557 [INFO] 
+[54/60] conf_014 (config / medium)
+2026-05-30 18:41:30,973 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:41:32,348 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:42:09,896 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 40.28s
+2026-05-30 18:42:10,905 [INFO] 
+[55/60] conf_015 (config / medium)
+2026-05-30 18:42:12,381 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:42:17,893 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:42:55,128 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 44.16s
+2026-05-30 18:42:56,131 [INFO] 
+[56/60] conf_016 (config / hard)
+2026-05-30 18:42:57,940 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:42:59,402 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:43:36,556 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:44:14,066 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:44:49,704 [INFO]   ❌ escalated | router: config (95%) | attempts: 3 | 113.5s
+2026-05-30 18:44:50,717 [INFO] 
+[57/60] conf_017 (config / hard)
+2026-05-30 18:44:52,134 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:44:53,612 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:45:30,874 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 40.08s
+2026-05-30 18:45:31,875 [INFO] 
+[58/60] conf_018 (config / hard)
+2026-05-30 18:45:33,402 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:45:34,728 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:46:12,451 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 40.5s
+2026-05-30 18:46:13,458 [INFO] 
+[59/60] conf_019 (config / hard)
+2026-05-30 18:46:14,955 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:46:17,088 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:47:10,448 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:48:04,321 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:48:57,296 [INFO]   ❌ escalated | router: config (95%) | attempts: 3 | 163.77s
+2026-05-30 18:48:58,304 [INFO] 
+[60/60] conf_020 (config / hard)
+2026-05-30 18:48:59,632 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:49:01,778 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-30 18:49:39,315 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | 40.95s
+2026-05-30 18:49:40,318 [INFO] Salvati 60 risultati → benchmark_20260530_180135_dryrun.csv
+2026-05-30 18:49:40,318 [INFO] ✓ Claude Haiku completato — risultati salvati
+2026-05-30 18:49:43,323 [INFO] Salvati 60 risultati → benchmark_20260530_180135_dryrun.csv
