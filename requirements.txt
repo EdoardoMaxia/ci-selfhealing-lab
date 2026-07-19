@@ -1,3 +1,6 @@
 pytest==7.4.0
 pytest-cov==4.1.0
-pandas==2.0.3
+
+django==4.1.7
+django-filter==21.1
+djangorestframework==3.13.1
