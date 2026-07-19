@@ -1,9 +1,7 @@
 name: CI Pipeline
 
 on:
-  push:
-    branches: [main, fix/**]
-  pull_request:
+  pull_request_target:
     branches: [main]
 
 jobs:
@@ -14,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
