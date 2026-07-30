@@ -1,0 +1,1105 @@
+2026-07-19 08:19:07,690 [INFO] Dataset: 150 errori selezionati
+2026-07-19 08:19:07,690 [INFO] Modelli: ['Mistral 7B']
+2026-07-19 08:19:07,690 [INFO] Modalità: full | memoria: ON
+2026-07-19 08:19:07,690 [INFO] 
+▶ Avvio: Mistral 7B
+2026-07-19 08:19:07,690 [INFO] 
+============================================================
+2026-07-19 08:19:07,690 [INFO] MODELLO: Mistral 7B (ollama_mistral7b)
+2026-07-19 08:19:07,690 [INFO] Errori: 150 | Timeout: 900s | dry-run: False | no-memory: False
+2026-07-19 08:19:07,690 [INFO] ============================================================
+2026-07-19 08:19:07,690 [INFO] 
+[1/150] dep_001 (dependency / easy)
+2026-07-19 08:19:19,549 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:19:23,714 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:19:46,270 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:20:11,591 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:20:13,000 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:20:34,482 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:20:34,985 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 83.72s
+2026-07-19 08:20:36,986 [INFO] 
+[2/150] dep_002 (dependency / easy)
+2026-07-19 08:20:38,195 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:20:42,366 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:21:20,053 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:21:41,739 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:21:42,350 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:22:03,623 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:22:04,084 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 87.02s
+2026-07-19 08:22:06,089 [INFO] 
+[3/150] dep_003 (dependency / easy)
+2026-07-19 08:22:07,184 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:22:11,003 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:22:32,585 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:22:54,430 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:22:55,247 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:23:16,589 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:23:17,075 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 70.92s
+2026-07-19 08:23:19,077 [INFO] 
+[4/150] dep_004 (dependency / easy)
+2026-07-19 08:23:20,157 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:23:23,346 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:23:45,165 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:24:08,153 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:24:08,893 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:24:30,227 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:24:30,695 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 71.55s
+2026-07-19 08:24:32,707 [INFO] 
+[5/150] dep_005 (dependency / easy)
+2026-07-19 08:24:33,750 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:24:37,172 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:24:58,764 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:25:20,437 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:25:21,062 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:25:42,516 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:25:42,982 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 70.19s
+2026-07-19 08:25:44,993 [INFO] 
+[6/150] dep_006 (dependency / easy)
+2026-07-19 08:25:46,104 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:25:49,526 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:26:42,077 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:27:34,826 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:27:35,437 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:28:27,448 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:28:27,924 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 162.85s
+2026-07-19 08:28:29,925 [INFO] 
+[7/150] dep_007 (dependency / easy)
+2026-07-19 08:28:31,054 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:28:34,341 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:28:55,867 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:29:18,019 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:29:18,777 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:29:40,126 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:29:40,576 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 70.57s
+2026-07-19 08:29:42,586 [INFO] 
+[8/150] dep_008 (dependency / easy)
+2026-07-19 08:29:43,641 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:29:46,886 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:30:09,640 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:30:31,582 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:30:32,349 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:30:53,848 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:30:54,304 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 71.65s
+2026-07-19 08:30:56,312 [INFO] 
+[9/150] dep_009 (dependency / medium)
+2026-07-19 08:30:57,482 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:31:00,250 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:31:22,891 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:31:45,580 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:31:46,499 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:32:08,890 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:32:09,348 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 72.97s
+2026-07-19 08:32:11,353 [INFO] 
+[10/150] dep_010 (dependency / medium)
+2026-07-19 08:32:12,420 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:32:15,131 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:32:36,795 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:32:59,212 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:32:59,948 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:33:21,311 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:33:21,762 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 70.33s
+2026-07-19 08:33:23,769 [INFO] 
+[11/150] dep_011 (dependency / medium)
+2026-07-19 08:33:24,793 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:33:27,502 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:33:48,993 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:34:10,677 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:34:11,292 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:34:32,843 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:34:33,307 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 69.45s
+2026-07-19 08:34:35,311 [INFO] 
+[12/150] dep_012 (dependency / medium)
+2026-07-19 08:34:36,374 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:34:40,244 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:35:02,609 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:35:25,238 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:35:26,263 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:35:48,153 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:35:48,610 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 73.23s
+2026-07-19 08:35:50,612 [INFO] 
+[13/150] dep_013 (dependency / medium)
+2026-07-19 08:35:51,750 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:35:55,372 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:36:17,151 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:36:38,964 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:36:39,672 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:37:01,060 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:37:01,526 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 70.83s
+2026-07-19 08:37:03,530 [INFO] 
+[14/150] dep_014 (dependency / medium)
+2026-07-19 08:37:04,706 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:37:08,711 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:37:30,121 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:37:51,769 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:37:52,643 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:38:14,508 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:38:14,977 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 71.37s
+2026-07-19 08:38:16,982 [INFO] 
+[15/150] dep_015 (dependency / medium)
+2026-07-19 08:38:18,083 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:38:20,757 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:38:42,462 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:39:03,995 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:39:04,624 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:39:25,826 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:39:26,293 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 69.24s
+2026-07-19 08:39:28,294 [INFO] 
+[16/150] dep_016 (dependency / hard)
+2026-07-19 08:39:29,530 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:39:33,064 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:39:55,340 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:40:19,080 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:40:19,933 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:40:42,841 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:40:43,300 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 74.92s
+2026-07-19 08:40:45,300 [INFO] 
+[17/150] dep_017 (dependency / hard)
+2026-07-19 08:40:46,500 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:40:50,355 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:41:11,897 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:41:34,221 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:41:35,096 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:41:56,685 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:41:57,150 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 71.76s
+2026-07-19 08:41:59,157 [INFO] 
+[18/150] dep_018 (dependency / hard)
+2026-07-19 08:42:00,287 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:42:04,639 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:42:26,905 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:42:49,155 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:42:49,908 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:43:11,895 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:43:12,346 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 73.12s
+2026-07-19 08:43:14,351 [INFO] 
+[19/150] dep_019 (dependency / hard)
+2026-07-19 08:43:15,448 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:43:19,380 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:43:41,877 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:44:05,015 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:44:05,914 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:44:28,546 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:44:29,001 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 74.58s
+2026-07-19 08:44:31,005 [INFO] 
+[20/150] dep_020 (dependency / hard)
+2026-07-19 08:44:32,223 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:44:35,159 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:44:57,020 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:45:19,733 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:45:20,648 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:45:42,787 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:45:43,261 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 72.18s
+2026-07-19 08:45:45,266 [INFO] 
+[21/150] dep_021 (dependency / easy)
+2026-07-19 08:45:46,369 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:45:50,238 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:46:11,790 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:46:33,513 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:46:34,285 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:46:55,565 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:46:56,017 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 70.68s
+2026-07-19 08:46:58,028 [INFO] 
+[22/150] dep_022 (dependency / easy)
+2026-07-19 08:46:59,124 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:47:03,049 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:47:25,143 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:47:46,780 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:47:47,453 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:48:08,916 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:48:09,380 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 71.27s
+2026-07-19 08:48:11,395 [INFO] 
+[23/150] dep_023 (dependency / easy)
+2026-07-19 08:48:12,523 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:48:16,087 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:48:16,592 [INFO]   ❌ escalated | router: unknown (0%) | attempts: 0 | 5.12s
+2026-07-19 08:48:18,594 [INFO] 
+[24/150] dep_024 (dependency / easy)
+2026-07-19 08:48:19,605 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:48:22,547 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:48:44,288 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:49:06,566 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:49:07,339 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:49:28,535 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:49:28,988 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 70.32s
+2026-07-19 08:49:30,997 [INFO] 
+[25/150] dep_025 (dependency / easy)
+2026-07-19 08:49:32,060 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:49:34,796 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:49:56,648 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:50:18,311 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:50:19,011 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:50:40,456 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:50:40,915 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 69.84s
+2026-07-19 08:50:42,922 [INFO] 
+[26/150] dep_026 (dependency / easy)
+2026-07-19 08:50:44,037 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:50:47,487 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:51:09,035 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:51:30,958 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:51:31,567 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:51:52,961 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:51:53,432 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 70.44s
+2026-07-19 08:51:55,433 [INFO] 
+[27/150] dep_027 (dependency / easy)
+2026-07-19 08:51:56,452 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:51:58,927 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:52:21,267 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:53:00,096 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:53:00,771 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:53:28,011 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:53:28,481 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 92.97s
+2026-07-19 08:53:30,485 [INFO] 
+[28/150] dep_028 (dependency / easy)
+2026-07-19 08:53:31,600 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:53:34,558 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:53:56,599 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:54:18,959 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:54:19,721 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:54:41,771 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:54:42,234 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 71.67s
+2026-07-19 08:54:44,241 [INFO] 
+[29/150] dep_029 (dependency / easy)
+2026-07-19 08:54:45,429 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:54:49,087 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:55:10,633 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:55:32,529 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:55:33,309 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:55:54,199 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:55:54,801 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 70.48s
+2026-07-19 08:55:56,802 [INFO] 
+[30/150] dep_030 (dependency / easy)
+2026-07-19 08:55:57,951 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:56:00,722 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:56:22,286 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:56:24,408 [INFO]   ✅ fixed | router: dependency (90%) | attempts: 1 | 27.53s
+2026-07-19 08:56:26,415 [INFO] 
+[31/150] dep_031 (dependency / easy)
+2026-07-19 08:56:27,530 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:56:30,236 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:56:51,939 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:57:13,838 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:57:14,458 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:57:35,919 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:57:36,397 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 69.9s
+2026-07-19 08:57:38,403 [INFO] 
+[32/150] dep_032 (dependency / medium)
+2026-07-19 08:57:39,548 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:57:43,261 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:58:05,387 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:58:33,213 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:58:34,073 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:58:56,069 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:58:56,602 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 78.12s
+2026-07-19 08:58:58,615 [INFO] 
+[33/150] dep_033 (dependency / medium)
+2026-07-19 08:58:59,744 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:59:03,390 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:59:25,387 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 08:59:46,982 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 08:59:47,662 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:00:09,197 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:00:09,749 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 71.06s
+2026-07-19 09:00:11,751 [INFO] 
+[34/150] dep_034 (dependency / medium)
+2026-07-19 09:00:12,893 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:00:16,285 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:00:37,918 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:01:00,316 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:01:01,009 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:01:22,292 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:01:22,800 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 70.96s
+2026-07-19 09:01:24,803 [INFO] 
+[35/150] dep_035 (dependency / medium)
+2026-07-19 09:01:25,873 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:01:28,612 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:01:50,465 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:02:12,512 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:02:13,365 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:02:35,229 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:02:35,732 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 70.86s
+2026-07-19 09:02:37,739 [INFO] 
+[36/150] dep_036 (dependency / medium)
+2026-07-19 09:02:38,836 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:02:41,656 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:03:04,271 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:03:26,412 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:03:27,141 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:03:48,951 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:03:49,420 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 71.61s
+2026-07-19 09:03:51,424 [INFO] 
+[37/150] dep_037 (dependency / medium)
+2026-07-19 09:03:52,595 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:03:55,977 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:03:56,471 [INFO]   ❌ escalated | router: unknown (0%) | attempts: 0 | 4.98s
+2026-07-19 09:03:58,473 [INFO] 
+[38/150] dep_038 (dependency / medium)
+2026-07-19 09:03:59,469 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:04:02,348 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:04:02,847 [INFO]   ❌ escalated | router: unknown (0%) | attempts: 0 | 4.3s
+2026-07-19 09:04:04,848 [INFO] 
+[39/150] dep_039 (dependency / medium)
+2026-07-19 09:04:05,883 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:04:09,253 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:04:31,012 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:04:53,475 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:04:54,138 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:05:15,879 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:05:16,345 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 71.43s
+2026-07-19 09:05:18,354 [INFO] 
+[40/150] dep_040 (dependency / medium)
+2026-07-19 09:05:19,394 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:05:22,421 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:05:45,418 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:06:07,806 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:06:08,513 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:06:30,803 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:06:31,277 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 72.84s
+2026-07-19 09:06:33,283 [INFO] 
+[41/150] dep_041 (dependency / medium)
+2026-07-19 09:06:34,355 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:06:37,084 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:06:58,951 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:07:20,672 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:07:21,330 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:07:42,620 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:07:43,085 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 69.73s
+2026-07-19 09:07:45,091 [INFO] 
+[42/150] dep_042 (dependency / hard)
+2026-07-19 09:07:46,136 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:07:49,121 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:08:13,193 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:08:36,754 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:08:37,804 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:09:01,090 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:09:01,553 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 76.39s
+2026-07-19 09:09:03,562 [INFO] 
+[43/150] dep_043 (dependency / hard)
+2026-07-19 09:09:04,730 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:09:08,699 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:09:30,957 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:09:53,300 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:09:54,036 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:10:16,927 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:10:17,392 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 73.76s
+2026-07-19 09:10:19,404 [INFO] 
+[44/150] dep_044 (dependency / hard)
+2026-07-19 09:10:20,511 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:10:24,080 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:10:46,333 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:11:10,070 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:11:10,942 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:11:35,849 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:11:36,308 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 76.83s
+2026-07-19 09:11:38,317 [INFO] 
+[45/150] dep_045 (dependency / hard)
+2026-07-19 09:11:39,443 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:11:41,633 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:12:04,457 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:12:28,682 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:12:29,382 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:12:53,032 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:12:53,478 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 75.1s
+2026-07-19 09:12:55,488 [INFO] 
+[46/150] dep_046 (dependency / hard)
+2026-07-19 09:12:56,645 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:12:59,694 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:13:21,258 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:13:58,788 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:13:59,557 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:14:21,080 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:14:21,544 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 85.98s
+2026-07-19 09:14:23,556 [INFO] 
+[47/150] dep_047 (dependency / hard)
+2026-07-19 09:14:24,627 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:14:28,625 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:14:29,134 [INFO]   ❌ escalated | router: dependency|test (80%) | attempts: 0 | 5.51s
+2026-07-19 09:14:31,138 [INFO] 
+[48/150] dep_048 (dependency / hard)
+2026-07-19 09:14:32,119 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:14:34,697 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:14:56,420 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:15:18,548 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:15:19,354 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:15:41,354 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:15:41,824 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 70.61s
+2026-07-19 09:15:43,827 [INFO] 
+[49/150] dep_049 (dependency / hard)
+2026-07-19 09:15:45,010 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:15:48,155 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:15:48,669 [INFO]   ❌ escalated | router: dependency|test (80%) | attempts: 0 | 4.76s
+2026-07-19 09:15:50,670 [INFO] 
+[50/150] dep_050 (dependency / hard)
+2026-07-19 09:15:51,690 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:15:54,376 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:16:16,217 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:16:37,865 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:16:38,593 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:17:01,449 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:17:01,935 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 71.19s
+2026-07-19 09:17:03,937 [INFO] 
+[51/150] test_001 (test / easy)
+2026-07-19 09:17:04,983 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:17:07,897 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:17:45,495 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:18:26,770 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:18:27,667 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:19:06,283 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:19:06,747 [INFO]   ❌ escalated | router: test (90%) | attempts: 3 | 122.75s
+2026-07-19 09:19:08,755 [INFO] 
+[52/150] test_002 (test / easy)
+2026-07-19 09:19:09,932 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:19:12,878 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:19:52,259 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:20:32,760 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:20:33,606 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:21:15,967 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:21:16,434 [INFO]   ❌ escalated | router: test (100%) | attempts: 3 | 127.62s
+2026-07-19 09:21:18,437 [INFO] 
+[53/150] test_003 (test / easy)
+2026-07-19 09:21:19,504 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:21:22,202 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:21:59,788 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:22:41,890 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:22:42,803 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:23:20,820 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:23:21,271 [INFO]   ❌ escalated | router: test (90%) | attempts: 3 | 122.76s
+2026-07-19 09:23:23,286 [INFO] 
+[54/150] test_004 (test / easy)
+2026-07-19 09:23:24,446 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:23:27,311 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:24:05,002 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:24:07,173 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 43.81s
+2026-07-19 09:24:09,173 [INFO] 
+[55/150] test_005 (test / easy)
+2026-07-19 09:24:10,232 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:24:12,962 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:24:50,991 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:24:53,266 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 44.01s
+2026-07-19 09:24:55,267 [INFO] 
+[56/150] test_006 (test / easy)
+2026-07-19 09:24:56,405 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:24:58,705 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:25:36,597 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:25:38,647 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 43.31s
+2026-07-19 09:25:40,661 [INFO] 
+[57/150] test_007 (test / easy)
+2026-07-19 09:25:41,796 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:25:44,605 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:26:23,057 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:26:25,139 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 44.41s
+2026-07-19 09:26:27,144 [INFO] 
+[58/150] test_008 (test / easy)
+2026-07-19 09:26:28,187 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:26:31,153 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:27:08,575 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:27:10,741 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 43.53s
+2026-07-19 09:27:12,742 [INFO] 
+[59/150] test_009 (test / medium)
+2026-07-19 09:27:13,781 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:27:16,821 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:27:17,348 [INFO]   ❌ escalated | router: dependency|test (90%) | attempts: 0 | 4.53s
+2026-07-19 09:27:19,357 [INFO] 
+[60/150] test_010 (test / medium)
+2026-07-19 09:27:20,313 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:27:22,863 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:28:01,365 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:28:03,405 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 43.98s
+2026-07-19 09:28:05,420 [INFO] 
+[61/150] test_011 (test / medium)
+2026-07-19 09:28:06,542 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:28:09,295 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:28:46,979 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:28:49,126 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 43.63s
+2026-07-19 09:28:51,127 [INFO] 
+[62/150] test_012 (test / medium)
+2026-07-19 09:28:52,327 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:28:55,523 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:29:35,298 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:29:37,381 [INFO]   ✅ fixed | router: test (100%) | attempts: 1 | 46.17s
+2026-07-19 09:29:39,397 [INFO] 
+[63/150] test_013 (test / medium)
+2026-07-19 09:29:40,534 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:29:43,693 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:30:23,763 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:30:25,819 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 46.34s
+2026-07-19 09:30:27,821 [INFO] 
+[64/150] test_014 (test / medium)
+2026-07-19 09:30:28,907 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:30:32,159 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:30:32,659 [INFO]   ❌ escalated | router: test|config (90%) | attempts: 0 | 4.76s
+2026-07-19 09:30:34,667 [INFO] 
+[65/150] test_015 (test / medium)
+2026-07-19 09:30:35,617 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:30:38,330 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:31:18,493 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:31:20,526 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 45.79s
+2026-07-19 09:31:22,528 [INFO] 
+[66/150] test_016 (test / hard)
+2026-07-19 09:31:23,700 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:31:27,240 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:32:07,819 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:32:09,984 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 47.38s
+2026-07-19 09:32:11,989 [INFO] 
+[67/150] test_017 (test / hard)
+2026-07-19 09:32:13,101 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:32:16,171 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:32:16,667 [INFO]   ❌ escalated | router: test|config (80%) | attempts: 0 | 4.6s
+2026-07-19 09:32:18,668 [INFO] 
+[68/150] test_018 (test / hard)
+2026-07-19 09:32:19,758 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:32:23,025 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:32:23,538 [INFO]   ❌ escalated | router: test|unknown (80%) | attempts: 0 | 4.81s
+2026-07-19 09:32:25,540 [INFO] 
+[69/150] test_019 (test / hard)
+2026-07-19 09:32:26,590 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:32:29,472 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:33:11,810 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:33:13,977 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 48.36s
+2026-07-19 09:33:15,982 [INFO] 
+[70/150] test_020 (test / hard)
+2026-07-19 09:33:17,085 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:33:19,795 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:34:07,032 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:34:09,206 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 53.15s
+2026-07-19 09:34:11,208 [INFO] 
+[71/150] test_021 (test / easy)
+2026-07-19 09:34:12,264 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:34:15,078 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:34:52,693 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:34:54,723 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 43.44s
+2026-07-19 09:34:56,731 [INFO] 
+[72/150] test_022 (test / easy)
+2026-07-19 09:34:57,822 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:35:01,607 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:35:42,076 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:35:44,319 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 47.51s
+2026-07-19 09:35:46,325 [INFO] 
+[73/150] test_023 (test / easy)
+2026-07-19 09:35:47,410 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:35:50,354 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:36:13,236 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:36:37,424 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:36:38,146 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:37:00,834 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:37:01,293 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 74.9s
+2026-07-19 09:37:03,300 [INFO] 
+[74/150] test_024 (test / easy)
+2026-07-19 09:37:04,367 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:37:08,173 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:37:45,512 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:37:47,740 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 44.37s
+2026-07-19 09:37:49,747 [INFO] 
+[75/150] test_025 (test / easy)
+2026-07-19 09:37:50,782 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:37:53,693 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:37:54,211 [INFO]   ❌ escalated | router: dependency|test (90%) | attempts: 0 | 4.39s
+2026-07-19 09:37:56,212 [INFO] 
+[76/150] test_026 (test / easy)
+2026-07-19 09:37:57,251 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:37:59,640 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:38:38,883 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:38:41,193 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 44.91s
+2026-07-19 09:38:43,204 [INFO] 
+[77/150] test_027 (test / easy)
+2026-07-19 09:38:44,335 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:38:47,001 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:38:47,522 [INFO]   ❌ escalated | router: dependency|test (90%) | attempts: 0 | 4.25s
+2026-07-19 09:38:49,524 [INFO] 
+[78/150] test_028 (test / easy)
+2026-07-19 09:38:50,467 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:38:53,395 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:38:53,907 [INFO]   ❌ escalated | router: dependency|test (90%) | attempts: 0 | 4.33s
+2026-07-19 09:38:55,917 [INFO] 
+[79/150] test_029 (test / easy)
+2026-07-19 09:38:56,865 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:38:59,518 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:39:38,032 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:39:40,118 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 44.13s
+2026-07-19 09:39:42,120 [INFO] 
+[80/150] test_030 (test / easy)
+2026-07-19 09:39:43,139 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:39:46,025 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:40:25,078 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:40:27,221 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 45.03s
+2026-07-19 09:40:29,228 [INFO] 
+[81/150] test_031 (test / easy)
+2026-07-19 09:40:30,328 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:40:32,970 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:41:11,360 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:41:13,489 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 44.2s
+2026-07-19 09:41:15,491 [INFO] 
+[82/150] test_032 (test / medium)
+2026-07-19 09:41:16,692 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:41:19,103 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:42:02,944 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:42:05,125 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 49.56s
+2026-07-19 09:42:07,127 [INFO] 
+[83/150] test_033 (test / medium)
+2026-07-19 09:42:08,306 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:42:11,021 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:42:50,519 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:42:52,633 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 45.44s
+2026-07-19 09:42:54,634 [INFO] 
+[84/150] test_034 (test / medium)
+2026-07-19 09:42:55,684 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:42:58,529 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:42:59,043 [INFO]   ❌ escalated | router: dependency|test (80%) | attempts: 0 | 4.34s
+2026-07-19 09:43:01,044 [INFO] 
+[85/150] test_035 (test / medium)
+2026-07-19 09:43:01,981 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:43:04,697 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:43:46,049 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:43:48,291 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 47.16s
+2026-07-19 09:43:50,308 [INFO] 
+[86/150] test_036 (test / medium)
+2026-07-19 09:43:51,465 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:43:54,848 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:43:55,356 [INFO]   ❌ escalated | router: dependency|test (80%) | attempts: 0 | 4.97s
+2026-07-19 09:43:57,364 [INFO] 
+[87/150] test_037 (test / medium)
+2026-07-19 09:43:58,366 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:44:01,150 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:44:39,711 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:44:41,883 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 44.45s
+2026-07-19 09:44:43,886 [INFO] 
+[88/150] test_038 (test / medium)
+2026-07-19 09:44:45,036 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:44:48,785 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:44:49,334 [INFO]   ❌ escalated | router: dependency|test (90%) | attempts: 0 | 5.38s
+2026-07-19 09:44:51,336 [INFO] 
+[89/150] test_039 (test / medium)
+2026-07-19 09:44:52,364 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:44:55,868 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:45:38,253 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:45:40,403 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 48.99s
+2026-07-19 09:45:42,404 [INFO] 
+[90/150] test_040 (test / medium)
+2026-07-19 09:45:43,594 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:45:45,774 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:46:26,505 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:46:28,672 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 46.19s
+2026-07-19 09:46:30,674 [INFO] 
+[91/150] test_041 (test / medium)
+2026-07-19 09:46:31,830 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:46:34,347 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:47:16,030 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:47:18,205 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 47.45s
+2026-07-19 09:47:20,207 [INFO] 
+[92/150] test_042 (test / hard)
+2026-07-19 09:47:21,403 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:47:23,793 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:48:04,869 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:48:06,939 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 46.67s
+2026-07-19 09:48:08,940 [INFO] 
+[93/150] test_043 (test / hard)
+2026-07-19 09:48:10,006 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:48:12,931 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:48:13,482 [INFO]   ❌ escalated | router: test|dependency (80%) | attempts: 0 | 4.47s
+2026-07-19 09:48:15,484 [INFO] 
+[94/150] test_044 (test / hard)
+2026-07-19 09:48:16,484 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:48:19,419 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:48:57,600 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:48:59,860 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 44.31s
+2026-07-19 09:49:01,873 [INFO] 
+[95/150] test_045 (test / hard)
+2026-07-19 09:49:02,979 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:49:06,431 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:49:06,958 [INFO]   ❌ escalated | router: test|config (80%) | attempts: 0 | 5.01s
+2026-07-19 09:49:08,969 [INFO] 
+[96/150] test_046 (test / hard)
+2026-07-19 09:49:10,060 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:49:12,461 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:49:54,007 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:49:56,330 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 47.3s
+2026-07-19 09:49:58,343 [INFO] 
+[97/150] test_047 (test / hard)
+2026-07-19 09:49:59,602 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:50:01,850 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:50:42,990 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:50:45,060 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 46.64s
+2026-07-19 09:50:47,061 [INFO] 
+[98/150] test_048 (test / hard)
+2026-07-19 09:50:48,152 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:50:51,996 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:50:52,452 [INFO]   ❌ escalated | router: test|dependency (80%) | attempts: 0 | 5.33s
+2026-07-19 09:50:54,466 [INFO] 
+[99/150] test_049 (test / hard)
+2026-07-19 09:50:55,453 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:50:57,917 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:51:38,640 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:51:40,703 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 46.17s
+2026-07-19 09:51:42,705 [INFO] 
+[100/150] test_050 (test / hard)
+2026-07-19 09:51:43,918 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:51:46,726 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:52:26,699 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:52:28,849 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 46.07s
+2026-07-19 09:52:30,854 [INFO] 
+[101/150] conf_001 (config / easy)
+2026-07-19 09:52:31,926 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:52:35,737 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:52:58,124 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:53:20,665 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:53:21,426 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:53:42,919 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:53:43,372 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 72.44s
+2026-07-19 09:53:45,379 [INFO] 
+[102/150] conf_002 (config / easy)
+2026-07-19 09:53:46,476 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:53:49,735 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:54:11,871 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:54:35,841 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:54:36,607 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:55:00,010 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:55:00,467 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 75.02s
+2026-07-19 09:55:02,477 [INFO] 
+[103/150] conf_003 (config / easy)
+2026-07-19 09:55:03,642 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:55:06,315 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:55:28,434 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:55:50,787 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:55:51,406 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:56:29,838 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:56:31,993 [INFO]   ✅ fixed | router: dependency (100%) | attempts: 3 | 89.44s
+2026-07-19 09:56:33,994 [INFO] 
+[104/150] conf_004 (config / easy)
+2026-07-19 09:56:35,031 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:56:38,316 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:57:20,945 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:57:23,117 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 49.05s
+2026-07-19 09:57:25,117 [INFO] 
+[105/150] conf_005 (config / easy)
+2026-07-19 09:57:26,214 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:57:29,756 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:57:51,211 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:58:12,800 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:58:15,039 [INFO]   ✅ fixed | router: dependency (90%) | attempts: 2 | 49.84s
+2026-07-19 09:58:17,042 [INFO] 
+[106/150] conf_006 (config / easy)
+2026-07-19 09:58:18,189 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:58:22,463 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:59:05,699 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 09:59:07,918 [INFO]   ✅ fixed | router: config (100%) | attempts: 1 | 50.8s
+2026-07-19 09:59:09,919 [INFO] 
+[107/150] conf_007 (config / easy)
+2026-07-19 09:59:10,964 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:59:14,359 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 09:59:41,875 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:00:09,647 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:00:10,447 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:00:39,625 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:00:40,129 [INFO]   ❌ escalated | router: config (90%) | attempts: 3 | 90.13s
+2026-07-19 10:00:42,142 [INFO] 
+[108/150] conf_008 (config / easy)
+2026-07-19 10:00:43,345 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:00:46,417 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:01:23,324 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:01:45,988 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:01:46,779 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:02:09,983 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:02:10,464 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 88.25s
+2026-07-19 10:02:12,466 [INFO] 
+[109/150] conf_009 (config / medium)
+2026-07-19 10:02:13,527 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:02:16,250 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:02:58,583 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:03:00,997 [INFO]   ✅ fixed | router: config (100%) | attempts: 1 | 48.45s
+2026-07-19 10:03:02,998 [INFO] 
+[110/150] conf_010 (config / medium)
+2026-07-19 10:03:04,112 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:03:06,881 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:03:49,932 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:03:52,301 [INFO]   ✅ fixed | router: config (100%) | attempts: 1 | 49.22s
+2026-07-19 10:03:54,305 [INFO] 
+[111/150] conf_011 (config / medium)
+2026-07-19 10:03:55,464 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:03:57,685 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:04:27,002 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:04:56,596 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:04:57,442 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:05:26,946 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:05:27,395 [INFO]   ❌ escalated | router: config (90%) | attempts: 3 | 93.01s
+2026-07-19 10:05:29,407 [INFO] 
+[112/150] conf_012 (config / medium)
+2026-07-19 10:05:30,442 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:05:33,483 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:06:16,179 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:06:18,470 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 48.99s
+2026-07-19 10:06:20,472 [INFO] 
+[113/150] conf_013 (config / medium)
+2026-07-19 10:06:21,601 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:06:24,529 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:06:24,985 [INFO]   ❌ escalated | router: dependency|test (90%) | attempts: 0 | 4.44s
+2026-07-19 10:06:26,990 [INFO] 
+[114/150] conf_014 (config / medium)
+2026-07-19 10:06:27,949 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:06:31,096 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:07:21,975 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:07:24,096 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 57.04s
+2026-07-19 10:07:26,111 [INFO] 
+[115/150] conf_015 (config / medium)
+2026-07-19 10:07:27,213 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:07:29,689 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:08:12,673 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:08:14,885 [INFO]   ✅ fixed | router: config (100%) | attempts: 1 | 48.71s
+2026-07-19 10:08:16,891 [INFO] 
+[116/150] conf_016 (config / hard)
+2026-07-19 10:08:18,050 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:08:21,435 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:08:43,447 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:09:05,949 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:09:06,849 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:09:29,760 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:09:30,228 [INFO]   ❌ escalated | router: dependency (95%) | attempts: 3 | 73.27s
+2026-07-19 10:09:32,236 [INFO] 
+[117/150] conf_017 (config / hard)
+2026-07-19 10:09:33,379 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:09:36,830 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:10:08,048 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:10:38,774 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:10:39,729 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:11:09,652 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:11:10,206 [INFO]   ❌ escalated | router: config (100%) | attempts: 3 | 97.9s
+2026-07-19 10:11:12,214 [INFO] 
+[118/150] conf_018 (config / hard)
+2026-07-19 10:11:13,348 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:11:16,712 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:11:38,542 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:12:00,264 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:12:00,874 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:12:22,322 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:12:22,805 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 70.51s
+2026-07-19 10:12:24,808 [INFO] 
+[119/150] conf_019 (config / hard)
+2026-07-19 10:12:25,908 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:12:29,441 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:13:02,819 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:13:36,527 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:13:37,550 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:14:13,256 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:14:13,719 [INFO]   ❌ escalated | router: config (90%) | attempts: 3 | 108.83s
+2026-07-19 10:14:15,732 [INFO] 
+[120/150] conf_020 (config / hard)
+2026-07-19 10:14:17,084 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:14:20,886 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:14:42,900 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:15:05,338 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:15:06,012 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:15:27,637 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:15:28,101 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 72.3s
+2026-07-19 10:15:30,109 [INFO] 
+[121/150] conf_021 (config / easy)
+2026-07-19 10:15:31,253 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:15:35,176 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:15:57,039 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:16:19,946 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:16:20,756 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:16:42,220 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:16:42,778 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 72.61s
+2026-07-19 10:16:44,785 [INFO] 
+[122/150] conf_022 (config / easy)
+2026-07-19 10:16:46,038 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:16:50,067 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:17:11,637 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:17:35,421 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:17:36,199 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:18:01,284 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:18:01,733 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 76.89s
+2026-07-19 10:18:03,747 [INFO] 
+[123/150] conf_023 (config / easy)
+2026-07-19 10:18:05,014 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:18:07,855 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:18:36,359 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:19:05,882 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:19:06,823 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:19:35,771 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:19:36,300 [INFO]   ❌ escalated | router: config (100%) | attempts: 3 | 92.48s
+2026-07-19 10:19:38,311 [INFO] 
+[124/150] conf_024 (config / easy)
+2026-07-19 10:19:39,576 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:19:43,039 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:20:11,310 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:20:39,002 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:20:39,897 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:21:07,355 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:21:07,824 [INFO]   ❌ escalated | router: config (100%) | attempts: 3 | 89.43s
+2026-07-19 10:21:09,834 [INFO] 
+[125/150] conf_025 (config / easy)
+2026-07-19 10:21:11,121 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:21:13,894 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:21:56,328 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:21:58,480 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 48.57s
+2026-07-19 10:22:00,486 [INFO] 
+[126/150] conf_026 (config / easy)
+2026-07-19 10:22:01,539 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:22:04,805 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:22:47,393 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:22:49,620 [INFO]   ✅ fixed | router: config (100%) | attempts: 1 | 49.06s
+2026-07-19 10:22:51,623 [INFO] 
+[127/150] conf_027 (config / easy)
+2026-07-19 10:22:52,690 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:22:55,552 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:23:37,939 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:23:40,162 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 48.45s
+2026-07-19 10:23:42,175 [INFO] 
+[128/150] conf_028 (config / easy)
+2026-07-19 10:23:43,486 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:23:46,836 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:24:08,913 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:24:30,823 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:24:31,629 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:24:53,326 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:24:53,798 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | 71.55s
+2026-07-19 10:24:55,800 [INFO] 
+[129/150] conf_029 (config / easy)
+2026-07-19 10:24:57,068 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:24:59,972 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:25:42,706 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:25:44,884 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 49.01s
+2026-07-19 10:25:46,886 [INFO] 
+[130/150] conf_030 (config / easy)
+2026-07-19 10:25:48,072 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:25:51,678 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:26:35,774 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:27:20,376 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:27:21,147 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:28:04,855 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:28:05,320 [INFO]   ❌ escalated | router: config (90%) | attempts: 3 | 138.35s
+2026-07-19 10:28:07,331 [INFO] 
+[131/150] conf_031 (config / easy)
+2026-07-19 10:28:08,458 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:28:11,930 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:28:55,490 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:28:57,612 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 50.18s
+2026-07-19 10:28:59,618 [INFO] 
+[132/150] conf_032 (config / medium)
+2026-07-19 10:29:00,878 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:29:05,303 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:29:05,804 [INFO]   ❌ escalated | router: dependency|test (80%) | attempts: 0 | 6.11s
+2026-07-19 10:29:07,812 [INFO] 
+[133/150] conf_033 (config / medium)
+2026-07-19 10:29:08,740 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:29:12,413 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:29:50,123 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:29:52,457 [INFO]   ✅ fixed | router: dependency (90%) | attempts: 1 | 44.58s
+2026-07-19 10:29:54,464 [INFO] 
+[134/150] conf_034 (config / medium)
+2026-07-19 10:29:55,592 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:29:59,292 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:30:42,336 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:30:44,462 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 49.92s
+2026-07-19 10:30:46,470 [INFO] 
+[135/150] conf_035 (config / medium)
+2026-07-19 10:30:47,580 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:30:49,989 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:31:22,471 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:32:11,766 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:32:12,854 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:33:03,474 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:33:03,940 [INFO]   ❌ escalated | router: config (90%) | attempts: 3 | 137.4s
+2026-07-19 10:33:05,948 [INFO] 
+[136/150] conf_036 (config / medium)
+2026-07-19 10:33:07,140 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:33:10,180 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:33:39,983 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:34:10,693 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:34:11,660 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:34:41,269 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:34:41,724 [INFO]   ❌ escalated | router: config (90%) | attempts: 3 | 95.69s
+2026-07-19 10:34:43,731 [INFO] 
+[137/150] conf_037 (config / medium)
+2026-07-19 10:34:44,902 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:34:48,013 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:35:30,518 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:35:32,593 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 48.79s
+2026-07-19 10:35:34,604 [INFO] 
+[138/150] conf_038 (config / medium)
+2026-07-19 10:35:35,692 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:35:38,734 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:35:39,231 [INFO]   ❌ escalated | router: test|config (80%) | attempts: 0 | 4.55s
+2026-07-19 10:35:41,234 [INFO] 
+[139/150] conf_039 (config / medium)
+2026-07-19 10:35:42,188 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:35:45,783 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:36:28,071 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:36:30,516 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 49.21s
+2026-07-19 10:36:32,521 [INFO] 
+[140/150] conf_040 (config / medium)
+2026-07-19 10:36:33,688 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:36:37,365 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:36:59,490 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:37:22,034 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:37:22,789 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:37:46,187 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:37:46,646 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 74.05s
+2026-07-19 10:37:48,651 [INFO] 
+[141/150] conf_041 (config / medium)
+2026-07-19 10:37:49,851 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:37:53,807 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:38:36,007 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:38:38,110 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 49.38s
+2026-07-19 10:38:40,112 [INFO] 
+[142/150] conf_042 (config / hard)
+2026-07-19 10:38:41,279 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:38:44,308 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:39:14,305 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:39:49,189 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:39:50,428 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:40:42,569 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:40:44,646 [INFO]   ✅ fixed | router: config (90%) | attempts: 3 | 124.45s
+2026-07-19 10:40:46,648 [INFO] 
+[143/150] conf_043 (config / hard)
+2026-07-19 10:40:47,809 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:40:50,862 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:41:33,725 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:41:35,820 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 49.09s
+2026-07-19 10:41:37,822 [INFO] 
+[144/150] conf_044 (config / hard)
+2026-07-19 10:41:39,019 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:41:42,365 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:41:42,874 [INFO]   ❌ escalated | router: dependency|test (80%) | attempts: 0 | 4.99s
+2026-07-19 10:41:44,879 [INFO] 
+[145/150] conf_045 (config / hard)
+2026-07-19 10:41:45,888 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:41:48,873 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:42:20,686 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:42:57,731 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:42:58,972 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:43:43,557 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:43:44,024 [INFO]   ❌ escalated | router: config (90%) | attempts: 3 | 119.08s
+2026-07-19 10:43:46,036 [INFO] 
+[146/150] conf_046 (config / hard)
+2026-07-19 10:43:47,343 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:43:51,096 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:44:34,168 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:44:36,255 [INFO]   ✅ fixed | router: test (90%) | attempts: 1 | 50.14s
+2026-07-19 10:44:38,256 [INFO] 
+[147/150] conf_047 (config / hard)
+2026-07-19 10:44:39,522 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:44:42,620 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:45:25,236 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:45:27,377 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 49.03s
+2026-07-19 10:45:29,386 [INFO] 
+[148/150] conf_048 (config / hard)
+2026-07-19 10:45:30,565 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:45:34,185 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:46:17,042 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:46:19,553 [INFO]   ✅ fixed | router: config (90%) | attempts: 1 | 50.09s
+2026-07-19 10:46:21,561 [INFO] 
+[149/150] conf_049 (config / hard)
+2026-07-19 10:46:22,709 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:46:26,078 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:46:26,629 [INFO]   ❌ escalated | router: dependency|unknown (80%) | attempts: 0 | 4.99s
+2026-07-19 10:46:28,635 [INFO] 
+[150/150] conf_050 (config / hard)
+2026-07-19 10:46:29,629 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:46:32,214 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:46:54,304 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:47:16,545 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:47:17,309 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2026-07-19 10:47:38,890 [INFO] HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-07-19 10:47:39,350 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | 70.66s
+2026-07-19 10:47:46,608 [INFO] Ollama: modello mistral:7b scaricato dalla VRAM
+2026-07-19 10:47:54,633 [INFO] Salvati 150 risultati → benchmark_20260719_081907.csv
+2026-07-19 10:47:54,635 [INFO] ✓ Mistral 7B completato — risultati salvati
+2026-07-19 10:47:57,641 [INFO] Salvati 150 risultati → benchmark_20260719_081907.csv

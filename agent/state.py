@@ -1,7 +1,6 @@
 from typing import TypedDict, Optional, List
 from enum import Enum
 
-
 class ErrorCategory(Enum):
     DEPENDENCY = "dependency"  # pip/npm broken, version conflict
     TEST = "test"            # assert failed, mock broken
@@ -30,6 +29,7 @@ class AgentState(TypedDict):
     attempts_history: List[dict]     # storico di tutti i tentativi
     repo_path: str                   # path locale del repo
     ci_fixed: Optional[bool]         # True se la CI è verde dopo il fix
+    modified_file: Optional[str]
 
     # --- RAG ---
     skip_memory: Optional[bool]    # True → salta salvataggio ChromaDB

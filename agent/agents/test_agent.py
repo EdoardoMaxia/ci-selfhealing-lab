@@ -60,7 +60,7 @@ def find_test_file(ci_logs: str, repo_path: str) -> str:
     match = re.search(r'FAILED\s+([\w/\\]+\.py)', ci_logs)
     if match:
         rel_path = match.group(1).replace("\\", "/")
-        return str(Path(repo_path) / rel_path)
+        return str(Path(repo_path) / rel_path).replace("\\", "/")
     # Fallback: cerca qualsiasi file .py nei log
     match2 = re.search(r'(tests/[\w]+\.py)', ci_logs)
     if match2:

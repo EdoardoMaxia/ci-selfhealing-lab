@@ -69,7 +69,7 @@ MODELS = [
         "ollama_model": "llama3.1:8b",
         "name":     "Llama 3.1 8B",
         "type":     "open-source-local",
-        "timeout":  600,
+        "timeout":  900, # <-- prima settato a 600 ma meglio alzare
     },
     {
         "id":       "ollama_mistral7b",
@@ -77,7 +77,7 @@ MODELS = [
         "ollama_model": "mistral:7b",
         "name":     "Mistral 7B",
         "type":     "open-source-local",
-        "timeout":  600,
+        "timeout":  900, # <-- prima settato a 600 ma meglio alzare
     },
     
     {
@@ -147,6 +147,8 @@ def clean_chromadb():
 ORIGINAL_REQUIREMENTS = "pytest==7.4.0\npytest-cov==4.1.0\n"
 
 
+ALLOWED_TEST_FILES = {"test_calculator.py", "test_async.py"}
+
 def reset_files():
     """
     Ripristina tutti i file modificabili al loro stato corretto
@@ -172,6 +174,13 @@ def reset_files():
         capture_output=True
     )
 
+    # 4. Rimuovi qualsiasi file di test non autorizzato
+    tests_dir = repo_root / "tests"
+    if tests_dir.exists():
+        for f in tests_dir.glob("*.py"):
+            if f.name not in ALLOWED_TEST_FILES:
+                f.unlink()
+                log.debug(f"Rimosso file di test spurio: {f.name}")
 
 def inject_error(error: dict):
     """

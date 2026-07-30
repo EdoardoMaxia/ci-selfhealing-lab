@@ -33,22 +33,22 @@ FIGURES_DIR.mkdir(exist_ok=True)
 # ══════════════════════════════════════════════════════════════
 
 FILES = {
-    ("Claude Haiku",  "no_memory"): "anthropic/no_memory/benchmark_20260530_180135_dryrun.csv",
-    ("Claude Haiku",  "memory"):    "anthropic/memory/run2_plus_openai/benchmark_20260531_182119.csv",
-    ("GPT-4o",        "no_memory"): "openai/no_memory/benchmark_20260531_084755_dryrun.csv",
-    ("GPT-4o",        "memory"):    "openai/memory/run1/benchmark_20260531_173042.csv",
-    ("Llama 3.3 70B", "no_memory"): "groq/no_memory/benchmark_20260531_094026_dryrun.csv",
-    ("Llama 3.3 70B", "memory"):    "groq/memory/benchmark_20260601_093236.csv",
-    ("Llama 3.1 8B",  "no_memory"): "ollama/llama_3_1_8b/no_memory/benchmark_20260531_104622_dryrun.csv",
-    ("Llama 3.1 8B",  "memory"):    "ollama/llama_3_1_8b/memory/benchmark_20260531_190917.csv",
-    ("Mistral 7B",    "no_memory"): "ollama/mistral_7b/no_memory/benchmark_20260531_131503_dryrun.csv",
-    ("Mistral 7B",    "memory"):    "ollama/mistral_7b/memory/benchmark_20260601_082101.csv",
+    ("Claude Haiku",  "no_memory"): "anthropic/no_memory/150_bench/benchmark_20260718_150909.csv",
+    ("Claude Haiku",  "memory"):    "anthropic/memory/run3_150_bench/benchmark_20260718_150909.csv",
+    ("GPT-4o",        "no_memory"): "openai/no_memory/run2_150bench/benchmark_20260719_140530_nomemory.csv",
+    ("GPT-4o",        "memory"):    "openai/memory/run2_150_bench/benchmark_20260718_171457.csv",
+    #("Llama 3.3 70B", "no_memory"): "groq/no_memory/benchmark_20260531_094026_dryrun.csv", --> Down il server API
+    #("Llama 3.3 70B", "memory"):    "groq/memory/benchmark_20260601_093236.csv", --> Down il server API
+    ("Llama 3.1 8B",  "no_memory"): "ollama/llama_3_1_8b/no_memory/run_150bench/benchmark_20260719_214411_nomemory.csv",
+    ("Llama 3.1 8B",  "memory"):    "ollama/llama_3_1_8b/memory/run2_150_bench/benchmark_20260718_194349.csv",
+    ("Mistral 7B",    "no_memory"): "ollama/mistral_7b/no_memory/run2_150bench/benchmark_20260720_080456_nomemory.csv",
+    ("Mistral 7B",    "memory"):    "ollama/mistral_7b/memory/run2_150bench/benchmark_20260719_081907.csv",
 }
 
 MODEL_ORDER = [
     "Claude Haiku",
     "GPT-4o",
-    "Llama 3.3 70B",
+    #"Llama 3.3 70B", --> Down il server API
     "Llama 3.1 8B",
     "Mistral 7B",
 ]
@@ -56,7 +56,7 @@ MODEL_ORDER = [
 COLORS = {
     "Claude Haiku":  "#cc785c",
     "GPT-4o":        "#10a37f",
-    "Llama 3.3 70B": "#4f8ef7",
+    #"Llama 3.3 70B": "#4f8ef7",
     "Llama 3.1 8B":  "#8b5cf6",
     "Mistral 7B":    "#f59e0b",
 }

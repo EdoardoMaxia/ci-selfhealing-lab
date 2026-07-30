@@ -82,6 +82,7 @@ def fix_executor_node(state: dict) -> dict:
     category  = state.get("error_category", "dependency")
 
     print(f"\n🔧 Fix Executor avviato per categoria: {category}")
+    print(f"🔍 DEBUG modified_file = {repr(state.get('modified_file'))}")
 
     # 1. Individua quale file è stato modificato
     if category == "test" and state.get("modified_file"):
@@ -90,6 +91,8 @@ def fix_executor_node(state: dict) -> dict:
         file_path = file_path.replace(str(Path(repo_path).resolve()), "").lstrip("/\\")
     else:
         file_path = AGENT_FILE_MAP.get(category, "requirements.txt")
+
+    print(f"🔍 DEBUG file_path finale = {repr(file_path)}")
         
     local_file = Path(repo_path) / file_path
 
