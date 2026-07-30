@@ -1,4 +1,5 @@
 import os
+import re
 from pathlib import Path
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -56,16 +57,15 @@ def find_test_file(ci_logs: str, repo_path: str) -> str:
     Estrae il path del file di test dai log pytest.
     Es: 'FAILED tests/test_calculator.py::test_add' → 'tests/test_calculator.py'
     """
-    import re
     match = re.search(r'FAILED\s+([\w/\\]+\.py)', ci_logs)
     if match:
         rel_path = match.group(1).replace("\\", "/")
-        return str(Path(repo_path) / rel_path).replace("\\", "/")
+        return str(Path(repo_path) / rel_path).replace(os.sep, "/")
     # Fallback: cerca qualsiasi file .py nei log
     match2 = re.search(r'(tests/[\w]+\.py)', ci_logs)
     if match2:
-        return str(Path(repo_path) / match2.group(1))
-    return str(Path(repo_path) / "tests/test_calculator.py")
+        return str(Path(repo_path) / match2.group(1)).replace(os.sep, "/")
+    return str(Path(repo_path) / "tests/test_calculator.py").replace(os.sep, "/")
 
 
 def test_agent_node(state: dict) -> dict:

@@ -485,20 +485,30 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto il 2026-07-30): caso originale basato su Poetry
+        # ("pyproject.toml"/"poetry.lock", ecosistema non presente in questo
+        # repo, che usa pip + requirements.txt). Riscritto come equivalente
+        # pip-tools mantenendo la stessa lezione concettuale (lockfile non
+        # rigenerato dopo una modifica al file sorgente delle dipendenze).
+        # Vedi experiments/CHANGELOG_DATASET.md.
         "id": "dep_026",
         "category": "dependency",
         "difficulty": "easy",
         "ci_logs": """
-            ##[group]Run poetry install
-            pyproject.toml changed significantly since poetry.lock was last generated. Run `poetry lock` to fix the lock file.
-            RuntimeError: The lock file is not compatible with the current version of pyproject.toml.
+            ##[group]Run pip install -r requirements.txt
+            Collecting httpx (from -r requirements.in (line 4))
+            ERROR: Could not find a version that satisfies the requirement httpx (from -r requirements.in (line 4))
+            Note: requirements.in è stato aggiornato ma requirements.txt (generato con pip-compile) non è stato rigenerato — httpx non è presente nel file effettivamente installato in CI
+            ##[endgroup]
+            ##[group]Run pytest tests/
+            ModuleNotFoundError: No module named 'httpx'
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "+httpx = \"^0.27.0\"",
+        "git_diff": "+httpx==0.27.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Eseguire poetry lock --no-update e committare il poetry.lock aggiornato",
-        "notes": "Dipendenza aggiunta a pyproject.toml senza rigenerare il lock file"
+        "expected_fix": "Aggiungere httpx==0.27.0 a requirements.txt (rigenerandolo con pip-compile a partire da requirements.in), poiché la dipendenza è stata aggiunta al file sorgente ma mai propagata al file effettivamente installato in CI",
+        "notes": "Drift tra requirements.in (sorgente) e requirements.txt (lockfile compilato) — equivalente pip-tools del caso poetry.lock non rigenerato dopo una modifica a pyproject.toml"
     },
 
     {
@@ -557,20 +567,27 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto il 2026-07-30): caso originale basato su
+        # "npm audit"/package.json (ecosistema Node non presente in questo
+        # repo). Riscritto come equivalente pip-audit mantenendo la stessa
+        # lezione concettuale (pin vulnerabile segnalato da un audit di
+        # sicurezza, l'aggiornamento scelto punta a una versione inesistente).
+        # Vedi experiments/CHANGELOG_DATASET.md.
         "id": "dep_030",
         "category": "dependency",
         "difficulty": "easy",
         "ci_logs": """
-            ##[group]Run npm audit --audit-level=moderate
-            found 3 vulnerabilities (1 moderate, 2 high) in 842 scanned packages
-              run `npm audit fix` to fix them, or `npm audit` for details
+            ##[group]Run pip install -r requirements.txt
+            ERROR: Could not find a version that satisfies the requirement pillow==10.99.0
+            ERROR: No matching distribution found for pillow==10.99.0
+            Note: pillow==8.3.2 (pin precedente) era stato segnalato da pip-audit per CVE-2021-34552; la versione di aggiornamento scelta non esiste su PyPI
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "+      - run: npm audit --audit-level=moderate",
-        "ci_job_name": "Security audit",
-        "expected_fix": "Eseguire npm audit fix (o aggiornare manualmente le dipendenze vulnerabili) per risolvere le vulnerabilità prima del merge",
-        "notes": "Step di audit sicurezza introdotto nel workflow che ora blocca la pipeline per vulnerabilità note nelle dipendenze transitive"
+        "git_diff": "-pillow==8.3.2\n+pillow==10.99.0",
+        "ci_job_name": "Install dependencies",
+        "expected_fix": "Aggiornare pillow a una versione realmente pubblicata e priva della vulnerabilità nota, es. pillow==10.3.0, poiché pillow==10.99.0 non esiste su PyPI",
+        "notes": "Equivalente pip-audit del caso npm audit: il pin vulnerabile va sostituito, ma la versione di aggiornamento indicata punta a una release inesistente"
     },
 
     {
