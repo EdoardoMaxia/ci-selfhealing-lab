@@ -31,6 +31,7 @@ import sys
 import csv
 import time
 import json
+import fnmatch
 import logging
 import argparse
 import subprocess
@@ -513,6 +514,54 @@ def inject_error(error: dict) -> bool:
 
 
 # ══════════════════════════════════════════════════════════════
+# PULIZIA BRANCH REMOTI — rimuove i branch "fix/ai-*" residui
+# ══════════════════════════════════════════════════════════════
+
+def cleanup_fix_branches(repo_name: str = "") -> int:
+    """
+    Cancella dal repository remoto tutti i branch che matchano il pattern
+    "fix/ai-*", creati da fix_executor_node ad ogni tentativo di fix
+    (vedi agent/pipeline/fix_executor.py::build_branch_name). Senza pulizia
+    si accumulano ad ogni run del benchmark.
+
+    Usa l'istanza GitHub gia' configurata nel progetto (PyGitHub +
+    GITHUB_TOKEN dal .env, vedi agent/github/client.py::get_repo).
+
+    Non solleva eccezioni: un fallimento nella pulizia non deve interrompere
+    il benchmark. Ritorna il numero di branch effettivamente rimossi.
+    """
+    from agent.github.client import get_repo
+
+    repo_name = repo_name or os.getenv("GITHUB_REPO", "")
+    if not repo_name:
+        log.warning("cleanup_fix_branches: GITHUB_REPO non configurato — skip")
+        return 0
+
+    try:
+        repo = get_repo(repo_name)
+        targets = [b for b in repo.get_branches() if fnmatch.fnmatch(b.name, "fix/ai-*")]
+    except Exception as e:
+        log.warning(f"cleanup_fix_branches: impossibile leggere i branch remoti: {e}")
+        return 0
+
+    if not targets:
+        log.info("cleanup_fix_branches: nessun branch 'fix/ai-*' da rimuovere")
+        return 0
+
+    removed = 0
+    for branch in targets:
+        try:
+            repo.get_git_ref(f"heads/{branch.name}").delete()
+            removed += 1
+        except Exception as e:
+            log.warning(f"cleanup_fix_branches: impossibile rimuovere {branch.name}: {e}")
+        time.sleep(0.5)  # rate limiting sull'API GitHub
+
+    log.info(f"cleanup_fix_branches: rimossi {removed}/{len(targets)} branch 'fix/ai-*'")
+    return removed
+
+
+# ══════════════════════════════════════════════════════════════
 # STOP OLLAMA — libera VRAM tra modelli locali
 # ══════════════════════════════════════════════════════════════
 
@@ -642,7 +691,8 @@ def run_single_error(error: dict, dry_run: bool, no_memory: bool) -> dict:
 # ESECUZIONE MODELLO COMPLETO
 # ══════════════════════════════════════════════════════════════
 
-def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool) -> list:
+def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
+              keep_branches: bool = False) -> list:
     """
     Esegue tutti gli errori su un modello specifico.
     Gestisce reset file, timeout, pause e liberazione VRAM.
@@ -769,6 +819,10 @@ def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool) -> list
     if model["provider"] == "ollama":
         stop_ollama_model(model.get("ollama_model", ""))
         time.sleep(8)  # pausa generosa tra modelli locali
+
+    # ── Pulizia incrementale branch "fix/ai-*" creati da questo modello ──
+    if not keep_branches:
+        cleanup_fix_branches()
 
     return results
 
@@ -927,6 +981,12 @@ def main():
         default=None,
         help="Limita a N errori per modello (test rapido)"
     )
+    parser.add_argument(
+        "--keep-branches",
+        action="store_true",
+        help="Disabilita la pulizia automatica dei branch 'fix/ai-*' su GitHub "
+             "(utile per debug)."
+    )
     args = parser.parse_args()
 
     # dry-run implica no-memory
@@ -974,6 +1034,13 @@ def main():
     elif args.no_memory:
         run_id += "_nomemory"
 
+    # ── Pulizia branch "fix/ai-*" residui da run precedenti ──
+    if not args.keep_branches:
+        log.info("Pulizia branch 'fix/ai-*' residui da run precedenti...")
+        cleanup_fix_branches()
+    else:
+        log.info("--keep-branches attivo: salto la pulizia dei branch 'fix/ai-*'")
+
     all_results = []
 
     for model in models:
@@ -982,7 +1049,8 @@ def main():
             model_results = run_model(
                 model, errors,
                 dry_run=args.dry_run,
-                no_memory=args.no_memory
+                no_memory=args.no_memory,
+                keep_branches=args.keep_branches
             )
             all_results.extend(model_results)
 
