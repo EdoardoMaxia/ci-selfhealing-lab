@@ -12,6 +12,8 @@ jobs:
     name: Run Tests
     env:
       PYTHONPATH: ${{ github.workspace }}
+    strategy:
+      fail-fast: false
 
     steps:
       - name: Checkout code
