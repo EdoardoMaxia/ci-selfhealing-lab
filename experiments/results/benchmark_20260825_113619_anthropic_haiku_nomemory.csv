@@ -1,0 +1,2 @@
+model_id,model_name,model_type,dry_run,no_memory,error_id,category,difficulty,final_status,success,router_category,router_correct,router_confidence,router_reasoning,attempts_count,fix_attempt,json_parse_fail,latency_sec,error_msg
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_001,config,easy,error,0,,0,0.0,,0,,0,300.0,"404 {""message"": ""Not Found"", ""documentation_url"": ""https://docs.github.com/rest/repos/contents#create-or-update-file-contents"", ""status"": ""404""}"
