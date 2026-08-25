@@ -2,7 +2,7 @@ import pytest
 from src.reports import Engine, ReportWriter
 
 
-@pytest.fixture()
+@pytest.fixture(scope='function')
 def db_engine():
     engine = Engine()
     yield engine
