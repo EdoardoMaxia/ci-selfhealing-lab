@@ -5,6 +5,12 @@ on:
     branches: [main, fix/**]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        default: 'staging'
 
 jobs:
   test:
