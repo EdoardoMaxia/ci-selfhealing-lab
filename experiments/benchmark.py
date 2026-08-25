@@ -163,7 +163,20 @@ GROUP1_TEST_FILES = {
     "test_billing_cycle.py",
 }
 
-ALLOWED_TEST_FILES = {"test_calculator.py", "test_async.py"} | GROUP1_TEST_FILES
+# File di test creati per sostituire i 15 casi "test" precedentemente esclusi
+# (vedi experiments/CHANGELOG_DATASET.md) — stessa logica di GROUP1_TEST_FILES.
+REPLACEMENT_TEST_FILES = {
+    "test_worker.py", "test_weather.py", "test_export.py", "test_report.py",
+    "test_queue.py", "test_cache.py", "test_concurrent.py", "test_metrics.py",
+    "test_image_processing.py", "test_dedup.py", "test_stats.py",
+    "test_recommender.py", "test_upload.py",
+}
+
+ALLOWED_TEST_FILES = (
+    {"test_calculator.py", "test_async.py"}
+    | GROUP1_TEST_FILES
+    | REPLACEMENT_TEST_FILES
+)
 
 # Percorsi (relativi alla repo root) di tutti i file sorgente/app/test/fixture
 # creati per il Gruppo 1 che vanno ripristinati da git ad ogni reset_files()
@@ -177,53 +190,22 @@ GROUP1_RESTORE_PATHS = [
     "src/importer.py", "src/registry.py", "src/legacy.py", "src/settings.py",
     "src/sampler.py", "src/validation.py", "src/scheduler.py",
     "src/reports.py", "src/logger.py", "src/billing_cycle.py",
+    # src/ — creati per sostituire i 15 casi "test" precedentemente esclusi
+    "src/fetcher.py", "src/cache.py", "src/counter.py", "src/worker.py",
+    "src/weather.py", "src/exporter.py", "src/summary.py", "src/pipeline.py",
+    "src/metrics.py", "src/image_cache.py", "src/dedup.py", "src/stats.py",
+    "src/recommender.py", "src/upload.py",
     # app/
     "app/__init__.py", "app/billing/__init__.py", "app/billing/payment.py",
     "app/notify.py",
-    # tests/ (contenuto, non solo esistenza — vedi GROUP1_TEST_FILES per la whitelist)
+    # tests/ (contenuto, non solo esistenza — vedi GROUP1_TEST_FILES /
+    # REPLACEMENT_TEST_FILES per la whitelist)
     "tests/test_async.py",
     *[f"tests/{name}" for name in GROUP1_TEST_FILES],
+    *[f"tests/{name}" for name in REPLACEMENT_TEST_FILES],
     # fixture dati
     "tests/data/sample.csv", "tests/fixtures/sample.json",
 ]
-
-
-# ══════════════════════════════════════════════════════════════
-# CASI ESCLUSI DAL BENCHMARK — limiti strutturali del dataset
-# Vedi experiments/CHANGELOG_DATASET.md per il razionale caso-per-caso.
-# ══════════════════════════════════════════════════════════════
-
-# Categoria "test": casi del dataset sintetico che referenziano moduli
-# applicativi mai esistiti nel repo e troppo complessi per uno stub minimale
-# ("Gruppo 2" dell'analisi), o con premesse tecnicamente non riproducibili.
-EXCLUDED_TEST_IDS = {
-    "test_016",  # file esiste (test_async.py) ma con contenuto reale diverso dallo scenario descritto
-    "test_018",  # richiede freezegun, non presente in requirements.txt di produzione
-    "test_020",  # race condition non deterministica — rischio di flakiness nel benchmark stesso
-    "test_032",  # timing-based (time.sleep) — stesso rischio di flakiness
-    "test_034",  # rimuove un mock di rete: senza mock la CI farebbe una chiamata reale, esito non deterministico
-    "test_036",  # richiede pytest-xdist -n auto, non presente in ci.yml
-    "test_037",  # expected_fix richiede una libreria di snapshot testing non installata
-    "test_038",  # richiede alembic + sqlalchemy, dipendenze pesanti non presenti
-    "test_039",  # deadlock reale con Lock non rientrante — rischio di hang infinito del job CI
-    "test_042",  # richiede un servizio Redis reale
-    "test_043",  # richiede innescare un OOM reale — inaffidabile/pericoloso in CI condivisa
-    "test_044",  # premessa non valida: dict Python 3.7+ preserva l'ordine di inserimento a prescindere da PYTHONHASHSEED
-    "test_046",  # richiede un runner macos-14/arm64, la CI attuale è solo ubuntu-latest
-    "test_047",  # caso composito (flaky sort + coverage gate all'85%, non presente in ci.yml)
-    "test_048",  # richiede pytest-xdist -n, oggetti non picklabili tra worker
-}
-
-# Categoria "dependency": casi npm/yarn/JDK/ci.yml il cui fix reale non tocca
-# requirements.txt. agent/agents/dependency_agent.py è hardcoded a leggere e
-# scrivere solo requirements.txt: instradare l'injection su un altro file non
-# li renderebbe comunque risolvibili dal sistema attuale, quindi si escludono
-# esplicitamente invece di iniettare un errore che l'agente non potrà mai fixare.
-EXCLUDED_DEPENDENCY_IDS = {
-    "dep_022", "dep_023", "dep_027", "dep_029",
-    "dep_031", "dep_032", "dep_040", "dep_043",
-    "dep_045", "dep_047",
-}
 
 
 def reset_files():
@@ -429,6 +411,60 @@ def _inject_test_033(repo_root: Path) -> bool:
     return True
 
 
+def _inject_test_016(repo_root: Path) -> bool:
+    """
+    test_016: il fix sostituisce l'intera riga 'result = asyncio.run(fetch_data())'
+    con un blocco di 4 righe (funzione runner() annidata + chiamata) — numero di
+    righe rimosse/aggiunte non accoppiabile dal find/replace generico. Injection
+    custom: introduce un runner() che chiama loop.run_until_complete() mentre
+    quello stesso loop è già in esecuzione (avviato da asyncio.run), riproducendo
+    deterministicamente "RuntimeError: This event loop is already running" (solo
+    asyncio stdlib, nessuna dipendenza da pytest-asyncio).
+    """
+    target = repo_root / "tests/test_async.py"
+    if not target.exists():
+        return False
+    content = target.read_text(encoding="utf-8")
+    new_content = content.replace(
+        "    result = asyncio.run(fetch_data())",
+        "    async def runner():\n"
+        "        loop = asyncio.get_event_loop()\n"
+        "        return loop.run_until_complete(fetch_data())\n"
+        "\n"
+        "    result = asyncio.run(runner())",
+    )
+    if new_content == content:
+        return False
+    target.write_text(new_content, encoding="utf-8")
+    return True
+
+
+def _inject_test_047(repo_root: Path) -> bool:
+    """
+    test_047: caso composito con due difetti indipendenti nello stesso file
+    (assert con ordine di tie-break errato E funzione test_edge_case_empty_input
+    rimossa) — non esprimibile come find/replace riga per riga generico.
+    Injection custom: sostituisce l'intero contenuto del file con la versione
+    che ha entrambi i problemi.
+    """
+    target = repo_root / "tests/test_recommender.py"
+    if not target.exists():
+        return False
+    content = target.read_text(encoding="utf-8")
+    broken = (
+        "from src.recommender import recommend\n"
+        "\n"
+        "\n"
+        "def test_ranking_order():\n"
+        "    items = [{\"id\": \"c\", \"score\": 5}, {\"id\": \"a\", \"score\": 5}, {\"id\": \"b\", \"score\": 5}]\n"
+        "    assert recommend(items) == [\"c\", \"a\", \"b\"]\n"
+    )
+    if content == broken:
+        return False
+    target.write_text(broken, encoding="utf-8")
+    return True
+
+
 SPECIAL_TEST_INJECTORS = {
     "test_010": _inject_test_010,
     "test_012": _inject_test_012,
@@ -436,6 +472,8 @@ SPECIAL_TEST_INJECTORS = {
     "test_027": _inject_test_027,
     "test_030": _inject_test_030,
     "test_033": _inject_test_033,
+    "test_016": _inject_test_016,
+    "test_047": _inject_test_047,
 }
 
 # Casi in cui il git_diff descrive letteralmente una riga di codice SORGENTE
@@ -462,10 +500,9 @@ def inject_error(error: dict) -> bool:
     Introduce l'errore specifico nel file corretto in base alla categoria.
     Chiamato dopo reset_files() per ogni test case.
 
-    Ritorna True se l'injection è stata applicata con successo, False se il
-    caso va escluso dal conteggio del Success Rate (nessun file target valido,
-    o caso esplicitamente fuori scope — vedi EXCLUDED_TEST_IDS,
-    EXCLUDED_DEPENDENCY_IDS e experiments/CHANGELOG_DATASET.md).
+    Ritorna True se l'injection è stata applicata con successo, False se non
+    è stato trovato alcun file target valido per l'injection (es. i log
+    sintetici non contengono un path riconoscibile).
     """
     repo_root = Path(".")
     category  = error["category"]
@@ -473,10 +510,6 @@ def inject_error(error: dict) -> bool:
     error_id  = error["id"]
 
     if category == "dependency":
-        if error_id in EXCLUDED_DEPENDENCY_IDS:
-            log.info(f"{error_id}: escluso — il fix reale non tocca requirements.txt "
-                     f"(dependency_agent non potrebbe applicarlo comunque)")
-            return False
         current = (repo_root / "requirements.txt").read_text(encoding="utf-8")
         added   = [l[1:].strip() for l in diff.splitlines() if l.startswith("+")]
         for line in added:
@@ -497,9 +530,6 @@ def inject_error(error: dict) -> bool:
         return True
 
     elif category == "test":
-        if error_id in EXCLUDED_TEST_IDS:
-            log.info(f"{error_id}: escluso — vedi experiments/CHANGELOG_DATASET.md")
-            return False
         special = SPECIAL_TEST_INJECTORS.get(error_id)
         if special:
             return special(repo_root)
@@ -722,41 +752,13 @@ def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
         reset_files()
 
         # ── Inject errore nel file (solo se non dry-run) ──
-        injected = True
         if not dry_run:
             try:
                 injected = inject_error(error)
+                if not injected:
+                    log.warning(f"{error['id']}: nessun target trovato per l'injection — uso log sintetici")
             except Exception as e:
                 log.warning(f"inject_error fallito: {e} — uso log sintetici")
-                injected = True  # comportamento storico: procede coi soli log sintetici
-
-        # ── Caso escluso: nessun target valido per l'injection reale.
-        #    Non viene eseguito il sistema — il caso non entra nel Success Rate. ──
-        if not dry_run and not injected:
-            log.info(f"  ⏭️  {error['id']} escluso dal Success Rate (injection non applicabile)")
-            results.append({
-                "model_id":           model["id"],
-                "model_name":         model["name"],
-                "model_type":         model["type"],
-                "dry_run":            0,
-                "no_memory":          1 if no_memory else 0,
-                "error_id":           error["id"],
-                "category":           error["category"],
-                "difficulty":         error["difficulty"],
-                "final_status":       "excluded",
-                "success":            0,
-                "router_category":    "",
-                "router_correct":     0,
-                "router_confidence":  0.0,
-                "router_reasoning":   "",
-                "attempts_count":     0,
-                "fix_attempt":        None,
-                "json_parse_fail":    0,
-                "latency_sec":        0.0,
-                "error_msg":          "excluded_no_valid_injection_target",
-            })
-            time.sleep(1 if model["provider"] in ("anthropic", "groq") else 2)
-            continue
 
         # ── Riga di risultato di default (per timeout o errori) ──
         row = {
@@ -862,25 +864,18 @@ def print_summary(all_results: list):
     if not all_results:
         return
 
-    # Raggruppa per modello — i casi "excluded" (injection non applicabile,
-    # vedi EXCLUDED_TEST_IDS/EXCLUDED_DEPENDENCY_IDS) non entrano nel calcolo
-    # del Success Rate: restano nel CSV/JSON per trasparenza, ma qui sono filtrati.
+    # Raggruppa per modello
     by_model = {}
-    excluded_count = {}
     for r in all_results:
         mid = r["model_id"]
-        if r.get("final_status") == "excluded":
-            excluded_count[mid] = excluded_count.get(mid, 0) + 1
-            continue
         if mid not in by_model:
             by_model[mid] = []
         by_model[mid].append(r)
 
     print("\n" + "="*72)
     print("RIEPILOGO BENCHMARK — SUCCESS RATE GLOBALE")
-    print("(casi esclusi non conteggiati — vedi colonna 'Escl.')")
     print("="*72)
-    print(f"{'Modello':<30} {'SR%':>6} {'Router%':>8} {'AvgLat':>8} {'JSONfail':>9} {'N':>4} {'Escl.':>6}")
+    print(f"{'Modello':<30} {'SR%':>6} {'Router%':>8} {'AvgLat':>8} {'JSONfail':>9} {'N':>4}")
     print("-"*72)
 
     for mid, rows in by_model.items():
@@ -889,9 +884,8 @@ def print_summary(all_results: list):
         ra         = sum(r["router_correct"] for r in rows) / n * 100
         lat        = sum(r["latency_sec"] for r in rows) / n
         jf         = sum(r["json_parse_fail"] for r in rows)
-        escl       = excluded_count.get(mid, 0)
         name       = rows[0]["model_name"]
-        print(f"{name:<30} {sr:>5.1f}% {ra:>7.1f}% {lat:>7.1f}s {jf:>9} {n:>4} {escl:>6}")
+        print(f"{name:<30} {sr:>5.1f}% {ra:>7.1f}% {lat:>7.1f}s {jf:>9} {n:>4}")
 
     print("\nSUCCESS RATE PER CATEGORIA")
     print("="*72)
@@ -1028,11 +1022,22 @@ def main():
     )
 
     # ── Run ID per i file di output ──
-    run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+    # Formato: benchmark_{YYYYMMDD}_{HHMMSS}_{model_id}_{memory_condition}.csv
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     if args.dry_run:
-        run_id += "_dryrun"
+        memory_condition = "dryrun"
     elif args.no_memory:
-        run_id += "_nomemory"
+        memory_condition = "nomemory"
+    else:
+        memory_condition = "memory"
+
+    def build_run_id(model_id: str) -> str:
+        return f"{timestamp}_{model_id}_{memory_condition}"
+
+    # model_id "all_models" quando il run copre più di un modello
+    # (es. --provider all, oppure --provider ollama --ollama-model all)
+    final_model_id = "all_models" if len(models) > 1 else models[0]["id"]
+    run_id = build_run_id(final_model_id)
 
     # ── Pulizia branch "fix/ai-*" residui da run precedenti ──
     if not args.keep_branches:
@@ -1054,8 +1059,10 @@ def main():
             )
             all_results.extend(model_results)
 
-            # Salvataggio intermedio dopo ogni modello
-            save_results(all_results, run_id)
+            # Salvataggio intermedio dopo ogni modello — CSV/JSON separato per
+            # modello (model_id specifico, non il run_id globale), così un
+            # benchmark interrotto a metà lascia comunque i file per modello.
+            save_results(model_results, build_run_id(model["id"]))
             log.info(f"✓ {model['name']} completato — risultati salvati")
 
             time.sleep(3)

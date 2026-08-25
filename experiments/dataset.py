@@ -412,41 +412,45 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale basato su npm/package-lock.json,
+        # ecosistema non presente in questo repo (pip + requirements.txt).
+        # Riscritto come typo nel nome del pacchetto — vedi CHANGELOG_DATASET.md.
         "id": "dep_022",
         "category": "dependency",
         "difficulty": "easy",
         "ci_logs": """
-            ##[group]Run npm ci
-            npm ERROR! `npm ci` can only install packages when your package.json and package-lock.json are in sync.
-            npm ERROR! Please update your lock file with `npm install` before continuing.
-            npm ERROR! Missing: axios@1.6.0 from lock file
+            ##[group]Run pip install -r requirements.txt
+            Collecting flaks==3.0.3
+            ERROR: Could not find a version that satisfies the requirement flaks==3.0.3 (from versions: none)
+            ERROR: No matching distribution found for flaks==3.0.3
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "+    \"axios\": \"^1.6.0\",\n     \"express\": \"^4.18.2\"",
+        "git_diff": "-flask==3.0.3\n+flaks==3.0.3",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Eseguire npm install in locale per aggiornare package-lock.json e committare il lock file aggiornato",
-        "notes": "package.json modificato senza rigenerare package-lock.json — errore comune in progetti Node"
+        "expected_fix": "Correggere il typo nel nome del pacchetto: flaks==3.0.3 -> flask==3.0.3",
+        "notes": "Errore di battitura nel nome del pacchetto (non nella versione) — pip non trova alcuna distribuzione perché 'flaks' non esiste su PyPI"
     },
 
     {
+        # NOTA (riscritto): caso originale basato su package.json "engines"/Node,
+        # ecosistema non presente in questo repo. Riscritto come operatore di
+        # versione non valido in requirements.txt — vedi CHANGELOG_DATASET.md.
         "id": "dep_023",
         "category": "dependency",
         "difficulty": "easy",
         "ci_logs": """
-            ##[group]Run npm install
-            npm ERROR! code EBADENGINE
-            npm ERROR! engine Unsupported engine
-            npm ERROR! Not compatible with your version of node/npm: myapp@1.0.0
-            npm ERROR! Required: {"node":">=20.0.0"}
-            npm ERROR! Actual: {"npm":"9.8.1","node":"v18.19.0"}
+            ##[group]Run pip install -r requirements.txt
+            ERROR: Invalid requirement: 'pyyaml=6.0.1': Expected end or semicolon (after name and no valid version specifier)
+                pyyaml=6.0.1
+                       ~^
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-  \"engines\": { \"node\": \">=18.0.0\" }\n+  \"engines\": { \"node\": \">=20.0.0\" }",
+        "git_diff": "-pyyaml==6.0.1\n+pyyaml=6.0.1",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare node-version a '20' nello step actions/setup-node del workflow, oppure abbassare il vincolo engines a >=18.0.0",
-        "notes": "Il vincolo engines in package.json non è più soddisfatto dalla versione di Node configurata nel workflow"
+        "expected_fix": "Correggere l'operatore di versione da singolo '=' a '==': pyyaml==6.0.1",
+        "notes": "Errore di sintassi nel requirements.txt: pip richiede '==' per il pinning esatto (PEP 508), un singolo '=' non è un operatore di versione valido"
     },
 
     {
@@ -512,21 +516,26 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale basato su un registry npm privato
+        # autenticato, ecosistema non presente in questo repo. Riscritto come
+        # riga in stile JSON copiata per errore in requirements.txt —
+        # verificato con "pip install --dry-run" reale — vedi
+        # CHANGELOG_DATASET.md.
         "id": "dep_027",
         "category": "dependency",
         "difficulty": "easy",
         "ci_logs": """
-            ##[group]Run npm install
-            npm ERROR! code E401
-            npm ERROR! 401 Unauthorized - GET https://npm.pkg.github.com/@myorg%2finternal-utils - Unauthorized
-            npm ERROR! This is often related to authentication. Run `npm whoami` to verify.
+            ##[group]Run pip install -r requirements.txt
+            ERROR: Invalid requirement: '"requests": "2.31.0"': Expected package name at the start of dependency specifier
+                "requests": "2.31.0"
+                ^
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-      - run: npm install\n-        env:\n-          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}\n+      - run: npm install",
+        "git_diff": "-requests==2.31.0\n+\"requests\": \"2.31.0\"",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Ripristinare la env NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }} nello step npm install per autenticarsi al registry privato",
-        "notes": "Token di autenticazione al package registry privato rimosso dallo step"
+        "expected_fix": "Sostituire la riga in stile JSON con la sintassi corretta di requirements.txt: requests==2.31.0",
+        "notes": "Riga copiata per errore da un file in stile JSON (es. package.json) — non valida in un requirements.txt (formato PEP 508, non JSON)"
     },
 
     {
@@ -548,22 +557,26 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale richiedeva cambiare "runs-on" in
+        # ci.yml (fuori portata di dependency_agent, che scrive solo
+        # requirements.txt). Riscritto come pacchetto Windows-only installato
+        # senza environment marker su un runner Linux — vedi CHANGELOG_DATASET.md.
         "id": "dep_029",
         "category": "dependency",
         "difficulty": "easy",
         "ci_logs": """
             ##[group]Run pip install -r requirements.txt
-            Collecting grpcio==1.48.0
-            ERROR: Could not find a version that satisfies the requirement grpcio==1.48.0 (from versions: 1.54.0, 1.54.2, 1.56.0, 1.59.0, 1.60.0)
-            ERROR: No matching distribution found for grpcio==1.48.0
-            Note: no manylinux wheel for grpcio==1.48.0 is published for aarch64
+            Collecting pywin32==306
+            ERROR: Could not find a version that satisfies the requirement pywin32==306 (from versions: none)
+            ERROR: No matching distribution found for pywin32==306
+            Note: pywin32 pubblica distribuzioni solo per Windows (win32/win_amd64) — nessuna disponibile per Linux
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-    runs-on: ubuntu-latest\n+    runs-on: macos-14  # Apple Silicon runner",
+        "git_diff": "+pywin32==306",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare grpcio a una versione >=1.54.0 che pubblica wheel per la piattaforma arm64 del runner macos-14",
-        "notes": "Cambio del runner a un'architettura arm64 espone la mancanza di wheel precompilati per la versione pinnata"
+        "expected_fix": "Rimuovere pywin32==306 da requirements.txt (o aggiungerlo con l'environment marker ; sys_platform == 'win32'), poiché il runner CI è Linux e pywin32 non pubblica distribuzioni per questa piattaforma",
+        "notes": "Dipendenza Windows-only aggiunta senza environment marker, installata incondizionatamente anche sul runner Linux ubuntu-latest"
     },
 
     {
@@ -591,41 +604,51 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale basato su yarn.lock, ecosistema
+        # non presente in questo repo. Riscritto come punto e virgola orfano
+        # rimasto dopo la rimozione di un environment marker — vedi
+        # CHANGELOG_DATASET.md.
         "id": "dep_031",
         "category": "dependency",
         "difficulty": "easy",
         "ci_logs": """
-            ##[group]Run yarn install --frozen-lockfile
-            error Your lockfile needs to be updated, but yarn was run with '--frozen-lockfile'.
-            error Found 1 package that doesn't satisfy your lockfile
+            ##[group]Run pip install -r requirements.txt
+            pip._vendor.packaging.markers.InvalidMarker: Expected marker operator, one of <=, <, !=, ==, >=, >, ~=, ===, in, not in
+                python_version
+                              ^
+            ERROR: Invalid requirement: 'requests==2.31.0; python_version'
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "+    \"lodash\": \"^4.17.21\",",
+        "git_diff": "-requests==2.31.0; python_version >= '3.8'\n+requests==2.31.0; python_version",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Eseguire yarn install in locale per rigenerare yarn.lock e committare il file aggiornato",
-        "notes": "Dipendenza aggiunta a package.json senza aggiornare yarn.lock, --frozen-lockfile lo rileva in CI"
+        "expected_fix": "Ripristinare l'espressione completa dell'environment marker: requests==2.31.0; python_version >= '3.8' (oppure rimuovere del tutto il marker: requests==2.31.0)",
+        "notes": "L'environment marker è stato troncato durante una modifica, lasciando solo 'python_version' senza operatore né valore — non valido secondo PEP 508 (verificato con pip install --dry-run reale, che genera esattamente questo InvalidMarker)"
     },
 
     {
+        # NOTA (riscritto): caso originale basato su un conflitto peer
+        # dependency npm (ERESOLVE), ecosistema non presente in questo repo.
+        # Riscritto come equivalente pip reale — verificato con
+        # "pip install --dry-run" reale (sphinx 7.2.6 dichiara
+        # esplicitamente docutils<0.21 nella propria metadata) — vedi
+        # CHANGELOG_DATASET.md.
         "id": "dep_032",
         "category": "dependency",
         "difficulty": "medium",
         "ci_logs": """
-            ##[group]Run npm install
-            npm ERROR! code ERESOLVE
-            npm ERROR! ERESOLVE unable to resolve dependency tree
-            npm ERROR! While resolving: my-app@1.0.0
-            npm ERROR! Found: react@18.2.0
-            npm ERROR! Could not resolve dependency:
-            npm ERROR! peer react@"^17.0.0" from react-beautiful-dnd@13.1.1
+            ##[group]Run pip install -r requirements.txt
+            ERROR: Cannot install -r requirements.txt (line 3) and docutils==0.22 because these package versions have conflicting dependencies.
+            The conflict is caused by:
+                The user requested docutils==0.22
+                sphinx 7.2.6 depends on docutils<0.21 and >=0.18.1
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "+    \"react-beautiful-dnd\": \"^13.1.1\",",
+        "git_diff": "+sphinx==7.2.6\n-docutils==0.20.1\n+docutils==0.22",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Sostituire react-beautiful-dnd con una libreria compatibile con react 18 (es. @hello-pangea/dnd), poiché react-beautiful-dnd richiede react ^17",
-        "notes": "Conflitto peer dependency npm — libreria non aggiornata per React 18"
+        "expected_fix": "Allineare docutils a una versione compatibile con sphinx==7.2.6 (es. docutils==0.20.1, che soddisfa >=0.18.1 e <0.21)",
+        "notes": "sphinx 7.2.6 dichiara esplicitamente nella propria metadata un vincolo superiore su docutils (<0.21) — equivalente Python del conflitto peer-dependency npm ERESOLVE"
     },
 
     {
@@ -760,21 +783,25 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale richiedeva modificare ci.yml
+        # (cache dello step actions/setup-node), fuori portata di
+        # dependency_agent. Riscritto come range di versione
+        # auto-contraddittorio in requirements.txt — vedi CHANGELOG_DATASET.md.
         "id": "dep_040",
         "category": "dependency",
         "difficulty": "medium",
         "ci_logs": """
-            ##[group]Run npm install
-            npm ERROR! code E429
-            npm ERROR! 429 Too Many Requests - GET https://registry.npmjs.org/lodash
-            npm ERROR! network This is a problem related to network connectivity.
+            ##[group]Run pip install -r requirements.txt
+            Collecting click<8.0,>=9.0
+            ERROR: Could not find a version that satisfies the requirement click<8.0,>=9.0 (from versions: 6.6, 6.7, 7.0, 7.1.2, 8.0.0, 8.0.1, 8.0.2, 8.0.3, 8.0.4, 8.1.0, 8.1.3, 8.1.7)
+            ERROR: No matching distribution found for click<8.0,>=9.0
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-      - uses: actions/setup-node@v4\n-        with:\n-          cache: 'npm'\n+      - uses: actions/setup-node@v4",
+        "git_diff": "-click==8.1.7\n+click<8.0,>=9.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Ripristinare cache: 'npm' nello step actions/setup-node per ridurre le richieste dirette al registry ed evitare il rate limiting",
-        "notes": "Rimozione della cache npm aumenta le richieste dirette al registry pubblico, esponendo al rate limiting"
+        "expected_fix": "Correggere il range di versione contraddittorio (>=9.0 e <8.0 non possono essere entrambi veri): usare click==8.1.7",
+        "notes": "Range di versione auto-contraddittorio (nessuna versione può soddisfare contemporaneamente >=9.0 e <8.0) — probabile errore di digitazione nell'ordine degli operatori"
     },
 
     {
@@ -817,23 +844,29 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale richiedeva il meccanismo npm
+        # "overrides" (package.json), non presente in questo ecosistema.
+        # Riscritto come conflitto reale pandas/numpy che richiede
+        # aggiornare la dipendenza "indiretta" (pandas), non solo quella
+        # bumpata direttamente (numpy) — vedi CHANGELOG_DATASET.md.
         "id": "dep_043",
         "category": "dependency",
         "difficulty": "hard",
         "ci_logs": """
-            ##[group]Run npm ci
-            npm ERROR! code ERESOLVE
-            npm ERROR! While resolving: my-app@2.3.0
-            npm ERROR! Found: semver@6.3.1
-            npm ERROR! Could not resolve dependency:
-            npm ERROR! peer semver@"^7.5.4" from some-transitive-dep@3.0.0 (introduced by eslint-config-custom bump)
+            ##[group]Run pip install -r requirements.txt
+            Collecting pandas==2.0.3
+            Collecting numpy==2.0.0
+            ERROR: Cannot install numpy==2.0.0 and pandas==2.0.3 because these package versions have conflicting dependencies.
+            The conflict is caused by:
+                pandas 2.0.3 depends on numpy>=1.20.3 and <2
+                The user requested numpy==2.0.0
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-    \"eslint-config-custom\": \"1.2.0\",\n+    \"eslint-config-custom\": \"2.0.0\",",
+        "git_diff": "+pandas==2.0.3\n+numpy==2.0.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiungere un campo \"overrides\": { \"semver\": \"^7.5.4\" } in package.json per forzare la versione di semver richiesta dalla dipendenza transitiva aggiornata",
-        "notes": "Bump automatico (Dependabot) introduce un vincolo transitivo che richiede l'uso di 'overrides' per essere risolto"
+        "expected_fix": "Aggiornare pandas a una versione con supporto NumPy 2.0 (es. pandas==2.2.2 o superiore), oppure fissare numpy<2.0 (es. numpy==1.26.4) per restare compatibili con pandas==2.0.3 — il semplice pin di numpy==2.0.0 non basta, perché pandas 2.0.3 dichiara esplicitamente numpy<2 tra le sue dipendenze",
+        "notes": "Bump isolato di numpy a una major version (2.0) rompe il vincolo dichiarato da pandas 2.0.3, che predata il supporto a NumPy 2.0 — richiede aggiornare a cascata anche pandas, non solo rimuovere il pin numpy. Equivalente Python del caso 'Dependabot bump richiede un override transitivo'"
     },
 
     {
@@ -854,21 +887,23 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale basato su un monorepo npm
+        # workspace, ecosistema non presente in questo repo. Riscritto come
+        # riferimento a un file di constraints (-c) inesistente, meccanismo
+        # pip reale ma poco noto — vedi CHANGELOG_DATASET.md.
         "id": "dep_045",
         "category": "dependency",
         "difficulty": "hard",
         "ci_logs": """
-            ##[group]Run npm install
-            npm ERROR! code ELOOP
-            npm ERROR! Circular dependency detected in workspace:
-            npm ERROR!   packages/core -> packages/utils -> packages/core
+            ##[group]Run pip install -r requirements.txt
+            ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'constraints.txt'
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "+    \"@myorg/core\": \"workspace:*\"",
+        "git_diff": "+-c constraints.txt",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Rimuovere la dipendenza circolare estraendo il codice condiviso in un terzo package workspace indipendente, oppure rimuovere la dipendenza di packages/utils verso packages/core",
-        "notes": "Dipendenza circolare tra pacchetti di un monorepo tramite protocollo workspace"
+        "expected_fix": "Rimuovere la riga '-c constraints.txt' da requirements.txt, poiché il file di constraints referenziato non esiste nel repository (oppure, se il vincolo era intenzionale, incorporarne direttamente i pin nel requirements.txt stesso)",
+        "notes": "Riferimento a un file di constraints (-c) inesistente — pip supporta l'inclusione ricorsiva di file di requirements/constraints con -r/-c, ma fallisce con un errore poco intuitivo se il file referenziato manca"
     },
 
     {
@@ -891,23 +926,30 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale basato su una duplicazione di
+        # React a runtime (npm/JS), ecosistema non presente in questo repo.
+        # Riscritto come equivalente Python reale, verificato con
+        # "pip install --dry-run" reale (streamlit 1.28.0 dichiara
+        # esplicitamente protobuf<5 nella propria metadata) — vedi
+        # CHANGELOG_DATASET.md.
         "id": "dep_047",
         "category": "dependency",
         "difficulty": "hard",
         "ci_logs": """
-            ##[group]Run npm run build
-            Uncaught Error: Invalid hook call. Hooks can only be called inside of the body of a function component.
-            This could happen for one of the following reasons:
-            1. You might have mismatching versions of React and the renderer
-            2. You might have more than one copy of React in the same app
-            FAIL tests/App.test.jsx
+            ##[group]Run pip install -r requirements.txt
+            Collecting streamlit==1.28.0
+            Collecting protobuf==5.28.0
+            ERROR: Cannot install -r requirements.txt (line 3) and protobuf==5.28.0 because these package versions have conflicting dependencies.
+            The conflict is caused by:
+                The user requested protobuf==5.28.0
+                streamlit 1.28.0 depends on protobuf<5 and >=3.20
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "+    \"some-ui-lib\": \"3.0.0\",",
-        "ci_job_name": "Build and test",
-        "expected_fix": "Aggiungere \"overrides\": { \"react\": \"18.2.0\", \"react-dom\": \"18.2.0\" } in package.json per forzare un'unica istanza di react condivisa nell'albero delle dipendenze",
-        "notes": "some-ui-lib installa una propria copia di react come dipendenza diretta invece di usare peerDependencies, causando due istanze duplicate a runtime"
+        "git_diff": "+streamlit==1.28.0\n+protobuf==5.28.0",
+        "ci_job_name": "Install dependencies",
+        "expected_fix": "Fissare protobuf a una versione compatibile con streamlit==1.28.0 (es. protobuf==4.25.3, che soddisfa >=3.20 e <5), poiché streamlit dichiara esplicitamente protobuf<5 — il pin diretto di protobuf==5.28.0 non è compatibile, va scelta una versione della serie 4.x",
+        "notes": "streamlit 1.28.0 dichiara esplicitamente nella propria metadata un vincolo superiore su protobuf (<5) — bump isolato di protobuf a una major version rompe questo vincolo, richiede identificare e fissare la dipendenza indiretta corretta (non basta rimuovere il pin) — equivalente Python del caso 'duplicazione di React causata da una libreria UI non aggiornata'"
     },
 
     {
@@ -1252,6 +1294,11 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): il contenuto reale precedente di test_async.py
+        # richiedeva pytest-asyncio (plugin non presente in requirements.txt
+        # di produzione). Riscritto usando solo asyncio stdlib — vedi
+        # CHANGELOG_DATASET.md. Injection gestita da _inject_test_016 in
+        # benchmark.py (blocco multi-riga, non un find/replace 1:1).
         "id": "test_016",
         "category": "test",
         "difficulty": "hard",
@@ -1259,16 +1306,15 @@ DATASET = [
             ##[group]Run pytest tests/ -v
             FAILED tests/test_async.py::test_fetch_data - RuntimeError: This event loop is already running
             RuntimeError: This event loop is already running
-            async def test_fetch_data():
-                result = await fetch_data()
-            2 failed, 8 passed in 1.23s
+            loop.run_until_complete() è stato chiamato da dentro un loop già avviato da asyncio.run()
+            1 failed, 59 passed in 0.41s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "+import asyncio\n+loop = asyncio.get_event_loop()\n+loop.run_until_complete(setup())",
+        "git_diff": "-    result = asyncio.run(fetch_data())\n+    async def runner():\n+        loop = asyncio.get_event_loop()\n+        return loop.run_until_complete(fetch_data())\n+\n+    result = asyncio.run(runner())",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Rimuovere loop.run_until_complete() dal setup o usare pytest-asyncio con @pytest.mark.asyncio",
-        "notes": "Conflitto event loop asyncio — richiede conoscenza pytest-asyncio"
+        "expected_fix": "Rimuovere il wrapper runner()/loop.run_until_complete() e ripristinare la chiamata diretta result = asyncio.run(fetch_data()), poiché chiamare run_until_complete() su un loop già in esecuzione (dentro asyncio.run) solleva sempre RuntimeError",
+        "notes": "Sostituisce il contenuto reale precedente di test_async.py (che richiedeva pytest-asyncio) con un caso basato solo su asyncio stdlib — il nesting di loop.run_until_complete() dentro un loop già avviato da asyncio.run() è un errore reale e deterministico, non dipendente dal timing"
     },
 
     {
@@ -1292,23 +1338,26 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale richiedeva freezegun (non presente
+        # in requirements.txt di produzione). Riscritto con un clock fittizio
+        # iniettato esplicitamente in TTLCache — stessa lezione (scadenza
+        # basata sul tempo), completamente deterministico — vedi
+        # CHANGELOG_DATASET.md.
         "id": "test_018",
         "category": "test",
         "difficulty": "hard",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
-            FAILED tests/test_cache.py::test_cache_invalidation - AssertionError: assert 'old_value' == 'new_value'
-            Cache not invalidated after update
-            Time-dependent test: cache TTL is 300s but test uses freeze_time
-            ERROR: freeze_time decorator not applied correctly
-            2 failed, 5 passed in 0.88s
+            FAILED tests/test_cache.py::test_cache_invalidation - AssertionError: assert 'old_value' is None
+            Il valore atteso era None (scaduto), ma la entry non è ancora considerata scaduta dal clock fittizio del test
+            1 failed, 59 passed in 0.03s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-@freeze_time('2024-01-01 12:00:00')\n+@freeze_time('2024-01-01')\ndef test_cache_invalidation():",
+        "git_diff": "-    fake_time[0] = 301\n+    fake_time[0] = 250",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare formato datetime completo: @freeze_time('2024-01-01 12:00:00')",
-        "notes": "freeze_time con data senza orario — comportamento diverso per TTL"
+        "expected_fix": "Impostare fake_time[0] a un valore >= ttl_seconds (es. 301, oltre il TTL di 300s) così che cache.get() consideri scaduta la entry e ritorni None",
+        "notes": "Sostituisce freezegun (non presente in requirements.txt) con un clock fittizio iniettato esplicitamente nel TTLCache — stessa lezione (scadenza basata sul tempo) ma completamente deterministico, senza dipendere da timestamp reali"
     },
 
     {
@@ -1331,23 +1380,25 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale basato su una vera race condition
+        # multi-thread (non deterministica, rischio di flakiness nel
+        # benchmark stesso). Riscritto come simulazione sequenziale
+        # deterministica di due "worker" — vedi CHANGELOG_DATASET.md.
         "id": "test_020",
         "category": "test",
         "difficulty": "hard",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
-            FAILED tests/test_concurrent.py::test_thread_safety - AssertionError: assert Counter({1: 100}) == Counter({1: 50, 2: 50})
-            Race condition detected: counter incremented 100 times instead of 50+50
-            Threading issue: lock not acquired correctly
-            FAILED tests/test_concurrent.py::test_thread_safety (intermittent)
-            2 failed, 14 passed in 3.21s
+            FAILED tests/test_concurrent.py::test_thread_safety - AssertionError: assert 100 == 80
+            Il lavoro del worker B (worker_b) non è stato incluso nel batch passato a run_workers
+            1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-    with self.lock:\n+    # removed lock\n         self.counter += 1",
+        "git_diff": "-    total = run_workers(counter, worker_a + worker_b)\n+    total = run_workers(counter, worker_a + worker_a)",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare il context manager with self.lock: prima dell'incremento del counter",
-        "notes": "Race condition da rimozione lock — test intermittente, difficile da riprodurre"
+        "expected_fix": "Ripristinare worker_a + worker_b (non worker_a + worker_a) nella chiamata a run_workers(), così che il lavoro di entrambi i worker venga effettivamente conteggiato",
+        "notes": "Sostituisce lo scenario originale basato su una vera race condition multi-thread (non deterministica, rischio di flakiness nel benchmark) con un bug deterministico di composizione dei dati che riproduce lo stesso sintomo (conteggio finale del contatore condiviso errato)"
     },
 
     # --- Nuovi casi (test_021 - test_050) ---
@@ -1545,22 +1596,23 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale basato su time.sleep/timing (rischio
+        # di flakiness). Riscritto come coda di task troncata, deterministico
+        # — vedi CHANGELOG_DATASET.md.
         "id": "test_032",
         "category": "test",
         "difficulty": "medium",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
-            FAILED tests/test_worker.py::test_background_task - AssertionError: assert 'done' == None
-            Task had not completed processing when assertion ran
-            FAILED tests/test_worker.py::test_background_task (intermittent, passed on retry)
-            1 failed, 10 passed in 1.15s
+            FAILED tests/test_worker.py::test_background_task - AssertionError: assert 'pending' == 'done'
+            1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-    time.sleep(0.5)\n+    time.sleep(0.05)",
+        "git_diff": "-    tasks = [make_task(\"pending\"), make_task(\"done\")]\n+    tasks = [make_task(\"pending\")]",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare un'attesa sufficiente (time.sleep(0.5)) oppure sostituire lo sleep fisso con un polling/wait_until sulla condizione di completamento del task",
-        "notes": "Timeout ridotto troppo aggressivamente rende il test flaky per race condition sul task in background"
+        "expected_fix": "Ripristinare la lista completa dei task (includendo make_task(\"done\")) nel test, così che process_queue elabori tutta la coda prima di verificare lo stato finale",
+        "notes": "Un task è stato rimosso dalla coda nel test, quindi process_queue si ferma sull'ultimo stato disponibile ('pending') invece di raggiungere 'done' — sostituisce lo scenario originale basato su timing/sleep non deterministico con un caso di dato di test troncato, deterministico al 100%"
     },
 
     {
@@ -1583,20 +1635,26 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale rimuoveva un mock unittest.mock,
+        # esponendo il test a una vera ConnectionError di rete (non
+        # deterministico in CI). Riscritto con un fetch iniettabile via
+        # dependency injection: il default reale è deterministicamente
+        # fallimentare, nessuna I/O di rete reale coinvolta — vedi
+        # CHANGELOG_DATASET.md.
         "id": "test_034",
         "category": "test",
         "difficulty": "medium",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
-            FAILED tests/test_weather.py::test_get_forecast - requests.exceptions.ConnectionError: Failed to establish a new connection: Temporary failure in name resolution
-            1 failed, 8 passed in 5.02s
+            FAILED tests/test_weather.py::test_get_forecast - RuntimeError: rete non disponibile in questo ambiente
+            1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-    @patch('app.weather.requests.get')\n-    def test_get_forecast(self, mock_get):\n+    def test_get_forecast(self):",
+        "git_diff": "-    result = get_forecast(\"Rome\", fetch=fake_fetch)\n+    result = get_forecast(\"Rome\")",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare il mock @patch('app.weather.requests.get') per evitare chiamate di rete reali durante il test, non disponibili nel sandbox CI",
-        "notes": "Rimozione del mock espone il test a una dipendenza di rete reale, assente/instabile nell'ambiente CI"
+        "expected_fix": "Ripristinare il parametro fetch=fake_fetch nella chiamata a get_forecast(), per evitare che il test usi il fetch reale (che nell'ambiente di test solleva sempre RuntimeError, dato che non è disponibile una connessione di rete)",
+        "notes": "Rimozione dell'iniezione del fetch fittizio: il test finisce per usare l'implementazione reale, deterministicamente non disponibile (nessuna chiamata di rete reale viene effettuata, a differenza dello scenario originale basato su un mock unittest.mock rimosso e una ConnectionError di rete non deterministica)"
     },
 
     {
@@ -1618,77 +1676,89 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale richiedeva pytest-xdist -n auto
+        # (non presente in requirements.txt). Riscritto come collisione di
+        # path in singolo processo/singolo test, deterministico — vedi
+        # CHANGELOG_DATASET.md.
         "id": "test_036",
         "category": "test",
         "difficulty": "medium",
         "ci_logs": """
-            ##[group]Run pytest tests/ -n auto
-            FAILED tests/test_export.py::test_write_csv - PermissionError: [Errno 13] Permission denied: '/tmp/output.csv'
-            Two workers (gw0, gw1) wrote to the same hardcoded temp file concurrently
-            2 failed, 30 passed in 4.10s
+            ##[group]Run pytest tests/ -v
+            FAILED tests/test_export.py::test_write_csv - FileExistsError: [Errno 17] File exists: 'output.csv'
+            Due scritture hanno usato lo stesso path hardcoded invece di due file isolati
+            1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-    output_path = tmp_path / 'output.csv'\n+    output_path = '/tmp/output.csv'",
+        "git_diff": "-    write_csv(str(tmp_path / \"output2.csv\"), [[\"b\", \"2\"]])\n+    write_csv(str(tmp_path / \"output.csv\"), [[\"b\", \"2\"]])",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Usare la fixture tmp_path di pytest invece di un path fisso '/tmp/output.csv', per garantire un file isolato per ogni worker/test",
-        "notes": "Path temporaneo hardcoded condiviso causa collisioni quando i test girano in parallelo con pytest-xdist"
+        "expected_fix": "Usare un path distinto (es. tmp_path / 'output2.csv') per la seconda scrittura, invece di riusare lo stesso path 'output.csv' già creato dalla prima chiamata a write_csv",
+        "notes": "write_csv apre il file in scrittura esclusiva (os.O_EXCL): riusare lo stesso path per due scritture distinte causa sempre un FileExistsError deterministico — sostituisce lo scenario originale basato su una race condition tra worker pytest-xdist paralleli (non disponibile in questo ambiente) mantenendo la stessa lezione (path di output isolati)"
     },
 
     {
+        # NOTA (riscritto): caso originale richiedeva una libreria di
+        # snapshot testing non installata. Riscritto con un confronto diretto
+        # tramite assert, stessa lezione — vedi CHANGELOG_DATASET.md.
         "id": "test_037",
         "category": "test",
         "difficulty": "medium",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
-            FAILED tests/test_report.py::test_render_summary - AssertionError: snapshot mismatch for 'summary_report'
-            - Snapshot 'summary_report' does not match
-            + Total: $1,234.56
-            - Total: 1234.56
-            1 failed, 9 passed in 0.70s
+            FAILED tests/test_report.py::test_render_summary - AssertionError: assert 'Total: $1,234.56' == 'Total: 1234.56'
+            1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-    return f\"Total: {total}\"\n+    return f\"Total: ${total:,.2f}\"",
+        "git_diff": "-    assert result == \"Total: $1,234.56\"\n+    assert result == \"Total: 1234.56\"",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Rigenerare lo snapshot con pytest --snapshot-update, poiché il nuovo formato di output ($1,234.56) è il comportamento corretto e atteso",
-        "notes": "Cambio intenzionale del formato di output richiede l'aggiornamento dello snapshot di riferimento"
+        "expected_fix": "Aggiornare l'assert atteso al nuovo formato 'Total: $1,234.56' (con simbolo di valuta e separatore delle migliaia), coerente con l'output reale di render_summary()",
+        "notes": "Sostituisce lo scenario originale basato su una libreria di snapshot testing non disponibile con un confronto diretto tramite assert (stessa lezione: l'assert atteso nel test non è stato aggiornato dopo un cambio intenzionale di formato)"
     },
 
     {
+        # NOTA (riscritto): caso originale richiedeva alembic + sqlalchemy
+        # (dipendenze pesanti non presenti). Riscritto come default di campo
+        # cambiato in un modello Python semplice (src/orders.py), stessa
+        # lezione (schema cambiato, test non aggiornato) — vedi
+        # CHANGELOG_DATASET.md.
         "id": "test_038",
         "category": "test",
         "difficulty": "medium",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
-            ERROR tests/test_orders.py::test_order_status - sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: orders.status
-            Hint: a new migration adds this column but was not applied to the test database
-            4 errors in 0.95s
+            FAILED tests/test_orders.py::test_order_status - AssertionError: assert 'pending' == 'new'
+            1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-      - run: alembic upgrade head\n-      - run: pytest tests/\n+      - run: pytest tests/",
+        "git_diff": "-    assert order[\"status\"] == \"pending\"\n+    assert order[\"status\"] == \"new\"",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare lo step 'alembic upgrade head' prima di eseguire pytest, per applicare le migrazioni al database di test",
-        "notes": "Step di migrazione del database rimosso dal workflow, lo schema di test risulta disallineato dal modello"
+        "expected_fix": "Aggiornare l'assert al valore di default corrente del campo status ('pending'), introdotto da create_order dopo l'aggiunta del campo nel modello",
+        "notes": "Sostituisce lo scenario originale basato su una migrazione Alembic mancante (dipendenza non presente in questo repo) con un caso deterministico equivalente: il valore di default del campo 'status' è cambiato nel modello ma l'assert nel test non è stato aggiornato"
     },
 
     {
+        # NOTA (riscritto): caso originale basato su un deadlock reale con
+        # Lock non rientrante (rischio di hang infinito del job CI).
+        # Riscritto come inversione dell'ordine producer/consumer, fallimento
+        # immediato e deterministico — vedi CHANGELOG_DATASET.md.
         "id": "test_039",
         "category": "test",
         "difficulty": "medium",
         "ci_logs": """
-            ##[group]Run pytest tests/ -v --timeout=30
-            FAILED tests/test_queue.py::test_consumer_processes_message - Failed: Timeout >30.0s
-            Test hung waiting on queue.get() — producer never enqueued a message due to a deadlock on the shared lock
-            1 failed, 11 passed in 30.12s
+            ##[group]Run pytest tests/ -v
+            FAILED tests/test_queue.py::test_consumer_processes_message - IndexError: pop from empty list
+            run_pipeline() ha ricevuto una coda vuota invece della coda popolata da producer()
+            1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-    with lock:\n-        queue.put(message)\n-    consumer.process()\n+    with lock:\n+        queue.put(message)\n+        consumer.process()",
+        "git_diff": "-    result = run_pipeline(queue, consumer)\n+    result = run_pipeline([], consumer)",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Spostare consumer.process() fuori dal blocco 'with lock', poiché process() tenta di riacquisire lo stesso lock causando un deadlock",
-        "notes": "Deadlock introdotto chiamando una funzione che richiede lo stesso lock già acquisito nel blocco corrente"
+        "expected_fix": "Ripristinare result = run_pipeline(queue, consumer) (la coda popolata da producer()), invece di passare una lista vuota",
+        "notes": "Sostituisce lo scenario originale basato su un deadlock reale (rischio di hang infinito del job CI) con un'inversione dell'ordine delle operazioni che produce un fallimento immediato e deterministico (IndexError), mantenendo la stessa lezione (ordine delle operazioni critico in una pipeline producer/consumer)"
     },
 
     {
@@ -1728,58 +1798,69 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale richiedeva un servizio Redis
+        # reale. Riscritto con uno store in-memory equivalente, stessa
+        # lezione (chiave del contatore condivisa per errore), deterministico
+        # a singolo processo — vedi CHANGELOG_DATASET.md.
         "id": "test_042",
         "category": "test",
         "difficulty": "hard",
         "ci_logs": """
-            ##[group]Run pytest tests/ -n 4 -v
-            FAILED tests/test_metrics.py::test_increment_counter - AssertionError: assert 97 == 100
-            Failure only reproducible under parallel execution (gw2, gw3 share the same Redis counter key)
-            FAILED (intermittent, 1/5 runs)
-            3 failed, 45 passed in 6.44s
+            ##[group]Run pytest tests/ -v
+            FAILED tests/test_metrics.py::test_increment_counter - AssertionError: assert 101 == 61
+            key_a e key_b puntano alla stessa chiave del counter store: gli incrementi di entrambi i "worker" si sommano sulla stessa entry
+            1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-    key = f'counter:{uuid.uuid4()}'\n+    key = 'counter:test'",
+        "git_diff": "-    key_b = make_key(\"service-b\")\n+    key_b = make_key(\"service-a\")",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Usare una chiave Redis univoca per test (es. f'counter:{uuid.uuid4()}') invece di una chiave fissa condivisa tra i worker paralleli",
-        "notes": "Race condition riproducibile solo con pytest-xdist: worker paralleli condividono una risorsa esterna (Redis) tramite chiave hardcoded"
+        "expected_fix": "Usare namespace distinti per key_a e key_b (es. make_key('service-b') per key_b), così che i due contatori non condividano la stessa entry nello store",
+        "notes": "Sostituisce Redis (servizio esterno non disponibile in questo ambiente) con uno store in-memory equivalente — stessa lezione (chiave del contatore condivisa per errore tra due 'worker'/namespace logici), completamente deterministico e a singolo processo"
     },
 
     {
+        # NOTA (riscritto): caso originale richiedeva innescare un vero OOM
+        # (inaffidabile/pericoloso in CI condivisa). Riscritto con un
+        # conteggio deterministico delle entry accumulate in cache, stessa
+        # lezione — vedi CHANGELOG_DATASET.md.
         "id": "test_043",
         "category": "test",
         "difficulty": "hard",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
-            FAILED tests/test_image_processing.py::test_resize[500] - Worker crashed: OOMKilled
-            Memory usage grew steadily across parametrized cases: images loaded in fixture are never released between iterations
-            2 failed, 48 passed in 45.30s
+            FAILED tests/test_image_processing.py::test_resize_iterations - AssertionError: assert 3 == 0
+            La cache non viene svuotata tra un'iterazione e l'altra: le immagini si accumulano invece di essere rilasciate
+            1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-@pytest.fixture\n-def image_cache():\n-    cache = {}\n-    yield cache\n-    cache.clear()\n+@pytest.fixture(scope='session')\n+def image_cache():\n+    cache = {}\n+    yield cache",
+        "git_diff": "-        cache.clear()\n+        pass  # clear() rimossa per errore",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare lo scope della fixture a 'function' (o aggiungere cache.clear() nel teardown) per rilasciare la memoria tra un caso parametrizzato e l'altro",
-        "notes": "Fixture con scope 'session' accumula immagini in cache tra le iterazioni parametrizzate, causando un memory leak che porta all'OOM"
+        "expected_fix": "Ripristinare cache.clear() dopo ogni cache.load() nel ciclo, così che la cache venga svuotata tra un'iterazione parametrizzata e l'altra invece di accumulare voci indefinitamente",
+        "notes": "Sostituisce l'OOM reale del caso originale (rischioso/inaffidabile da innescare in una CI condivisa) con un conteggio deterministico delle entry accumulate in cache — stessa lezione (mancato rilascio di risorse tra iterazioni), verificabile con un semplice assert senza consumare memoria reale"
     },
 
     {
+        # NOTA (riscritto): la premessa dell'originale è fattualmente errata
+        # (un dict Python 3.7+ preserva sempre l'ordine di inserimento,
+        # PYTHONHASHSEED non c'entra). Riscritto con un assert nel test che
+        # si aspetta erroneamente l'ordine alfabetico — vedi
+        # CHANGELOG_DATASET.md.
         "id": "test_044",
         "category": "test",
         "difficulty": "hard",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
-            FAILED tests/test_dedup.py::test_deduplicate_preserves_first - AssertionError: assert ['b','a'] == ['a','b']
-            Failure only occurs when PYTHONHASHSEED is randomized (not reproducible with PYTHONHASHSEED=0)
-            1 failed, 22 passed in 0.51s
+            FAILED tests/test_dedup.py::test_deduplicate_preserves_first - AssertionError: assert ['b', 'a', 'c'] == ['a', 'b', 'c']
+            1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-    seen = OrderedDict()\n+    seen = {}",
+        "git_diff": "-    assert result == [\"b\", \"a\", \"c\"]\n+    assert result == [\"a\", \"b\", \"c\"]",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Usare dict.fromkeys() o OrderedDict per deduplicare preservando l'ordine di inserimento, invece di una struttura la cui iterazione dipende dall'hash randomizzato",
-        "notes": "Comportamento non deterministico legato a PYTHONHASHSEED — il test passa quasi sempre ma fallisce sporadicamente"
+        "expected_fix": "Ripristinare l'assert atteso all'ordine di prima apparizione (['b', 'a', 'c']), coerente con l'implementazione di deduplicate_preserves_first basata su dict.fromkeys(), che preserva l'ordine di inserimento in Python 3.7+ indipendentemente da PYTHONHASHSEED",
+        "notes": "Corregge la premessa fattualmente errata del caso originale (un dict Python 3.7+ preserva sempre l'ordine di inserimento, PYTHONHASHSEED non c'entra) con un assert nel test che si aspettava erroneamente un ordine alfabetico invece dell'ordine di prima apparizione — bug deterministico, nessuna dipendenza da hash randomization"
     },
 
     {
@@ -1801,58 +1882,73 @@ DATASET = [
     },
 
     {
+        # NOTA (riscritto): caso originale richiedeva un runner macos-14/arm64
+        # (la CI attuale è solo ubuntu-latest). Riscritto con lo stesso
+        # identico problema di fondo (confronto float esatto), riproducibile
+        # deterministicamente su qualunque piattaforma standard IEEE 754 —
+        # vedi CHANGELOG_DATASET.md.
         "id": "test_046",
         "category": "test",
         "difficulty": "hard",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
-            FAILED tests/test_stats.py::test_variance_calculation - AssertionError: assert 2.9999999999999996 == 3.0
-            Passes on x86_64 runners, fails only on macos-14 (Apple Silicon / arm64) due to different floating point rounding in numpy's pairwise summation
-            1 failed, 40 passed in 1.10s
+            FAILED tests/test_stats.py::test_variance_calculation - AssertionError: assert 0.006666666666666668 == 0.006666666666666667
+            Confronto in virgola mobile con uguaglianza esatta: piccoli errori di arrotondamento nell'aritmetica IEEE 754 rendono il confronto instabile
+            1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-    assert variance == pytest.approx(3.0)\n+    assert variance == 3.0",
+        "git_diff": "-    assert result == pytest.approx(0.006666666666666667)\n+    assert result == 0.006666666666666667",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Usare pytest.approx(3.0) per il confronto, poiché piccole differenze di arrotondamento floating point tra architetture (x86_64 vs arm64) sono attese e non un bug applicativo",
-        "notes": "Differenza di precisione numerica dipendente dall'architettura del runner — comportamento noto e non un errore di calcolo"
+        "expected_fix": "Ripristinare pytest.approx(0.006666666666666667) per il confronto, poiché un confronto di uguaglianza esatta tra float è fragile a causa degli errori di arrotondamento in virgola mobile",
+        "notes": "Sostituisce lo scenario originale legato all'architettura del runner (x86_64 vs arm64, non riproducibile deterministicamente su un runner ubuntu-latest fisso) con lo stesso identico problema di fondo (confronto esatto tra float), che si manifesta in modo deterministico su qualunque piattaforma standard IEEE 754"
     },
 
     {
+        # NOTA (riscritto): caso originale combinava un sort instabile con un
+        # coverage gate all'85% non configurato in questo ci.yml. Riscritto
+        # come caso composito interamente circoscritto al file di test (assert
+        # con tie-break errato + funzione rimossa) — injection gestita da
+        # _inject_test_047 in benchmark.py (sostituzione dell'intero file, non
+        # un find/replace 1:1) — vedi CHANGELOG_DATASET.md.
         "id": "test_047",
         "category": "test",
         "difficulty": "hard",
         "ci_logs": """
-            ##[group]Run pytest tests/ -v --cov=src --cov-fail-under=85
-            FAILED tests/test_recommender.py::test_ranking_order - AssertionError: assert ['c','a','b'] == ['a','b','c']
-            This test is known to be flaky (fails ~1/20 runs) due to unstable sort on tied scores, but this run also shows coverage dropped to 82%
-            Required test coverage of 85% not reached. Total coverage: 82.00%
-            2 failed, 60 passed in 8.90s
+            ##[group]Run pytest tests/ -v
+            FAILED tests/test_recommender.py::test_ranking_order - AssertionError: assert ['a', 'b', 'c'] == ['c', 'a', 'b']
+            tests/test_recommender.py::test_edge_case_empty_input non trovato — la funzione risulta rimossa dal file
+            1 failed, 58 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-    ranked = sorted(items, key=lambda x: x.score, reverse=True)\n+    ranked = sorted(items, key=lambda x: -x.score)\n-def test_edge_case_empty_input():\n-    assert recommend([]) == []",
+        "git_diff": "-    assert recommend(items) == [\"a\", \"b\", \"c\"]\n+    assert recommend(items) == [\"c\", \"a\", \"b\"]\n-\n-\n-def test_edge_case_empty_input():\n-    assert recommend([]) == []",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Rendere l'ordinamento stabile per punteggi pari (aggiungere una key secondaria, es. per id) per eliminare la flakiness, E ripristinare test_edge_case_empty_input rimosso per riportare la coverage sopra l'85%: entrambi i problemi vanno risolti, non solo uno",
-        "notes": "Caso ambiguo hard: un test flaky preesistente nasconde una regressione reale di coverage dovuta alla rimozione di un test — richiede distinguere due problemi sovrapposti (famiglia simile a test_011/015/019)"
+        "expected_fix": "Correggere l'assert di test_ranking_order al valore atteso corretto (['a', 'b', 'c'], ordine di tie-break per 'id' crescente a parità di punteggio) E ripristinare la funzione test_edge_case_empty_input rimossa dal file: entrambi i problemi vanno risolti, non solo uno",
+        "notes": "Caso composito (due problemi indipendenti nello stesso file di test): un assert con valore atteso errato e una funzione di test interamente rimossa — sostituisce la combinazione originale di sort instabile + coverage gate (non configurato in questo ci.yml) con due difetti interamente circoscritti al file di test, entrambi deterministici"
     },
 
     {
+        # NOTA (riscritto): caso originale richiedeva pytest-xdist -n
+        # (oggetti non picklabili tra worker). Riscritto con la stessa
+        # lezione di fondo (stato condiviso per errore tra due "client" che
+        # dovrebbero essere indipendenti), riprodotta in singolo processo in
+        # modo deterministico — vedi CHANGELOG_DATASET.md.
         "id": "test_048",
         "category": "test",
         "difficulty": "hard",
         "ci_logs": """
-            ##[group]Run pytest tests/ -n 4 -v
-            ERROR tests/test_upload.py::test_multipart_upload - _pickle.PicklingError: Can't pickle <class 'threading.Lock'> object
-            remote process crashed on worker gw1
-            1 error, 51 passed in 5.5s
+            ##[group]Run pytest tests/ -v
+            FAILED tests/test_upload.py::test_multipart_upload - AssertionError: assert ['part1.bin', 'part2.bin'] == ['part1.bin']
+            client_a e client_b puntano alla stessa istanza di UploadClient invece di due istanze indipendenti
+            1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-@pytest.fixture\n-def upload_client():\n-    return UploadClient()\n+@pytest.fixture(scope='session')\n+def upload_client():\n+    client = UploadClient()\n+    client.lock = threading.Lock()\n+    return client",
+        "git_diff": "-    client_b = UploadClient()\n+    client_b = client_a",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Evitare di condividere un oggetto con threading.Lock tra worker pytest-xdist: creare il Lock all'interno di ogni test/processo invece che in una fixture session-scoped condivisa",
-        "notes": "pytest-xdist esegue i worker come processi separati; oggetti non serializzabili (come i Lock) in fixture condivise causano un crash del worker"
+        "expected_fix": "Ripristinare client_b = UploadClient() (una nuova istanza indipendente) invece di riassegnare client_b allo stesso oggetto di client_a",
+        "notes": "Sostituisce pytest-xdist (non presente in requirements.txt) e l'errore di pickling di threading.Lock con la stessa lezione di fondo (stato condiviso per errore tra due 'client' che dovrebbero essere indipendenti), riprodotta in singolo processo in modo completamente deterministico"
     },
 
     {
