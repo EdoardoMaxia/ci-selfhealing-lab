@@ -12,6 +12,7 @@ jobs:
     name: Run Tests
     env:
       PYTHONPATH: ${{ github.workspace }}
+      DATABASE_URL: ${{ secrets.DB_URL }}
 
     steps:
       - name: Checkout code
