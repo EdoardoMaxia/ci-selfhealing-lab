@@ -30,3 +30,7 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest tests/ -v --cov=src --cov-report=term-missing
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
