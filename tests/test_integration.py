@@ -2,9 +2,10 @@ import pytest
 from src.integration_db import get_connection
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='session')
 def db_setup():
     conn = get_connection()
+    conn.execute("CREATE TABLE IF NOT EXISTS users (name TEXT)")
     conn.execute("INSERT INTO users (name) VALUES ('alice')")
     conn.commit()
     yield conn
