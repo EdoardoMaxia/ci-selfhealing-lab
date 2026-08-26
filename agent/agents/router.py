@@ -1,9 +1,21 @@
 import os
+import re
 import json
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
 
 load_dotenv()
+
+THINK_BLOCK_RE = re.compile(r"<think>.*?</think>", re.DOTALL | re.IGNORECASE)
+
+
+def strip_think_blocks(text: str) -> str:
+    """
+    Rimuove i blocchi di reasoning <think>...</think> che alcuni modelli
+    (es. Qwen3.8, Qwen3-Coder via Ollama) anteponte alla risposta vera e
+    propria. Va chiamata PRIMA di qualunque parsing (JSON o contenuto file).
+    """
+    return THINK_BLOCK_RE.sub("", text).strip()
 
 # ---- Scelta del modello ----
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "anthropic")  # Prende dalla variabile del .env, altrimenti "anthropic"
@@ -86,6 +98,9 @@ def router_node(state: dict) -> dict:
     # Chiama l'LLM
     response = llm.invoke(messages)
     raw = response.content.strip() #type: ignore
+
+    # Rimuove eventuali blocchi <think>...</think> (Qwen3.8, Qwen3-Coder, ...)
+    raw = strip_think_blocks(raw)
 
     # Pulisce la risposta (a volte l'LLM aggiunge ```json ...```)
     if raw.startswith("```"):

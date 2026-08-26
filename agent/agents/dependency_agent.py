@@ -13,7 +13,7 @@ load_dotenv()
 
 
 # Riusa la stessa funzione get_llm del router
-from agent.agents.router import get_llm
+from agent.agents.router import get_llm, strip_think_blocks
 
 # ─────────────────────────────────────────────
 #  SYSTEM PROMPT — specializzato su dipendenze
@@ -146,6 +146,8 @@ def dependency_agent_node(state: dict) -> dict:
     response = llm.invoke(messages)
     new_content = response.content.strip() #type: ignore
 
+    # Rimuove eventuali blocchi <think>...</think> (Qwen3.8, Qwen3-Coder, ...)
+    new_content = strip_think_blocks(new_content)
 
     # Pulisce eventuali backtick residui
     if new_content.startswith("```"):

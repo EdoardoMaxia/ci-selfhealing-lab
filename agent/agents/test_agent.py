@@ -3,7 +3,7 @@ import re
 from pathlib import Path
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
-from agent.agents.router import get_llm
+from agent.agents.router import get_llm, strip_think_blocks
 
 from agent.memory.episodic_store import (
     retrieve_similar_episodes,
@@ -144,6 +144,9 @@ def test_agent_node(state: dict) -> dict:
         HumanMessage(content=user_message)
     ])
     new_content = response.content.strip() #type: ignore
+
+    # Rimuove eventuali blocchi <think>...</think> (Qwen3.8, Qwen3-Coder, ...)
+    new_content = strip_think_blocks(new_content)
 
     # Pulisce backtick residui
     if new_content.startswith("```"):

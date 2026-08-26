@@ -80,7 +80,31 @@ MODELS = [
         "type":     "open-source-local",
         "timeout":  900, # <-- prima settato a 600 ma meglio alzare
     },
-    
+    {
+        "id":       "ollama_llama70b",
+        "provider": "ollama",
+        "ollama_model": "llama3.3:70b",
+        "name":     "Llama 3.3 70B",
+        "type":     "open-source-local",
+        "timeout":  900,
+    },
+    {
+        "id":       "ollama_qwen38_27b",
+        "provider": "ollama",
+        "ollama_model": "qwen3.8:27b",
+        "name":     "Qwen3.8 27B",
+        "type":     "open-source-local",
+        "timeout":  900,
+    },
+    {
+        "id":       "ollama_qwen3coder_30b",
+        "provider": "ollama",
+        "ollama_model": "qwen3-coder:30b",
+        "name":     "Qwen3-Coder 30B",
+        "type":     "open-source-local",
+        "timeout":  900,
+    },
+
     {
         "id":       "openai_gpt4o",
         "provider": "openai",
@@ -937,7 +961,8 @@ def main():
     parser.add_argument(
         "--ollama-model",
         dest="ollama_model",
-        choices=["llama3.1:8b", "mistral:7b", "all"],
+        choices=["llama3.1:8b", "llama3.3:70b", "qwen3.8:27b",
+                 "qwen3-coder:30b", "mistral:7b", "all"],
         default="all",
         help="Modello Ollama specifico (usare con --provider ollama)"
     )

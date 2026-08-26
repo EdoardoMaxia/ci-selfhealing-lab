@@ -51,7 +51,10 @@ DISPLAY_NAMES = {
     "openai_gpt4o":     "GPT-4o",
     "ollama_llama8b":   "Llama 3.1 8B",
     "ollama_mistral7b": "Mistral 7B",
-    "groq_llama70b":    "Llama 3.3 70B",
+    "groq_llama70b":       "Llama 3.3 70B",
+    "ollama_llama70b":     "Llama 3.3 70B",
+    "ollama_qwen38_27b":   "Qwen3.8 27B",
+    "ollama_qwen3coder_30b": "Qwen3-Coder 30B",
 }
 
 # Ordine preferenziale in cui mostrare i modelli trovati; i modelli non
@@ -60,6 +63,8 @@ PREFERRED_MODEL_ORDER = [
     "Claude Haiku",
     "GPT-4o",
     "Llama 3.3 70B",
+    "Qwen3.8 27B",
+    "Qwen3-Coder 30B",
     "Llama 3.1 8B",
     "Mistral 7B",
 ]
@@ -67,11 +72,13 @@ PREFERRED_MODEL_ORDER = [
 # Colori noti per display name; i modelli sconosciuti pescano dalla palette
 # di fallback qui sotto, in ordine di apparizione in MODEL_ORDER.
 KNOWN_COLORS = {
-    "Claude Haiku":  "#cc785c",
-    "GPT-4o":        "#10a37f",
-    "Llama 3.3 70B": "#4f8ef7",
-    "Llama 3.1 8B":  "#8b5cf6",
-    "Mistral 7B":    "#f59e0b",
+    "Claude Haiku":    "#cc785c",
+    "GPT-4o":          "#10a37f",
+    "Llama 3.3 70B":   "#4f8ef7",
+    "Qwen3.8 27B":     "#ff6b6b",
+    "Qwen3-Coder 30B": "#4ecdc4",
+    "Llama 3.1 8B":    "#8b5cf6",
+    "Mistral 7B":      "#f59e0b",
 }
 
 FALLBACK_PALETTE = [
@@ -79,8 +86,8 @@ FALLBACK_PALETTE = [
 ]
 
 # Popolati a runtime da load_all_data() -> discover_results()
-MODEL_ORDER: list = []
-COLORS: dict = {}
+MODEL_ORDER: list[str] = []
+COLORS: dict[str, str] = {}
 
 
 def discover_results(results_dir: Path = RESULTS_DIR):
@@ -161,6 +168,18 @@ def load_all_data(results_dir: Path = RESULTS_DIR) -> pd.DataFrame:
             print(f"⚠️  File non trovato: {path}")
             continue
         df = pd.read_csv(path)
+
+        # I casi con final_status=="excluded" (target non iniettabile, vedi
+        # CHANGELOG_DATASET.md) non sono tentativi reali: vanno esclusi dal
+        # denominatore di SR / Router F1 / attempt distribution, ma non
+        # dovrebbero più comparire nei CSV attuali (dataset 150/150 attivi).
+        if "final_status" in df.columns:
+            n_excluded = int((df["final_status"] == "excluded").sum())
+            if n_excluded > 0:
+                df = df[df["final_status"] != "excluded"].reset_index(drop=True)
+                print(f"  ⚠️  {n_excluded} casi 'excluded' rimossi da {path.name} "
+                      f"(non entrano nel calcolo di SR/F1/attempt distribution)")
+
         df["model_label"] = model
         df["condition"]   = condition
         dfs.append(df)
@@ -686,8 +705,29 @@ def print_summary_table(df: pd.DataFrame):
                   f"  {esc}/{n} ({esc/n*100:.4f}%)")
         print("  " + "=" * 82)
 
-    print("\nNOTA T3=0% (no_memory): senza memoria il RAG al T3 è disabilitato.")
-    print("  Il contributo del T3 emerge solo con memoria attiva (fig7).")
+    # Nota T3 dinamica — con il dataset attuale il fix al 3° tentativo può
+    # comparire anche senza memoria episodica (il router può convergere al
+    # T3 senza RAG); qui si riporta cosa mostrano davvero i dati, invece di
+    # assumere staticamente T3=0% senza memoria.
+    no_mem_data = df[df["condition"] == "no_memory"]
+    t3_no_mem = {}
+    for model in models:
+        md = no_mem_data[no_mem_data["model_label"] == model]
+        n = len(md)
+        if n == 0:
+            continue
+        t3 = len(md[(md["success"] == 1) & (md["fix_attempt"] == 3)])
+        if t3 > 0:
+            t3_no_mem[model] = (t3, n)
+
+    print()
+    if t3_no_mem:
+        print("NOTA T3 (senza memoria): fix al tentativo 3 osservati anche senza RAG:")
+        for model, (t3, n) in t3_no_mem.items():
+            print(f"  - {model}: {t3}/{n} ({t3/n*100:.4f}%)")
+    else:
+        print("NOTA T3=0% (no_memory): nessun fix al tentativo 3 osservato senza")
+        print("  memoria episodica in questo dataset.")
 
     # JSON parse failure
     print("\nJSON PARSE FAILURE RATE")
