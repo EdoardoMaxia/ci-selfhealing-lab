@@ -13,7 +13,11 @@ Grafici prodotti:
 
 Uso:
     python experiments/analysis.py
+    python experiments/analysis.py --results-dir path/ai/csv
 """
+
+import argparse
+import re
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -29,54 +33,142 @@ FIGURES_DIR = Path("experiments/figures")
 FIGURES_DIR.mkdir(exist_ok=True)
 
 # ══════════════════════════════════════════════════════════════
-# MAPPA FILE
+# AUTO-DISCOVERY DEI CSV — vedi discover_results()
+#
+# Pattern atteso (generato da benchmark.py):
+#   benchmark_{YYYYMMDD}_{HHMMSS}_{model_id}_{condition}.csv
+# Esempio:
+#   benchmark_20260825_094127_anthropic_haiku_nomemory.csv
 # ══════════════════════════════════════════════════════════════
 
-FILES = {
-    ("Claude Haiku",  "no_memory"): "anthropic/no_memory/150_bench/benchmark_20260718_150909.csv",
-    ("Claude Haiku",  "memory"):    "anthropic/memory/run3_150_bench/benchmark_20260718_150909.csv",
-    ("GPT-4o",        "no_memory"): "openai/no_memory/run2_150bench/benchmark_20260719_140530_nomemory.csv",
-    ("GPT-4o",        "memory"):    "openai/memory/run2_150_bench/benchmark_20260718_171457.csv",
-    #("Llama 3.3 70B", "no_memory"): "groq/no_memory/benchmark_20260531_094026_dryrun.csv", --> Down il server API
-    #("Llama 3.3 70B", "memory"):    "groq/memory/benchmark_20260601_093236.csv", --> Down il server API
-    ("Llama 3.1 8B",  "no_memory"): "ollama/llama_3_1_8b/no_memory/run_150bench/benchmark_20260719_214411_nomemory.csv",
-    ("Llama 3.1 8B",  "memory"):    "ollama/llama_3_1_8b/memory/run2_150_bench/benchmark_20260718_194349.csv",
-    ("Mistral 7B",    "no_memory"): "ollama/mistral_7b/no_memory/run2_150bench/benchmark_20260720_080456_nomemory.csv",
-    ("Mistral 7B",    "memory"):    "ollama/mistral_7b/memory/run2_150bench/benchmark_20260719_081907.csv",
+FILENAME_RE = re.compile(
+    r"^benchmark_(\d{8})_(\d{6})_(.+)_(nomemory|memory)\.csv$"
+)
+
+# model_id (dal nome file) -> display name leggibile
+DISPLAY_NAMES = {
+    "anthropic_haiku":  "Claude Haiku",
+    "openai_gpt4o":     "GPT-4o",
+    "ollama_llama8b":   "Llama 3.1 8B",
+    "ollama_mistral7b": "Mistral 7B",
+    "groq_llama70b":    "Llama 3.3 70B",
 }
 
-MODEL_ORDER = [
+# Ordine preferenziale in cui mostrare i modelli trovati; i modelli non
+# presenti in questa lista vengono aggiunti in fondo in ordine alfabetico.
+PREFERRED_MODEL_ORDER = [
     "Claude Haiku",
     "GPT-4o",
-    #"Llama 3.3 70B", --> Down il server API
+    "Llama 3.3 70B",
     "Llama 3.1 8B",
     "Mistral 7B",
 ]
 
-COLORS = {
+# Colori noti per display name; i modelli sconosciuti pescano dalla palette
+# di fallback qui sotto, in ordine di apparizione in MODEL_ORDER.
+KNOWN_COLORS = {
     "Claude Haiku":  "#cc785c",
     "GPT-4o":        "#10a37f",
-    #"Llama 3.3 70B": "#4f8ef7",
+    "Llama 3.3 70B": "#4f8ef7",
     "Llama 3.1 8B":  "#8b5cf6",
     "Mistral 7B":    "#f59e0b",
 }
+
+FALLBACK_PALETTE = [
+    "#ec4899", "#14b8a6", "#f97316", "#6366f1", "#84cc16", "#eab308",
+]
+
+# Popolati a runtime da load_all_data() -> discover_results()
+MODEL_ORDER: list = []
+COLORS: dict = {}
+
+
+def discover_results(results_dir: Path = RESULTS_DIR):
+    """
+    Scansiona ricorsivamente results_dir alla ricerca dei CSV di benchmark
+    e ne fa il parsing in base al pattern del nome file
+    (benchmark_{YYYYMMDD}_{HHMMSS}_{model_id}_{condition}.csv).
+
+    A parità di (model_id, condition), tiene solo il file più recente
+    (timestamp più alto nel nome).
+
+    Ritorna (files, model_order, colors):
+      - files: dict {(display_name, condition): Path}
+               condition è "no_memory" o "memory"
+      - model_order: lista di display name, ordine preferenziale + resto alfabetico
+      - colors: dict {display_name: colore esadecimale}
+    """
+    latest = {}  # (model_id, condition) -> (timestamp_str, Path)
+    skipped = []
+
+    for csv_path in sorted(results_dir.rglob("*.csv")):
+        m = FILENAME_RE.match(csv_path.name)
+        if not m:
+            skipped.append(csv_path)
+            continue
+        date_str, time_str, model_id, cond_raw = m.groups()
+        condition = "no_memory" if cond_raw == "nomemory" else "memory"
+        timestamp = date_str + time_str
+        key = (model_id, condition)
+        if key not in latest or timestamp > latest[key][0]:
+            latest[key] = (timestamp, csv_path)
+
+    print("\nFile CSV individuati:")
+    files = {}
+    for (model_id, condition), (timestamp, path) in sorted(latest.items()):
+        label = DISPLAY_NAMES.get(model_id, model_id)
+        files[(label, condition)] = path
+        try:
+            shown_path = path.relative_to(results_dir)
+        except ValueError:
+            shown_path = path
+        print(f"  {shown_path}  →  model_id='{model_id}' → '{label}', "
+              f"condition='{condition}' (timestamp {timestamp})")
+
+    if skipped:
+        print(f"  ({len(skipped)} file .csv ignorati: nome non conforme al pattern)")
+        for path in skipped:
+            print(f"    - {path}")
+
+    labels_found = sorted({label for (label, _cond) in files.keys()})
+    preferred = [m for m in PREFERRED_MODEL_ORDER if m in labels_found]
+    rest      = sorted(m for m in labels_found if m not in PREFERRED_MODEL_ORDER)
+    model_order = preferred + rest
+
+    colors = {}
+    fallback_i = 0
+    for label in model_order:
+        if label in KNOWN_COLORS:
+            colors[label] = KNOWN_COLORS[label]
+        else:
+            colors[label] = FALLBACK_PALETTE[fallback_i % len(FALLBACK_PALETTE)]
+            fallback_i += 1
+
+    return files, model_order, colors
+
 
 # ══════════════════════════════════════════════════════════════
 # CARICAMENTO
 # ══════════════════════════════════════════════════════════════
 
-def load_all_data() -> pd.DataFrame:
+def load_all_data(results_dir: Path = RESULTS_DIR) -> pd.DataFrame:
+    global MODEL_ORDER, COLORS
+    files, MODEL_ORDER, COLORS = discover_results(results_dir)
+
     dfs = []
-    for (model, condition), rel_path in FILES.items():
-        full_path = RESULTS_DIR / rel_path
-        if not full_path.exists():
-            print(f"⚠️  File non trovato: {full_path}")
+    for (model, condition), path in files.items():
+        if not path.exists():
+            print(f"⚠️  File non trovato: {path}")
             continue
-        df = pd.read_csv(full_path)
+        df = pd.read_csv(path)
         df["model_label"] = model
         df["condition"]   = condition
         dfs.append(df)
-        print(f"✅ Caricato: {model} / {condition} — {len(df)} righe")
+        print(f"✅ Caricato: {model} / {condition} — {len(df)} righe  ({path.name})")
+
+    if not dfs:
+        raise SystemExit(f"Nessun CSV valido trovato in: {results_dir}")
+
     combined = pd.concat(dfs, ignore_index=True)
     print(f"\nDataset totale: {len(combined)} righe\n")
     return combined
@@ -611,10 +703,20 @@ def print_summary_table(df: pd.DataFrame):
 # MAIN
 # ══════════════════════════════════════════════════════════════
 
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Analisi e visualizzazione — benchmark self-healing CI/CD")
+    parser.add_argument(
+        "--results-dir", type=Path, default=RESULTS_DIR,
+        help=f"Cartella da scansionare per i CSV di benchmark (default: {RESULTS_DIR})")
+    return parser.parse_args()
+
+
 def main():
     set_style()
-    print("Caricamento dati...")
-    df = load_all_data()
+    args = parse_args()
+    print(f"Caricamento dati da: {args.results_dir}")
+    df = load_all_data(args.results_dir)
 
     print("\nGenerazione grafici...")
     plot_sr_by_category(df)               # fig1
