@@ -1,8 +1,8 @@
 from src.pipeline import run_pipeline
 
-
 def test_consumer_processes_message():
     queue = []
+    queue.append("hello")
 
     def producer():
         queue.append("hello")
@@ -10,6 +10,5 @@ def test_consumer_processes_message():
     def consumer(msg):
         return msg.upper()
 
-    producer()
     result = run_pipeline(queue, consumer)
     assert result == "HELLO"
