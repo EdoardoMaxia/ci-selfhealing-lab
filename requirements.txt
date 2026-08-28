@@ -1,5 +1,5 @@
 pytest==7.4.0
 pytest-cov==4.1.0
-numpy==1.23.5
-pandas==2.0.3
-scipy==1.11.0
+package-a==2.0.0
+package-b==1.5.0
+shared-lib==2.0.0
