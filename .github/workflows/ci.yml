@@ -34,7 +34,6 @@ jobs:
 
   C:
     needs: [A, B]
-    if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
