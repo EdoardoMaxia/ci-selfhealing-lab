@@ -5,4 +5,4 @@ from src.mailer import notify_user
 def test_email_send():
     mock_smtp = MagicMock()
     notify_user(mock_smtp, "user@example.com", "subject", "body")
-    mock_smtp.send_email.assert_called_once()
+    mock_smtp.send_message.assert_called_once()
