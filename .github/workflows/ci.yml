@@ -7,57 +7,28 @@ on:
     branches: [main]
 
 jobs:
-  A:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-      - name: Run job A tasks
-        run: echo "Running tasks for job A"
-
-  B:
-    needs: A
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Run job B tasks
-        run: echo "Running tasks for job B"
-
-  C:
-    needs: [A, B]
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Run additional tasks
-        run: echo "Running additional tasks for job C"
+          python-version: 3.9
 
   test:
+    needs: setup
     runs-on: ubuntu-latest
-    name: Run Tests
     env:
       PYTHONPATH: ${{ github.workspace }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: 3.9
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -65,3 +36,19 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest tests/ -v --cov=src --cov-report=term-missing
+
+  deploy:
+    if: startsWith(github.ref, 'refs/heads/release/')
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+          role-arn: arn:aws:iam::123456789012:role/AWS_ROLE
+          web-identity-token-file: aws-token
+      - name: Run deploy tasks
+        run: echo "Running deploy tasks"
