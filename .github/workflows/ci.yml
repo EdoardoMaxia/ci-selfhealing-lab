@@ -9,6 +9,9 @@ on:
 jobs:
   A:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ci-${{ github.workflow }}-A-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -22,6 +25,9 @@ jobs:
   B:
     needs: A
     runs-on: ubuntu-latest
+    concurrency:
+      group: ci-${{ github.workflow }}-B-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -36,6 +42,9 @@ jobs:
     needs: [A, B]
     if: always()
     runs-on: ubuntu-latest
+    concurrency:
+      group: ci-${{ github.workflow }}-C-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -49,6 +58,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     name: Run Tests
+    concurrency:
+      group: ci-${{ github.workflow }}-test-${{ github.ref }}
+      cancel-in-progress: true
     env:
       PYTHONPATH: ${{ github.workspace }}
     steps:
