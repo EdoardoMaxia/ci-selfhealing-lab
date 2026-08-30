@@ -2,7 +2,7 @@ import pytest
 from src.integration_db import get_connection
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='session')
 def db_setup():
     conn = get_connection()
     conn.execute("INSERT INTO users (name) VALUES ('alice')")
@@ -17,5 +17,7 @@ def test_process_and_archive(db_setup):
 
 
 def test_full_pipeline(db_setup):
+    db_setup.execute("INSERT INTO users (name) VALUES ('alice')")
+    db_setup.commit()
     count = db_setup.execute("SELECT COUNT(*) FROM users").fetchone()[0]
     assert count == 1
