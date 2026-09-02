@@ -1,5 +1,5 @@
-pytest==7.4.0
+`pytest==7.4.0
 pytest-cov==4.1.0
-numpy==1.23.5
-pandas==2.0.3
-scipy==1.11.0
+B==<version_from_commit>`
+
+Rimpiazza `<version_from_commit>` con la versione di `B` che era installata al momento del commit che ha causato il fallimento.
