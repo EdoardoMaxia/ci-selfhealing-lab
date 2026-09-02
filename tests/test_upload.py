@@ -1,6 +1,5 @@
 from src.upload import UploadClient
 
-
 def test_multipart_upload():
     client_a = UploadClient()
     client_b = UploadClient()
