@@ -65,3 +65,8 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest tests/ -v --cov=src --cov-report=term-missing
+      - name: Run some-org/some-action@v1
+        uses: some-org/some-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+        if: always()
