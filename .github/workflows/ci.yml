@@ -65,3 +65,6 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest tests/ -v --cov=src --cov-report=term-missing
+      - name: Report status
+        if: always()
+        run: echo "Test job completed"
