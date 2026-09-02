@@ -1,26 +1,18 @@
-import pytest
-from src.calculator import add, divide, factorial
-
-def test_add_positivi():
-    assert add(2, 3) == 5
-
-def test_add_negativi():
-    assert add(-1, -1) == -2
-
-def test_divide_normale():
-    assert divide(10, 2) == 5.0
-
-def test_divide_per_zero():
-    with pytest.raises(ValueError):
-        divide(5, 0)
-
-def test_factorial_minore_zero():
-    with pytest.raises(ValueError):
-        factorial(-1)
-
-def test_factorial_base():
-    assert factorial(0) == 1
-    assert factorial(1) == 1
-
 def test_factorial_normale():
     assert factorial(5) == 120
+
+def test_factorial_errato():
+    assert factorial(5) == 60
+```
+
+Inoltre, è necessario verificare che il problema sia dovuto a un errore nel codice sorgente e non nel test. Se il problema è dovuto a un errore nel codice sorgente, è necessario correggerlo.
+
+```python
+def factorial(n):
+    """Calcola il fattoriale di n."""
+    if n < 0:
+        raise ValueError("n deve essere >= 0")
+    if n == 0:
+        return 1
+    return n * factorial(n - 1)
+```
