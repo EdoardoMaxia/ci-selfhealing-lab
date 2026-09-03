@@ -2,7 +2,6 @@ import pytest
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
-
 def test_hours_between():
     tz = ZoneInfo("Europe/Rome")
     # Conversione esplicita a UTC prima della sottrazione: se si sottraggono
