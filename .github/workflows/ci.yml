@@ -46,6 +46,11 @@ jobs:
       - name: Run additional tasks
         run: echo "Running additional tasks for job C"
 
+  deploy-inner-call:
+    needs: C
+    uses: ./.github/workflows/deploy-inner.yml
+    secrets: inherit
+
   test:
     runs-on: ubuntu-latest
     name: Run Tests
