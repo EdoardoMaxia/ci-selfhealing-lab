@@ -3,5 +3,5 @@ from src.parser import parse
 
 
 def test_invalid_input():
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         parse(None)
