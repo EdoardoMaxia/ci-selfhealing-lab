@@ -10,41 +10,32 @@ jobs:
   A:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Run job A tasks
-        run: echo "Running tasks for job A"
+      - run: echo "Running tasks for job A"
 
   B:
     needs: A
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Run job B tasks
-        run: echo "Running tasks for job B"
+      - run: echo "Running tasks for job B"
 
   C:
     needs: [A, B]
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Run additional tasks
-        run: echo "Running additional tasks for job C"
+      - run: echo "Running additional tasks for job C"
 
   test:
     runs-on: ubuntu-latest
@@ -52,16 +43,12 @@ jobs:
     env:
       PYTHONPATH: ${{ github.workspace }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install dependencies
-        run: |
+      - run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Run tests with coverage
-        run: |
+      - run: |
           pytest tests/ -v --cov=src --cov-report=term-missing
