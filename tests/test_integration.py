@@ -8,6 +8,8 @@ def db_setup():
     conn.execute("INSERT INTO users (name) VALUES ('alice')")
     conn.commit()
     yield conn
+    conn.execute("DELETE FROM users")
+    conn.commit()
     conn.close()
 
 
