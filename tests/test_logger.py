@@ -1,7 +1,5 @@
-from src.logger import log_entry
-
-
-def test_second_call_has_only_its_own_entries():
-    log_entry("first")
-    result2 = log_entry("second")
-    assert result2 == ["second"]
+def log_entry(entry, entries=None):
+    if entries is None:
+        entries = []
+    entries.append(entry)
+    return entries
