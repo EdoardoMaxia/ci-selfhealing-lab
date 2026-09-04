@@ -47,7 +47,7 @@ jobs:
         run: echo "Running additional tasks for job C"
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
     name: Run Tests
     env:
       PYTHONPATH: ${{ github.workspace }}
