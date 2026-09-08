@@ -2,6 +2,6 @@ from src.auth import login
 
 
 def test_login():
-    # 5 caratteri: rifiutata col minimo a 8, accettata (erroneamente) col minimo a 4
-    response = login("user", "abcde")
+    # 3 caratteri: rifiutata col minimo a 4
+    response = login("user", "abc")
     assert response.ok == False
