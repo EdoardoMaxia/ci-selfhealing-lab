@@ -49,6 +49,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     name: Run Tests
+    if: github.ref == 'refs/heads/main'
     env:
       PYTHONPATH: ${{ github.workspace }}
     steps:
