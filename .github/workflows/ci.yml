@@ -43,6 +43,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Build Docker image
+        run: |
+          docker build -t my-image:latest -f ./app/Dockerfile ./app
       - name: Run additional tasks
         run: echo "Running additional tasks for job C"
 
