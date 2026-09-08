@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [main]
 
+concurrency:
+  group: ci-${{ github.workflow }}-${{ matrix.os }}-${{ matrix.python-version }}
+
 jobs:
   A:
     runs-on: ubuntu-latest
