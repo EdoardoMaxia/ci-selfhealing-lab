@@ -49,6 +49,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     name: Run Tests
+    strategy:
+      fail-fast: true
     env:
       PYTHONPATH: ${{ github.workspace }}
     steps:
