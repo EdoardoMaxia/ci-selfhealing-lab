@@ -65,3 +65,18 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest tests/ -v --cov=src --cov-report=term-missing
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: [A, B, C, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+      - name: Deploy
+        run: echo "Deploying application"
