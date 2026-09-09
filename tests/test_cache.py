@@ -1,6 +1,5 @@
 from src.cache import TTLCache
 
-
 def test_cache_invalidation():
     fake_time = [0]
     cache = TTLCache(ttl_seconds=300, clock=lambda: fake_time[0])
