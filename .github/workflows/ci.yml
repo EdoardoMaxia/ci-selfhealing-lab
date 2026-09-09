@@ -18,6 +18,11 @@ jobs:
           python-version: "3.11"
       - name: Run job A tasks
         run: echo "Running tasks for job A"
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-A
+          path: test-results/
 
   B:
     needs: A
@@ -31,6 +36,11 @@ jobs:
           python-version: "3.11"
       - name: Run job B tasks
         run: echo "Running tasks for job B"
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-B
+          path: test-results/
 
   C:
     needs: [A, B]
@@ -45,6 +55,11 @@ jobs:
           python-version: "3.11"
       - name: Run additional tasks
         run: echo "Running additional tasks for job C"
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: all-artifacts/
+          pattern: test-results-*
 
   test:
     runs-on: ubuntu-latest
@@ -65,3 +80,8 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest tests/ -v --cov=src --cov-report=term-missing
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-test
+          path: test-results/
