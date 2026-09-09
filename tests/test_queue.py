@@ -1,6 +1,5 @@
 from src.pipeline import run_pipeline
 
-
 def test_consumer_processes_message():
     queue = []
 
