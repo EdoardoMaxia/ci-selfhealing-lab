@@ -12,10 +12,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: 3.11
       - name: Run job A tasks
         run: echo "Running tasks for job A"
 
@@ -25,10 +25,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
       - name: Run job B tasks
         run: echo "Running tasks for job B"
 
@@ -39,10 +37,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
       - name: Run additional tasks
         run: echo "Running additional tasks for job C"
 
@@ -54,10 +50,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: 3.11
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
