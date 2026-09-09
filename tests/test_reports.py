@@ -2,14 +2,14 @@ import pytest
 from src.reports import Engine, ReportWriter
 
 
-@pytest.fixture()
+@pytest.fixture(scope='module')
 def db_engine():
     engine = Engine()
     yield engine
     engine.close()
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture()
 def report_writer(db_engine):
     return ReportWriter(db_engine)
 
