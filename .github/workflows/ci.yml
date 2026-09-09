@@ -46,7 +46,7 @@ jobs:
       - name: Run additional tasks
         run: echo "Running additional tasks for job C"
 
-  test:
+  test-suite:
     runs-on: ubuntu-latest
     name: Run Tests
     env:
@@ -65,3 +65,5 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest tests/ -v --cov=src --cov-report=term-missing
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
