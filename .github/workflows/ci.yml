@@ -49,8 +49,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     name: Run Tests
-    env:
-      PYTHONPATH: ${{ github.workspace }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -65,3 +63,6 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest tests/ -v --cov=src --cov-report=term-missing
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+          API_SECRET: ${{ secrets.API_SECRET }}
