@@ -7,8 +7,11 @@ on:
     branches: [main]
 
 jobs:
-  A:
+  deploy:
     runs-on: ubuntu-latest
+    concurrency:
+      group: deploy
+      cancel-in-progress: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -16,35 +19,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Run job A tasks
-        run: echo "Running tasks for job A"
-
-  B:
-    needs: A
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Run job B tasks
-        run: echo "Running tasks for job B"
-
-  C:
-    needs: [A, B]
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Run additional tasks
-        run: echo "Running additional tasks for job C"
+      - name: Run deploy job
+        run: echo "Deploying to production"
 
   test:
     runs-on: ubuntu-latest
