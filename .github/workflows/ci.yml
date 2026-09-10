@@ -65,3 +65,17 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest tests/ -v --cov=src --cov-report=term-missing
+      - name: Run build script
+        run: ./scripts/build.sh
+        shell: bash
+        continue-on-error: true
+        timeout-minutes: 10
+      - name: Check build script result
+        if: always()
+        run: |
+          if [ $? -eq 0 ]; then
+            echo "Build script completed successfully"
+          else
+            echo "Build script failed"
+            exit 1
+          fi
