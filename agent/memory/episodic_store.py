@@ -2,6 +2,7 @@ import os
 import uuid
 from datetime import datetime
 from pathlib import Path
+from typing import Optional
 import chromadb
 from chromadb.utils import embedding_functions
 
@@ -37,13 +38,17 @@ def get_collection():
     )
 
 
-def save_episode(state: dict, outcome: str) -> str:
+def save_episode(state: dict, outcome: str, case_id: Optional[str] = None) -> str:
     """
     Salva un episodio in ChromaDB dopo il completamento di un ciclo.
     outcome: "success" | "failed" | "escalated"
     Ritorna l'ID dell'episodio salvato.
     """
     collection = get_collection()
+
+    # case_id identifies the benchmark case that produced this episode; it lets
+    # retrieve_similar_episodes() exclude an episode of the very same case.
+    resolved_case_id = case_id if case_id is not None else (state.get("case_id") or "")
 
     history   = state.get("attempts_history", [])
     last_fix  = history[-1] if history else {}
@@ -65,6 +70,7 @@ def save_episode(state: dict, outcome: str) -> str:
         documents=[error_signature],
         metadatas=[{
             "error_category":  state.get("error_category", "unknown"),
+            "case_id":         resolved_case_id,
             "fix_applied":     last_fix.get("fix_applied", ""),
             "fix_diff":        last_fix.get("fix_diff", "")[:500],
             "outcome":         outcome,

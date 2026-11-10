@@ -17,6 +17,8 @@ class AgentState(TypedDict):
     repo_name: str             # es. "username/ci-selfhealing-lab"
     git_diff: str              # diff dell'ultimo commit
 
+    case_id: Optional[str]     # benchmark case id: ONLY for memory tagging/exclusion, never shown to LLMs
+
     # --- ROUTING ---
     error_category: Optional[str]    # valorizzato dal Router Agent
     error_confidence: Optional[float] # 0.0 - 1.0

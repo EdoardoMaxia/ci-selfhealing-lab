@@ -681,6 +681,8 @@ def run_single_error(error: dict, dry_run: bool, no_memory: bool, readonly_memor
         "ci_conclusion":    "failure",
         # opaque SHA1 of the case id: must NOT reveal the ground-truth category
         "commit_sha":       hashlib.sha1(error['id'].encode()).hexdigest(),
+        # used only to tag/exclude episodes in memory; never part of an LLM prompt
+        "case_id":          error['id'],
         "repo_name":        os.getenv("GITHUB_REPO", ""),
         "git_diff":         error.get("git_diff", ""),
         "repo_path":        ".",
