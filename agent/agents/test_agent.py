@@ -96,7 +96,7 @@ def test_agent_node(state: dict) -> dict:
         # Recupera fix simili dalla memoria episodica
         similar = retrieve_similar_episodes(
             error_logs=state["ci_logs"],
-            category="config",
+            category="test",
             top_k=3
         )
         memory_context = format_episodes_for_prompt(similar)
