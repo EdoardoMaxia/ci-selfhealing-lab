@@ -119,12 +119,15 @@ def call_router(router, state: dict, timeout: int):
 def run_condition(model: dict, router, condition: str, cases: list, timeout: int, pause: float):
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     path = OUT_DIR / f"router_dryrun_{condition}__{model['id']}.csv"
-    rows, parse_fail, call_err = [], 0, 0
+    rows, parse_fail, call_err, consecutive_err = [], 0, 0, 0
     print(f"\n=== {model['name']} ({model['id']}) | condition={condition} | {len(cases)} cases ===")
     for i, err in enumerate(cases, 1):
         cat, conf, pf, e = call_router(router, build_state(err, condition), timeout)
         parse_fail += int(pf)
         call_err += int(bool(e))
+        consecutive_err = consecutive_err + 1 if e else 0
+        if consecutive_err >= 5:      # bad key / provider down: do NOT save a fake 0% result
+            raise SystemExit(f"Aborted: 5 consecutive Router call errors (last: {e}). Nothing saved.")
         if e:
             print(f"  [{i}/{len(cases)}] {err['id']}: ERROR {e}")
         rows.append({"case_id": err["id"], "true_category": err["category"],
