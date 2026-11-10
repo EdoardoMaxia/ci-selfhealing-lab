@@ -679,7 +679,8 @@ def run_single_error(error: dict, dry_run: bool, no_memory: bool, readonly_memor
         "ci_logs":          error["ci_logs"],
         "ci_job_name":      error["ci_job_name"],
         "ci_conclusion":    "failure",
-        "commit_sha":       f"{error['id']}_benchmark",
+        # opaque SHA1 of the case id: must NOT reveal the ground-truth category
+        "commit_sha":       hashlib.sha1(error['id'].encode()).hexdigest(),
         "repo_name":        os.getenv("GITHUB_REPO", ""),
         "git_diff":         error.get("git_diff", ""),
         "repo_path":        ".",
