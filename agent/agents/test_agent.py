@@ -97,7 +97,8 @@ def test_agent_node(state: dict) -> dict:
         similar = retrieve_similar_episodes(
             error_logs=state["ci_logs"],
             category="test",
-            top_k=3
+            top_k=3,
+            current_case_id=state.get("case_id"),  # never retrieve the episode of the SAME case
         )
         memory_context = format_episodes_for_prompt(similar)
 

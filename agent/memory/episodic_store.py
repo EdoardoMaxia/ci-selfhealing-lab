@@ -88,7 +88,8 @@ def retrieve_similar_episodes(
     error_logs: str,
     category: str,
     top_k: int = 3,
-    only_successful: bool = True
+    only_successful: bool = True,
+    current_case_id: Optional[str] = None
 ) -> list[dict]:
     """
     Recupera gli episodi più simili all'errore corrente.
@@ -100,15 +101,13 @@ def retrieve_similar_episodes(
     if collection.count() == 0:
         return []  # memoria vuota
 
+    clauses = [{"error_category": {"$eq": category}}]
     if only_successful:
-        where_filter = {
-            "$and": [
-                {"error_category": {"$eq": category}},
-                {"outcome": {"$eq": "success"}}
-            ]
-        }
-    else:
-        where_filter = {"error_category": {"$eq": category}}
+        clauses.append({"outcome": {"$eq": "success"}})
+    if current_case_id:
+        # exclude the episode of the very same case (no self-retrieval)
+        clauses.append({"case_id": {"$ne": current_case_id}})
+    where_filter = clauses[0] if len(clauses) == 1 else {"$and": clauses}
 
     try:
         results = collection.query(
