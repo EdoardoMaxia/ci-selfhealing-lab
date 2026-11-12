@@ -1,5 +1,5 @@
 def process_queue(tasks):
-    """Elabora in ordine tutti i task in coda e ritorna lo stato dell'ultimo completato."""
+    """Processes all queued tasks in order and returns the status of the last completed one."""
     status = None
     for task in tasks:
         status = task()

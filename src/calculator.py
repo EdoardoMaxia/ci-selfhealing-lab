@@ -1,21 +1,21 @@
 def add(a, b):
-    """Somma due numeri."""
+    """Adds two numbers."""
     return a + b
 
 def divide(a, b):
-    """Divide a per b. Solleva errore se b è zero."""
+    """Divides a by b. Raises an error if b is zero."""
     if b == 0:
-        raise ValueError("Divisione per zero non permessa")
+        raise ValueError("Division by zero is not allowed")
     return a / b
 
 def factorial(n):
-    """Calcola il fattoriale di n."""
+    """Computes the factorial of n."""
     if n < 0:
-        raise ValueError("n deve essere >= 0")
+        raise ValueError("n must be >= 0")
     if n == 0:
         return 1
     return n * factorial(n - 1)
 
 def power(base, exponent):
-    """Eleva base a exponent."""
+    """Raises base to exponent."""
     return base ** exponent

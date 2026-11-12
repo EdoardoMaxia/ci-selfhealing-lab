@@ -1,5 +1,5 @@
 def process_payment(amount):
-    """Elabora un pagamento (per test_023, modulo spostato da app.services.payment)."""
+    """Processes a payment (for test_023, module moved from app.services.payment)."""
     if amount <= 0:
-        raise ValueError("amount deve essere positivo")
+        raise ValueError("amount must be positive")
     return {"status": "ok", "amount": amount}

@@ -1,4 +1,4 @@
 def deduplicate_preserves_first(items):
-    """Rimuove i duplicati preservando l'ordine di prima apparizione."""
+    """Removes duplicates while preserving the order of first appearance."""
     seen = dict.fromkeys(items)
     return list(seen)

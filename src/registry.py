@@ -1,11 +1,11 @@
 def get_registry():
     """
-    Registro plugin popolato nell'ordine di scoperta/registrazione (non
-    alfabetico) — riflette un registro reale i cui elementi arrivano
-    nell'ordine in cui i plugin vengono scoperti, non ordinati (per test_029).
-    Deterministico: un dict Python preserva sempre l'ordine di inserimento
-    (dal 3.7), a differenza di un set la cui iterazione dipende dall'hash
-    randomizzato delle stringhe e sarebbe solo intermittentemente "sbagliata".
+    Plugin registry populated in discovery/registration order (not
+    alphabetical) — mirrors a real registry whose items arrive
+    in the order in which plugins are discovered, unsorted (for test_029).
+    Deterministic: a Python dict always preserves insertion order
+    (since 3.7), unlike a set whose iteration depends on the randomized
+    string hash and would only be intermittently "wrong".
     """
     registry = {}
     registry["b_plugin"] = True
