@@ -263,7 +263,7 @@ python experiments/benchmark.py --provider anthropic --clean-memory
 
 # Specific provider / model
 python experiments/benchmark.py --provider groq --no-memory
-python experiments/benchmark.py --provider ollama --ollama-model llama3.1:8b --no-memory
+python experiments/benchmark.py --provider ollama --ollama-model llama31-4k --no-memory
 
 # Quick test (5 errors, no CI)
 python experiments/benchmark.py --provider anthropic --dry-run --limit 5

@@ -20,7 +20,7 @@ Usage:
     python experiments/benchmark.py --provider groq --category dependency --no-memory
 
     # Specific Ollama model
-    python experiments/benchmark.py --provider ollama --ollama-model llama3.1:8b --no-memory
+    python experiments/benchmark.py --provider ollama --ollama-model llama31-4k --no-memory
 
     # Quick test (5 errors per model)
     python experiments/benchmark.py --provider anthropic --dry-run --limit 5
