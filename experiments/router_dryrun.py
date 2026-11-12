@@ -6,19 +6,26 @@ no fix, no CI, no memory. For each of the 150 dataset cases it builds the same i
 state as experiments/benchmark.py (with the opaque SHA1 commit_sha) and records the
 Router's prediction.
 
-Two conditions:
+Conditions:
   opaque_id    commit_sha = sha1(case_id)                      (the fixed benchmark input)
   no_jobname   same, but ci_job_name removed (set to "")       (robustness check)
+  legacy_id    commit_sha = "<case_id>_benchmark"              (CONTROL ONLY: the pre-fix format, whose
+                                                                first 8 chars reveal the category prefix;
+                                                                same prompts/dataset as opaque_id, so
+                                                                legacy_id vs opaque_id isolates the leak)
+  (--condition both = opaque_id + no_jobname; legacy_id must be requested explicitly)
 
 Outputs (one pair per model, in experiments/results/router_dryrun/):
   router_dryrun_opaque_id__<model_id>.csv     case_id,true_category,predicted_category,confidence
   router_dryrun_no_jobname__<model_id>.csv
+  router_dryrun_legacy_id__<model_id>.csv
   router_dryrun_summary.csv                   one row per (model, condition): accuracy, macro-F1, ...
 
 Usage (from the repo root):
   python experiments/router_dryrun.py --list-models
   python experiments/router_dryrun.py --model-id anthropic_haiku
   python experiments/router_dryrun.py --model-id openai_gpt4o --condition no_jobname
+  python experiments/router_dryrun.py --model-id openai_gpt4o --condition legacy_id
   python experiments/router_dryrun.py --model-id ollama_llama8b --limit 5      # smoke test
   python experiments/router_dryrun.py --all                                    # every model in MODELS
 """
@@ -43,7 +50,8 @@ from experiments.benchmark import MODELS         # noqa: E402  (single source of
 
 OUT_DIR = Path(__file__).parent / "results" / "router_dryrun"
 LABELS = ["dependency", "test", "config"]        # ground-truth classes; "unknown" is a valid (wrong) prediction
-CONDITIONS = ("opaque_id", "no_jobname")
+CONDITIONS = ("opaque_id", "no_jobname")          # run by --condition both
+CONTROL_CONDITIONS = ("legacy_id",)                   # must be requested explicitly
 
 
 # ──────────────────────────────────────────────────────────────
@@ -51,11 +59,15 @@ CONDITIONS = ("opaque_id", "no_jobname")
 # ──────────────────────────────────────────────────────────────
 
 def build_state(error: dict, condition: str) -> dict:
-    sha = hashlib.sha1(error["id"].encode()).hexdigest()
-    # Guard against regressions of the A1 leak: the 8 chars shown to the Router
-    # must not reveal the case-id prefix (dep / test / conf).
-    prefix = error["id"].split("_")[0]
-    assert prefix not in sha[:8], f"commit_sha leaks the category for {error['id']}"
+    if condition == "legacy_id":
+        # Pre-fix format, kept ONLY as a control: "dep_001_benchmark"[:8] == "dep_001_".
+        sha = f"{error['id']}_benchmark"
+    else:
+        sha = hashlib.sha1(error["id"].encode()).hexdigest()
+        # Guard against regressions of the A1 leak: the 8 chars shown to the Router
+        # must not reveal the case-id prefix (dep / test / conf).
+        prefix = error["id"].split("_")[0]
+        assert prefix not in sha[:8], f"commit_sha leaks the category for {error['id']}"
     return {
         "ci_logs":       error["ci_logs"],
         "ci_job_name":   "" if condition == "no_jobname" else error["ci_job_name"],
@@ -167,7 +179,7 @@ def main():
     ap.add_argument("--model-id", help="id from MODELS in benchmark.py (see --list-models)")
     ap.add_argument("--all", action="store_true", help="run every model in MODELS, sequentially")
     ap.add_argument("--list-models", action="store_true")
-    ap.add_argument("--condition", choices=list(CONDITIONS) + ["both"], default="both")
+    ap.add_argument("--condition", choices=list(CONDITIONS) + list(CONTROL_CONDITIONS) + ["both"], default="both")
     ap.add_argument("--limit", type=int, default=0, help="first N cases only (smoke test)")
     ap.add_argument("--timeout", type=int, default=0, help="per-call timeout in s (default: model timeout)")
     ap.add_argument("--pause", type=float, default=0.0, help="seconds between calls (rate limits)")
