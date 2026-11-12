@@ -1,5 +1,7 @@
-pytest==7.4.0
+`pytest==7.4.0
 pytest-cov==4.1.0
-numpy==1.23.5
-pandas==2.0.3
-scipy==1.11.0
+B==<version_from_commit_that_caused_failure>
+A==<version_from_commit_that_caused_failure>
+broken-lib==0.0.1
+requests
+flask`

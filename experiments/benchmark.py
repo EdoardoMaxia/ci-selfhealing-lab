@@ -67,7 +67,7 @@ MODELS = [
     {
         "id":       "ollama_llama8b",
         "provider": "ollama",
-        "ollama_model": "llama3.1:8b",
+        "ollama_model": "llama31-4k",
         "name":     "Llama 3.1 8B",
         "type":     "open-source-local",
         "timeout":  900, # <-- prima settato a 600 ma meglio alzare
@@ -75,7 +75,7 @@ MODELS = [
     {
         "id":       "ollama_mistral7b",
         "provider": "ollama",
-        "ollama_model": "mistral:7b",
+        "ollama_model": "mistral-4k",
         "name":     "Mistral 7B",
         "type":     "open-source-local",
         "timeout":  900, # <-- prima settato a 600 ma meglio alzare
@@ -91,7 +91,7 @@ MODELS = [
     {
         "id":       "ollama_qwen38_27b",
         "provider": "ollama",
-        "ollama_model": "qwen3.8:27b",
+        "ollama_model": "qwen38-4k",
         "name":     "Qwen3.8 27B",
         "type":     "open-source-local",
         "timeout":  900,
@@ -99,7 +99,7 @@ MODELS = [
     {
         "id":       "ollama_qwen3coder_30b",
         "provider": "ollama",
-        "ollama_model": "qwen3-coder:30b",
+        "ollama_model": "qwen3coder-4k",
         "name":     "Qwen3-Coder 30B",
         "type":     "open-source-local",
         "timeout":  900,
@@ -667,7 +667,7 @@ def run_with_timeout(func, args=(), timeout=300):
 # ESECUZIONE SINGOLO ERRORE
 # ══════════════════════════════════════════════════════════════
 
-def run_single_error(error: dict, dry_run: bool, no_memory: bool) -> dict:
+def run_single_error(error: dict, dry_run: bool, no_memory: bool, readonly_memory: bool = False) -> dict:
     """
     Esegue il sistema su un singolo errore del dataset.
     Ritorna un dizionario con tutte le metriche del run.
@@ -689,6 +689,9 @@ def run_single_error(error: dict, dry_run: bool, no_memory: bool) -> dict:
         "ci_fixed":         True if dry_run else None,
         # no_memory / dry_run: salta salvataggio ChromaDB
         "skip_memory":      no_memory or dry_run,
+        # readonly_memory: retrieval RAG attivo ma salvataggio episodi disabilitato
+        # (ha effetto solo quando la memoria è attiva, cioè no_memory=False)
+        "skip_memory_save": readonly_memory if not no_memory else False,
     }
 
     start_time = time.time()
@@ -746,7 +749,7 @@ def run_single_error(error: dict, dry_run: bool, no_memory: bool) -> dict:
 # ══════════════════════════════════════════════════════════════
 
 def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
-              keep_branches: bool = False) -> list:
+              keep_branches: bool = False, readonly_memory: bool = False) -> list:
     """
     Esegue tutti gli errori su un modello specifico.
     Gestisce reset file, timeout, pause e liberazione VRAM.
@@ -754,7 +757,7 @@ def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
     # Configura provider per questo modello
     os.environ["LLM_PROVIDER"] = model["provider"]
     if model["provider"] == "ollama":
-        os.environ["OLLAMA_MODEL"] = model.get("ollama_model", "llama3.1:8b")
+        os.environ["OLLAMA_MODEL"] = model.get("ollama_model", "llama31-4k")
 
     results = []
     total   = len(errors)
@@ -810,7 +813,7 @@ def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
         try:
             run_result = run_with_timeout(
                 run_single_error,
-                args=(error, dry_run, no_memory),
+                args=(error, dry_run, no_memory, readonly_memory),
                 timeout=timeout
             )
             # Merge
@@ -961,8 +964,8 @@ def main():
     parser.add_argument(
         "--ollama-model",
         dest="ollama_model",
-        choices=["llama3.1:8b", "llama3.3:70b", "qwen3.8:27b",
-                 "qwen3-coder:30b", "mistral:7b", "all"],
+        choices=["llama31-4k", "llama3.3:70b", "qwen38-4k",
+                 "qwen3coder-4k", "mistral-4k", "all"],
         default="all",
         help="Modello Ollama specifico (usare con --provider ollama)"
     )
@@ -994,6 +997,12 @@ def main():
         action="store_true",
         help="Cancella ChromaDB prima di iniziare il benchmark."
     )
+    parser.add_argument(
+        "--readonly-memory",
+        action="store_true",
+        help="Abilita retrieval RAG ma disabilita salvataggio episodi. "
+             "Usare per testare modelli contro una memoria pre-popolata "
+             "senza inquinarla.")
     parser.add_argument(
         "--limit",
         type=int,
@@ -1080,7 +1089,8 @@ def main():
                 model, errors,
                 dry_run=args.dry_run,
                 no_memory=args.no_memory,
-                keep_branches=args.keep_branches
+                keep_branches=args.keep_branches,
+                readonly_memory=args.readonly_memory
             )
             all_results.extend(model_results)
 

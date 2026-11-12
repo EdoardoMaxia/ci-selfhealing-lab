@@ -33,9 +33,11 @@ class AgentState(TypedDict):
 
     # --- RAG ---
     skip_memory: Optional[bool]    # True → salta salvataggio ChromaDB
+    skip_memory_save: Optional[bool]  # True → retrieval RAG attivo ma salvataggio episodi disabilitato
 
     # --- OUTPUT ---
     final_status: Optional[str]       # "fixed" / "escalated"
     explanation_report: Optional[str] # report in linguaggio naturale
     pr_url: Optional[str]             # URL della PR creata
     fix_branch: Optional[str]         # Nome del branch creato
+

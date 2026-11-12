@@ -13,15 +13,15 @@ from agent.memory.episodic_store import save_episode
 # ──────────────────────────────────────────
 def save_episode_node(state: AgentState) -> dict:
     print(f"DEBUG skip_memory = {state.get('skip_memory')}")
-    if state.get("skip_memory"):
+    if state.get("skip_memory") or state.get("skip_memory_save"):
         return {}
     save_episode(state, outcome="success") #type: ignore
     return {}
 
 
 def save_escalation_node(state: AgentState) -> dict:
-    if state.get("skip_memory"):
-        print(f"🚨 Escalation dopo {len(state.get('attempts_history', []))} tentativo/i")
+    if state.get("skip_memory") or state.get("skip_memory_save"):
+        print(f"escalation...")
         return {"final_status": "escalated"}
     save_episode(state, outcome="escalated") #type: ignore
     print(f"🚨 Escalation dopo {len(state.get('attempts_history', []))} tentativo/i")
