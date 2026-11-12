@@ -28,6 +28,7 @@ Uso:
 
 import os
 import sys
+import hashlib
 import csv
 import time
 import json
