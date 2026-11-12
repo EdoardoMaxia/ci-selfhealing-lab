@@ -4,7 +4,7 @@ load_dotenv()
 from agent.graph import app
 
 
-# Simula un errore di dipendenza reale
+# Simulate a real dependency error
 state = {
     "ci_logs": """
     ERROR: Could not find a version that satisfies the requirement numpy==99.99.99
@@ -15,21 +15,21 @@ state = {
     "ci_job_name":    "Install dependencies",
     "ci_conclusion":  "failure",
     "commit_sha":     "abc12345",
-    "repo_name":      "EdoardoMaxia/ci-selfhealing-lab",
+    "repo_name":      "anonymous/ci-selfhealing-lab",
     "git_diff":       "+numpy==99.99.99",
-    "repo_path":      ".",  # cartella corrente = "repo"
+    "repo_path":      ".",  # current folder = "repo"
     "attempt_number": 1,
     "attempts_history": [],
-    "ci_fixed":       True,  # simuliamo CI verde al primo tentativo
+    "ci_fixed":       True,  # simulate a green CI on the first attempt
 }
 
-print("🚀 Avvio sistema self-healing...\n")
+print("🚀 Starting the self-healing system...\n")
 result = app.invoke(state) #type: ignore
 
 print(f"\n{'='*50}")
-print(f"📊 Risultato finale: {result['final_status']}")
-print(f"🔧 Fix applicato: {result.get('fix_applied', 'nessuno')}")
-print(f"📝 Diff:\n{result.get('fix_diff', 'nessuno')}")
+print(f"📊 Final result: {result['final_status']}")
+print(f"🔧 Applied fix: {result.get('fix_applied', 'none')}")
+print(f"📝 Diff:\n{result.get('fix_diff', 'none')}")
 
 
 
@@ -37,11 +37,11 @@ print(f"📝 Diff:\n{result.get('fix_diff', 'nessuno')}")
 # ==================================================================
 # ==================================================================
 # ==================================================================
-#           TEST 2: CI SEMPRE ROTTA
+#           TEST 2: CI ALWAYS BROKEN
 
 
 print("\n\n" + "="*50)
-print("🧪 TEST 2: CI sempre rotta → escalation dopo 3 tentativi")
+print("🧪 TEST 2: CI always broken → escalation after 3 attempts")
 print("="*50 + "\n")
 
 state_retry = {
@@ -56,7 +56,7 @@ state_retry = {
     "ci_job_name":      "Install dependencies",
     "ci_conclusion":    "failure",
     "commit_sha":       "xyz99999",
-    "repo_name":        "EdoardoMaxia/ci-selfhealing-lab",
+    "repo_name":        "anonymous/ci-selfhealing-lab",
     "git_diff":         "+pandas==2.0.0",
     "repo_path":        ".",
     "attempt_number":   1,
@@ -65,7 +65,7 @@ state_retry = {
 }
 
 result2 = app.invoke(state_retry) #type: ignore
-print(f"\n📊 Risultato finale: {result2['final_status']}")
-print(f"📋 Tentativi effettuati: {len(result2['attempts_history'])}")
+print(f"\n📊 Final result: {result2['final_status']}")
+print(f"📋 Attempts made: {len(result2['attempts_history'])}")
 for h in result2['attempts_history']:
-    print(f"   Tentativo {h['attempt']}: {h['fix_applied'][:60]}")
+    print(f"   Attempt {h['attempt']}: {h['fix_applied'][:60]}")

@@ -1,11 +1,11 @@
 """
-Regressione — inject_error() per category="test" deve modificare
-realmente il file di test target, cosi' che la CI fallisca davvero.
+Regression — inject_error() for category="test" must actually modify
+the target test file, so that the CI really fails.
 
-Prima del fix (vedi git history di experiments/benchmark.py), inject_error()
-era un no-op per questa categoria: la CI non veniva mai rotta e il sistema
-"riparava" qualcosa che non era mai stato guasto, producendo un Success Rate
-del 100% artificiale su "test".
+Before the fix (see the git history of experiments/benchmark.py), inject_error()
+was a no-op for this category: the CI was never broken and the system
+"repaired" something that had never been broken, producing an artificial
+100% Success Rate on "test".
 """
 import subprocess
 import sys
@@ -25,12 +25,12 @@ def test_inject_error_modifies_test_file_and_breaks_pytest():
     original_content = target.read_text(encoding="utf-8")
     try:
         applied = inject_error(case)
-        assert applied is True, "inject_error() deve segnalare l'injection come applicata"
+        assert applied is True, "inject_error() must report the injection as applied"
 
         injected_content = target.read_text(encoding="utf-8")
         assert injected_content != original_content, (
-            "inject_error() non ha modificato il file di test target "
-            "(no-op sulla categoria 'test')"
+            "inject_error() did not modify the target test file "
+            "(no-op on the 'test' category)"
         )
 
         result = subprocess.run(
@@ -40,7 +40,7 @@ def test_inject_error_modifies_test_file_and_breaks_pytest():
             text=True,
         )
         assert result.returncode != 0, (
-            "la CI dovrebbe fallire dopo l'injection, invece pytest e' verde:\n"
+            "the CI should fail after the injection, but pytest is green:\n"
             f"{result.stdout}"
         )
         assert "failed" in result.stdout.lower()

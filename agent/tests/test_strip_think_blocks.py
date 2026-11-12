@@ -1,9 +1,9 @@
 """
-Test unitario isolato per strip_think_blocks() — NON invoca nessuna API LLM.
+Isolated unit test for strip_think_blocks() — does NOT call any LLM API.
 
-router.py importa i vari SDK (langchain_anthropic, langchain_groq, ...) solo
-dentro get_llm(), quindi il semplice import del modulo per usare
-strip_think_blocks() non fa alcuna chiamata di rete.
+router.py imports the various SDKs (langchain_anthropic, langchain_groq, ...) only
+inside get_llm(), so simply importing the module to use
+strip_think_blocks() does not make any network call.
 """
 import pytest
 
@@ -16,15 +16,15 @@ def test_no_think_block_passthrough():
 
 
 def test_think_block_followed_by_json():
-    text = '<think>ragiono sul da farsi</think>{"action": "fix"}'
+    text = '<think>reasoning about what to do</think>{"action": "fix"}'
     assert strip_think_blocks(text) == '{"action": "fix"}'
 
 
 def test_multiline_think_block_followed_by_json():
     text = (
         "<think>\n"
-        "primo passo di ragionamento\n"
-        "secondo passo di ragionamento\n"
+        "first reasoning step\n"
+        "second reasoning step\n"
         "</think>\n"
         '{"action": "fix", "file": "config.yml"}'
     )
@@ -32,14 +32,14 @@ def test_multiline_think_block_followed_by_json():
 
 
 def test_only_think_block_no_json_returns_empty_string():
-    text = "<think>solo ragionamento, nessuna risposta finale</think>"
+    text = "<think>only reasoning, no final answer</think>"
     assert strip_think_blocks(text) == ""
 
 
 def test_text_before_think_block_and_json_after():
     text = (
-        "Ecco la mia analisi:\n"
-        "<think>valuto le opzioni possibili</think>\n"
+        "Here is my analysis:\n"
+        "<think>evaluating the possible options</think>\n"
         '{"action": "fix", "file": "test_calculator.py"}'
     )
     result = strip_think_blocks(text)

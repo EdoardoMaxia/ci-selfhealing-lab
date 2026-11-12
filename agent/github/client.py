@@ -9,58 +9,58 @@ load_dotenv()
 
 log = logging.getLogger("agent.github.client")
 
-# Numero di tentativi e attesa tra un tentativo e l'altro per le chiamate
-# alla Contents API subito dopo create_branch(): il nuovo ref può non essere
-# ancora visibile per qualche secondo, sia in lettura (repo.get_contents)
-# sia in scrittura (repo.update_file/create_file — l'endpoint
-# "create-or-update-file-contents"), in modo indipendente: verificato che
-# repo.get_contents() può avere successo al primo tentativo mentre il
-# successivo repo.update_file() 404 comunque, quindi entrambe le operazioni
-# vanno ritentate separatamente, non solo la lettura dello SHA.
+# Number of attempts and delay between attempts for Contents API calls
+# made right after create_branch(): the new ref may not be visible yet for
+# a few seconds, both for reads (repo.get_contents) and for writes
+# (repo.update_file/create_file — the "create-or-update-file-contents"
+# endpoint), independently of each other: it was verified that
+# repo.get_contents() can succeed on the first attempt while the following
+# repo.update_file() still returns 404, so both operations must be retried
+# separately, not only the SHA read.
 GET_CONTENTS_RETRIES = 3
 GET_CONTENTS_RETRY_DELAY_SEC = 2
 
 
 def get_github_client():
-    """Restituisce un client GitHub autenticato."""
+    """Returns an authenticated GitHub client."""
     token = os.getenv("GITHUB_TOKEN")
     if not token:
-        raise ValueError("GITHUB_TOKEN non trovato nel .env")
+        raise ValueError("GITHUB_TOKEN not found in .env")
     return Github(token)
 
 
 def get_repo(repo_name: str):
-    """Restituisce l'oggetto repo da PyGitHub"""
+    """Returns the PyGitHub repo object"""
     g = get_github_client()
     return g.get_repo(repo_name)
 
 
 def create_branch(repo, base_sha: str, branch_name: str) -> None:
-    """Crea un nuovo branch a partire dal commit SHA specificato."""
+    """Creates a new branch starting from the specified commit SHA."""
     try:
         repo.create_git_ref(
             ref=f"refs/heads/{branch_name}",
             sha=base_sha,
         )
-        print(f"🌿 Branch creato: {branch_name}")
+        print(f"🌿 Branch created: {branch_name}")
     except Exception as e:
         if "Reference already exists" in str(e):
-            print(f"🌿 Branch già esistente: {branch_name}")
+            print(f"🌿 Branch already exists: {branch_name}")
         else:
             raise
 
 
 def _get_contents_with_retry(repo, file_path: str, branch: str):
     """
-    Recupera il contenuto/SHA di un file su un branch, con retry+backoff.
+    Retrieves the content/SHA of a file on a branch, with retry+backoff.
 
-    Subito dopo create_branch(), il nuovo ref può non essere ancora visibile
-    alla Contents API (repo.get_contents) anche se esiste già a livello Git
-    Data API — GitHub propaga i due sottosistemi in modo asincrono. Senza
-    retry questo si traduce in un 404 sistematico su commit_file() per i
-    branch appena creati. Rilancia l'ultima UnknownObjectException se tutti
-    i tentativi falliscono, così il chiamante può comunque distinguere
-    "file non trovato" da altri errori.
+    Right after create_branch(), the new ref may not yet be visible to the
+    Contents API (repo.get_contents) even though it already exists at the
+    Git Data API level — GitHub propagates the two subsystems asynchronously.
+    Without retries this results in a systematic 404 on commit_file() for
+    freshly created branches. Re-raises the last UnknownObjectException if
+    all attempts fail, so that the caller can still distinguish
+    "file not found" from other errors.
     """
     def _call():
         return repo.get_contents(file_path, ref=branch)
@@ -70,20 +70,20 @@ def _get_contents_with_retry(repo, file_path: str, branch: str):
 
 def _call_with_retry(func, *, op_name: str, file_path: str, branch: str):
     """
-    Esegue func() ritentando fino a GET_CONTENTS_RETRIES volte se solleva
-    UnknownObjectException (404), con attesa GET_CONTENTS_RETRY_DELAY_SEC tra
-    un tentativo e l'altro. Usato sia per la lettura (get_contents) sia per
-    la scrittura (update_file/create_file, l'endpoint
-    "create-or-update-file-contents") perché entrambe possono restituire 404
-    indipendentemente subito dopo create_branch(), per propagazione
-    asincrona del nuovo ref lato GitHub. Rilancia l'ultima
-    UnknownObjectException se tutti i tentativi falliscono.
+    Runs func(), retrying up to GET_CONTENTS_RETRIES times if it raises
+    UnknownObjectException (404), waiting GET_CONTENTS_RETRY_DELAY_SEC between
+    attempts. Used both for reads (get_contents) and for writes
+    (update_file/create_file, the "create-or-update-file-contents"
+    endpoint) because both can independently return 404 right after
+    create_branch(), due to the asynchronous propagation of the new ref on
+    GitHub's side. Re-raises the last UnknownObjectException if all
+    attempts fail.
     """
     last_exc = None
     for attempt in range(1, GET_CONTENTS_RETRIES + 1):
         log.info(
             f"{op_name}: path={file_path!r} ref={branch!r} "
-            f"(tentativo {attempt}/{GET_CONTENTS_RETRIES})"
+            f"(attempt {attempt}/{GET_CONTENTS_RETRIES})"
         )
         try:
             return func()
@@ -91,10 +91,10 @@ def _call_with_retry(func, *, op_name: str, file_path: str, branch: str):
             last_exc = e
             if attempt < GET_CONTENTS_RETRIES:
                 log.warning(
-                    f"{op_name}: 404 su path={file_path!r} ref={branch!r} "
-                    f"(tentativo {attempt}/{GET_CONTENTS_RETRIES}) — "
-                    f"probabile propagazione asincrona del branch, "
-                    f"retry tra {GET_CONTENTS_RETRY_DELAY_SEC}s"
+                    f"{op_name}: 404 on path={file_path!r} ref={branch!r} "
+                    f"(attempt {attempt}/{GET_CONTENTS_RETRIES}) — "
+                    f"likely asynchronous branch propagation, "
+                    f"retrying in {GET_CONTENTS_RETRY_DELAY_SEC}s"
                 )
                 time.sleep(GET_CONTENTS_RETRY_DELAY_SEC)
     raise last_exc
@@ -103,26 +103,26 @@ def _call_with_retry(func, *, op_name: str, file_path: str, branch: str):
 def commit_file(repo, branch: str, file_path: str,
                 new_content: str, commit_message: str) -> None:
     """
-    Commit di un singolo file su un branch esistente.
-    Gestisce sia file nuovi che aggiornamenti.
+    Commits a single file on an existing branch.
+    Handles both new files and updates.
     """
-    # Normalizza il path per la Contents API di GitHub, che vuole sempre
-    # forward slash (mai backslash — rilevante se file_path arriva da un
-    # Path costruito con os.sep su Windows) e nessuno slash iniziale.
+    # Normalize the path for the GitHub Contents API, which always expects
+    # forward slashes (never backslashes — relevant if file_path comes from a
+    # Path built with os.sep on Windows) and no leading slash.
     normalized_path = file_path.replace("\\", "/").lstrip("/")
     if normalized_path != file_path:
-        log.warning(f"commit_file: path normalizzato {file_path!r} -> {normalized_path!r}")
+        log.warning(f"commit_file: normalized path {file_path!r} -> {normalized_path!r}")
     file_path = normalized_path
 
-    # 1. Recupera il file attuale per ottenere il suo SHA (necessario per
-    #    update). Un 404 qui, anche dopo i retry, significa che il file non
-    #    esiste ancora su questo branch -> va creato, non aggiornato.
+    # 1. Fetch the current file to get its SHA (required for the
+    #    update). A 404 here, even after the retries, means the file does
+    #    not exist yet on this branch -> it must be created, not updated.
     try:
         existing = _get_contents_with_retry(repo, file_path, branch)
     except UnknownObjectException as e:
         log.warning(
             f"create_file: path={file_path!r} branch={branch!r} — "
-            f"file non trovato dopo {GET_CONTENTS_RETRIES} tentativi "
+            f"file not found after {GET_CONTENTS_RETRIES} attempts "
             f"(status={getattr(e, 'status', '?')})"
         )
 
@@ -138,24 +138,24 @@ def commit_file(repo, branch: str, file_path: str,
             _call_with_retry(_create, op_name="create_file", file_path=file_path, branch=branch)
         except GithubException as e2:
             log.error(
-                f"create_file fallito: path={file_path!r} branch={branch!r} "
+                f"create_file failed: path={file_path!r} branch={branch!r} "
                 f"status={getattr(e2, 'status', '?')} data={getattr(e2, 'data', '?')}"
             )
             raise
-        print(f"✍️  File creato: {file_path}")
+        print(f"✍️  File created: {file_path}")
         return
     except GithubException as e:
         log.error(
-            f"get_contents fallito: path={file_path!r} branch={branch!r} "
+            f"get_contents failed: path={file_path!r} branch={branch!r} "
             f"status={getattr(e, 'status', '?')} data={getattr(e, 'data', '?')}"
         )
         raise
 
-    # 2. Il file esiste già su questo branch -> aggiornalo. update_file()
-    #    (stesso endpoint "create-or-update-file-contents" di create_file())
-    #    può a sua volta restituire 404 per propagazione asincrona del
-    #    branch anche quando il get_contents precedente è già riuscito —
-    #    va ritentato separatamente.
+    # 2. The file already exists on this branch -> update it. update_file()
+    #    (same "create-or-update-file-contents" endpoint as create_file())
+    #    may in turn return 404 due to asynchronous branch propagation
+    #    even when the previous get_contents already succeeded —
+    #    it must be retried separately.
     log.info(f"update_file: path={file_path!r} branch={branch!r} sha={existing.sha}")
 
     def _update():
@@ -171,11 +171,11 @@ def commit_file(repo, branch: str, file_path: str,
         _call_with_retry(_update, op_name="update_file", file_path=file_path, branch=branch)
     except GithubException as e:
         log.error(
-            f"update_file fallito: path={file_path!r} branch={branch!r} "
+            f"update_file failed: path={file_path!r} branch={branch!r} "
             f"status={getattr(e, 'status', '?')} data={getattr(e, 'data', '?')}"
         )
         raise
-    print(f"✍️  File aggiornato: {file_path}")
+    print(f"✍️  File updated: {file_path}")
 
 
 
@@ -184,18 +184,18 @@ def wait_for_ci(repo, branch: str,
                 poll_interval: int = 15) -> bool:
     
     """
-    Aspetta il completamento della CI sul branch specificato.
-    Ritorna True se la CI è verde, False altrimenti.
-    Timeout default: 5 minuti.
+    Waits for the CI to complete on the specified branch.
+    Returns True if the CI is green, False otherwise.
+    Default timeout: 5 minutes.
     """
-    print(f"⏳ Attendo la CI sul branch '{branch}'...")
+    print(f"⏳ Waiting for the CI on branch '{branch}'...")
     elapsed = 0
 
     while elapsed < timeout_sec:
         try:
             runs = repo.get_workflow_runs(branch=branch)
             if runs.totalCount == 0:
-                print(" Nessun run trovato ancora, aspetto...")
+                print(" No run found yet, waiting...")
                 time.sleep(poll_interval)
                 elapsed += poll_interval
                 continue
@@ -205,26 +205,26 @@ def wait_for_ci(repo, branch: str,
             if latest.status == "completed":
                 result = latest.conclusion == "success"
                 icon   = "✅" if result else "❌"
-                print(f"    {icon} CI completata: {latest.conclusion}")
+                print(f"    {icon} CI completed: {latest.conclusion}")
                 return result
             else:
-                print(f"   ⏳ CI in corso ({latest.status})... [{elapsed}s/{timeout_sec}s]")
+                print(f"   ⏳ CI in progress ({latest.status})... [{elapsed}s/{timeout_sec}s]")
                 time.sleep(poll_interval)
                 elapsed += poll_interval
         
         except Exception as e:
-            print(f"   ⚠️  Errore polling CI: {e}")
+            print(f"   ⚠️  CI polling error: {e}")
             time.sleep(poll_interval)
             elapsed += poll_interval
         
-    print(f"   ⏰ Timeout ({timeout_sec}s) — CI non completata")
+    print(f"   ⏰ Timeout ({timeout_sec}s) — CI not completed")
     return False
 
 
 
 def create_pull_request(repo, branch: str, base: str,
                         title: str, body: str) -> str:
-    """Crea una PR e restituisce il suo URL."""
+    """Creates a PR and returns its URL."""
     pr = repo.create_pull(
         title=title,
         body=body,
@@ -232,5 +232,5 @@ def create_pull_request(repo, branch: str, base: str,
         base=base
     )
 
-    print(f"📬 PR creata: {pr.html_url}")
+    print(f"📬 PR created: {pr.html_url}")
     return pr.html_url

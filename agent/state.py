@@ -5,41 +5,40 @@ class ErrorCategory(Enum):
     DEPENDENCY = "dependency"  # pip/npm broken, version conflict
     TEST = "test"            # assert failed, mock broken
     CONFIG = "config"        # YAML CI, env vars, Docker
-    UNKNOWN = "unknown"      # non classificabile
+    UNKNOWN = "unknown"      # not classifiable
 
 
 class AgentState(TypedDict):
-    # --- INPUT: dati dalla CI ---
-    ci_logs: str               # log completo del job fallito
-    ci_job_name: str           # nome del job (es. "Run Tests")
+    # --- INPUT: data from the CI ---
+    ci_logs: str               # full log of the failed job
+    ci_job_name: str           # job name (e.g. "Run Tests")
     ci_conclusion: str         # "failure" / "success"
-    commit_sha: str            # sha del commit che ha triggerato il fallimento
-    repo_name: str             # es. "username/ci-selfhealing-lab"
-    git_diff: str              # diff dell'ultimo commit
+    commit_sha: str            # sha of the commit that triggered the failure
+    repo_name: str             # e.g. "username/ci-selfhealing-lab"
+    git_diff: str              # diff of the last commit
 
     case_id: Optional[str]     # benchmark case id: ONLY for memory tagging/exclusion, never shown to LLMs
 
     # --- ROUTING ---
-    error_category: Optional[str]    # valorizzato dal Router Agent
+    error_category: Optional[str]    # set by the Router Agent
     error_confidence: Optional[float] # 0.0 - 1.0
-    router_reasoning: Optional[str]  # spiegazione della classificazione
+    router_reasoning: Optional[str]  # explanation of the classification
 
     # --- FIX LOOP ---
-    attempt_number: int              # tentativo corrente (1, 2, 3)
-    fix_applied: Optional[str]       # descrizione del fix applicato
-    fix_diff: Optional[str]          # diff delle modifiche apportate
-    attempts_history: List[dict]     # storico di tutti i tentativi
-    repo_path: str                   # path locale del repo
-    ci_fixed: Optional[bool]         # True se la CI è verde dopo il fix
+    attempt_number: int              # current attempt (1, 2, 3)
+    fix_applied: Optional[str]       # description of the applied fix
+    fix_diff: Optional[str]          # diff of the changes made
+    attempts_history: List[dict]     # history of all attempts
+    repo_path: str                   # local path of the repo
+    ci_fixed: Optional[bool]         # True if the CI is green after the fix
     modified_file: Optional[str]
 
     # --- RAG ---
-    skip_memory: Optional[bool]    # True → salta salvataggio ChromaDB
-    skip_memory_save: Optional[bool]  # True → retrieval RAG attivo ma salvataggio episodi disabilitato
+    skip_memory: Optional[bool]    # True → skip ChromaDB saving
+    skip_memory_save: Optional[bool]  # True → RAG retrieval enabled but episode saving disabled
 
     # --- OUTPUT ---
     final_status: Optional[str]       # "fixed" / "escalated"
-    explanation_report: Optional[str] # report in linguaggio naturale
-    pr_url: Optional[str]             # URL della PR creata
-    fix_branch: Optional[str]         # Nome del branch creato
-
+    explanation_report: Optional[str] # natural-language report
+    pr_url: Optional[str]             # URL of the created PR
+    fix_branch: Optional[str]         # Name of the created branch

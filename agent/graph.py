@@ -9,7 +9,7 @@ from agent.memory.episodic_store import save_episode
 
 
 # ──────────────────────────────────────────
-#  SALVATAGGIO MEMORIA EPISODICA
+#  EPISODIC MEMORY SAVING
 # ──────────────────────────────────────────
 def save_episode_node(state: AgentState) -> dict:
     print(f"DEBUG skip_memory = {state.get('skip_memory')}")
@@ -24,7 +24,7 @@ def save_escalation_node(state: AgentState) -> dict:
         print(f"escalation...")
         return {"final_status": "escalated"}
     save_episode(state, outcome="escalated") #type: ignore
-    print(f"🚨 Escalation dopo {len(state.get('attempts_history', []))} tentativo/i")
+    print(f"🚨 Escalation after {len(state.get('attempts_history', []))} attempt(s)")
     return {"final_status": "escalated"}
 
 # ──────────────────────────────────────────
@@ -33,15 +33,15 @@ def save_escalation_node(state: AgentState) -> dict:
 
 def route_to_specialist(state: AgentState) -> str:
     """
-    Conditional edge: decide quale agente specializzato chiamare
-    in base alla classificazione del Router.
+    Conditional edge: decides which specialized agent to call
+    based on the Router's classification.
     """
     category = state.get("error_category", "unknown")
     confidence = state.get("error_confidence", 0.0)
 
-    # Se confidence troppo bassa → escalation diretta
+    # If confidence is too low → direct escalation
     if confidence < 0.5: #type: ignore
-        print(f"⚠️  Confidence bassa ({confidence:.0%}) → escalation")
+        print(f"⚠️  Low confidence ({confidence:.0%}) → escalation")
         return "escalate"
 
     routing_map = {
@@ -51,7 +51,7 @@ def route_to_specialist(state: AgentState) -> str:
         "unknown":    "escalate",
     }
     destination = routing_map.get(category, "escalate") #type: ignore
-    print(f"→ Routing verso: {destination}")
+    print(f"→ Routing to: {destination}")
     return destination
 
 
@@ -60,14 +60,14 @@ def should_retry_or_escalate(state: AgentState) -> str:
     history = state.get("attempts_history", [])
 
     if ci_ok:
-        print("✅ CI verde! → creazione PR")
+        print("✅ CI green! → creating PR")
         return "create_pr"
 
     if len(history) >= 3:
-        print("🚨 3 tentativi esauriti → escalation")
+        print("🚨 3 attempts exhausted → escalation")
         return "escalate"
 
-    # Legge l'agente dell'ultimo tentativo per tornare su quello giusto
+    # Reads the agent of the last attempt to route back to the right one
     last_agent = history[-1]["agent"] if history else "dependency"
     retry_map  = {
         "dependency": "retry_dep",
@@ -75,7 +75,7 @@ def should_retry_or_escalate(state: AgentState) -> str:
         "config":     "retry_conf",
     }
     destination = retry_map.get(last_agent, "retry_dep")
-    print(f"🔄 CI ancora rossa → retry su {last_agent}_agent")
+    print(f"🔄 CI still red → retry on {last_agent}_agent")
     return destination
 
 # ──────────────────────────────────────────
@@ -96,21 +96,21 @@ def create_pr_node(state: AgentState) -> dict:
         branch = branch, #type: ignore
         base   = "main",
         title  = f"🤖 [AI Fix] {category} error — commit {sha_short}",
-        body   = build_pr_body(state) #type: ignore  # ← state completo
+        body   = build_pr_body(state) #type: ignore  # ← full state
     )
     return {"final_status": "fixed", "pr_url": pr_url}
 
 
 # ──────────────────────────────────────────
-#  COSTRUZIONE DEL GRAFO
+#  GRAPH CONSTRUCTION
 # ──────────────────────────────────────────
 
 
 def build_graph():
-    """Costruisce e compila il grafo LangGraph."""
+    """Builds and compiles the LangGraph graph."""
     graph = StateGraph(AgentState)
 
-    # Aggiungi i nodi
+    # Add the nodes
     graph.add_node("router",           router_node) #type: ignore
     graph.add_node("dependency_agent", dependency_agent_node) #type: ignore
     graph.add_node("test_agent",       test_agent_node) #type: ignore
@@ -120,10 +120,10 @@ def build_graph():
     graph.add_node("save_episode",     save_episode_node)
     graph.add_node("escalate",         save_escalation_node)
 
-    # Entry point: inizia sempre dal router
+    # Entry point: always start from the router
     graph.set_entry_point("router")
 
-    # Conditional edge: il router decide dove andare
+    # Conditional edge: the router decides where to go
     graph.add_conditional_edges(
         "router",
         route_to_specialist,
@@ -136,12 +136,12 @@ def build_graph():
     )
 
 
-    # Edge fissi: ogni agente → fix_executor
+    # Fixed edges: every agent → fix_executor
     graph.add_edge("dependency_agent", "fix_executor")
     graph.add_edge("test_agent",       "fix_executor")
     graph.add_edge("config_agent",     "fix_executor")
 
-    # Fix Executor → retry loop intelligente
+    # Fix Executor → smart retry loop
     graph.add_conditional_edges(
         "fix_executor",
         should_retry_or_escalate,
@@ -154,7 +154,7 @@ def build_graph():
         }
     )
 
-    # Terminali
+    # Terminal nodes
     graph.add_edge("save_episode", "create_pr")
     graph.add_edge("create_pr",    END)
     graph.add_edge("escalate",     END)
@@ -162,5 +162,5 @@ def build_graph():
     return graph.compile()
 
 
-# Istanza globale del grafo compilato
+# Global instance of the compiled graph
 app = build_graph()

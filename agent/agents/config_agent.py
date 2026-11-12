@@ -12,22 +12,22 @@ load_dotenv()
 
 
 CONFIG_SYSTEM_PROMPT = """
-Sei un esperto di GitHub Actions e CI/CD pipelines.
-Il tuo compito è analizzare un errore nel file .github/workflows/ci.yml
-e generare il contenuto CORRETTO e COMPLETO del file.
+You are an expert in GitHub Actions and CI/CD pipelines.
+Your task is to analyze an error in the .github/workflows/ci.yml file
+and generate the CORRECT and COMPLETE content of the file.
 
-Conoscenze chiave:
-- Versioni Python valide per actions/setup-python: 3.8, 3.9, 3.10, 3.11, 3.12
-- Versioni actions raccomandate: actions/checkout@v4, actions/setup-python@v5
-- Il file YAML deve avere indentazione a 2 spazi, mai tab
-- I job devono avere almeno: runs-on, steps con checkout e setup
+Key knowledge:
+- Valid Python versions for actions/setup-python: 3.8, 3.9, 3.10, 3.11, 3.12
+- Recommended action versions: actions/checkout@v4, actions/setup-python@v5
+- The YAML file must use 2-space indentation, never tabs
+- Jobs must have at least: runs-on, steps with checkout and setup
 
-Rispondi SOLO con il contenuto YAML del file, senza backtick né spiegazioni.
+Respond ONLY with the YAML content of the file, without backticks or explanations.
 
-Strategie per tentativo:
-- Tentativo 1: fix minimale — correggi solo la riga problematica
-- Tentativo 2: fix strutturale — rivedi l'intera sezione con l'errore
-- Tentativo 3: riscrivi il job completo con configurazione standard
+Strategies per attempt:
+- Attempt 1: minimal fix — correct only the problematic line
+- Attempt 2: structural fix — review the whole section containing the error
+- Attempt 3: rewrite the complete job with a standard configuration
 """
 
 
@@ -39,7 +39,7 @@ def read_yaml(repo_path: str) -> str:
 def write_yaml(repo_path: str, content: str) -> None:
     p = Path(repo_path) / ".github/workflows/ci.yml"
     p.write_text(content, encoding="utf-8")
-    print(f"✍️  ci.yml aggiornato")
+    print(f"✍️  ci.yml updated")
 
 
 def compute_diff(original: str, updated: str) -> str:
@@ -50,7 +50,7 @@ def compute_diff(original: str, updated: str) -> str:
         if l not in new: lines.append(f"- {l}")
     for l in new:
         if l not in orig: lines.append(f"+ {l}")
-    return "\n".join(lines) if lines else "(nessuna modifica)"
+    return "\n".join(lines) if lines else "(no changes)"
 
 
 def config_agent_node(state: dict) -> dict:
@@ -59,18 +59,18 @@ def config_agent_node(state: dict) -> dict:
     repo_path = state.get("repo_path", ".")
     history   = state.get("attempts_history", [])
 
-    print(f"\n⚙️  Config Agent — Tentativo {attempt}/3")
+    print(f"\n⚙️  Config Agent — Attempt {attempt}/3")
 
     current_yaml = read_yaml(repo_path)
 
     similar = []
     if attempt == 1:
-        attempt_context = "Fix MINIMALE: correggi solo la riga che causa il fallimento."
+        attempt_context = "MINIMAL fix: correct only the line causing the failure."
     elif attempt == 2:
-        prev = history[-1]["fix_applied"] if history else "nessuno"
-        attempt_context = f"Tentativo precedente ({prev}) fallito. Rivedi l'intera sezione."
+        prev = history[-1]["fix_applied"] if history else "none"
+        attempt_context = f"Previous attempt ({prev}) failed. Review the whole section."
     else:
-        # Recupera fix simili dalla memoria episodica
+        # Retrieve similar fixes from the episodic memory
         similar = retrieve_similar_episodes(
             error_logs=state["ci_logs"],
             category="config",
@@ -80,36 +80,36 @@ def config_agent_node(state: dict) -> dict:
         memory_context = format_episodes_for_prompt(similar)
 
         prev_list = "\n".join([f"- {h['fix_applied']}" for h in history])
-        attempt_context = f"""I tentativi precedenti hanno fallito:
+        attempt_context = f"""The previous attempts failed:
             {prev_list}
 
             {memory_context}
 
-            Usa le informazioni dalla memoria per proporre un fix diverso dai precedenti."""
+            Use the information from memory to propose a fix different from the previous ones."""
 
         if similar:
-            print(f"   🧠 Memoria: trovati {len(similar)} episodi simili")
+            print(f"   🧠 Memory: found {len(similar)} similar episodes")
 
     user_message = f"""
-        **Strategia:** {attempt_context}
+        **Strategy:** {attempt_context}
 
-        **Log CI (errore):**
+        **CI log (error):**
         ```
         {state['ci_logs'][-2000:]}
         ```
 
-        **Contenuto attuale di .github/workflows/ci.yml:**
+        **Current content of .github/workflows/ci.yml:**
         ```yaml
         {current_yaml}
         ```
 
-        **Git diff del commit:**
+        **Git diff of the commit:**
         ```
         {state.get('git_diff', 'N/A')}
         ```
 
-        Genera il contenuto COMPLETO e CORRETTO del file ci.yml.
-        Rispondi SOLO con il YAML, senza backtick né spiegazioni.
+        Generate the COMPLETE and CORRECT content of the ci.yml file.
+        Respond ONLY with the YAML, without backticks or explanations.
     """
 
     response    = llm.invoke([
@@ -118,24 +118,24 @@ def config_agent_node(state: dict) -> dict:
     ])
     new_content = response.content.strip() #type: ignore
 
-    # Rimuove eventuali blocchi <think>...</think> (Qwen3.8, Qwen3-Coder, ...)
+    # Remove any <think>...</think> blocks (Qwen3.8, Qwen3-Coder, ...)
     new_content = strip_think_blocks(new_content)
 
-    # Pulisce backtick e header ```yaml
+    # Clean up backticks and the ```yaml header
     if new_content.startswith("```"):
         lines = new_content.split("\n")
         new_content = "\n".join(lines[1:-1])
 
 
     diff = compute_diff(current_yaml, new_content)
-    print(f"   Modifiche:\n{diff}")
+    print(f"   Changes:\n{diff}")
 
     write_yaml(repo_path, new_content)
 
     new_history = history + [{
         "attempt":     attempt,
         "agent":       "config",
-        "fix_applied": f"ci.yml aggiornato (tentativo {attempt})",
+        "fix_applied": f"ci.yml updated (attempt {attempt})",
         "fix_diff":    diff,
         "file_path":   ".github/workflows/ci.yml",
         "memory_used": len(similar) > 0,
@@ -143,7 +143,7 @@ def config_agent_node(state: dict) -> dict:
     }]
 
     return {
-        "fix_applied":      f"Config fix tentativo {attempt}: {diff[:80]}",
+        "fix_applied":      f"Config fix attempt {attempt}: {diff[:80]}",
         "fix_diff":         diff,
         "attempt_number":   attempt + 1,
         "attempts_history": new_history,

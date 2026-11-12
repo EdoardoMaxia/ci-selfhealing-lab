@@ -3,7 +3,7 @@ load_dotenv()
 
 from agent.graph import app
 
-# Recupera il commit SHA dell'ultimo push
+# Retrieve the commit SHA of the last push
 import subprocess
 sha = subprocess.check_output(
     ["git", "rev-parse", "HEAD"]
@@ -21,17 +21,17 @@ state = {
     "ci_job_name":     "Install dependencies",
     "ci_conclusion":   "failure",
     "commit_sha":      sha,
-    "repo_name":       "EdoardoMaxia/ci-selfhealing-lab",
+    "repo_name":       "anonymous/ci-selfhealing-lab",
     "git_diff":        "+numpy==99.99.99",
     "repo_path":       ".",
     "attempt_number":  1,
     "attempts_history": [],
 }
 
-print("\n🚀 Self-healing avviato — operazioni reali su GitHub\n")
+print("\n🚀 Self-healing started — real operations on GitHub\n")
 result = app.invoke(state) #type: ignore
 
 print(f"\n{'='*50}")
-print(f"📊 Risultato: {result['final_status']}")
+print(f"📊 Result: {result['final_status']}")
 if result.get("pr_url"):
     print(f"📬 PR: {result['pr_url']}")
