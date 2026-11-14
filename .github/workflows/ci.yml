@@ -46,9 +46,9 @@ jobs:
       - name: Run additional tasks
         run: echo "Running additional tasks for job C"
 
-  test:
+  test-suite:
     runs-on: ubuntu-latest
-    name: Run Tests
+    name: ci/test
     env:
       PYTHONPATH: ${{ github.workspace }}
     steps:
