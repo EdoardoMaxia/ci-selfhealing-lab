@@ -65,3 +65,6 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest tests/ -v --cov=src --cov-report=term-missing
+    concurrency:
+      group: ci-${{ github.workflow }}
+      cancel-in-progress: true
