@@ -29,8 +29,11 @@ die() { say "ABORT: $*"; exit 1; }
 
 OLLAMA_TAGS=(qwen38-4k qwen3coder-4k llama31-4k mistral-4k)
 
+# stat_ok <line>: true only for "<int> <int> <int> <int>"
+stat_ok() { [[ "$1" =~ ^[0-9]+\ [0-9]+\ [0-9]+\ [0-9]+$ ]]; }
 store_stat() {   # prints: total success escalated with_case_id   (reads the live ChromaDB)
-  PYTHONPATH=. python - <<'PY'
+  # The memory module prints a banner on import: keep only the last line (the numbers).
+  PYTHONPATH=. python - <<'PY' 2>/dev/null | tail -n 1
 from agent.memory.episodic_store import get_collection
 c = get_collection(); r = c.get(include=["metadatas"]); m = r["metadatas"] or []
 print(len(m), sum(x.get("outcome") == "success" for x in m), sum(x.get("outcome") == "escalated" for x in m),
