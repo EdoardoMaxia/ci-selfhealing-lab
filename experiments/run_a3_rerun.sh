@@ -70,9 +70,9 @@ say "=== A3 rerun start | branch $(git rev-parse --abbrev-ref HEAD) @ $(git rev-
 if [ "$DRY" != 1 ]; then
   [ "$(git rev-parse --abbrev-ref HEAD)" = "msr-revision" ] || die "not on branch msr-revision"
   python -m pytest agent/tests -q || die "tests failed"
-  python experiments/check_api.py --providers anthropic openai || die "API check failed"
-  if [ ! -d "$BACKUP" ]; then cp -r data/episodic_memory "$BACKUP" && say "backup of the September store -> $BACKUP"; fi
-  [ -d "$BACKUP" ] || die "no backup of the September store"
+  python experiments/check_api.py --providers anthropic openai github || die "API/GitHub check failed (GITHUB_TOKEN in .env must be valid: the Fix Executor needs it)"
+  read -r total _ <<<"$(store_stat)"
+  if [ "${total:-0}" -gt 0 ] && [ ! -d "$BACKUP" ]; then cp -r data/episodic_memory "$BACKUP" && say "backup of the existing store ($total episodes) -> $BACKUP"; fi
 fi
 
 # ── 1. Baselines (store must be empty) ─────────────────────────────────────────
