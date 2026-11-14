@@ -46,7 +46,7 @@ jobs:
       - name: Run additional tasks
         run: echo "Running additional tasks for job C"
 
-  test:
+  run-tests:
     runs-on: ubuntu-latest
     name: Run Tests
     env:
