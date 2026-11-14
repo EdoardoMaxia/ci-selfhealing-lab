@@ -33,7 +33,7 @@ jobs:
         run: echo "Running tasks for job B"
 
   C:
-    needs: [A, B]
+    needs: A
     if: always()
     runs-on: ubuntu-latest
     steps:
