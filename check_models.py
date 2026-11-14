@@ -14,7 +14,7 @@ models = client.models.list()
 client_openai = OpenAI()
 models_openai = client_openai.models.list()
 
-# Print modelli Anthropic importabili con i miei token
+# Print the Anthropic models available with my tokens
 print("~~ ANTHROPIC ~~")
 for m in models.data:
     print(m.id)
@@ -22,7 +22,7 @@ for m in models.data:
 for _ in range(5):
     print("%%%%%%% ======================================================================= %%%%%%%%%")
 
-# Print modelli OpenAI importabili con i miei token
+# Print the OpenAI models available with my tokens
 print("~~ OpenAI ~~")
 for m in models_openai.data:
     print(m.id)

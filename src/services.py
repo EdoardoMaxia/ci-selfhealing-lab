@@ -1,5 +1,5 @@
 class UserService:
-    """Servizio utenti minimale, in-memory (per test_009)."""
+    """Minimal in-memory user service (for test_009)."""
 
     def __init__(self):
         self._users = {1: {"id": 1, "name": "alice"}}

@@ -1,5 +1,5 @@
 class Database:
-    """Database fittizio in-memory (per test_012, nessuna dipendenza esterna)."""
+    """Fake in-memory database (for test_012, no external dependency)."""
 
     def __init__(self):
         self._last = None

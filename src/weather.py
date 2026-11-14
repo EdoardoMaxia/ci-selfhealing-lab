@@ -1,5 +1,5 @@
 def _real_fetch(city):
-    raise RuntimeError("rete non disponibile in questo ambiente")
+    raise RuntimeError("network not available in this environment")
 
 
 def get_forecast(city, fetch=_real_fetch):

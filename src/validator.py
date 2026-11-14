@@ -3,7 +3,7 @@ class ValidatorConfig:
 
 
 def validate_email(value):
-    """Validazione email minimale (per test_015)."""
+    """Minimal email validation (for test_015)."""
     if "@" not in value:
         return False
     domain = value.split("@", 1)[1]

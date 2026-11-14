@@ -14,18 +14,18 @@ HEADERS = {
 
 async def get_failed_job_logs(repo: str, run_id: int) -> tuple[str, str]:
     """
-    Recupera i log e il nome del primo job fallito nella run.
-    Ritorna (job_name, logs).
+    Retrieves the logs and the name of the first failed job in the run.
+    Returns (job_name, logs).
     """
     async with httpx.AsyncClient() as client:
-        # Lista dei job nella run
+        # List of the jobs in the run
         resp = await client.get(
             f"https://api.github.com/repos/{repo}/actions/runs/{run_id}/jobs",
             headers=HEADERS
         )
         jobs = resp.json().get("jobs", [])
 
-        # Trova il primo job fallito
+        # Find the first failed job
         failed_job = next(
             (j for j in jobs if j.get("conclusion") == "failure"),
             None
@@ -36,18 +36,18 @@ async def get_failed_job_logs(repo: str, run_id: int) -> tuple[str, str]:
         job_id   = failed_job["id"]
         job_name = failed_job["name"]
 
-        # Recupera i log del job
+        # Retrieve the job logs
         log_resp = await client.get(
             f"https://api.github.com/repos/{repo}/actions/jobs/{job_id}/logs",
             headers=HEADERS,
             follow_redirects=True
         )
-        logs = log_resp.text[:8000]  # tronca per sicurezza
+        logs = log_resp.text[:8000]  # truncate for safety
         return (job_name, logs)
 
 
 async def get_commit_diff(repo: str, sha: str) -> str:
-    """Recupera il diff dell'ultimo commit che ha triggerato il fallimento."""
+    """Retrieves the diff of the last commit that triggered the failure."""
     async with httpx.AsyncClient() as client:
         resp = await client.get(
             f"https://api.github.com/repos/{repo}/commits/{sha}",
@@ -58,15 +58,15 @@ async def get_commit_diff(repo: str, sha: str) -> str:
 
 async def build_state_from_payload(payload: dict) -> dict:
     """
-    Traduce il payload del webhook GitHub in AgentState completo.
-    Chiamata dal trigger FastAPI.
+    Translates the GitHub webhook payload into a complete AgentState.
+    Called by the FastAPI trigger.
     """
     run     = payload["workflow_run"]
-    repo    = payload["repository"]["full_name"]  # es. "user/repo"
+    repo    = payload["repository"]["full_name"]  # e.g. "user/repo"
     run_id  = run["id"]
     sha     = run["head_sha"]
 
-    # Recupera log e diff in parallelo
+    # Retrieve logs and diff in parallel
     job_name, ci_logs = await get_failed_job_logs(repo, run_id)
     git_diff          = await get_commit_diff(repo, sha)
 

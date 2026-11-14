@@ -1,5 +1,5 @@
 class TTLCache:
-    """Cache con scadenza (TTL) basata su un clock iniettabile, per test deterministici."""
+    """Cache with expiration (TTL) based on an injectable clock, for deterministic tests."""
 
     def __init__(self, ttl_seconds, clock=None):
         self._ttl = ttl_seconds

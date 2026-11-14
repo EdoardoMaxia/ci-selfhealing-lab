@@ -1,12 +1,12 @@
 """
-Regressione — find_test_file() deve restituire sempre path con forward
-slash, anche su Windows, in tutti i suoi rami (match diretto, fallback
-regex, fallback finale hardcoded).
+Regression — find_test_file() must always return paths with forward
+slashes, even on Windows, in all of its branches (direct match, regex
+fallback, final hardcoded fallback).
 
-Prima del fix (vedi git history di agent/agents/test_agent.py) i path
-potevano contenere backslash letterali: il Fix Executor li committa su
-GitHub via API creando un file con nome errato nel repository
-(es. "tests\\test_calculator.py" invece di "tests/test_calculator.py").
+Before the fix (see the git history of agent/agents/test_agent.py) paths
+could contain literal backslashes: the Fix Executor commits them to
+GitHub via the API, creating a file with a wrong name in the repository
+(e.g. "tests\\test_calculator.py" instead of "tests/test_calculator.py").
 """
 import pytest
 
@@ -16,24 +16,24 @@ from agent.agents.test_agent import find_test_file
 @pytest.mark.parametrize(
     "ci_logs,expected",
     [
-        # match diretto su 'FAILED <path>'
+        # direct match on 'FAILED <path>'
         (
             "FAILED tests/test_advanced.py::test_x - AssertionError: assert 1 == 2",
             "tests/test_advanced.py",
         ),
-        # fallback regex 'tests/<nome>.py' senza prefisso FAILED
+        # regex fallback 'tests/<name>.py' without the FAILED prefix
         (
-            "qualche log rumoroso\ntests/test_orders.py altro rumore",
+            "some noisy log\ntests/test_orders.py more noise",
             "tests/test_orders.py",
         ),
-        # fallback finale hardcoded (nessun path riconoscibile nei log)
+        # final hardcoded fallback (no recognizable path in the logs)
         (
-            "nessun path di test riconoscibile in questo log",
+            "no recognizable test path in this log",
             "tests/test_calculator.py",
         ),
     ],
 )
 def test_find_test_file_never_returns_backslash(ci_logs, expected):
     result = find_test_file(ci_logs, ".")
-    assert "\\" not in result, f"path con backslash Windows: {result!r}"
+    assert "\\" not in result, f"path with Windows backslash: {result!r}"
     assert result == expected

@@ -1,5 +1,5 @@
 class Counter:
-    """Contatore condiviso incrementabile da più "worker" logici."""
+    """Shared counter that can be incremented by multiple logical "workers"."""
 
     def __init__(self):
         self.value = 0
@@ -10,7 +10,7 @@ class Counter:
 
 
 def run_workers(counter, work_items):
-    """Applica in sequenza una lista di incrementi al contatore condiviso."""
+    """Sequentially applies a list of increments to the shared counter."""
     for amount in work_items:
         counter.increment(amount)
     return counter.value

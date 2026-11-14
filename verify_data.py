@@ -1,15 +1,15 @@
 """
-Script di verifica dati — risponde alle 3 domande:
-1. SR per difficoltà
+Data verification script — answers 3 questions:
+1. SR by difficulty
 2. Attempt distribution
-3. JSON Parse Failure Rate (misurato o assente)
+3. JSON Parse Failure Rate (measured or missing)
 """
 
 import pandas as pd
 import glob
 import numpy as np
 
-# Carica tutti i CSV no_memory delle cartelle provider
+# Load all the no_memory CSVs from the provider folders
 csvs = glob.glob('experiments/results/**/*.csv', recursive=True)
 dfs = []
 for f in csvs:
@@ -20,15 +20,15 @@ for f in csvs:
 data = pd.concat(dfs, ignore_index=True)
 data = data[data['no_memory'] == 1]
 
-# Controlla i nomi modello disponibili
-print("=== NOMI MODELLO NEI CSV ===")
+# Check the available model names
+print("=== MODEL NAMES IN THE CSVs ===")
 print(data['model_name'].unique())
 print()
 
 models = data['model_name'].unique().tolist()
 
-# ── 1. SR PER DIFFICOLTA ──────────────────────────────────────
-print("=== 1. SR PER DIFFICOLTA (valori esatti) ===")
+# ── 1. SR BY DIFFICULTY ──────────────────────────────────────
+print("=== 1. SR BY DIFFICULTY (exact values) ===")
 for m in models:
     md = data[data['model_name'] == m]
     for d in ['easy', 'medium', 'hard']:
@@ -42,7 +42,7 @@ for m in models:
 print()
 
 # ── 2. ATTEMPT DISTRIBUTION ──────────────────────────────────
-print("=== 2. ATTEMPT DISTRIBUTION (valori esatti) ===")
+print("=== 2. ATTEMPT DISTRIBUTION (exact values) ===")
 for m in models:
     md  = data[data['model_name'] == m]
     n   = len(md)
@@ -63,7 +63,7 @@ if 'json_parse_fail' in data.columns:
     for m in models:
         md = data[data['model_name'] == m]
         jf = int(md['json_parse_fail'].sum())
-        print(f"  {m}: {jf} failures su {len(md)} run ({jf/len(md)*100:.2f}%)")
+        print(f"  {m}: {jf} failures out of {len(md)} runs ({jf/len(md)*100:.2f}%)")
 else:
-    print("  COLONNA ASSENTE — json_parse_fail non presente nei CSV")
-    print("  → Rimuovere la metrica dalla tesi o marcarla come 'non rilevata'")
+    print("  MISSING COLUMN — json_parse_fail not present in the CSVs")
+    print("  → Remove the metric from the paper or mark it as 'not measured'")

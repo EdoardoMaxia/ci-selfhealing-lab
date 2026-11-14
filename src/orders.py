@@ -1,5 +1,5 @@
 def create_order(session, item_id):
-    """Crea un ordine minimale nella sessione fornita (per test_024/test_038)."""
+    """Creates a minimal order in the provided session (for test_024/test_038)."""
     order = {
         "id": len(session.setdefault("orders", [])) + 1,
         "item_id": item_id,

@@ -2,5 +2,5 @@ import random
 
 
 def sample_value():
-    """Genera un valore pseudo-casuale (per test_035, riproducibile solo se seedato)."""
+    """Generates a pseudo-random value (for test_035, reproducible only if seeded)."""
     return random.random()

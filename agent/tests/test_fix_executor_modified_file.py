@@ -1,20 +1,20 @@
 """
-Regressione — il campo modified_file deve essere dichiarato in AgentState
-(altrimenti LangGraph lo scarta silenziosamente) e il Fix Executor deve
-usarlo quando presente, con fallback su AGENT_FILE_MAP solo se assente/vuoto.
+Regression — the modified_file field must be declared in AgentState
+(otherwise LangGraph silently drops it) and the Fix Executor must
+use it when present, falling back to AGENT_FILE_MAP only if missing/empty.
 
-Prima del fix (vedi git history di agent/state.py) modified_file non era
-nel TypedDict: il Test Agent non poteva comunicare al Fix Executor quale
-file aveva realmente modificato quando diverso dal path di default
+Before the fix (see the git history of agent/state.py) modified_file was not
+in the TypedDict: the Test Agent could not tell the Fix Executor which
+file it had actually modified when different from the default path
 tests/test_calculator.py.
 
-GitHub non viene mai contattato realmente: get_repo/create_branch/
-commit_file/wait_for_ci sono mockati.
+GitHub is never actually contacted: get_repo/create_branch/
+commit_file/wait_for_ci are mocked.
 
-repo_path e' sempre "." nell'uso reale (vedi experiments/benchmark.py e
-agent/pipeline/context_builder.py) — i test replicano questa condizione
-invece di un path assoluto arbitrario, dato che la logica di
-relativizzazione in fix_executor_node si basa su quell'assunzione.
+repo_path is always "." in real usage (see experiments/benchmark.py and
+agent/pipeline/context_builder.py) — the tests replicate this condition
+instead of an arbitrary absolute path, since the path relativization
+logic in fix_executor_node relies on that assumption.
 """
 from pathlib import Path
 from unittest.mock import MagicMock, patch
@@ -27,8 +27,8 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 
 def test_agent_state_declares_modified_file():
     assert "modified_file" in AgentState.__annotations__, (
-        "modified_file non e' dichiarato in AgentState: LangGraph lo "
-        "scarterebbe silenziosamente quando un agente lo valorizza"
+        "modified_file is not declared in AgentState: LangGraph would "
+        "silently drop it when an agent sets it"
     )
 
 
@@ -67,8 +67,8 @@ def test_fix_executor_uses_modified_file_when_present():
 
 
 def test_fix_executor_falls_back_to_agent_file_map_when_absent():
-    # tests/test_calculator.py esiste gia' nella baseline del repo: non va
-    # ne' creato ne' ripulito.
+    # tests/test_calculator.py already exists in the repo baseline: it must
+    # be neither created nor cleaned up.
     state = {
         "repo_name":      "owner/repo",
         "repo_path":      ".",

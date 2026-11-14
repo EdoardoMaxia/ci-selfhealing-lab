@@ -1,20 +1,20 @@
 """
-Dataset sintetico — 150 errori CI per la valutazione sperimentale
-Tesi LM-32: Self-Healing CI/CD Pipeline
+Synthetic dataset — 150 CI errors for the experimental evaluation
+Self-Healing CI/CD Pipeline
 
-Struttura: 50 errori per categoria (dependency, test, config)
-Difficoltà per categoria: easy ~19, medium ~17, hard ~14
-(dep_001-020, test_001-020, conf_001-020 sono il set originale di 60 casi;
- dep_021-050, test_021-050, conf_021-050 sono l'estensione a 150 casi)
+Structure: 50 errors per category (dependency, test, config)
+Difficulty per category: easy ~19, medium ~17, hard ~14
+(dep_001-020, test_001-020, conf_001-020 are the original set of 60 cases;
+ dep_021-050, test_021-050, conf_021-050 are the extension to 150 cases)
 
-Uso:
+Usage:
     from experiments.dataset import DATASET, get_by_category, get_by_difficulty
 """
 
 DATASET = [
 
     # ══════════════════════════════════════════════════════════
-    # CATEGORIA: DEPENDENCY (50 errori)
+    # CATEGORY: DEPENDENCY (50 errors)
     # ══════════════════════════════════════════════════════════
 
     {
@@ -30,8 +30,8 @@ DATASET = [
         """,
         "git_diff": "-numpy==1.26.4\n+numpy==99.99.99",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Riportare numpy a una versione valida, es. numpy==1.26.4",
-        "notes": "Caso base, versione chiaramente inesistente"
+        "expected_fix": "Restore numpy to a valid version, e.g. numpy==1.26.4",
+        "notes": "Base case, clearly non-existent version"
     },
 
     {
@@ -47,8 +47,8 @@ DATASET = [
         """,
         "git_diff": "-pandas==2.0.3\n+pandas==999.0.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Riportare pandas a versione valida, es. pandas==2.0.3",
-        "notes": "Stessa struttura dep_001 ma pacchetto diverso"
+        "expected_fix": "Restore pandas to a valid version, e.g. pandas==2.0.3",
+        "notes": "Same structure as dep_001 but a different package"
     },
 
     {
@@ -64,8 +64,8 @@ DATASET = [
         """,
         "git_diff": "-scikit-learn==1.3.0\n+scikit-learn==0.0.1",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Usare scikit-learn==1.3.0 o superiore",
-        "notes": "Versione troppo bassa mai rilasciata"
+        "expected_fix": "Use scikit-learn==1.3.0 or higher",
+        "notes": "Too-low version that was never released"
     },
 
     {
@@ -82,8 +82,8 @@ DATASET = [
         """,
         "git_diff": "-requests==2.31.0\n+requests==2.99.99",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Usare requests==2.31.0",
-        "notes": "Errore tipico da copia/incolla versione sbagliata"
+        "expected_fix": "Use requests==2.31.0",
+        "notes": "Typical copy/paste error with the wrong version"
     },
 
     {
@@ -99,8 +99,8 @@ DATASET = [
         """,
         "git_diff": "-flask==3.0.3\n+flask==3.99.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Usare flask==3.0.3",
-        "notes": "Versione futura non ancora rilasciata"
+        "expected_fix": "Use flask==3.0.3",
+        "notes": "Future version not yet released"
     },
 
     {
@@ -116,8 +116,8 @@ DATASET = [
         """,
         "git_diff": "-tensorflow==2.13.0\n+tensorflow==1.0.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Usare tensorflow==2.13.0 o superiore",
-        "notes": "Incompatibilità versione pacchetto con Python 3.11"
+        "expected_fix": "Use tensorflow==2.13.0 or higher",
+        "notes": "Package version incompatible with Python 3.11"
     },
 
     {
@@ -133,8 +133,8 @@ DATASET = [
         """,
         "git_diff": "-scipy==1.11.3\n+scipy==1.99.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Usare scipy==1.11.3",
-        "notes": "Versione inesistente libreria scientifica"
+        "expected_fix": "Use scipy==1.11.3",
+        "notes": "Non-existent version of a scientific library"
     },
 
     {
@@ -150,8 +150,8 @@ DATASET = [
         """,
         "git_diff": "-matplotlib==3.8.0\n+matplotlib==10.0.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Usare matplotlib==3.8.0",
-        "notes": "Major version chiaramente sbagliata"
+        "expected_fix": "Use matplotlib==3.8.0",
+        "notes": "Clearly wrong major version"
     },
 
     {
@@ -171,8 +171,8 @@ DATASET = [
         """,
         "git_diff": "+pandas==2.0.0\n+scipy==1.9.0\n-pandas==1.5.3",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare scipy a >=1.10.0 o usare pandas==1.5.3 compatibile con scipy 1.9.0",
-        "notes": "Conflitto reale tra versioni, richiede ragionamento sulle dipendenze"
+        "expected_fix": "Upgrade scipy to >=1.10.0 or use pandas==1.5.3, compatible with scipy 1.9.0",
+        "notes": "Real conflict between versions, requires reasoning about the dependencies"
     },
 
     {
@@ -190,8 +190,8 @@ DATASET = [
         """,
         "git_diff": "-torch==1.13.1\n+torch==2.0.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Usare torch==2.1.0 o superiore dove il wheel è corretto, oppure specificare --index-url per PyTorch",
-        "notes": "Wheel corrotto per versione specifica — richiede strategia alternativa"
+        "expected_fix": "Use torch==2.1.0 or higher where the wheel is correct, or specify --index-url for PyTorch",
+        "notes": "Corrupted wheel for a specific version — requires an alternative strategy"
     },
 
     {
@@ -209,8 +209,8 @@ DATASET = [
         """,
         "git_diff": "+my-internal-lib==1.2.3",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Rimuovere my-internal-lib da requirements.txt o aggiungere --extra-index-url nel workflow",
-        "notes": "Pacchetto interno non su PyPI — richiede comprensione del contesto"
+        "expected_fix": "Remove my-internal-lib from requirements.txt or add --extra-index-url in the workflow",
+        "notes": "Internal package not on PyPI — requires understanding the context"
     },
 
     {
@@ -227,8 +227,8 @@ DATASET = [
         """,
         "git_diff": "+sqlalchemy==2.0.0\n+pydantic==2.0.0\n-sqlalchemy==1.4.46",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare typing-extensions>=4.6.0 in requirements.txt",
-        "notes": "Conflitto dipendenza transitiva — richiede identificare il pacchetto mancante"
+        "expected_fix": "Upgrade typing-extensions>=4.6.0 in requirements.txt",
+        "notes": "Transitive dependency conflict — requires identifying the missing package"
     },
 
     {
@@ -247,8 +247,8 @@ DATASET = [
         """,
         "git_diff": "-cryptography==39.0.2\n+cryptography==41.0.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Specificare cryptography==41.0.0 con --only-binary=:all: o usare versione con wheel precompilato",
-        "notes": "Build from source fallisce — richiede strategia wheel binario"
+        "expected_fix": "Specify cryptography==41.0.0 with --only-binary=:all: or use a version with a prebuilt wheel",
+        "notes": "Build from source fails — requires a binary wheel strategy"
     },
 
     {
@@ -266,8 +266,8 @@ DATASET = [
         """,
         "git_diff": "+newpackage==2.0.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare python-version a 3.10 nel ci.yml o usare newpackage<1.0.0 compatibile con Python 3.9",
-        "notes": "Conflitto Python version — fix può essere nel ci.yml o requirements.txt"
+        "expected_fix": "Update python-version to 3.10 in ci.yml or use newpackage<1.0.0, compatible with Python 3.9",
+        "notes": "Python version conflict — the fix can be in ci.yml or requirements.txt"
     },
 
     {
@@ -283,8 +283,8 @@ DATASET = [
         """,
         "git_diff": "+broken-lib==0.0.1",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Rimuovere broken-lib da requirements.txt — il pacchetto non esiste su PyPI",
-        "notes": "Pacchetto completamente inventato — nessuna versione disponibile"
+        "expected_fix": "Remove broken-lib from requirements.txt — the package does not exist on PyPI",
+        "notes": "Completely made-up package — no version available"
     },
 
     {
@@ -304,8 +304,8 @@ DATASET = [
         """,
         "git_diff": "+langchain==0.1.0\n+langchain-openai==0.0.5\n+langchain-community==0.0.10",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Allineare le versioni: langchain>=0.2.0, langchain-openai>=0.1.0, langchain-community>=0.2.0 tutte compatibili con pydantic>=2.0",
-        "notes": "Conflitto multi-pacchetto complesso — ecosistema LangChain ha storicamente avuto questo problema"
+        "expected_fix": "Align the versions: langchain>=0.2.0, langchain-openai>=0.1.0, langchain-community>=0.2.0, all compatible with pydantic>=2.0",
+        "notes": "Complex multi-package conflict — the LangChain ecosystem has historically had this problem"
     },
 
     {
@@ -324,8 +324,8 @@ DATASET = [
         """,
         "git_diff": "+numpy==2.0.0\n-numpy>=1.20",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare pandas>=2.0.0 compatibile con numpy 2.0 oppure pinnare numpy<1.25",
-        "notes": "numpy 2.0 breaking change — rompe molti pacchetti che non hanno ancora aggiornato i vincoli"
+        "expected_fix": "Upgrade pandas>=2.0.0, compatible with numpy 2.0, or pin numpy<1.25",
+        "notes": "numpy 2.0 breaking change — breaks many packages that have not yet updated their constraints"
     },
 
     {
@@ -346,8 +346,8 @@ DATASET = [
         """,
         "git_diff": "+grpcio==1.60.0\n+grpcio-tools==1.60.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare protobuf>=4.21.6 e verificare compatibilità con tensorflow e google-cloud-storage",
-        "notes": "Conflitto protobuf classico nell'ecosistema Google — richiede conoscenza specifica"
+        "expected_fix": "Upgrade protobuf>=4.21.6 and verify compatibility with tensorflow and google-cloud-storage",
+        "notes": "Classic protobuf conflict in the Google ecosystem — requires specific knowledge"
     },
 
     {
@@ -366,8 +366,8 @@ DATASET = [
         """,
         "git_diff": "-spacy==3.5.0\n+spacy==3.7.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare contestualmente: spacy==3.7.0 thinc>=8.2.2 spacy-legacy>=3.0.11 cymem>=2.0.2",
-        "notes": "Aggiornamento major con cascade di dipendenze — ecosistema spacy ha dipendenze rigide"
+        "expected_fix": "Upgrade together: spacy==3.7.0 thinc>=8.2.2 spacy-legacy>=3.0.11 cymem>=2.0.2",
+        "notes": "Major upgrade with a dependency cascade — the spacy ecosystem has strict dependencies"
     },
 
     {
@@ -386,11 +386,11 @@ DATASET = [
         """,
         "git_diff": "+celery==5.3.0\n-celery==5.2.7\n+kombu==5.2.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare kombu>=5.3.0 per soddisfare il vincolo di celery 5.3.0",
-        "notes": "Aggiornamento parziale che rompe vincoli — kombu non aggiornato insieme a celery"
+        "expected_fix": "Upgrade kombu>=5.3.0 to satisfy the constraint of celery 5.3.0",
+        "notes": "Partial upgrade that breaks constraints — kombu not upgraded together with celery"
     },
 
-    # --- Nuovi casi (dep_021 - dep_050) ---
+    # --- New cases (dep_021 - dep_050) ---
 
     {
         "id": "dep_021",
@@ -407,14 +407,14 @@ DATASET = [
         """,
         "git_diff": "-urllib3==2.0.2\n+urllib3==2.0.3",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare a urllib3==2.0.4 (o altra versione non yanked), poiché 2.0.3 è stata ritirata dagli autori",
-        "notes": "Versione yanked su PyPI — diverso da una versione inesistente, richiede riconoscere il warning di yank"
+        "expected_fix": "Upgrade to urllib3==2.0.4 (or another non-yanked version), since 2.0.3 was withdrawn by its authors",
+        "notes": "Yanked version on PyPI — different from a non-existent version, requires recognizing the yank warning"
     },
 
     {
-        # NOTA (riscritto): caso originale basato su npm/package-lock.json,
-        # ecosistema non presente in questo repo (pip + requirements.txt).
-        # Riscritto come typo nel nome del pacchetto — vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case based on npm/package-lock.json,
+        # an ecosystem not present in this repo (pip + requirements.txt).
+        # Rewritten as a typo in the package name — see CHANGELOG_DATASET.md.
         "id": "dep_022",
         "category": "dependency",
         "difficulty": "easy",
@@ -428,14 +428,14 @@ DATASET = [
         """,
         "git_diff": "-flask==3.0.3\n+flaks==3.0.3",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Correggere il typo nel nome del pacchetto: flaks==3.0.3 -> flask==3.0.3",
-        "notes": "Errore di battitura nel nome del pacchetto (non nella versione) — pip non trova alcuna distribuzione perché 'flaks' non esiste su PyPI"
+        "expected_fix": "Fix the typo in the package name: flaks==3.0.3 -> flask==3.0.3",
+        "notes": "Typo in the package name (not in the version) — pip finds no distribution because 'flaks' does not exist on PyPI"
     },
 
     {
-        # NOTA (riscritto): caso originale basato su package.json "engines"/Node,
-        # ecosistema non presente in questo repo. Riscritto come operatore di
-        # versione non valido in requirements.txt — vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case based on package.json "engines"/Node,
+        # an ecosystem not present in this repo. Rewritten as an invalid version
+        # operator in requirements.txt — see CHANGELOG_DATASET.md.
         "id": "dep_023",
         "category": "dependency",
         "difficulty": "easy",
@@ -449,8 +449,8 @@ DATASET = [
         """,
         "git_diff": "-pyyaml==6.0.1\n+pyyaml=6.0.1",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Correggere l'operatore di versione da singolo '=' a '==': pyyaml==6.0.1",
-        "notes": "Errore di sintassi nel requirements.txt: pip richiede '==' per il pinning esatto (PEP 508), un singolo '=' non è un operatore di versione valido"
+        "expected_fix": "Fix the version operator from a single '=' to '==': pyyaml==6.0.1",
+        "notes": "Syntax error in requirements.txt: pip requires '==' for exact pinning (PEP 508), a single '=' is not a valid version operator"
     },
 
     {
@@ -468,8 +468,8 @@ DATASET = [
         """,
         "git_diff": "-psycopg2-binary==2.9.9\n+psycopg2==2.9.9",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Usare psycopg2-binary==2.9.9 invece di psycopg2, oppure installare libpq-dev via apt-get prima della build",
-        "notes": "psycopg2 (non-binary) richiede header di sviluppo PostgreSQL assenti sul runner"
+        "expected_fix": "Use psycopg2-binary==2.9.9 instead of psycopg2, or install libpq-dev via apt-get before the build",
+        "notes": "psycopg2 (non-binary) requires PostgreSQL development headers that are missing on the runner"
     },
 
     {
@@ -484,17 +484,17 @@ DATASET = [
         """,
         "git_diff": "  click==8.1.7\n+click==8.0.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Rimuovere la riga duplicata click==8.0.0, mantenendo solo click==8.1.7",
-        "notes": "Stesso pacchetto pinnato due volte con versioni diverse nello stesso file"
+        "expected_fix": "Remove the duplicate line click==8.0.0, keeping only click==8.1.7",
+        "notes": "Same package pinned twice with different versions in the same file"
     },
 
     {
-        # NOTA (riscritto il 2026-07-30): caso originale basato su Poetry
-        # ("pyproject.toml"/"poetry.lock", ecosistema non presente in questo
-        # repo, che usa pip + requirements.txt). Riscritto come equivalente
-        # pip-tools mantenendo la stessa lezione concettuale (lockfile non
-        # rigenerato dopo una modifica al file sorgente delle dipendenze).
-        # Vedi experiments/CHANGELOG_DATASET.md.
+        # NOTE (rewritten on 2026-07-30): original case based on Poetry
+        # ("pyproject.toml"/"poetry.lock", an ecosystem not present in this
+        # repo, which uses pip + requirements.txt). Rewritten as the pip-tools
+        # equivalent keeping the same conceptual lesson (lockfile not
+        # regenerated after a change to the dependency source file).
+        # See experiments/CHANGELOG_DATASET.md.
         "id": "dep_026",
         "category": "dependency",
         "difficulty": "easy",
@@ -502,7 +502,7 @@ DATASET = [
             ##[group]Run pip install -r requirements.txt
             Collecting httpx (from -r requirements.in (line 4))
             ERROR: Could not find a version that satisfies the requirement httpx (from -r requirements.in (line 4))
-            Note: requirements.in è stato aggiornato ma requirements.txt (generato con pip-compile) non è stato rigenerato — httpx non è presente nel file effettivamente installato in CI
+            Note: requirements.in was updated but requirements.txt (generated with pip-compile) was not regenerated — httpx is not present in the file actually installed in CI
             ##[endgroup]
             ##[group]Run pytest tests/
             ModuleNotFoundError: No module named 'httpx'
@@ -511,15 +511,15 @@ DATASET = [
         """,
         "git_diff": "+httpx==0.27.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiungere httpx==0.27.0 a requirements.txt (rigenerandolo con pip-compile a partire da requirements.in), poiché la dipendenza è stata aggiunta al file sorgente ma mai propagata al file effettivamente installato in CI",
-        "notes": "Drift tra requirements.in (sorgente) e requirements.txt (lockfile compilato) — equivalente pip-tools del caso poetry.lock non rigenerato dopo una modifica a pyproject.toml"
+        "expected_fix": "Add httpx==0.27.0 to requirements.txt (regenerating it with pip-compile from requirements.in), since the dependency was added to the source file but never propagated to the file actually installed in CI",
+        "notes": "Drift between requirements.in (source) and requirements.txt (compiled lockfile) — pip-tools equivalent of the case of a poetry.lock not regenerated after a change to pyproject.toml"
     },
 
     {
-        # NOTA (riscritto): caso originale basato su un registry npm privato
-        # autenticato, ecosistema non presente in questo repo. Riscritto come
-        # riga in stile JSON copiata per errore in requirements.txt —
-        # verificato con "pip install --dry-run" reale — vedi
+        # NOTE (rewritten): original case based on an authenticated private npm
+        # registry, an ecosystem not present in this repo. Rewritten as a
+        # JSON-style line mistakenly copied into requirements.txt —
+        # verified with a real "pip install --dry-run" — see
         # CHANGELOG_DATASET.md.
         "id": "dep_027",
         "category": "dependency",
@@ -534,8 +534,8 @@ DATASET = [
         """,
         "git_diff": "-requests==2.31.0\n+\"requests\": \"2.31.0\"",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Sostituire la riga in stile JSON con la sintassi corretta di requirements.txt: requests==2.31.0",
-        "notes": "Riga copiata per errore da un file in stile JSON (es. package.json) — non valida in un requirements.txt (formato PEP 508, non JSON)"
+        "expected_fix": "Replace the JSON-style line with the correct requirements.txt syntax: requests==2.31.0",
+        "notes": "Line mistakenly copied from a JSON-style file (e.g. package.json) — not valid in a requirements.txt (PEP 508 format, not JSON)"
     },
 
     {
@@ -552,15 +552,15 @@ DATASET = [
         """,
         "git_diff": "-fastapi[all]==0.104.1\n+fastapi==0.104.1",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare fastapi[all]==0.104.1 per includere le dipendenze extra come uvicorn, oppure aggiungere uvicorn esplicitamente a requirements.txt",
-        "notes": "Extra 'all' rimosso dal pin, sotto-dipendenze necessarie a runtime non installate"
+        "expected_fix": "Restore fastapi[all]==0.104.1 to include the extra dependencies such as uvicorn, or add uvicorn explicitly to requirements.txt",
+        "notes": "'all' extra removed from the pin, sub-dependencies needed at runtime are not installed"
     },
 
     {
-        # NOTA (riscritto): caso originale richiedeva cambiare "runs-on" in
-        # ci.yml (fuori portata di dependency_agent, che scrive solo
-        # requirements.txt). Riscritto come pacchetto Windows-only installato
-        # senza environment marker su un runner Linux — vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case required changing "runs-on" in
+        # ci.yml (out of scope for dependency_agent, which only writes
+        # requirements.txt). Rewritten as a Windows-only package installed
+        # without an environment marker on a Linux runner — see CHANGELOG_DATASET.md.
         "id": "dep_029",
         "category": "dependency",
         "difficulty": "easy",
@@ -569,23 +569,23 @@ DATASET = [
             Collecting pywin32==306
             ERROR: Could not find a version that satisfies the requirement pywin32==306 (from versions: none)
             ERROR: No matching distribution found for pywin32==306
-            Note: pywin32 pubblica distribuzioni solo per Windows (win32/win_amd64) — nessuna disponibile per Linux
+            Note: pywin32 publishes distributions only for Windows (win32/win_amd64) — none available for Linux
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "+pywin32==306",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Rimuovere pywin32==306 da requirements.txt (o aggiungerlo con l'environment marker ; sys_platform == 'win32'), poiché il runner CI è Linux e pywin32 non pubblica distribuzioni per questa piattaforma",
-        "notes": "Dipendenza Windows-only aggiunta senza environment marker, installata incondizionatamente anche sul runner Linux ubuntu-latest"
+        "expected_fix": "Remove pywin32==306 from requirements.txt (or add it with the environment marker ; sys_platform == 'win32'), since the CI runner is Linux and pywin32 does not publish distributions for this platform",
+        "notes": "Windows-only dependency added without an environment marker, installed unconditionally even on the Linux ubuntu-latest runner"
     },
 
     {
-        # NOTA (riscritto il 2026-07-30): caso originale basato su
-        # "npm audit"/package.json (ecosistema Node non presente in questo
-        # repo). Riscritto come equivalente pip-audit mantenendo la stessa
-        # lezione concettuale (pin vulnerabile segnalato da un audit di
-        # sicurezza, l'aggiornamento scelto punta a una versione inesistente).
-        # Vedi experiments/CHANGELOG_DATASET.md.
+        # NOTE (rewritten on 2026-07-30): original case based on
+        # "npm audit"/package.json (a Node ecosystem not present in this
+        # repo). Rewritten as the pip-audit equivalent keeping the same
+        # conceptual lesson (vulnerable pin flagged by a security audit,
+        # the chosen upgrade points to a non-existent version).
+        # See experiments/CHANGELOG_DATASET.md.
         "id": "dep_030",
         "category": "dependency",
         "difficulty": "easy",
@@ -593,20 +593,20 @@ DATASET = [
             ##[group]Run pip install -r requirements.txt
             ERROR: Could not find a version that satisfies the requirement pillow==10.99.0
             ERROR: No matching distribution found for pillow==10.99.0
-            Note: pillow==8.3.2 (pin precedente) era stato segnalato da pip-audit per CVE-2021-34552; la versione di aggiornamento scelta non esiste su PyPI
+            Note: pillow==8.3.2 (previous pin) had been flagged by pip-audit for CVE-2021-34552; the chosen upgrade version does not exist on PyPI
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-pillow==8.3.2\n+pillow==10.99.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare pillow a una versione realmente pubblicata e priva della vulnerabilità nota, es. pillow==10.3.0, poiché pillow==10.99.0 non esiste su PyPI",
-        "notes": "Equivalente pip-audit del caso npm audit: il pin vulnerabile va sostituito, ma la versione di aggiornamento indicata punta a una release inesistente"
+        "expected_fix": "Upgrade pillow to an actually published version free of the known vulnerability, e.g. pillow==10.3.0, since pillow==10.99.0 does not exist on PyPI",
+        "notes": "pip-audit equivalent of the npm audit case: the vulnerable pin must be replaced, but the indicated upgrade version points to a non-existent release"
     },
 
     {
-        # NOTA (riscritto): caso originale basato su yarn.lock, ecosistema
-        # non presente in questo repo. Riscritto come punto e virgola orfano
-        # rimasto dopo la rimozione di un environment marker — vedi
+        # NOTE (rewritten): original case based on yarn.lock, an ecosystem
+        # not present in this repo. Rewritten as an orphan semicolon
+        # left over after removing an environment marker — see
         # CHANGELOG_DATASET.md.
         "id": "dep_031",
         "category": "dependency",
@@ -622,16 +622,16 @@ DATASET = [
         """,
         "git_diff": "-requests==2.31.0; python_version >= '3.8'\n+requests==2.31.0; python_version",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Ripristinare l'espressione completa dell'environment marker: requests==2.31.0; python_version >= '3.8' (oppure rimuovere del tutto il marker: requests==2.31.0)",
-        "notes": "L'environment marker è stato troncato durante una modifica, lasciando solo 'python_version' senza operatore né valore — non valido secondo PEP 508 (verificato con pip install --dry-run reale, che genera esattamente questo InvalidMarker)"
+        "expected_fix": "Restore the full environment marker expression: requests==2.31.0; python_version >= '3.8' (or remove the marker entirely: requests==2.31.0)",
+        "notes": "The environment marker was truncated during an edit, leaving only 'python_version' with no operator or value — invalid according to PEP 508 (verified with a real pip install --dry-run, which produces exactly this InvalidMarker)"
     },
 
     {
-        # NOTA (riscritto): caso originale basato su un conflitto peer
-        # dependency npm (ERESOLVE), ecosistema non presente in questo repo.
-        # Riscritto come equivalente pip reale — verificato con
-        # "pip install --dry-run" reale (sphinx 7.2.6 dichiara
-        # esplicitamente docutils<0.21 nella propria metadata) — vedi
+        # NOTE (rewritten): original case based on an npm peer dependency
+        # conflict (ERESOLVE), an ecosystem not present in this repo.
+        # Rewritten as a real pip equivalent — verified with a
+        # real "pip install --dry-run" (sphinx 7.2.6 explicitly declares
+        # docutils<0.21 in its own metadata) — see
         # CHANGELOG_DATASET.md.
         "id": "dep_032",
         "category": "dependency",
@@ -647,8 +647,8 @@ DATASET = [
         """,
         "git_diff": "+sphinx==7.2.6\n-docutils==0.20.1\n+docutils==0.22",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Allineare docutils a una versione compatibile con sphinx==7.2.6 (es. docutils==0.20.1, che soddisfa >=0.18.1 e <0.21)",
-        "notes": "sphinx 7.2.6 dichiara esplicitamente nella propria metadata un vincolo superiore su docutils (<0.21) — equivalente Python del conflitto peer-dependency npm ERESOLVE"
+        "expected_fix": "Align docutils to a version compatible with sphinx==7.2.6 (e.g. docutils==0.20.1, which satisfies >=0.18.1 and <0.21)",
+        "notes": "sphinx 7.2.6 explicitly declares in its own metadata an upper bound on docutils (<0.21) — Python equivalent of the npm ERESOLVE peer-dependency conflict"
     },
 
     {
@@ -666,8 +666,8 @@ DATASET = [
         """,
         "git_diff": "-torch==2.1.0\n+torch==2.1.0+cu121",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Usare torch==2.1.0 (build CPU standard da PyPI) oppure aggiungere --index-url https://download.pytorch.org/whl/cu121 se serve davvero la build CUDA",
-        "notes": "Build CUDA specifica richiede un index url dedicato, non disponibile su PyPI standard"
+        "expected_fix": "Use torch==2.1.0 (standard CPU build from PyPI) or add --index-url https://download.pytorch.org/whl/cu121 if the CUDA build is really needed",
+        "notes": "A specific CUDA build requires a dedicated index url, not available on the standard PyPI"
     },
 
     {
@@ -685,8 +685,8 @@ DATASET = [
         """,
         "git_diff": "-click==8.1.6 --hash=sha256:a61c...\n+click==8.1.7",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Rigenerare requirements.txt con pip-compile per aggiornare anche gli hash associati a click==8.1.7",
-        "notes": "Versione del pacchetto aggiornata manualmente senza rigenerare gli hash richiesti da --require-hashes"
+        "expected_fix": "Regenerate requirements.txt with pip-compile to also update the hashes associated with click==8.1.7",
+        "notes": "Package version updated manually without regenerating the hashes required by --require-hashes"
     },
 
     {
@@ -705,8 +705,8 @@ DATASET = [
         """,
         "git_diff": "-  - scikit-learn=1.2\n+  - scikit-learn=1.4",
         "ci_job_name": "Create conda environment",
-        "expected_fix": "Aggiornare python a >=3.9 in environment.yml, oppure usare scikit-learn=1.2 compatibile con python=3.8",
-        "notes": "Solver conda non riesce a soddisfare simultaneamente python=3.8 e scikit-learn=1.4"
+        "expected_fix": "Upgrade python to >=3.9 in environment.yml, or use scikit-learn=1.2, compatible with python=3.8",
+        "notes": "The conda solver cannot satisfy python=3.8 and scikit-learn=1.4 simultaneously"
     },
 
     {
@@ -723,8 +723,8 @@ DATASET = [
         """,
         "git_diff": "+acme-internal-utils==0.1.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Configurare --index-url sull'indice privato interno con priorità sopra PyPI pubblico, per evitare che pip risolva il nome da un pacchetto pubblico non affidabile (dependency confusion)",
-        "notes": "Rischio di dependency confusion: un pacchetto pubblico con lo stesso nome di uno interno viene installato per errore"
+        "expected_fix": "Configure --index-url on the internal private index with priority over the public PyPI, to prevent pip from resolving the name from an untrusted public package (dependency confusion)",
+        "notes": "Dependency confusion risk: a public package with the same name as an internal one is installed by mistake"
     },
 
     {
@@ -741,8 +741,8 @@ DATASET = [
         """,
         "git_diff": "-requires = [\"setuptools>=65\"]\n+requires = [\"setuptools>=68\"]",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare setuptools nell'ambiente CI (pip install --upgrade setuptools) prima di installare i pacchetti che richiedono setuptools>=68 come build backend",
-        "notes": "Il build backend richiesto in pyproject.toml non è soddisfatto dalla versione di setuptools preinstallata sul runner"
+        "expected_fix": "Upgrade setuptools in the CI environment (pip install --upgrade setuptools) before installing the packages that require setuptools>=68 as build backend",
+        "notes": "The build backend required in pyproject.toml is not satisfied by the setuptools version preinstalled on the runner"
     },
 
     {
@@ -759,8 +759,8 @@ DATASET = [
         """,
         "git_diff": "+git+https://github.com/myorg/internal-tool.git@v1.2.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Usare git+https://x-access-token:${{ secrets.GH_PAT }}@github.com/myorg/internal-tool.git@v1.2.0 per autenticarsi al repository privato",
-        "notes": "Dipendenza da repository Git privato senza credenziali nell'URL"
+        "expected_fix": "Use git+https://x-access-token:${{ secrets.GH_PAT }}@github.com/myorg/internal-tool.git@v1.2.0 to authenticate to the private repository",
+        "notes": "Dependency on a private Git repository without credentials in the URL"
     },
 
     {
@@ -778,15 +778,15 @@ DATASET = [
         """,
         "git_diff": "+black==24.1.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Allineare la versione di black in requirements-dev.txt a 23.9.1 per essere coerente con requirements.txt (o aggiornare entrambe alla stessa versione)",
-        "notes": "Due file di requirements pinnano lo stesso pacchetto a versioni diverse"
+        "expected_fix": "Align the black version in requirements-dev.txt to 23.9.1 to be consistent with requirements.txt (or update both to the same version)",
+        "notes": "Two requirements files pin the same package to different versions"
     },
 
     {
-        # NOTA (riscritto): caso originale richiedeva modificare ci.yml
-        # (cache dello step actions/setup-node), fuori portata di
-        # dependency_agent. Riscritto come range di versione
-        # auto-contraddittorio in requirements.txt — vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case required modifying ci.yml
+        # (cache of the actions/setup-node step), out of scope for
+        # dependency_agent. Rewritten as a self-contradictory version
+        # range in requirements.txt — see CHANGELOG_DATASET.md.
         "id": "dep_040",
         "category": "dependency",
         "difficulty": "medium",
@@ -800,8 +800,8 @@ DATASET = [
         """,
         "git_diff": "-click==8.1.7\n+click<8.0,>=9.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Correggere il range di versione contraddittorio (>=9.0 e <8.0 non possono essere entrambi veri): usare click==8.1.7",
-        "notes": "Range di versione auto-contraddittorio (nessuna versione può soddisfare contemporaneamente >=9.0 e <8.0) — probabile errore di digitazione nell'ordine degli operatori"
+        "expected_fix": "Fix the contradictory version range (>=9.0 and <8.0 cannot both be true): use click==8.1.7",
+        "notes": "Self-contradictory version range (no version can satisfy both >=9.0 and <8.0) — likely a typo in the order of the operators"
     },
 
     {
@@ -819,8 +819,8 @@ DATASET = [
         """,
         "git_diff": "-tokenizers==0.13.3\n+tokenizers==0.15.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Usare tokenizers==0.15.0 con wheel precompilato disponibile (verificare compatibilità Python) oppure installare il toolchain Rust nel workflow prima del pip install",
-        "notes": "Versione senza wheel precompilato per la piattaforma richiede build da sorgente con Rust non disponibile sul runner"
+        "expected_fix": "Use tokenizers==0.15.0 with an available prebuilt wheel (check Python compatibility) or install the Rust toolchain in the workflow before pip install",
+        "notes": "A version without a prebuilt wheel for the platform requires a source build with Rust, which is not available on the runner"
     },
 
     {
@@ -839,16 +839,16 @@ DATASET = [
         """,
         "git_diff": "+package-a==2.0.0\n+package-b==1.5.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare package-b a una versione compatibile con shared-lib>=2.0 (es. package-b>=2.0.0), poiché non esiste un range di shared-lib che soddisfi entrambi i vincoli attuali",
-        "notes": "Diamond dependency: due pacchetti diretti richiedono range incompatibili della stessa dipendenza transitiva"
+        "expected_fix": "Upgrade package-b to a version compatible with shared-lib>=2.0 (e.g. package-b>=2.0.0), since no shared-lib range satisfies both current constraints",
+        "notes": "Diamond dependency: two direct packages require incompatible ranges of the same transitive dependency"
     },
 
     {
-        # NOTA (riscritto): caso originale richiedeva il meccanismo npm
-        # "overrides" (package.json), non presente in questo ecosistema.
-        # Riscritto come conflitto reale pandas/numpy che richiede
-        # aggiornare la dipendenza "indiretta" (pandas), non solo quella
-        # bumpata direttamente (numpy) — vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case required the npm
+        # "overrides" mechanism (package.json), not present in this ecosystem.
+        # Rewritten as a real pandas/numpy conflict that requires
+        # upgrading the "indirect" dependency (pandas), not only the one
+        # bumped directly (numpy) — see CHANGELOG_DATASET.md.
         "id": "dep_043",
         "category": "dependency",
         "difficulty": "hard",
@@ -865,8 +865,8 @@ DATASET = [
         """,
         "git_diff": "+pandas==2.0.3\n+numpy==2.0.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare pandas a una versione con supporto NumPy 2.0 (es. pandas==2.2.2 o superiore), oppure fissare numpy<2.0 (es. numpy==1.26.4) per restare compatibili con pandas==2.0.3 — il semplice pin di numpy==2.0.0 non basta, perché pandas 2.0.3 dichiara esplicitamente numpy<2 tra le sue dipendenze",
-        "notes": "Bump isolato di numpy a una major version (2.0) rompe il vincolo dichiarato da pandas 2.0.3, che predata il supporto a NumPy 2.0 — richiede aggiornare a cascata anche pandas, non solo rimuovere il pin numpy. Equivalente Python del caso 'Dependabot bump richiede un override transitivo'"
+        "expected_fix": "Upgrade pandas to a version with NumPy 2.0 support (e.g. pandas==2.2.2 or higher), or pin numpy<2.0 (e.g. numpy==1.26.4) to stay compatible with pandas==2.0.3 — simply pinning numpy==2.0.0 is not enough, because pandas 2.0.3 explicitly declares numpy<2 among its dependencies",
+        "notes": "An isolated bump of numpy to a major version (2.0) breaks the constraint declared by pandas 2.0.3, which predates NumPy 2.0 support — requires cascading the upgrade to pandas as well, not just removing the numpy pin. Python equivalent of the 'Dependabot bump requires a transitive override' case"
     },
 
     {
@@ -882,15 +882,15 @@ DATASET = [
         """,
         "git_diff": "-    runs-on: ubuntu-22.04\n+    runs-on: ubuntu-18.04",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare runs-on: ubuntu-22.04 (o superiore), poiché il wheel installato per somepkg è compilato contro una versione di glibc non disponibile su ubuntu-18.04",
-        "notes": "Incompatibilità ABI a runtime (non a install time) tra il wheel precompilato e la libc del runner più vecchio"
+        "expected_fix": "Restore runs-on: ubuntu-22.04 (or higher), since the wheel installed for somepkg is compiled against a glibc version not available on ubuntu-18.04",
+        "notes": "Runtime (not install-time) ABI incompatibility between the prebuilt wheel and the libc of the older runner"
     },
 
     {
-        # NOTA (riscritto): caso originale basato su un monorepo npm
-        # workspace, ecosistema non presente in questo repo. Riscritto come
-        # riferimento a un file di constraints (-c) inesistente, meccanismo
-        # pip reale ma poco noto — vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case based on an npm monorepo
+        # workspace, an ecosystem not present in this repo. Rewritten as a
+        # reference to a non-existent constraints file (-c), a real but
+        # little-known pip mechanism — see CHANGELOG_DATASET.md.
         "id": "dep_045",
         "category": "dependency",
         "difficulty": "hard",
@@ -902,8 +902,8 @@ DATASET = [
         """,
         "git_diff": "+-c constraints.txt",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Rimuovere la riga '-c constraints.txt' da requirements.txt, poiché il file di constraints referenziato non esiste nel repository (oppure, se il vincolo era intenzionale, incorporarne direttamente i pin nel requirements.txt stesso)",
-        "notes": "Riferimento a un file di constraints (-c) inesistente — pip supporta l'inclusione ricorsiva di file di requirements/constraints con -r/-c, ma fallisce con un errore poco intuitivo se il file referenziato manca"
+        "expected_fix": "Remove the '-c constraints.txt' line from requirements.txt, since the referenced constraints file does not exist in the repository (or, if the constraint was intentional, inline its pins directly into requirements.txt itself)",
+        "notes": "Reference to a non-existent constraints file (-c) — pip supports recursive inclusion of requirements/constraints files with -r/-c, but fails with an unintuitive error if the referenced file is missing"
     },
 
     {
@@ -921,16 +921,16 @@ DATASET = [
         """,
         "git_diff": "-django==4.2.7\n+django==5.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Aggiornare contestualmente django-filter>=23.5 e djangorestframework>=3.14.0 (versioni con supporto Django 5.0), oppure rimanere su django==4.2.7",
-        "notes": "Aggiornamento major di Django senza aggiornare a cascata i pacchetti dipendenti compatibili"
+        "expected_fix": "Upgrade together django-filter>=23.5 and djangorestframework>=3.14.0 (versions with Django 5.0 support), or stay on django==4.2.7",
+        "notes": "Major Django upgrade without cascading the upgrade to the compatible dependent packages"
     },
 
     {
-        # NOTA (riscritto): caso originale basato su una duplicazione di
-        # React a runtime (npm/JS), ecosistema non presente in questo repo.
-        # Riscritto come equivalente Python reale, verificato con
-        # "pip install --dry-run" reale (streamlit 1.28.0 dichiara
-        # esplicitamente protobuf<5 nella propria metadata) — vedi
+        # NOTE (rewritten): original case based on a runtime React
+        # duplication (npm/JS), an ecosystem not present in this repo.
+        # Rewritten as a real Python equivalent, verified with a
+        # real "pip install --dry-run" (streamlit 1.28.0 explicitly declares
+        # protobuf<5 in its own metadata) — see
         # CHANGELOG_DATASET.md.
         "id": "dep_047",
         "category": "dependency",
@@ -948,8 +948,8 @@ DATASET = [
         """,
         "git_diff": "+streamlit==1.28.0\n+protobuf==5.28.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Fissare protobuf a una versione compatibile con streamlit==1.28.0 (es. protobuf==4.25.3, che soddisfa >=3.20 e <5), poiché streamlit dichiara esplicitamente protobuf<5 — il pin diretto di protobuf==5.28.0 non è compatibile, va scelta una versione della serie 4.x",
-        "notes": "streamlit 1.28.0 dichiara esplicitamente nella propria metadata un vincolo superiore su protobuf (<5) — bump isolato di protobuf a una major version rompe questo vincolo, richiede identificare e fissare la dipendenza indiretta corretta (non basta rimuovere il pin) — equivalente Python del caso 'duplicazione di React causata da una libreria UI non aggiornata'"
+        "expected_fix": "Pin protobuf to a version compatible with streamlit==1.28.0 (e.g. protobuf==4.25.3, which satisfies >=3.20 and <5), since streamlit explicitly declares protobuf<5 — the direct pin protobuf==5.28.0 is not compatible, a 4.x version must be chosen",
+        "notes": "streamlit 1.28.0 explicitly declares in its own metadata an upper bound on protobuf (<5) — an isolated bump of protobuf to a major version breaks this constraint, requires identifying and pinning the correct indirect dependency (removing the pin is not enough) — Python equivalent of the 'React duplication caused by an outdated UI library' case"
     },
 
     {
@@ -966,8 +966,8 @@ DATASET = [
         """,
         "git_diff": "-botocore==1.34.10\n+botocore==1.33.0",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Allineare botocore==1.34.10 (o rimuovere il pin esplicito e lasciare che boto3 risolva la versione compatibile automaticamente)",
-        "notes": "boto3 e botocore devono essere aggiornati in coppia — pin manuale di botocore a versione più vecchia rompe il vincolo"
+        "expected_fix": "Align botocore==1.34.10 (or remove the explicit pin and let boto3 resolve the compatible version automatically)",
+        "notes": "boto3 and botocore must be upgraded together — manually pinning botocore to an older version breaks the constraint"
     },
 
     {
@@ -985,8 +985,8 @@ DATASET = [
         """,
         "git_diff": "-          key: pip-${{ hashFiles('requirements.txt') }}\n+          key: pip-${{ hashFiles('requirements-base.txt') }}",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Correggere la cache key per usare hashFiles('requirements.txt') (il file realmente modificato), così che un cambiamento nelle dipendenze invalidi correttamente la cache",
-        "notes": "La chiave di cache referenzia il file sbagliato: le modifiche a requirements.txt non invalidano la cache, causando l'uso di dipendenze obsolete"
+        "expected_fix": "Fix the cache key to use hashFiles('requirements.txt') (the file actually modified), so that a change in the dependencies correctly invalidates the cache",
+        "notes": "The cache key references the wrong file: changes to requirements.txt do not invalidate the cache, causing outdated dependencies to be used"
     },
 
     {
@@ -1003,12 +1003,12 @@ DATASET = [
         """,
         "git_diff": "-mypackage==1.9.1\n+mypackage==2.0.0rc1",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Usare mypackage==1.9.1 (versione stabile) oppure aggiungere --pre al comando pip install se la release candidate è necessaria intenzionalmente",
-        "notes": "Pin a una release candidate (pre-release) che pip ignora di default senza il flag --pre"
+        "expected_fix": "Use mypackage==1.9.1 (stable version) or add --pre to the pip install command if the release candidate is intentionally needed",
+        "notes": "Pin to a release candidate (pre-release) that pip ignores by default without the --pre flag"
     },
 
     # ══════════════════════════════════════════════════════════
-    # CATEGORIA: TEST (50 errori)
+    # CATEGORY: TEST (50 errors)
     # ══════════════════════════════════════════════════════════
 
     {
@@ -1017,17 +1017,17 @@ DATASET = [
         "difficulty": "easy",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
-            FAILED tests/test_calculator.py::test_add_positivi - AssertionError: assert 5 == 99
+            FAILED tests/test_calculator.py::test_add_positive - AssertionError: assert 5 == 99
             short test summary info
-            FAILED tests/test_calculator.py::test_add_positivi
+            FAILED tests/test_calculator.py::test_add_positive
             1 failed, 5 passed in 0.42s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-assert add(2, 3) == 5\n+assert add(2, 3) == 99",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare assert add(2, 3) == 5",
-        "notes": "Assert modificato con valore errato — caso base"
+        "expected_fix": "Restore assert add(2, 3) == 5",
+        "notes": "Assert modified with a wrong value — base case"
     },
 
     {
@@ -1036,17 +1036,17 @@ DATASET = [
         "difficulty": "easy",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
-            FAILED tests/test_calculator.py::test_divide_normale - AssertionError: assert 5.0 == 2.5
+            FAILED tests/test_calculator.py::test_divide_normal - AssertionError: assert 5.0 == 2.5
             short test summary info
-            FAILED tests/test_calculator.py::test_divide_normale
+            FAILED tests/test_calculator.py::test_divide_normal
             1 failed, 5 passed in 0.38s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-assert divide(10, 2) == 5.0\n+assert divide(10, 2) == 2.5",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare assert divide(10, 2) == 5.0",
-        "notes": "Valore atteso sbagliato in operazione aritmetica"
+        "expected_fix": "Restore assert divide(10, 2) == 5.0",
+        "notes": "Wrong expected value in an arithmetic operation"
     },
 
     {
@@ -1055,17 +1055,17 @@ DATASET = [
         "difficulty": "easy",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
-            FAILED tests/test_calculator.py::test_factorial_normale - AssertionError: assert 120 == 60
+            FAILED tests/test_calculator.py::test_factorial_normal - AssertionError: assert 120 == 60
             short test summary info
-            FAILED tests/test_calculator.py::test_factorial_normale
+            FAILED tests/test_calculator.py::test_factorial_normal
             1 failed, 5 passed in 0.41s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-assert factorial(5) == 120\n+assert factorial(5) == 60",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare assert factorial(5) == 120",
-        "notes": "Risultato fattoriale errato nel test"
+        "expected_fix": "Restore assert factorial(5) == 120",
+        "notes": "Wrong factorial result in the test"
     },
 
     {
@@ -1083,8 +1083,8 @@ DATASET = [
         """,
         "git_diff": "-assert to_upper('hello') == 'HELLO'\n+assert to_upper('hello') == 'hello'",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare assert to_upper('hello') == 'HELLO'",
-        "notes": "Test stringa con attesa lowercase invece di uppercase"
+        "expected_fix": "Restore assert to_upper('hello') == 'HELLO'",
+        "notes": "String test expecting lowercase instead of uppercase"
     },
 
     {
@@ -1102,8 +1102,8 @@ DATASET = [
         """,
         "git_diff": "-assert response.status_code == 200\n+assert response.status_code == 404",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare assert response.status_code == 200",
-        "notes": "Status code atteso sbagliato"
+        "expected_fix": "Restore assert response.status_code == 200",
+        "notes": "Wrong expected status code"
     },
 
     {
@@ -1120,8 +1120,8 @@ DATASET = [
         """,
         "git_diff": "-assert user.name == 'John'\n+assert user.name == 'john'",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare assert user.name == 'John' (maiuscola)",
-        "notes": "Case sensitivity nel valore atteso"
+        "expected_fix": "Restore assert user.name == 'John' (capitalized)",
+        "notes": "Case sensitivity in the expected value"
     },
 
     {
@@ -1139,8 +1139,8 @@ DATASET = [
         """,
         "git_diff": "-assert power(2, 3) == 8\n+assert power(2, 4) == 8",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare assert power(2, 3) == 8",
-        "notes": "Esponente sbagliato nel test"
+        "expected_fix": "Restore assert power(2, 3) == 8",
+        "notes": "Wrong exponent in the test"
     },
 
     {
@@ -1158,8 +1158,8 @@ DATASET = [
         """,
         "git_diff": "-assert len([1, 2, 3]) == 3\n+assert len([1, 2, 3]) == 5",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare assert len([1, 2, 3]) == 3",
-        "notes": "Lunghezza lista attesa sbagliata"
+        "expected_fix": "Restore assert len([1, 2, 3]) == 3",
+        "notes": "Wrong expected list length"
     },
 
     {
@@ -1177,8 +1177,8 @@ DATASET = [
         """,
         "git_diff": "-def get_user(self, user_id):\n+def fetch_user(self, user_id):",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Aggiornare il test: sostituire service.get_user() con service.fetch_user()",
-        "notes": "Rename di metodo nel sorgente non riflesso nel test"
+        "expected_fix": "Update the test: replace service.get_user() with service.fetch_user()",
+        "notes": "Method rename in the source not reflected in the test"
     },
 
     {
@@ -1196,8 +1196,8 @@ DATASET = [
         """,
         "git_diff": "+    'price': 10.0,\n     'id': 1,\n     'name': 'item'",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Aggiornare il test per includere il campo 'price' nell'assert atteso",
-        "notes": "Nuovo campo aggiunto al modello non incluso nel test"
+        "expected_fix": "Update the test to include the 'price' field in the expected assert",
+        "notes": "New field added to the model not included in the test"
     },
 
     {
@@ -1215,8 +1215,8 @@ DATASET = [
         """,
         "git_diff": "-    MIN_PASSWORD_LENGTH = 8\n+    MIN_PASSWORD_LENGTH = 4",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Aggiornare il test per usare password che fallisce con il nuovo minimo di 4 caratteri, oppure ripristinare MIN_PASSWORD_LENGTH = 8",
-        "notes": "Cambio logica business riflessa nel test — ambiguo se fix è nel test o nel sorgente"
+        "expected_fix": "Update the test to use a password that fails with the new minimum of 4 characters, or restore MIN_PASSWORD_LENGTH = 8",
+        "notes": "Business logic change reflected in the test — ambiguous whether the fix is in the test or in the source"
     },
 
     {
@@ -1233,8 +1233,8 @@ DATASET = [
         """,
         "git_diff": "-def save(self, record):\n+def save(self, record, commit=True):",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Il test chiama save(record) — aggiungere commit=True nella chiamata oppure è già default — verificare che il test passi il parametro correttamente",
-        "notes": "Nuova firma funzione con parametro obbligatorio aggiunto"
+        "expected_fix": "The test calls save(record) — add commit=True in the call or it is already the default — verify that the test passes the parameter correctly",
+        "notes": "New function signature with an added required parameter"
     },
 
     {
@@ -1251,8 +1251,8 @@ DATASET = [
         """,
         "git_diff": "-    smtp.send_email(to, subject, body)\n+    smtp.send_message(to, subject, body)",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Aggiornare il mock: mock_smtp.send_message invece di mock_smtp.send_email",
-        "notes": "Metodo rinominato nel sorgente, mock non aggiornato"
+        "expected_fix": "Update the mock: mock_smtp.send_message instead of mock_smtp.send_email",
+        "notes": "Method renamed in the source, mock not updated"
     },
 
     {
@@ -1271,8 +1271,8 @@ DATASET = [
         """,
         "git_diff": "-    'database_url': db_url\n+    'db_url': db_url",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Aggiornare il test: config['db_url'] invece di config['database_url']",
-        "notes": "Chiave dizionario rinominata nel sorgente"
+        "expected_fix": "Update the test: config['db_url'] instead of config['database_url']",
+        "notes": "Dictionary key renamed in the source"
     },
 
     {
@@ -1289,16 +1289,16 @@ DATASET = [
         """,
         "git_diff": "-    REQUIRE_TLD = True\n+    REQUIRE_TLD = False",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare REQUIRE_TLD = True oppure aggiornare il test per accettare il nuovo comportamento",
-        "notes": "Cambio di comportamento del validator — fix ambiguo (test o sorgente)"
+        "expected_fix": "Restore REQUIRE_TLD = True or update the test to accept the new behavior",
+        "notes": "Validator behavior change — ambiguous fix (test or source)"
     },
 
     {
-        # NOTA (riscritto): il contenuto reale precedente di test_async.py
-        # richiedeva pytest-asyncio (plugin non presente in requirements.txt
-        # di produzione). Riscritto usando solo asyncio stdlib — vedi
-        # CHANGELOG_DATASET.md. Injection gestita da _inject_test_016 in
-        # benchmark.py (blocco multi-riga, non un find/replace 1:1).
+        # NOTE (rewritten): the previous actual content of test_async.py
+        # required pytest-asyncio (a plugin not present in the production
+        # requirements.txt). Rewritten using only stdlib asyncio — see
+        # CHANGELOG_DATASET.md. Injection handled by _inject_test_016 in
+        # benchmark.py (multi-line block, not a 1:1 find/replace).
         "id": "test_016",
         "category": "test",
         "difficulty": "hard",
@@ -1306,15 +1306,15 @@ DATASET = [
             ##[group]Run pytest tests/ -v
             FAILED tests/test_async.py::test_fetch_data - RuntimeError: This event loop is already running
             RuntimeError: This event loop is already running
-            loop.run_until_complete() è stato chiamato da dentro un loop già avviato da asyncio.run()
+            loop.run_until_complete() was called from inside a loop already started by asyncio.run()
             1 failed, 59 passed in 0.41s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-    result = asyncio.run(fetch_data())\n+    async def runner():\n+        loop = asyncio.get_event_loop()\n+        return loop.run_until_complete(fetch_data())\n+\n+    result = asyncio.run(runner())",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Rimuovere il wrapper runner()/loop.run_until_complete() e ripristinare la chiamata diretta result = asyncio.run(fetch_data()), poiché chiamare run_until_complete() su un loop già in esecuzione (dentro asyncio.run) solleva sempre RuntimeError",
-        "notes": "Sostituisce il contenuto reale precedente di test_async.py (che richiedeva pytest-asyncio) con un caso basato solo su asyncio stdlib — il nesting di loop.run_until_complete() dentro un loop già avviato da asyncio.run() è un errore reale e deterministico, non dipendente dal timing"
+        "expected_fix": "Remove the runner()/loop.run_until_complete() wrapper and restore the direct call result = asyncio.run(fetch_data()), since calling run_until_complete() on an already running loop (inside asyncio.run) always raises RuntimeError",
+        "notes": "Replaces the previous actual content of test_async.py (which required pytest-asyncio) with a case based only on stdlib asyncio — nesting loop.run_until_complete() inside a loop already started by asyncio.run() is a real and deterministic error, not timing-dependent"
     },
 
     {
@@ -1333,15 +1333,15 @@ DATASET = [
         """,
         "git_diff": "-@pytest.fixture(scope='function')\n+@pytest.fixture(scope='session')\ndef db_setup():",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare scope='function' per la fixture db_setup o aggiungere autouse e reset esplicito del db",
-        "notes": "Scope fixture mal configurato — side effect tra test"
+        "expected_fix": "Restore scope='function' for the db_setup fixture or add autouse and an explicit db reset",
+        "notes": "Misconfigured fixture scope — side effect between tests"
     },
 
     {
-        # NOTA (riscritto): caso originale richiedeva freezegun (non presente
-        # in requirements.txt di produzione). Riscritto con un clock fittizio
-        # iniettato esplicitamente in TTLCache — stessa lezione (scadenza
-        # basata sul tempo), completamente deterministico — vedi
+        # NOTE (rewritten): original case required freezegun (not present
+        # in the production requirements.txt). Rewritten with a fake clock
+        # explicitly injected into TTLCache — same lesson (time-based
+        # expiration), fully deterministic — see
         # CHANGELOG_DATASET.md.
         "id": "test_018",
         "category": "test",
@@ -1349,15 +1349,15 @@ DATASET = [
         "ci_logs": """
             ##[group]Run pytest tests/ -v
             FAILED tests/test_cache.py::test_cache_invalidation - AssertionError: assert 'old_value' is None
-            Il valore atteso era None (scaduto), ma la entry non è ancora considerata scaduta dal clock fittizio del test
+            The expected value was None (expired), but the entry is not yet considered expired by the test's fake clock
             1 failed, 59 passed in 0.03s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-    fake_time[0] = 301\n+    fake_time[0] = 250",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Impostare fake_time[0] a un valore >= ttl_seconds (es. 301, oltre il TTL di 300s) così che cache.get() consideri scaduta la entry e ritorni None",
-        "notes": "Sostituisce freezegun (non presente in requirements.txt) con un clock fittizio iniettato esplicitamente nel TTLCache — stessa lezione (scadenza basata sul tempo) ma completamente deterministico, senza dipendere da timestamp reali"
+        "expected_fix": "Set fake_time[0] to a value >= ttl_seconds (e.g. 301, beyond the 300s TTL) so that cache.get() considers the entry expired and returns None",
+        "notes": "Replaces freezegun (not present in requirements.txt) with a fake clock explicitly injected into TTLCache — same lesson (time-based expiration) but fully deterministic, without depending on real timestamps"
     },
 
     {
@@ -1375,33 +1375,33 @@ DATASET = [
         """,
         "git_diff": "-    return date.isoformat()\n+    return date.strftime('%Y-%m-%d')",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare date.isoformat() per mantenere formato ISO 8601 completo, oppure aggiornare tutti i test che si aspettano il formato con orario",
-        "notes": "Cambio formato data — impatto a cascata su più test"
+        "expected_fix": "Restore date.isoformat() to keep the full ISO 8601 format, or update all the tests that expect the format with time",
+        "notes": "Date format change — cascading impact on multiple tests"
     },
 
     {
-        # NOTA (riscritto): caso originale basato su una vera race condition
-        # multi-thread (non deterministica, rischio di flakiness nel
-        # benchmark stesso). Riscritto come simulazione sequenziale
-        # deterministica di due "worker" — vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case based on a real multi-thread
+        # race condition (non-deterministic, risk of flakiness in the
+        # benchmark itself). Rewritten as a deterministic sequential
+        # simulation of two "workers" — see CHANGELOG_DATASET.md.
         "id": "test_020",
         "category": "test",
         "difficulty": "hard",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
             FAILED tests/test_concurrent.py::test_thread_safety - AssertionError: assert 100 == 80
-            Il lavoro del worker B (worker_b) non è stato incluso nel batch passato a run_workers
+            The work of worker B (worker_b) was not included in the batch passed to run_workers
             1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-    total = run_workers(counter, worker_a + worker_b)\n+    total = run_workers(counter, worker_a + worker_a)",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare worker_a + worker_b (non worker_a + worker_a) nella chiamata a run_workers(), così che il lavoro di entrambi i worker venga effettivamente conteggiato",
-        "notes": "Sostituisce lo scenario originale basato su una vera race condition multi-thread (non deterministica, rischio di flakiness nel benchmark) con un bug deterministico di composizione dei dati che riproduce lo stesso sintomo (conteggio finale del contatore condiviso errato)"
+        "expected_fix": "Restore worker_a + worker_b (not worker_a + worker_a) in the call to run_workers(), so that the work of both workers is actually counted",
+        "notes": "Replaces the original scenario based on a real multi-thread race condition (non-deterministic, risk of flakiness in the benchmark) with a deterministic data composition bug that reproduces the same symptom (wrong final count of the shared counter)"
     },
 
-    # --- Nuovi casi (test_021 - test_050) ---
+    # --- New cases (test_021 - test_050) ---
 
     {
         "id": "test_021",
@@ -1417,8 +1417,8 @@ DATASET = [
         """,
         "git_diff": "-    assert result == pytest.approx(0.3)\n+    assert result == 0.3",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Usare assert result == pytest.approx(0.3) invece del confronto diretto di float",
-        "notes": "Errore di precisione floating point classico — richiede pytest.approx"
+        "expected_fix": "Use assert result == pytest.approx(0.3) instead of the direct float comparison",
+        "notes": "Classic floating point precision error — requires pytest.approx"
     },
 
     {
@@ -1435,8 +1435,8 @@ DATASET = [
         """,
         "git_diff": "-    raise ValueError(f\"Invalid input: {value}\")\n+    raise TypeError(f\"Invalid input: {value}\")",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Aggiornare il test: pytest.raises(TypeError) invece di pytest.raises(ValueError)",
-        "notes": "Tipo di eccezione sollevata cambiato nel sorgente, test non aggiornato"
+        "expected_fix": "Update the test: pytest.raises(TypeError) instead of pytest.raises(ValueError)",
+        "notes": "Type of the raised exception changed in the source, test not updated"
     },
 
     {
@@ -1454,8 +1454,8 @@ DATASET = [
         """,
         "git_diff": "-app/services/payment.py\n+app/billing/payment.py  (file spostato)",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Aggiornare l'import nel test: from app.billing.payment import process_payment",
-        "notes": "Modulo spostato durante un refactor, import nel test non aggiornato"
+        "expected_fix": "Update the import in the test: from app.billing.payment import process_payment",
+        "notes": "Module moved during a refactor, import in the test not updated"
     },
 
     {
@@ -1472,8 +1472,8 @@ DATASET = [
         """,
         "git_diff": "-def test_create_order(db_session):\n+def test_create_order(db_sesion):",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Correggere il typo nel nome della fixture: db_sesion → db_session",
-        "notes": "Typo nel nome del parametro fixture — pytest non trova la fixture richiesta"
+        "expected_fix": "Fix the typo in the fixture name: db_sesion → db_session",
+        "notes": "Typo in the fixture parameter name — pytest cannot find the requested fixture"
     },
 
     {
@@ -1489,8 +1489,8 @@ DATASET = [
         """,
         "git_diff": "-    path = Path(__file__).parent / 'data' / 'sample.csv'\n+    path = '/home/dev/project/data/sample.csv'",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare il path relativo Path(__file__).parent / 'data' / 'sample.csv' invece del path assoluto locale",
-        "notes": "Path assoluto specifico della macchina dello sviluppatore, inesistente nel runner CI"
+        "expected_fix": "Restore the relative path Path(__file__).parent / 'data' / 'sample.csv' instead of the local absolute path",
+        "notes": "Absolute path specific to the developer's machine, non-existent on the CI runner"
     },
 
     {
@@ -1506,8 +1506,8 @@ DATASET = [
         """,
         "git_diff": "-@pytest.mark.parametrize('n,expected', [(2,4),(3,9),(4,16)])\n+@pytest.mark.parametrize('n,expected', [(2,4),(3,9),(4,15)])",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Correggere il valore atteso per n=4: deve essere 16, non 15",
-        "notes": "Un solo caso della parametrizzazione ha il valore atteso sbagliato"
+        "expected_fix": "Fix the expected value for n=4: it must be 16, not 15",
+        "notes": "Only one case of the parametrization has the wrong expected value"
     },
 
     {
@@ -1521,10 +1521,10 @@ DATASET = [
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-tests/fixtures/sample.json  (file rimosso dal commit)",
+        "git_diff": "-tests/fixtures/sample.json  (file removed from the commit)",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare/committare il file tests/fixtures/sample.json richiesto dal test",
-        "notes": "File di fixture usato dal test non è stato incluso nel commit"
+        "expected_fix": "Restore/commit the tests/fixtures/sample.json file required by the test",
+        "notes": "Fixture file used by the test was not included in the commit"
     },
 
     {
@@ -1540,8 +1540,8 @@ DATASET = [
         """,
         "git_diff": "-@patch('app.notify.send_email')\n+@patch('app.notify.send_emial')",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Correggere il typo nel target del patch: 'app.notify.send_emial' → 'app.notify.send_email'",
-        "notes": "Typo nel path del mock patch causa AttributeError invece di un semplice mock silenzioso"
+        "expected_fix": "Fix the typo in the patch target: 'app.notify.send_emial' → 'app.notify.send_email'",
+        "notes": "Typo in the mock patch path causes an AttributeError instead of a simple silent mock"
     },
 
     {
@@ -1557,8 +1557,8 @@ DATASET = [
         """,
         "git_diff": "-    assert sorted(registry.keys()) == ['a_plugin', 'b_plugin']\n+    assert list(registry.keys()) == ['a_plugin', 'b_plugin']",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Usare sorted(registry.keys()) nel confronto invece di list(), poiché l'ordine di inserimento nel dizionario non è garantito stabile tra le run",
-        "notes": "Test assume un ordine di iterazione non garantito su una struttura dizionario/set"
+        "expected_fix": "Use sorted(registry.keys()) in the comparison instead of list(), since the insertion order in the dictionary is not guaranteed to be stable across runs",
+        "notes": "Test assumes a non-guaranteed iteration order on a dictionary/set structure"
     },
 
     {
@@ -1572,10 +1572,10 @@ DATASET = [
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-def normalize(x):\n-    return x  # bug: non normalizza\n+def normalize(x):\n+    return x.strip().lower()",
+        "git_diff": "-def normalize(x):\n-    return x  # bug: does not normalize\n+def normalize(x):\n+    return x.strip().lower()",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Rimuovere il marker @pytest.mark.xfail(strict=True) da test_old_behavior, dato che il bug è stato risolto e il test ora passa correttamente",
-        "notes": "xfail strict fallisce quando il test marcato come 'atteso fallire' passa inaspettatamente (il bug sottostante è stato corretto)"
+        "expected_fix": "Remove the @pytest.mark.xfail(strict=True) marker from test_old_behavior, since the bug was fixed and the test now passes correctly",
+        "notes": "Strict xfail fails when the test marked as 'expected to fail' unexpectedly passes (the underlying bug was fixed)"
     },
 
     {
@@ -1591,14 +1591,14 @@ DATASET = [
         """,
         "git_diff": "-    now = datetime.now(timezone.utc)\n+    now = datetime.utcnow()",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare datetime.now(timezone.utc) invece di datetime.utcnow(), che è deprecato nelle versioni recenti di Python",
-        "notes": "Warning di deprecazione promosso a errore dalla configurazione pytest (-W error), la nuova API deprecata rompe la build"
+        "expected_fix": "Restore datetime.now(timezone.utc) instead of datetime.utcnow(), which is deprecated in recent Python versions",
+        "notes": "Deprecation warning promoted to error by the pytest configuration (-W error), the new deprecated API breaks the build"
     },
 
     {
-        # NOTA (riscritto): caso originale basato su time.sleep/timing (rischio
-        # di flakiness). Riscritto come coda di task troncata, deterministico
-        # — vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case based on time.sleep/timing (risk
+        # of flakiness). Rewritten as a truncated task queue, deterministic
+        # — see CHANGELOG_DATASET.md.
         "id": "test_032",
         "category": "test",
         "difficulty": "medium",
@@ -1611,8 +1611,8 @@ DATASET = [
         """,
         "git_diff": "-    tasks = [make_task(\"pending\"), make_task(\"done\")]\n+    tasks = [make_task(\"pending\")]",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare la lista completa dei task (includendo make_task(\"done\")) nel test, così che process_queue elabori tutta la coda prima di verificare lo stato finale",
-        "notes": "Un task è stato rimosso dalla coda nel test, quindi process_queue si ferma sull'ultimo stato disponibile ('pending') invece di raggiungere 'done' — sostituisce lo scenario originale basato su timing/sleep non deterministico con un caso di dato di test troncato, deterministico al 100%"
+        "expected_fix": "Restore the full list of tasks (including make_task(\"done\")) in the test, so that process_queue processes the whole queue before checking the final state",
+        "notes": "A task was removed from the queue in the test, so process_queue stops at the last available state ('pending') instead of reaching 'done' — replaces the original scenario based on non-deterministic timing/sleep with a 100% deterministic truncated test data case"
     },
 
     {
@@ -1630,31 +1630,31 @@ DATASET = [
         """,
         "git_diff": "-def test_override_config():\n-    config = copy.deepcopy(CONFIG)\n-    config['env'] = 'production'\n+def test_override_config():\n+    CONFIG['env'] = 'production'",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare la copia difensiva (copy.deepcopy(CONFIG)) in test_override_config invece di mutare direttamente lo stato globale condiviso CONFIG",
-        "notes": "Test mutano uno stato globale condiviso senza isolamento — fallisce solo se eseguito insieme ad altri test, non individualmente"
+        "expected_fix": "Restore the defensive copy (copy.deepcopy(CONFIG)) in test_override_config instead of directly mutating the shared global state CONFIG",
+        "notes": "Tests mutate a shared global state without isolation — fails only when run together with other tests, not individually"
     },
 
     {
-        # NOTA (riscritto): caso originale rimuoveva un mock unittest.mock,
-        # esponendo il test a una vera ConnectionError di rete (non
-        # deterministico in CI). Riscritto con un fetch iniettabile via
-        # dependency injection: il default reale è deterministicamente
-        # fallimentare, nessuna I/O di rete reale coinvolta — vedi
+        # NOTE (rewritten): original case removed a unittest.mock mock,
+        # exposing the test to a real network ConnectionError (non
+        # deterministic in CI). Rewritten with a fetch injectable via
+        # dependency injection: the real default deterministically
+        # fails, no real network I/O involved — see
         # CHANGELOG_DATASET.md.
         "id": "test_034",
         "category": "test",
         "difficulty": "medium",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
-            FAILED tests/test_weather.py::test_get_forecast - RuntimeError: rete non disponibile in questo ambiente
+            FAILED tests/test_weather.py::test_get_forecast - RuntimeError: network not available in this environment
             1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-    result = get_forecast(\"Rome\", fetch=fake_fetch)\n+    result = get_forecast(\"Rome\")",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare il parametro fetch=fake_fetch nella chiamata a get_forecast(), per evitare che il test usi il fetch reale (che nell'ambiente di test solleva sempre RuntimeError, dato che non è disponibile una connessione di rete)",
-        "notes": "Rimozione dell'iniezione del fetch fittizio: il test finisce per usare l'implementazione reale, deterministicamente non disponibile (nessuna chiamata di rete reale viene effettuata, a differenza dello scenario originale basato su un mock unittest.mock rimosso e una ConnectionError di rete non deterministica)"
+        "expected_fix": "Restore the fetch=fake_fetch parameter in the call to get_forecast(), to prevent the test from using the real fetch (which in the test environment always raises RuntimeError, since no network connection is available)",
+        "notes": "Removal of the fake fetch injection: the test ends up using the real implementation, which is deterministically unavailable (no real network call is made, unlike the original scenario based on a removed unittest.mock mock and a non-deterministic network ConnectionError)"
     },
 
     {
@@ -1669,16 +1669,16 @@ DATASET = [
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-    random.seed(42)\n+    # random.seed(42) rimosso",
+        "git_diff": "-    random.seed(42)\n+    # random.seed(42) removed",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare random.seed(42) all'inizio del test per rendere il campionamento deterministico",
-        "notes": "Seed random rimosso — il test diventa non deterministico e fallisce in modo intermittente"
+        "expected_fix": "Restore random.seed(42) at the beginning of the test to make the sampling deterministic",
+        "notes": "Random seed removed — the test becomes non-deterministic and fails intermittently"
     },
 
     {
-        # NOTA (riscritto): caso originale richiedeva pytest-xdist -n auto
-        # (non presente in requirements.txt). Riscritto come collisione di
-        # path in singolo processo/singolo test, deterministico — vedi
+        # NOTE (rewritten): original case required pytest-xdist -n auto
+        # (not present in requirements.txt). Rewritten as a path collision
+        # in a single process/single test, deterministic — see
         # CHANGELOG_DATASET.md.
         "id": "test_036",
         "category": "test",
@@ -1686,21 +1686,21 @@ DATASET = [
         "ci_logs": """
             ##[group]Run pytest tests/ -v
             FAILED tests/test_export.py::test_write_csv - FileExistsError: [Errno 17] File exists: 'output.csv'
-            Due scritture hanno usato lo stesso path hardcoded invece di due file isolati
+            Two writes used the same hardcoded path instead of two isolated files
             1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-    write_csv(str(tmp_path / \"output2.csv\"), [[\"b\", \"2\"]])\n+    write_csv(str(tmp_path / \"output.csv\"), [[\"b\", \"2\"]])",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Usare un path distinto (es. tmp_path / 'output2.csv') per la seconda scrittura, invece di riusare lo stesso path 'output.csv' già creato dalla prima chiamata a write_csv",
-        "notes": "write_csv apre il file in scrittura esclusiva (os.O_EXCL): riusare lo stesso path per due scritture distinte causa sempre un FileExistsError deterministico — sostituisce lo scenario originale basato su una race condition tra worker pytest-xdist paralleli (non disponibile in questo ambiente) mantenendo la stessa lezione (path di output isolati)"
+        "expected_fix": "Use a distinct path (e.g. tmp_path / 'output2.csv') for the second write, instead of reusing the same path 'output.csv' already created by the first call to write_csv",
+        "notes": "write_csv opens the file in exclusive write mode (os.O_EXCL): reusing the same path for two distinct writes always causes a deterministic FileExistsError — replaces the original scenario based on a race condition between parallel pytest-xdist workers (not available in this environment) while keeping the same lesson (isolated output paths)"
     },
 
     {
-        # NOTA (riscritto): caso originale richiedeva una libreria di
-        # snapshot testing non installata. Riscritto con un confronto diretto
-        # tramite assert, stessa lezione — vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case required a snapshot testing
+        # library that is not installed. Rewritten with a direct comparison
+        # via assert, same lesson — see CHANGELOG_DATASET.md.
         "id": "test_037",
         "category": "test",
         "difficulty": "medium",
@@ -1713,15 +1713,15 @@ DATASET = [
         """,
         "git_diff": "-    assert result == \"Total: $1,234.56\"\n+    assert result == \"Total: 1234.56\"",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Aggiornare l'assert atteso al nuovo formato 'Total: $1,234.56' (con simbolo di valuta e separatore delle migliaia), coerente con l'output reale di render_summary()",
-        "notes": "Sostituisce lo scenario originale basato su una libreria di snapshot testing non disponibile con un confronto diretto tramite assert (stessa lezione: l'assert atteso nel test non è stato aggiornato dopo un cambio intenzionale di formato)"
+        "expected_fix": "Update the expected assert to the new format 'Total: $1,234.56' (with currency symbol and thousands separator), consistent with the actual output of render_summary()",
+        "notes": "Replaces the original scenario based on a snapshot testing library that is not available with a direct comparison via assert (same lesson: the expected assert in the test was not updated after an intentional format change)"
     },
 
     {
-        # NOTA (riscritto): caso originale richiedeva alembic + sqlalchemy
-        # (dipendenze pesanti non presenti). Riscritto come default di campo
-        # cambiato in un modello Python semplice (src/orders.py), stessa
-        # lezione (schema cambiato, test non aggiornato) — vedi
+        # NOTE (rewritten): original case required alembic + sqlalchemy
+        # (heavy dependencies not present). Rewritten as a field default
+        # changed in a plain Python model (src/orders.py), same
+        # lesson (schema changed, test not updated) — see
         # CHANGELOG_DATASET.md.
         "id": "test_038",
         "category": "test",
@@ -1735,30 +1735,30 @@ DATASET = [
         """,
         "git_diff": "-    assert order[\"status\"] == \"pending\"\n+    assert order[\"status\"] == \"new\"",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Aggiornare l'assert al valore di default corrente del campo status ('pending'), introdotto da create_order dopo l'aggiunta del campo nel modello",
-        "notes": "Sostituisce lo scenario originale basato su una migrazione Alembic mancante (dipendenza non presente in questo repo) con un caso deterministico equivalente: il valore di default del campo 'status' è cambiato nel modello ma l'assert nel test non è stato aggiornato"
+        "expected_fix": "Update the assert to the current default value of the status field ('pending'), introduced by create_order after the field was added to the model",
+        "notes": "Replaces the original scenario based on a missing Alembic migration (dependency not present in this repo) with an equivalent deterministic case: the default value of the 'status' field changed in the model but the assert in the test was not updated"
     },
 
     {
-        # NOTA (riscritto): caso originale basato su un deadlock reale con
-        # Lock non rientrante (rischio di hang infinito del job CI).
-        # Riscritto come inversione dell'ordine producer/consumer, fallimento
-        # immediato e deterministico — vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case based on a real deadlock with a
+        # non-reentrant Lock (risk of an infinite hang of the CI job).
+        # Rewritten as an inversion of the producer/consumer order, immediate
+        # and deterministic failure — see CHANGELOG_DATASET.md.
         "id": "test_039",
         "category": "test",
         "difficulty": "medium",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
             FAILED tests/test_queue.py::test_consumer_processes_message - IndexError: pop from empty list
-            run_pipeline() ha ricevuto una coda vuota invece della coda popolata da producer()
+            run_pipeline() received an empty queue instead of the queue populated by producer()
             1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-    result = run_pipeline(queue, consumer)\n+    result = run_pipeline([], consumer)",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare result = run_pipeline(queue, consumer) (la coda popolata da producer()), invece di passare una lista vuota",
-        "notes": "Sostituisce lo scenario originale basato su un deadlock reale (rischio di hang infinito del job CI) con un'inversione dell'ordine delle operazioni che produce un fallimento immediato e deterministico (IndexError), mantenendo la stessa lezione (ordine delle operazioni critico in una pipeline producer/consumer)"
+        "expected_fix": "Restore result = run_pipeline(queue, consumer) (the queue populated by producer()), instead of passing an empty list",
+        "notes": "Replaces the original scenario based on a real deadlock (risk of an infinite hang of the CI job) with an inversion of the order of operations that produces an immediate and deterministic failure (IndexError), keeping the same lesson (critical order of operations in a producer/consumer pipeline)"
     },
 
     {
@@ -1775,8 +1775,8 @@ DATASET = [
         """,
         "git_diff": "-    raise ValidationError('Invalid value')\n+    raise ValidationError('Invalid value provided')",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Aggiornare l'assert nel test al nuovo testo del messaggio: 'Invalid value provided'",
-        "notes": "Testo del messaggio di eccezione cambiato nel sorgente, test con assert testuale fragile non aggiornato"
+        "expected_fix": "Update the assert in the test to the new message text: 'Invalid value provided'",
+        "notes": "Exception message text changed in the source, test with a fragile textual assert not updated"
     },
 
     {
@@ -1793,59 +1793,59 @@ DATASET = [
         """,
         "git_diff": "-    assert format_local(dt) == '14:30 UTC'\n+    assert format_local(dt) == '16:30 CEST'",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Rendere il test indipendente dal timezone del runner: impostare esplicitamente TZ='Europe/Rome' nell'ambiente di test o confrontare l'orario in UTC",
-        "notes": "Test dipende implicitamente dal timezone locale della macchina, diverso tra ambiente di sviluppo e runner CI (UTC)"
+        "expected_fix": "Make the test independent of the runner timezone: explicitly set TZ='Europe/Rome' in the test environment or compare the time in UTC",
+        "notes": "Test implicitly depends on the local timezone of the machine, which differs between the development environment and the CI runner (UTC)"
     },
 
     {
-        # NOTA (riscritto): caso originale richiedeva un servizio Redis
-        # reale. Riscritto con uno store in-memory equivalente, stessa
-        # lezione (chiave del contatore condivisa per errore), deterministico
-        # a singolo processo — vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case required a real Redis
+        # service. Rewritten with an equivalent in-memory store, same
+        # lesson (counter key mistakenly shared), deterministic
+        # and single-process — see CHANGELOG_DATASET.md.
         "id": "test_042",
         "category": "test",
         "difficulty": "hard",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
             FAILED tests/test_metrics.py::test_increment_counter - AssertionError: assert 101 == 61
-            key_a e key_b puntano alla stessa chiave del counter store: gli incrementi di entrambi i "worker" si sommano sulla stessa entry
+            key_a and key_b point to the same counter store key: the increments of both "workers" add up on the same entry
             1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-    key_b = make_key(\"service-b\")\n+    key_b = make_key(\"service-a\")",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Usare namespace distinti per key_a e key_b (es. make_key('service-b') per key_b), così che i due contatori non condividano la stessa entry nello store",
-        "notes": "Sostituisce Redis (servizio esterno non disponibile in questo ambiente) con uno store in-memory equivalente — stessa lezione (chiave del contatore condivisa per errore tra due 'worker'/namespace logici), completamente deterministico e a singolo processo"
+        "expected_fix": "Use distinct namespaces for key_a and key_b (e.g. make_key('service-b') for key_b), so that the two counters do not share the same entry in the store",
+        "notes": "Replaces Redis (external service not available in this environment) with an equivalent in-memory store — same lesson (counter key mistakenly shared between two logical 'workers'/namespaces), fully deterministic and single-process"
     },
 
     {
-        # NOTA (riscritto): caso originale richiedeva innescare un vero OOM
-        # (inaffidabile/pericoloso in CI condivisa). Riscritto con un
-        # conteggio deterministico delle entry accumulate in cache, stessa
-        # lezione — vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case required triggering a real OOM
+        # (unreliable/dangerous in a shared CI). Rewritten with a
+        # deterministic count of the entries accumulated in the cache, same
+        # lesson — see CHANGELOG_DATASET.md.
         "id": "test_043",
         "category": "test",
         "difficulty": "hard",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
             FAILED tests/test_image_processing.py::test_resize_iterations - AssertionError: assert 3 == 0
-            La cache non viene svuotata tra un'iterazione e l'altra: le immagini si accumulano invece di essere rilasciate
+            The cache is not emptied between one iteration and the next: the images accumulate instead of being released
             1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-        cache.clear()\n+        pass  # clear() rimossa per errore",
+        "git_diff": "-        cache.clear()\n+        pass  # clear() removed by mistake",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare cache.clear() dopo ogni cache.load() nel ciclo, così che la cache venga svuotata tra un'iterazione parametrizzata e l'altra invece di accumulare voci indefinitamente",
-        "notes": "Sostituisce l'OOM reale del caso originale (rischioso/inaffidabile da innescare in una CI condivisa) con un conteggio deterministico delle entry accumulate in cache — stessa lezione (mancato rilascio di risorse tra iterazioni), verificabile con un semplice assert senza consumare memoria reale"
+        "expected_fix": "Restore cache.clear() after every cache.load() in the loop, so that the cache is emptied between one parametrized iteration and the next instead of accumulating entries indefinitely",
+        "notes": "Replaces the real OOM of the original case (risky/unreliable to trigger in a shared CI) with a deterministic count of the entries accumulated in the cache — same lesson (resources not released between iterations), verifiable with a simple assert without consuming real memory"
     },
 
     {
-        # NOTA (riscritto): la premessa dell'originale è fattualmente errata
-        # (un dict Python 3.7+ preserva sempre l'ordine di inserimento,
-        # PYTHONHASHSEED non c'entra). Riscritto con un assert nel test che
-        # si aspetta erroneamente l'ordine alfabetico — vedi
+        # NOTE (rewritten): the premise of the original is factually wrong
+        # (a Python 3.7+ dict always preserves insertion order,
+        # PYTHONHASHSEED is irrelevant). Rewritten with an assert in the test that
+        # wrongly expects alphabetical order — see
         # CHANGELOG_DATASET.md.
         "id": "test_044",
         "category": "test",
@@ -1859,8 +1859,8 @@ DATASET = [
         """,
         "git_diff": "-    assert result == [\"b\", \"a\", \"c\"]\n+    assert result == [\"a\", \"b\", \"c\"]",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare l'assert atteso all'ordine di prima apparizione (['b', 'a', 'c']), coerente con l'implementazione di deduplicate_preserves_first basata su dict.fromkeys(), che preserva l'ordine di inserimento in Python 3.7+ indipendentemente da PYTHONHASHSEED",
-        "notes": "Corregge la premessa fattualmente errata del caso originale (un dict Python 3.7+ preserva sempre l'ordine di inserimento, PYTHONHASHSEED non c'entra) con un assert nel test che si aspettava erroneamente un ordine alfabetico invece dell'ordine di prima apparizione — bug deterministico, nessuna dipendenza da hash randomization"
+        "expected_fix": "Restore the expected assert to the order of first appearance (['b', 'a', 'c']), consistent with the implementation of deduplicate_preserves_first based on dict.fromkeys(), which preserves insertion order in Python 3.7+ regardless of PYTHONHASHSEED",
+        "notes": "Corrects the factually wrong premise of the original case (a Python 3.7+ dict always preserves insertion order, PYTHONHASHSEED is irrelevant) with an assert in the test that wrongly expected alphabetical order instead of order of first appearance — deterministic bug, no dependency on hash randomization"
     },
 
     {
@@ -1877,78 +1877,78 @@ DATASET = [
         """,
         "git_diff": "-@pytest.fixture(scope='function')\n-def report_writer(db_engine):\n+@pytest.fixture(scope='module')\n+def report_writer(db_engine):",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare scope='function' per report_writer, oppure allineare esplicitamente lo scope di db_engine a 'module' per evitare che venga chiuso prima del previsto",
-        "notes": "Mismatch di scope tra fixture dipendenti causa un teardown anticipato che si manifesta solo sull'ultimo test della sessione"
+        "expected_fix": "Restore scope='function' for report_writer, or explicitly align the scope of db_engine to 'module' to prevent it from being closed earlier than expected",
+        "notes": "Scope mismatch between dependent fixtures causes an early teardown that only shows up on the last test of the session"
     },
 
     {
-        # NOTA (riscritto): caso originale richiedeva un runner macos-14/arm64
-        # (la CI attuale è solo ubuntu-latest). Riscritto con lo stesso
-        # identico problema di fondo (confronto float esatto), riproducibile
-        # deterministicamente su qualunque piattaforma standard IEEE 754 —
-        # vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case required a macos-14/arm64 runner
+        # (the current CI is ubuntu-latest only). Rewritten with the exact
+        # same underlying problem (exact float comparison), reproducible
+        # deterministically on any standard IEEE 754 platform —
+        # see CHANGELOG_DATASET.md.
         "id": "test_046",
         "category": "test",
         "difficulty": "hard",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
             FAILED tests/test_stats.py::test_variance_calculation - AssertionError: assert 0.006666666666666668 == 0.006666666666666667
-            Confronto in virgola mobile con uguaglianza esatta: piccoli errori di arrotondamento nell'aritmetica IEEE 754 rendono il confronto instabile
+            Floating point comparison with exact equality: small rounding errors in IEEE 754 arithmetic make the comparison unstable
             1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-    assert result == pytest.approx(0.006666666666666667)\n+    assert result == 0.006666666666666667",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare pytest.approx(0.006666666666666667) per il confronto, poiché un confronto di uguaglianza esatta tra float è fragile a causa degli errori di arrotondamento in virgola mobile",
-        "notes": "Sostituisce lo scenario originale legato all'architettura del runner (x86_64 vs arm64, non riproducibile deterministicamente su un runner ubuntu-latest fisso) con lo stesso identico problema di fondo (confronto esatto tra float), che si manifesta in modo deterministico su qualunque piattaforma standard IEEE 754"
+        "expected_fix": "Restore pytest.approx(0.006666666666666667) for the comparison, since an exact equality comparison between floats is fragile due to floating point rounding errors",
+        "notes": "Replaces the original scenario tied to the runner architecture (x86_64 vs arm64, not deterministically reproducible on a fixed ubuntu-latest runner) with the exact same underlying problem (exact float comparison), which shows up deterministically on any standard IEEE 754 platform"
     },
 
     {
-        # NOTA (riscritto): caso originale combinava un sort instabile con un
-        # coverage gate all'85% non configurato in questo ci.yml. Riscritto
-        # come caso composito interamente circoscritto al file di test (assert
-        # con tie-break errato + funzione rimossa) — injection gestita da
-        # _inject_test_047 in benchmark.py (sostituzione dell'intero file, non
-        # un find/replace 1:1) — vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case combined an unstable sort with an
+        # 85% coverage gate not configured in this ci.yml. Rewritten
+        # as a composite case fully confined to the test file (assert
+        # with wrong tie-break + removed function) — injection handled by
+        # _inject_test_047 in benchmark.py (replacement of the whole file, not
+        # a 1:1 find/replace) — see CHANGELOG_DATASET.md.
         "id": "test_047",
         "category": "test",
         "difficulty": "hard",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
             FAILED tests/test_recommender.py::test_ranking_order - AssertionError: assert ['a', 'b', 'c'] == ['c', 'a', 'b']
-            tests/test_recommender.py::test_edge_case_empty_input non trovato — la funzione risulta rimossa dal file
+            tests/test_recommender.py::test_edge_case_empty_input not found — the function appears to have been removed from the file
             1 failed, 58 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-    assert recommend(items) == [\"a\", \"b\", \"c\"]\n+    assert recommend(items) == [\"c\", \"a\", \"b\"]\n-\n-\n-def test_edge_case_empty_input():\n-    assert recommend([]) == []",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Correggere l'assert di test_ranking_order al valore atteso corretto (['a', 'b', 'c'], ordine di tie-break per 'id' crescente a parità di punteggio) E ripristinare la funzione test_edge_case_empty_input rimossa dal file: entrambi i problemi vanno risolti, non solo uno",
-        "notes": "Caso composito (due problemi indipendenti nello stesso file di test): un assert con valore atteso errato e una funzione di test interamente rimossa — sostituisce la combinazione originale di sort instabile + coverage gate (non configurato in questo ci.yml) con due difetti interamente circoscritti al file di test, entrambi deterministici"
+        "expected_fix": "Fix the assert of test_ranking_order to the correct expected value (['a', 'b', 'c'], tie-break order by ascending 'id' on equal scores) AND restore the test_edge_case_empty_input function removed from the file: both problems must be solved, not just one",
+        "notes": "Composite case (two independent problems in the same test file): an assert with a wrong expected value and a test function removed entirely — replaces the original combination of an unstable sort + coverage gate (not configured in this ci.yml) with two defects fully confined to the test file, both deterministic"
     },
 
     {
-        # NOTA (riscritto): caso originale richiedeva pytest-xdist -n
-        # (oggetti non picklabili tra worker). Riscritto con la stessa
-        # lezione di fondo (stato condiviso per errore tra due "client" che
-        # dovrebbero essere indipendenti), riprodotta in singolo processo in
-        # modo deterministico — vedi CHANGELOG_DATASET.md.
+        # NOTE (rewritten): original case required pytest-xdist -n
+        # (non-picklable objects between workers). Rewritten with the same
+        # underlying lesson (state mistakenly shared between two "clients" that
+        # should be independent), reproduced in a single process in a
+        # deterministic way — see CHANGELOG_DATASET.md.
         "id": "test_048",
         "category": "test",
         "difficulty": "hard",
         "ci_logs": """
             ##[group]Run pytest tests/ -v
             FAILED tests/test_upload.py::test_multipart_upload - AssertionError: assert ['part1.bin', 'part2.bin'] == ['part1.bin']
-            client_a e client_b puntano alla stessa istanza di UploadClient invece di due istanze indipendenti
+            client_a and client_b point to the same UploadClient instance instead of two independent instances
             1 failed, 59 passed in 0.02s
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-    client_b = UploadClient()\n+    client_b = client_a",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare client_b = UploadClient() (una nuova istanza indipendente) invece di riassegnare client_b allo stesso oggetto di client_a",
-        "notes": "Sostituisce pytest-xdist (non presente in requirements.txt) e l'errore di pickling di threading.Lock con la stessa lezione di fondo (stato condiviso per errore tra due 'client' che dovrebbero essere indipendenti), riprodotta in singolo processo in modo completamente deterministico"
+        "expected_fix": "Restore client_b = UploadClient() (a new independent instance) instead of reassigning client_b to the same object as client_a",
+        "notes": "Replaces pytest-xdist (not present in requirements.txt) and the threading.Lock pickling error with the same underlying lesson (state mistakenly shared between two 'clients' that should be independent), reproduced in a single process in a fully deterministic way"
     },
 
     {
@@ -1965,8 +1965,8 @@ DATASET = [
         """,
         "git_diff": "-def log_entry(entry, entries=None):\n-    entries = entries if entries is not None else []\n+def log_entry(entry, entries=[]):",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare entries=None come default e inizializzare entries = entries if entries is not None else [] all'interno della funzione, per evitare la condivisione della lista mutabile di default tra le chiamate",
-        "notes": "Classico bug Python: argomento di default mutabile (lista) condiviso e accumulato tra chiamate/test successivi"
+        "expected_fix": "Restore entries=None as the default and initialize entries = entries if entries is not None else [] inside the function, to avoid sharing the mutable default list between calls",
+        "notes": "Classic Python bug: mutable default argument (list) shared and accumulated across subsequent calls/tests"
     },
 
     {
@@ -1983,12 +1983,12 @@ DATASET = [
         """,
         "git_diff": "-    assert delta.total_seconds() / 3600 == pytest.approx(24, abs=1)\n+    assert delta.total_seconds() / 3600 == 24",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Usare pytest.approx(24, abs=1) (o calcolare in UTC, dove i giorni hanno sempre 24 ore) per tollerare la variazione dovuta al cambio ora legale/solare",
-        "notes": "Calcolo di durata in un timezone locale soggetto a DST — il giorno del cambio ora ha 23 o 25 ore, non sempre 24"
+        "expected_fix": "Use pytest.approx(24, abs=1) (or compute in UTC, where days always have 24 hours) to tolerate the variation due to the daylight saving time change",
+        "notes": "Duration computed in a local timezone subject to DST — the day of the clock change has 23 or 25 hours, not always 24"
     },
 
     # ══════════════════════════════════════════════════════════
-    # CATEGORIA: CONFIG (50 errori)
+    # CATEGORY: CONFIG (50 errors)
     # ══════════════════════════════════════════════════════════
 
     {
@@ -2004,8 +2004,8 @@ DATASET = [
         """,
         "git_diff": "-          python-version: '3.11'\n+          python-version: '3.99'",
         "ci_job_name": "Set up Python 3.99",
-        "expected_fix": "Ripristinare python-version: '3.11'",
-        "notes": "Versione Python inesistente — caso base config"
+        "expected_fix": "Restore python-version: '3.11'",
+        "notes": "Non-existent Python version — base config case"
     },
 
     {
@@ -2021,8 +2021,8 @@ DATASET = [
         """,
         "git_diff": "-          python-version: '3.12'\n+          python-version: '3.15'",
         "ci_job_name": "Set up Python 3.15",
-        "expected_fix": "Usare python-version: '3.12'",
-        "notes": "Python 3.15 non ancora rilasciato"
+        "expected_fix": "Use python-version: '3.12'",
+        "notes": "Python 3.15 not yet released"
     },
 
     {
@@ -2038,8 +2038,8 @@ DATASET = [
         """,
         "git_diff": "-          python-version: '3.11'\n+          python-version: '2.7'",
         "ci_job_name": "Set up Python 2.7",
-        "expected_fix": "Usare python-version: '3.11' o superiore",
-        "notes": "Python 2.7 EOL — non supportato in GitHub Actions"
+        "expected_fix": "Use python-version: '3.11' or higher",
+        "notes": "Python 2.7 EOL — not supported in GitHub Actions"
     },
 
     {
@@ -2055,8 +2055,8 @@ DATASET = [
         """,
         "git_diff": "-      - uses: actions/checkout@v4\n+      - uses: actions/checkout@v4\n+        with:\n+          token: ${{ secrets.INVALID_TOKEN }}",
         "ci_job_name": "Checkout",
-        "expected_fix": "Rimuovere il campo token o usare ${{ secrets.GITHUB_TOKEN }} che è sempre disponibile",
-        "notes": "Secret non esistente nel repository"
+        "expected_fix": "Remove the token field or use ${{ secrets.GITHUB_TOKEN }}, which is always available",
+        "notes": "Secret that does not exist in the repository"
     },
 
     {
@@ -2073,8 +2073,8 @@ DATASET = [
         """,
         "git_diff": "-      - uses: actions/setup-python@v5\n+      - uses: actions/setup-python@v1",
         "ci_job_name": "Set up Python",
-        "expected_fix": "Usare actions/setup-python@v5 (versione aggiornata)",
-        "notes": "Azione deprecata — v1 usa comandi workflow deprecati"
+        "expected_fix": "Use actions/setup-python@v5 (updated version)",
+        "notes": "Deprecated action — v1 uses deprecated workflow commands"
     },
 
     {
@@ -2090,8 +2090,8 @@ DATASET = [
         """,
         "git_diff": "-    runs-on: ubuntu-latest\n+    runs-on: ubuntu-18.04",
         "ci_job_name": "Run tests",
-        "expected_fix": "Usare runs-on: ubuntu-latest o ubuntu-20.04",
-        "notes": "Runner ubuntu-18.04 rimosso da GitHub Actions"
+        "expected_fix": "Use runs-on: ubuntu-latest or ubuntu-20.04",
+        "notes": "ubuntu-18.04 runner removed from GitHub Actions"
     },
 
     {
@@ -2107,8 +2107,8 @@ DATASET = [
         """,
         "git_diff": "-        working-directory: .\n+        working-directory: src/backend",
         "ci_job_name": "Run pip install",
-        "expected_fix": "Ripristinare working-directory: . o creare la directory src/backend",
-        "notes": "Directory di lavoro inesistente"
+        "expected_fix": "Restore working-directory: . or create the src/backend directory",
+        "notes": "Non-existent working directory"
     },
 
     {
@@ -2123,8 +2123,8 @@ DATASET = [
         """,
         "git_diff": "-      - uses: actions/setup-python@v5\n         with:\n           python-version: '3.11'\n+      # removed setup-python step",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Ripristinare lo step actions/setup-python@v5 prima dell'installazione delle dipendenze",
-        "notes": "Step setup-python rimosso — pip non disponibile"
+        "expected_fix": "Restore the actions/setup-python@v5 step before installing the dependencies",
+        "notes": "setup-python step removed — pip not available"
     },
 
     {
@@ -2142,8 +2142,8 @@ DATASET = [
         """,
         "git_diff": "-    runs-on: ubuntu-latest\n-    steps:\n+    runs-on: ubuntu-latest\n+        steps:",
         "ci_job_name": "Parse workflow file",
-        "expected_fix": "Correggere l'indentazione di 'steps:' — deve essere a 4 spazi, non 8",
-        "notes": "Errore YAML da indentazione — non sempre facile identificare la riga esatta"
+        "expected_fix": "Fix the indentation of 'steps:' — it must be 4 spaces, not 8",
+        "notes": "YAML indentation error — not always easy to identify the exact line"
     },
 
     {
@@ -2159,8 +2159,8 @@ DATASET = [
         """,
         "git_diff": "+on:\n   push:\n     branches: [main]\n+on:\n   pull_request:",
         "ci_job_name": "Run workflow",
-        "expected_fix": "Unire i trigger sotto un unico blocco 'on:' con push e pull_request",
-        "notes": "Chiave YAML duplicata — aggiunto secondo 'on:' invece di estendere il primo"
+        "expected_fix": "Merge the triggers under a single 'on:' block with push and pull_request",
+        "notes": "Duplicate YAML key — a second 'on:' was added instead of extending the first one"
     },
 
     {
@@ -2176,8 +2176,8 @@ DATASET = [
         """,
         "git_diff": "+      - uses: actions/upload-artifact@v4\n+        with:\n+          name: test-results",
         "ci_job_name": "Upload artifact",
-        "expected_fix": "Aggiungere il campo 'path:' richiesto: path: ./test-results/",
-        "notes": "Campo obbligatorio mancante nell'azione"
+        "expected_fix": "Add the required 'path:' field: path: ./test-results/",
+        "notes": "Required field missing in the action"
     },
 
     {
@@ -2193,8 +2193,8 @@ DATASET = [
         """,
         "git_diff": "-          python-version: '3.11'\n+          python-versions: '3.11'",
         "ci_job_name": "Set up Python",
-        "expected_fix": "Correggere il typo: python-versions → python-version (senza 's')",
-        "notes": "Typo nel nome del parametro — errore subdolo"
+        "expected_fix": "Fix the typo: python-versions → python-version (without the 's')",
+        "notes": "Typo in the parameter name — subtle error"
     },
 
     {
@@ -2210,8 +2210,8 @@ DATASET = [
         """,
         "git_diff": "-          pip install -r requirements.txt\n+          pip install requests flask",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Ripristinare pip install -r requirements.txt che include pytest",
-        "notes": "requirements.txt non installato — pytest mancante"
+        "expected_fix": "Restore pip install -r requirements.txt, which includes pytest",
+        "notes": "requirements.txt not installed — pytest missing"
     },
 
     {
@@ -2228,8 +2228,8 @@ DATASET = [
         """,
         "git_diff": "-          DATABASE_URL: ${{ secrets.DATABASE_URL }}\n+          DATABASE_URL: ${{ secrets.DB_URL }}",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Correggere il nome del secret: DB_URL → DATABASE_URL (o viceversa, allineare con il secret configurato nel repository)",
-        "notes": "Nome secret errato — richiede conoscenza dei secret configurati"
+        "expected_fix": "Fix the secret name: DB_URL → DATABASE_URL (or vice versa, align with the secret configured in the repository)",
+        "notes": "Wrong secret name — requires knowledge of the configured secrets"
     },
 
     {
@@ -2246,8 +2246,8 @@ DATASET = [
         """,
         "git_diff": "-    - cron: '0 0 * * *'\n+    - cron: '0 * * * *'",
         "ci_job_name": "Scheduled workflow",
-        "expected_fix": "Ripristinare cron: '0 0 * * *' (una volta al giorno) invece di ogni ora",
-        "notes": "Cron expression troppo frequente — non supportato da GitHub"
+        "expected_fix": "Restore cron: '0 0 * * *' (once a day) instead of every hour",
+        "notes": "Cron expression too frequent — not supported by GitHub"
     },
 
     {
@@ -2263,8 +2263,8 @@ DATASET = [
         """,
         "git_diff": "+        python-version: ['3.8','3.9','3.10','3.11','3.12']\n+        os: [ubuntu-latest, windows-latest, macos-latest, ubuntu-20.04]\n+        experimental: [true, false]\n+        arch: [x64, x86]",
         "ci_job_name": "Run workflow matrix",
-        "expected_fix": "Ridurre la matrice: rimuovere dimensioni non necessarie o usare 'include' per combinazioni specifiche invece del prodotto cartesiano completo",
-        "notes": "Matrix explosion — combinazioni producono troppi job"
+        "expected_fix": "Reduce the matrix: remove unnecessary dimensions or use 'include' for specific combinations instead of the full Cartesian product",
+        "notes": "Matrix explosion — combinations produce too many jobs"
     },
 
     {
@@ -2283,8 +2283,8 @@ DATASET = [
         """,
         "git_diff": "-permissions:\n-  deployments: write\n-  contents: read\n+permissions:\n+  contents: read",
         "ci_job_name": "Deploy to production",
-        "expected_fix": "Ripristinare il permesso deployments: write nel blocco permissions del workflow",
-        "notes": "Permesso rimosso dal workflow — richiede comprensione del modello di permessi GitHub Actions"
+        "expected_fix": "Restore the deployments: write permission in the permissions block of the workflow",
+        "notes": "Permission removed from the workflow — requires understanding the GitHub Actions permission model"
     },
 
     {
@@ -2301,8 +2301,8 @@ DATASET = [
         """,
         "git_diff": "-          run: pytest tests/ --cov=src --cov-report=xml\n+          run: pytest tests/ -v",
         "ci_job_name": "Run tests with coverage",
-        "expected_fix": "Ripristinare --cov=src --cov-report=xml nel comando pytest per generare i dati di coverage",
-        "notes": "Flag coverage rimossi — step successivo che legge .coverage fallisce"
+        "expected_fix": "Restore --cov=src --cov-report=xml in the pytest command to generate the coverage data",
+        "notes": "Coverage flags removed — the subsequent step that reads .coverage fails"
     },
 
     {
@@ -2318,8 +2318,8 @@ DATASET = [
         """,
         "git_diff": "-          context: .\n-          file: ./Dockerfile\n+          context: ./app",
         "ci_job_name": "Build Docker image",
-        "expected_fix": "Ripristinare file: ./Dockerfile o specificare file: ./app/Dockerfile se il Dockerfile è stato spostato nella directory app",
-        "notes": "Path Dockerfile non aggiornato dopo ristrutturazione del progetto"
+        "expected_fix": "Restore file: ./Dockerfile or specify file: ./app/Dockerfile if the Dockerfile was moved to the app directory",
+        "notes": "Dockerfile path not updated after restructuring the project"
     },
 
     {
@@ -2337,11 +2337,11 @@ DATASET = [
         """,
         "git_diff": "-          audience: pypi\n+          audience: testpypi",
         "ci_job_name": "Publish to PyPI",
-        "expected_fix": "Ripristinare audience: pypi per il trusted publisher — testpypi è per il registro di test",
-        "notes": "Audience OIDC sbagliato — richiede conoscenza trusted publishers PyPI"
+        "expected_fix": "Restore audience: pypi for the trusted publisher — testpypi is for the test registry",
+        "notes": "Wrong OIDC audience — requires knowledge of PyPI trusted publishers"
     },
 
-    # --- Nuovi casi (conf_021 - conf_050) ---
+    # --- New cases (conf_021 - conf_050) ---
 
     {
         "id": "conf_021",
@@ -2356,8 +2356,8 @@ DATASET = [
         """,
         "git_diff": "-          node-version: '20'\n+          node-version: '21.99'",
         "ci_job_name": "Setup Node.js",
-        "expected_fix": "Ripristinare node-version: '20' (o una versione patch valida di Node 21, es. '21.7.1')",
-        "notes": "Versione Node.js inesistente specificata in actions/setup-node"
+        "expected_fix": "Restore node-version: '20' (or a valid patch version of Node 21, e.g. '21.7.1')",
+        "notes": "Non-existent Node.js version specified in actions/setup-node"
     },
 
     {
@@ -2373,8 +2373,8 @@ DATASET = [
         """,
         "git_diff": "-      - uses: actions/checkout@v4\n-        with:\n-          submodules: true\n+      - uses: actions/checkout@v4",
         "ci_job_name": "Checkout",
-        "expected_fix": "Ripristinare submodules: true nello step actions/checkout per inizializzare i submodule git richiesti",
-        "notes": "Submodule non inizializzato — la directory risulta vuota e i file richiesti mancano"
+        "expected_fix": "Restore submodules: true in the actions/checkout step to initialize the required git submodules",
+        "notes": "Submodule not initialized — the directory is empty and the required files are missing"
     },
 
     {
@@ -2390,8 +2390,8 @@ DATASET = [
         """,
         "git_diff": "-        environment:\n-          description: 'Target environment'\n-          required: true\n-          default: 'staging'\n+        environment:\n+          description: 'Target environment'\n+          required: true",
         "ci_job_name": "Deploy",
-        "expected_fix": "Ripristinare un valore default: 'staging' per l'input 'environment', oppure fornire sempre il valore quando si avvia il workflow manualmente",
-        "notes": "Input obbligatorio di workflow_dispatch senza default, dimenticato in un avvio manuale"
+        "expected_fix": "Restore a default: 'staging' value for the 'environment' input, or always provide the value when starting the workflow manually",
+        "notes": "Required workflow_dispatch input without a default, forgotten in a manual run"
     },
 
     {
@@ -2407,8 +2407,8 @@ DATASET = [
         """,
         "git_diff": "-    runs-on: [self-hosted, linux]\n+    runs-on: [self-hosted, gpu, linux]",
         "ci_job_name": "Train model",
-        "expected_fix": "Ripristinare runs-on: [self-hosted, linux] oppure registrare un runner con l'etichetta 'gpu' se il job richiede effettivamente una GPU",
-        "notes": "Etichetta runner richiesta non corrisponde a nessun runner self-hosted registrato, il job resta bloccato in coda"
+        "expected_fix": "Restore runs-on: [self-hosted, linux] or register a runner with the 'gpu' label if the job actually requires a GPU",
+        "notes": "The requested runner label does not match any registered self-hosted runner, the job stays stuck in the queue"
     },
 
     {
@@ -2424,8 +2424,8 @@ DATASET = [
         """,
         "git_diff": "-    timeout-minutes: 20\n+    timeout-minutes: 5",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare timeout-minutes: 20, poiché la suite di test di integrazione richiede più dei 5 minuti configurati",
-        "notes": "Timeout del job impostato troppo basso rispetto al tempo reale necessario alla suite di test"
+        "expected_fix": "Restore timeout-minutes: 20, since the integration test suite requires more than the configured 5 minutes",
+        "notes": "Job timeout set too low compared to the actual time needed by the test suite"
     },
 
     {
@@ -2440,8 +2440,8 @@ DATASET = [
         """,
         "git_diff": "-    if: github.ref == 'refs/heads/main'\n+    if: github.ref = 'refs/heads/main'",
         "ci_job_name": "Deploy",
-        "expected_fix": "Correggere l'operatore di confronto: github.ref == 'refs/heads/main' (doppio uguale, non assegnazione)",
-        "notes": "Typo sintattico nell'espressione if: singolo '=' invece di '==' non è valido nella expression syntax di GitHub Actions"
+        "expected_fix": "Fix the comparison operator: github.ref == 'refs/heads/main' (double equals, not assignment)",
+        "notes": "Syntax typo in the if expression: a single '=' instead of '==' is not valid in the GitHub Actions expression syntax"
     },
 
     {
@@ -2456,8 +2456,8 @@ DATASET = [
         """,
         "git_diff": "-    needs: build\n+    needs: buld",
         "ci_job_name": "Deploy",
-        "expected_fix": "Correggere il typo: needs: buld → needs: build",
-        "notes": "Typo nel nome del job referenziato in 'needs', il job dipendenza non esiste"
+        "expected_fix": "Fix the typo: needs: buld → needs: build",
+        "notes": "Typo in the name of the job referenced in 'needs', the dependency job does not exist"
     },
 
     {
@@ -2472,8 +2472,8 @@ DATASET = [
         """,
         "git_diff": "-          distribution: 'temurin'\n+          distribution: 'oracle-jdk'",
         "ci_job_name": "Set up JDK",
-        "expected_fix": "Correggere distribution: 'temurin' (o usare 'oracle', non 'oracle-jdk')",
-        "notes": "Nome distribuzione JDK non valido nell'azione actions/setup-java"
+        "expected_fix": "Fix distribution: 'temurin' (or use 'oracle', not 'oracle-jdk')",
+        "notes": "Invalid JDK distribution name in the actions/setup-java action"
     },
 
     {
@@ -2490,8 +2490,8 @@ DATASET = [
         """,
         "git_diff": "-permissions:\n-  pull-requests: write\n-  contents: read\n+permissions:\n+  contents: read",
         "ci_job_name": "Comment on PR",
-        "expected_fix": "Ripristinare pull-requests: write nel blocco permissions del workflow per permettere al GITHUB_TOKEN di creare commenti",
-        "notes": "Permesso di scrittura sulle PR rimosso dal workflow, il default read-only blocca l'azione"
+        "expected_fix": "Restore pull-requests: write in the permissions block of the workflow to allow the GITHUB_TOKEN to create comments",
+        "notes": "PR write permission removed from the workflow, the read-only default blocks the action"
     },
 
     {
@@ -2507,8 +2507,8 @@ DATASET = [
         """,
         "git_diff": "-      - run: ./scripts/build.sh\n-        shell: bash\n+      - run: ./scripts/build.sh",
         "ci_job_name": "Build",
-        "expected_fix": "Ripristinare shell: bash nello step, poiché su runner windows-latest la shell di default non interpreta correttamente uno script bash",
-        "notes": "Shell di default sul runner Windows non è bash, uno script .sh richiede shell: bash esplicito"
+        "expected_fix": "Restore shell: bash in the step, since on the windows-latest runner the default shell does not correctly interpret a bash script",
+        "notes": "The default shell on the Windows runner is not bash, a .sh script requires an explicit shell: bash"
     },
 
     {
@@ -2525,8 +2525,8 @@ DATASET = [
         """,
         "git_diff": "-      - name: Run tests\n-        env:\n-          API_SECRET: ${{ secrets.API_SECRET }}\n-        run: pytest tests/\n+      - name: Run tests\n+        run: pytest tests/",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare la sezione env: con API_SECRET: ${{ secrets.API_SECRET }} nello step, poiché il file .env locale (in .gitignore) non è disponibile in CI",
-        "notes": "Il progetto si basa su un file .env locale non versionato; in CI le variabili vanno iniettate esplicitamente dai secrets"
+        "expected_fix": "Restore the env: section with API_SECRET: ${{ secrets.API_SECRET }} in the step, since the local .env file (in .gitignore) is not available in CI",
+        "notes": "The project relies on a local, unversioned .env file; in CI the variables must be injected explicitly from the secrets"
     },
 
     {
@@ -2544,8 +2544,8 @@ DATASET = [
         """,
         "git_diff": "-          key: pip-${{ matrix.python-version }}-${{ hashFiles('requirements.txt') }}\n+          key: pip-${{ matrix.python-version }}-${{ hashFiles('requirements.text') }}",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Correggere il typo nel pattern hashFiles: 'requirements.text' → 'requirements.txt', così la cache key riflette correttamente il contenuto del file",
-        "notes": "Typo nell'estensione del file passato a hashFiles rende la cache key costante, la cache non si invalida mai quando le dipendenze cambiano"
+        "expected_fix": "Fix the typo in the hashFiles pattern: 'requirements.text' → 'requirements.txt', so that the cache key correctly reflects the file content",
+        "notes": "Typo in the file extension passed to hashFiles makes the cache key constant, the cache is never invalidated when the dependencies change"
     },
 
     {
@@ -2560,8 +2560,8 @@ DATASET = [
         """,
         "git_diff": "-      - uses: actions/download-artifact@v3\n+      - uses: actions/download-artifact@v4",
         "ci_job_name": "Aggregate test results",
-        "expected_fix": "Aggiornare gli step upload-artifact per usare nomi univoci per matrice (es. name: test-results-${{ matrix.os }}) e usare merge-multiple: true in download-artifact@v4",
-        "notes": "Breaking change tra v3 e v4 di download-artifact: il merge automatico di artifact omonimi non è più il comportamento di default"
+        "expected_fix": "Update the upload-artifact steps to use unique names per matrix (e.g. name: test-results-${{ matrix.os }}) and use merge-multiple: true in download-artifact@v4",
+        "notes": "Breaking change between v3 and v4 of download-artifact: automatic merging of same-named artifacts is no longer the default behavior"
     },
 
     {
@@ -2577,8 +2577,8 @@ DATASET = [
         """,
         "git_diff": "-concurrency:\n-  group: deploy-${{ github.ref }}\n-  cancel-in-progress: false\n+concurrency:\n+  group: deploy\n+  cancel-in-progress: true",
         "ci_job_name": "Deploy",
-        "expected_fix": "Ripristinare group: deploy-${{ github.ref }} e cancel-in-progress: false, per evitare che deploy su branch diversi si cancellino a vicenda",
-        "notes": "Gruppo di concorrenza non scoped per branch causa la cancellazione involontaria di deploy in corso su branch diversi"
+        "expected_fix": "Restore group: deploy-${{ github.ref }} and cancel-in-progress: false, to prevent deploys on different branches from cancelling each other",
+        "notes": "Concurrency group not scoped per branch causes the unintended cancellation of in-progress deploys on different branches"
     },
 
     {
@@ -2594,8 +2594,8 @@ DATASET = [
         """,
         "git_diff": "-  publish:\n-    uses: ./.github/workflows/publish.yml\n-    secrets: inherit\n+  publish:\n+    uses: ./.github/workflows/publish.yml",
         "ci_job_name": "Publish",
-        "expected_fix": "Ripristinare secrets: inherit nella chiamata al reusable workflow per propagare i secret necessari (es. PYPI_API_TOKEN)",
-        "notes": "Reusable workflow richiamato senza secrets: inherit non riceve i secret del workflow chiamante"
+        "expected_fix": "Restore secrets: inherit in the call to the reusable workflow to propagate the required secrets (e.g. PYPI_API_TOKEN)",
+        "notes": "Reusable workflow called without secrets: inherit does not receive the secrets of the calling workflow"
     },
 
     {
@@ -2611,8 +2611,8 @@ DATASET = [
         """,
         "git_diff": "-  run-tests:\n-    runs-on: ubuntu-latest\n+  test:\n+    runs-on: ubuntu-latest",
         "ci_job_name": "test",
-        "expected_fix": "Aggiornare le regole di branch protection per richiedere il nuovo nome del job 'test' invece di 'run-tests' (o rinominare il job mantenendo 'run-tests')",
-        "notes": "Rinominare un job senza aggiornare le required status checks nella branch protection blocca il merge delle PR indefinitamente"
+        "expected_fix": "Update the branch protection rules to require the new job name 'test' instead of 'run-tests' (or rename the job keeping 'run-tests')",
+        "notes": "Renaming a job without updating the required status checks in the branch protection blocks the merge of PRs indefinitely"
     },
 
     {
@@ -2626,10 +2626,10 @@ DATASET = [
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-    environment: production\n+    environment:\n+      name: production\n+      # required reviewers aggiunti via GitHub UI, non riflessi nel file workflow",
+        "git_diff": "-    environment: production\n+    environment:\n+      name: production\n+      # required reviewers added via the GitHub UI, not reflected in the workflow file",
         "ci_job_name": "Deploy to production",
-        "expected_fix": "Usare un ambiente separato senza reviewer obbligatori per i deploy automatici notturni (es. 'production-auto'), oppure rimuovere la regola di protezione per i job schedulati",
-        "notes": "Regola di protezione ambiente con reviewer obbligatori blocca deploy automatici che non hanno un umano pronto ad approvare"
+        "expected_fix": "Use a separate environment without required reviewers for the nightly automatic deploys (e.g. 'production-auto'), or remove the protection rule for scheduled jobs",
+        "notes": "Environment protection rule with required reviewers blocks automatic deploys that have no human ready to approve"
     },
 
     {
@@ -2645,8 +2645,8 @@ DATASET = [
         """,
         "git_diff": "-    strategy:\n-      fail-fast: false\n+    strategy:\n+      fail-fast: true",
         "ci_job_name": "test (3.11)",
-        "expected_fix": "Ripristinare fail-fast: false nella strategy della matrice, per permettere a tutte le combinazioni di completare indipendentemente dal fallimento di una singola versione",
-        "notes": "fail-fast: true cancella prematuramente le altre combinazioni della matrice, nascondendo informazioni utili sul reale stato delle altre versioni"
+        "expected_fix": "Restore fail-fast: false in the matrix strategy, to allow all combinations to complete regardless of the failure of a single version",
+        "notes": "fail-fast: true prematurely cancels the other matrix combinations, hiding useful information about the actual state of the other versions"
     },
 
     {
@@ -2662,8 +2662,8 @@ DATASET = [
         """,
         "git_diff": "-          skip-cache: 'false'\n+          skip-cache: false",
         "ci_job_name": "Setup environment",
-        "expected_fix": "Passare il valore come stringa: skip-cache: 'false', poiché gli input delle composite action sono sempre stringhe e un booleano non quotato causa una valutazione errata nella condizione",
-        "notes": "Gli input di una composite action sono sempre stringhe; passare un booleano non quotato altera la logica condizionale dell'azione"
+        "expected_fix": "Pass the value as a string: skip-cache: 'false', since composite action inputs are always strings and an unquoted boolean causes a wrong evaluation in the condition",
+        "notes": "The inputs of a composite action are always strings; passing an unquoted boolean alters the conditional logic of the action"
     },
 
     {
@@ -2679,8 +2679,8 @@ DATASET = [
         """,
         "git_diff": "-      - uses: some-org/some-action@8f1a2b3\n+      - uses: some-org/some-action@v1",
         "ci_job_name": "Run some-org/some-action",
-        "expected_fix": "Fissare l'azione a uno SHA di commit specifico e verificato (es. @8f1a2b3) invece di un tag mobile come @v1, per evitare che un repointing del tag introduca comportamenti inattesi",
-        "notes": "Un tag mobile (@v1) può essere ripuntato dal maintainer a una versione diversa e incompatibile senza preavviso"
+        "expected_fix": "Pin the action to a specific, verified commit SHA (e.g. @8f1a2b3) instead of a mutable tag such as @v1, to prevent a tag repointing from introducing unexpected behavior",
+        "notes": "A mutable tag (@v1) can be repointed by the maintainer to a different and incompatible version without notice"
     },
 
     {
@@ -2696,8 +2696,8 @@ DATASET = [
         """,
         "git_diff": "-      - uses: actions/checkout@v4\n-        with:\n-          lfs: true\n+      - uses: actions/checkout@v4",
         "ci_job_name": "Checkout",
-        "expected_fix": "Ripristinare lfs: true nello step actions/checkout per scaricare il contenuto reale dei file tracciati da Git LFS",
-        "notes": "Senza lfs: true, i file tracciati da Git LFS vengono estratti come pointer testuali invece del contenuto binario reale"
+        "expected_fix": "Restore lfs: true in the actions/checkout step to download the actual content of the files tracked by Git LFS",
+        "notes": "Without lfs: true, the files tracked by Git LFS are checked out as text pointers instead of the actual binary content"
     },
 
     {
@@ -2713,8 +2713,8 @@ DATASET = [
         """,
         "git_diff": "-  deploy-inner-call:\n-    uses: ./.github/workflows/deploy-inner.yml\n-    secrets: inherit\n+  deploy-inner-call:\n+    uses: ./.github/workflows/deploy-inner.yml",
         "ci_job_name": "deploy-inner-call",
-        "expected_fix": "Aggiungere secrets: inherit anche nella chiamata annidata a deploy-inner.yml: l'ereditarietà dei secret non è transitiva attraverso più livelli di reusable workflow",
-        "notes": "In una catena di reusable workflow a più livelli, secrets: inherit deve essere dichiarato ad ogni livello di chiamata, non solo al primo"
+        "expected_fix": "Also add secrets: inherit in the nested call to deploy-inner.yml: secret inheritance is not transitive across multiple levels of reusable workflows",
+        "notes": "In a multi-level chain of reusable workflows, secrets: inherit must be declared at every call level, not only at the first one"
     },
 
     {
@@ -2730,8 +2730,8 @@ DATASET = [
         """,
         "git_diff": "-concurrency:\n-  group: ci-${{ github.workflow }}-${{ matrix.os }}-${{ matrix.python-version }}\n+concurrency:\n+  group: ci-${{ github.workflow }}",
         "ci_job_name": "test (ubuntu-latest, 3.11)",
-        "expected_fix": "Ripristinare il gruppo di concorrenza scoped per combinazione di matrice (includendo matrix.os e matrix.python-version), non solo per workflow",
-        "notes": "Gruppo di concorrenza troppo generico applicato all'interno di un job di matrice causa cancellazioni intermittenti tra combinazioni indipendenti"
+        "expected_fix": "Restore the concurrency group scoped per matrix combination (including matrix.os and matrix.python-version), not only per workflow",
+        "notes": "Overly generic concurrency group applied inside a matrix job causes intermittent cancellations between independent combinations"
     },
 
     {
@@ -2748,8 +2748,8 @@ DATASET = [
         """,
         "git_diff": "-          key: deps-${{ github.ref_name }}-${{ hashFiles('requirements.txt') }}\n+          key: deps-${{ hashFiles('requirements.txt') }}",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Includere github.ref_name (o comunque uno scope di branch) nella cache key, per evitare che branch diversi condividano/inquinino a vicenda la stessa cache",
-        "notes": "Cache condivisa senza scoping per branch permette a un branch sperimentale di 'avvelenare' la cache usata dal branch principale"
+        "expected_fix": "Include github.ref_name (or at least a branch scope) in the cache key, to prevent different branches from sharing/polluting the same cache",
+        "notes": "Cache shared without per-branch scoping allows an experimental branch to 'poison' the cache used by the main branch"
     },
 
     {
@@ -2765,8 +2765,8 @@ DATASET = [
         """,
         "git_diff": "-  deploy:\n-    if: github.ref == 'refs/heads/main'\n+  deploy:\n+    if: startsWith(github.ref, 'refs/heads/release/')",
         "ci_job_name": "Configure AWS Credentials",
-        "expected_fix": "Aggiornare la trust policy IAM del ruolo AWS per includere la condition sub che corrisponde a repo:myorg/myrepo:ref:refs/heads/release/*, oppure ripristinare il trigger su refs/heads/main coerente con la policy esistente",
-        "notes": "Il trigger del workflow è stato cambiato a un branch pattern diverso senza aggiornare la trust policy OIDC lato AWS, che valida esplicitamente il claim 'sub'"
+        "expected_fix": "Update the IAM trust policy of the AWS role to include the sub condition matching repo:myorg/myrepo:ref:refs/heads/release/*, or restore the trigger on refs/heads/main consistent with the existing policy",
+        "notes": "The workflow trigger was changed to a different branch pattern without updating the OIDC trust policy on the AWS side, which explicitly validates the 'sub' claim"
     },
 
     {
@@ -2780,10 +2780,10 @@ DATASET = [
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-      - name: Clean workspace\n-        run: rm -f /tmp/app.lock\n+      # step di pulizia rimosso",
+        "git_diff": "-      - name: Clean workspace\n-        run: rm -f /tmp/app.lock\n+      # cleanup step removed",
         "ci_job_name": "Run Tests",
-        "expected_fix": "Ripristinare lo step di pulizia che rimuove /tmp/app.lock all'inizio del job, necessario perché il runner self-hosted non è effimero e riusa lo stesso filesystem tra le esecuzioni",
-        "notes": "Runner self-hosted persistente conserva stato tra esecuzioni; senza pulizia esplicita un crash precedente lascia file residui che rompono l'esecuzione successiva"
+        "expected_fix": "Restore the cleanup step that removes /tmp/app.lock at the beginning of the job, needed because the self-hosted runner is not ephemeral and reuses the same filesystem across runs",
+        "notes": "A persistent self-hosted runner keeps state across runs; without explicit cleanup, a previous crash leaves leftover files that break the next run"
     },
 
     {
@@ -2799,8 +2799,8 @@ DATASET = [
         """,
         "git_diff": "-  test:\n-    name: ci/test\n+  test-suite:\n+    name: test-suite",
         "ci_job_name": "test-suite",
-        "expected_fix": "Aggiornare il repository ruleset per richiedere 'test-suite' al posto di 'ci/test', oppure mantenere temporaneamente entrambi i nomi finché il ruleset non è allineato, per sbloccare le PR già aperte",
-        "notes": "Rinominare contemporaneamente un job e il ruleset di branch protection può disallinearsi per le PR già aperte, bloccando il merge finché non si riallineano manualmente"
+        "expected_fix": "Update the repository ruleset to require 'test-suite' instead of 'ci/test', or temporarily keep both names until the ruleset is aligned, to unblock already open PRs",
+        "notes": "Renaming a job and the branch protection ruleset at the same time can get out of sync for already open PRs, blocking the merge until they are realigned manually"
     },
 
     {
@@ -2816,8 +2816,8 @@ DATASET = [
         """,
         "git_diff": "-on: pull_request\n+on: pull_request_target\n       jobs:\n         test:\n           steps:\n-            - uses: actions/checkout@v4\n+            - uses: actions/checkout@v4\n+              with:\n+                ref: ${{ github.event.pull_request.head.sha }}",
         "ci_job_name": "Run tests on PR",
-        "expected_fix": "Non eseguire il checkout del codice della PR (head.sha, non fidato) in un workflow pull_request_target con accesso ai secret; separare in due job: uno con pull_request_target solo per operazioni fidate coi secret, uno con pull_request (senza secret) per eseguire il codice della PR",
-        "notes": "Caso hard di sicurezza: pull_request_target concede accesso ai secret, eseguire codice non fidato della PR in quel contesto è un rischio di secret-exfiltration, non solo un errore di configurazione da correggere alla leggera"
+        "expected_fix": "Do not check out the PR code (head.sha, untrusted) in a pull_request_target workflow with access to secrets; split into two jobs: one with pull_request_target only for trusted operations with secrets, one with pull_request (without secrets) to run the PR code",
+        "notes": "Hard security case: pull_request_target grants access to secrets, running untrusted PR code in that context is a secret-exfiltration risk, not just a configuration error to be fixed lightly"
     },
 
     {
@@ -2835,8 +2835,8 @@ DATASET = [
         """,
         "git_diff": "-          key: build-${{ matrix.os }}-${{ matrix.python-version }}\n+          key: build-${{ matrix.os }}-${{ matrix.python-version }}-${{ github.run_id }}",
         "ci_job_name": "Install dependencies",
-        "expected_fix": "Rimuovere github.run_id dalla cache key (crea una cache nuova e mai riusata ad ogni run, saturando il limite di 10GB) e ripulire periodicamente le cache obsolete",
-        "notes": "Cache key che include un valore univoco per ogni run (run_id) impedisce il riutilizzo e accumula rapidamente cache ridondanti fino a superare il limite del repository"
+        "expected_fix": "Remove github.run_id from the cache key (it creates a new, never reused cache on every run, saturating the 10GB limit) and periodically clean up obsolete caches",
+        "notes": "A cache key that includes a unique value for every run (run_id) prevents reuse and quickly accumulates redundant caches until the repository limit is exceeded"
     },
 
     {
@@ -2852,29 +2852,29 @@ DATASET = [
         """,
         "git_diff": "-  C:\n-    needs: [A, B]\n-    if: always() && needs.A.result == 'success'\n+  C:\n+    needs: [A, B]",
         "ci_job_name": "C",
-        "expected_fix": "Ripristinare if: always() && needs.A.result == 'success' nel job C, per non farlo dipendere implicitamente dal successo di B quando B è legittimamente skippato dalla sua condizione",
-        "notes": "Senza always(), un job upstream skippato per una condizione attesa blocca comunque i job downstream che dipendono da esso tramite 'needs'"
+        "expected_fix": "Restore if: always() && needs.A.result == 'success' in job C, so that it does not implicitly depend on the success of B when B is legitimately skipped by its condition",
+        "notes": "Without always(), an upstream job skipped by an expected condition still blocks the downstream jobs that depend on it through 'needs'"
     },
 
 ]
 
 
 # ══════════════════════════════════════════════════════════════
-# FUNZIONI DI UTILITY
+# UTILITY FUNCTIONS
 # ══════════════════════════════════════════════════════════════
 
 def get_by_category(category: str) -> list:
-    """Filtra il dataset per categoria."""
+    """Filters the dataset by category."""
     return [e for e in DATASET if e["category"] == category]
 
 
 def get_by_difficulty(difficulty: str) -> list:
-    """Filtra il dataset per difficoltà."""
+    """Filters the dataset by difficulty."""
     return [e for e in DATASET if e["difficulty"] == difficulty]
 
 
 def get_stats() -> dict:
-    """Statistiche del dataset."""
+    """Dataset statistics."""
     categories = {}
     difficulties = {}
     for e in DATASET:
@@ -2889,11 +2889,11 @@ def get_stats() -> dict:
 
 if __name__ == "__main__":
     stats = get_stats()
-    print(f"Dataset: {stats['total']} errori totali")
-    print(f"Per categoria: {stats['by_category']}")
-    print(f"Per difficoltà: {stats['by_difficulty']}")
+    print(f"Dataset: {stats['total']} total errors")
+    print(f"By category: {stats['by_category']}")
+    print(f"By difficulty: {stats['by_difficulty']}")
 
-    # Verifica IDs unici
+    # Check that IDs are unique
     ids = [e["id"] for e in DATASET]
-    assert len(ids) == len(set(ids)), "IDs duplicati trovati!"
-    print("✅ Tutti gli ID sono unici")
+    assert len(ids) == len(set(ids)), "Duplicate IDs found!"
+    print("✅ All IDs are unique")

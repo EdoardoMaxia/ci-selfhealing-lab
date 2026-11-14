@@ -1,3 +1,3 @@
 def notify_user(smtp, to, subject, body):
-    """Invia una notifica email tramite il client smtp fornito (per test_013)."""
+    """Sends an email notification through the provided smtp client (for test_013)."""
     smtp.send_email(to, subject, body)

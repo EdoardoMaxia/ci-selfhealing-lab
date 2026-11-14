@@ -1,33 +1,34 @@
 """
-Script di valutazione sperimentale — Capitolo 5 Tesi LM-32
-Self-Healing CI/CD Pipeline — Benchmark Multi-Modello
+Experimental evaluation script
+Self-Healing CI/CD Pipeline — Multi-Model Benchmark
 
-Esegue il sistema su tutti gli errori del dataset per ogni modello configurato,
-misura Success Rate, latenza, distribuzione tentativi e JSON parse failures.
-Salva i risultati in CSV pronti per i grafici della tesi.
+Runs the system on all dataset errors for every configured model,
+measuring Success Rate, latency, attempt distribution and JSON parse failures.
+Saves the results as CSV files ready for the paper figures.
 
-Uso:
-    # Dry-run su Anthropic (solo Router, no CI reale, no memoria)
+Usage:
+    # Dry-run on Anthropic (Router only, no real CI, no memory)
     python experiments/benchmark.py --provider anthropic --dry-run
 
-    # Run completo su Anthropic (con CI reale, no memoria)
+    # Full run on Anthropic (with real CI, no memory)
     python experiments/benchmark.py --provider anthropic --no-memory
 
-    # Ablation study con memoria attiva
+    # Ablation study with memory enabled
     python experiments/benchmark.py --provider anthropic
 
-    # Solo una categoria
+    # A single category only
     python experiments/benchmark.py --provider groq --category dependency --no-memory
 
-    # Modello Ollama specifico
-    python experiments/benchmark.py --provider ollama --ollama-model llama3.1:8b --no-memory
+    # Specific Ollama model
+    python experiments/benchmark.py --provider ollama --ollama-model llama31-4k --no-memory
 
-    # Test rapido (5 errori per modello)
+    # Quick test (5 errors per model)
     python experiments/benchmark.py --provider anthropic --dry-run --limit 5
 """
 
 import os
 import sys
+import hashlib
 import csv
 import time
 import json
@@ -46,7 +47,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from experiments.dataset import DATASET
 
 # ══════════════════════════════════════════════════════════════
-# CONFIGURAZIONE MODELLI
+# MODEL CONFIGURATION
 # ══════════════════════════════════════════════════════════════
 
 MODELS = [
@@ -67,18 +68,18 @@ MODELS = [
     {
         "id":       "ollama_llama8b",
         "provider": "ollama",
-        "ollama_model": "llama3.1:8b",
+        "ollama_model": "llama31-4k",
         "name":     "Llama 3.1 8B",
         "type":     "open-source-local",
-        "timeout":  900, # <-- prima settato a 600 ma meglio alzare
+        "timeout":  900, # <-- previously set to 600 but better to raise it
     },
     {
         "id":       "ollama_mistral7b",
         "provider": "ollama",
-        "ollama_model": "mistral:7b",
+        "ollama_model": "mistral-4k",
         "name":     "Mistral 7B",
         "type":     "open-source-local",
-        "timeout":  900, # <-- prima settato a 600 ma meglio alzare
+        "timeout":  900, # <-- previously set to 600 but better to raise it
     },
     {
         "id":       "ollama_llama70b",
@@ -91,7 +92,7 @@ MODELS = [
     {
         "id":       "ollama_qwen38_27b",
         "provider": "ollama",
-        "ollama_model": "qwen3.8:27b",
+        "ollama_model": "qwen38-4k",
         "name":     "Qwen3.8 27B",
         "type":     "open-source-local",
         "timeout":  900,
@@ -99,7 +100,7 @@ MODELS = [
     {
         "id":       "ollama_qwen3coder_30b",
         "provider": "ollama",
-        "ollama_model": "qwen3-coder:30b",
+        "ollama_model": "qwen3coder-4k",
         "name":     "Qwen3-Coder 30B",
         "type":     "open-source-local",
         "timeout":  900,
@@ -136,21 +137,21 @@ logging.basicConfig(
 log = logging.getLogger("benchmark")
 
 # ══════════════════════════════════════════════════════════════
-# GESTIONE CHROMADB — pulizia e skip
+# CHROMADB MANAGEMENT — cleanup and skip
 # ══════════════════════════════════════════════════════════════
 
 def clean_chromadb():
     """
-    Cancella tutti gli episodi da ChromaDB.
-    Da chiamare prima di un benchmark con memoria attiva
-    per partire da uno stato pulito.
+    Deletes all the episodes from ChromaDB.
+    To be called before a benchmark with memory enabled
+    in order to start from a clean state.
     """
     try:
         from agent.memory.episodic_store import get_collection
         col   = get_collection()
         count = col.count()
         if count > 0:
-            # ChromaDB richiede un filtro where per delete — utilizzo $or su tutti gli outcome
+            # ChromaDB requires a where filter for delete — use $or over all outcomes
             col.delete(where={
                 "$or": [
                     {"outcome": {"$eq": "success"}},
@@ -158,23 +159,23 @@ def clean_chromadb():
                     {"outcome": {"$eq": "failed"}},
                 ]
             })
-            log.info(f"ChromaDB: rimossi {count} episodi")
+            log.info(f"ChromaDB: removed {count} episodes")
         else:
-            log.info("ChromaDB: già vuoto")
+            log.info("ChromaDB: already empty")
     except Exception as e:
-        log.warning(f"Pulizia ChromaDB fallita: {e}")
+        log.warning(f"ChromaDB cleanup failed: {e}")
 
 
 # ══════════════════════════════════════════════════════════════
-# RESET FILE — stato deterministico per ogni test
+# FILE RESET — deterministic state for every test
 # ══════════════════════════════════════════════════════════════
 
 ORIGINAL_REQUIREMENTS = "pytest==7.4.0\npytest-cov==4.1.0\n"
 
 
-# File di test creati per il Gruppo 1 (vedi experiments/CHANGELOG_DATASET.md).
-# Senza questa whitelist reset_files() li cancellerebbe ad ogni run, dato che
-# rimuove qualsiasi tests/*.py non elencato qui.
+# Test files created for Group 1 (see experiments/CHANGELOG_DATASET.md).
+# Without this whitelist reset_files() would delete them on every run, since
+# it removes any tests/*.py not listed here.
 GROUP1_TEST_FILES = {
     "test_utils.py", "test_api.py", "test_models.py", "test_math.py",
     "test_list.py", "test_service.py", "test_auth.py", "test_db.py",
@@ -187,8 +188,8 @@ GROUP1_TEST_FILES = {
     "test_billing_cycle.py",
 }
 
-# File di test creati per sostituire i 15 casi "test" precedentemente esclusi
-# (vedi experiments/CHANGELOG_DATASET.md) — stessa logica di GROUP1_TEST_FILES.
+# Test files created to replace the 15 previously excluded "test" cases
+# (see experiments/CHANGELOG_DATASET.md) — same logic as GROUP1_TEST_FILES.
 REPLACEMENT_TEST_FILES = {
     "test_worker.py", "test_weather.py", "test_export.py", "test_report.py",
     "test_queue.py", "test_cache.py", "test_concurrent.py", "test_metrics.py",
@@ -202,9 +203,9 @@ ALLOWED_TEST_FILES = (
     | REPLACEMENT_TEST_FILES
 )
 
-# Percorsi (relativi alla repo root) di tutti i file sorgente/app/test/fixture
-# creati per il Gruppo 1 che vanno ripristinati da git ad ogni reset_files()
-# (possono essere modificati sia dall'injection sia da un fix dell'agente).
+# Paths (relative to the repo root) of all the source/app/test/fixture files
+# created for Group 1 that must be restored from git on every reset_files()
+# (they can be modified both by the injection and by an agent fix).
 GROUP1_RESTORE_PATHS = [
     # src/
     "src/calculator.py", "src/utils.py", "src/models.py", "src/services.py",
@@ -214,7 +215,7 @@ GROUP1_RESTORE_PATHS = [
     "src/importer.py", "src/registry.py", "src/legacy.py", "src/settings.py",
     "src/sampler.py", "src/validation.py", "src/scheduler.py",
     "src/reports.py", "src/logger.py", "src/billing_cycle.py",
-    # src/ — creati per sostituire i 15 casi "test" precedentemente esclusi
+    # src/ — created to replace the 15 previously excluded "test" cases
     "src/fetcher.py", "src/cache.py", "src/counter.py", "src/worker.py",
     "src/weather.py", "src/exporter.py", "src/summary.py", "src/pipeline.py",
     "src/metrics.py", "src/image_cache.py", "src/dedup.py", "src/stats.py",
@@ -222,64 +223,64 @@ GROUP1_RESTORE_PATHS = [
     # app/
     "app/__init__.py", "app/billing/__init__.py", "app/billing/payment.py",
     "app/notify.py",
-    # tests/ (contenuto, non solo esistenza — vedi GROUP1_TEST_FILES /
-    # REPLACEMENT_TEST_FILES per la whitelist)
+    # tests/ (content, not only existence — see GROUP1_TEST_FILES /
+    # REPLACEMENT_TEST_FILES for the whitelist)
     "tests/test_async.py",
     *[f"tests/{name}" for name in GROUP1_TEST_FILES],
     *[f"tests/{name}" for name in REPLACEMENT_TEST_FILES],
-    # fixture dati
+    # data fixtures
     "tests/data/sample.csv", "tests/fixtures/sample.json",
 ]
 
 
 def reset_files():
     """
-    Ripristina tutti i file modificabili al loro stato corretto
-    prima di introdurre l'errore specifico del test case.
-    Chiamato automaticamente prima di ogni singolo errore.
+    Restores all modifiable files to their correct state
+    before introducing the specific error of the test case.
+    Called automatically before every single error.
     """
     repo_root = Path(".")
 
-    # 1. requirements.txt — versione pulita
+    # 1. requirements.txt — clean version
     (repo_root / "requirements.txt").write_text(
         ORIGINAL_REQUIREMENTS, encoding="utf-8"
     )
 
-    # 2. test_calculator.py — ripristina da git
+    # 2. test_calculator.py — restore from git
     subprocess.run(
         ["git", "checkout", "HEAD", "--", "tests/test_calculator.py"],
         capture_output=True
     )
 
-    # 3. ci.yml — ripristina da git
+    # 3. ci.yml — restore from git
     subprocess.run(
         ["git", "checkout", "HEAD", "--", ".github/workflows/ci.yml"],
         capture_output=True
     )
 
-    # 4. File sorgente/fixture del Gruppo 1 — ripristina da git (possono essere
-    #    stati modificati dall'injection o da un fix applicato dall'agente)
+    # 4. Group 1 source/fixture files — restore from git (they may have
+    #    been modified by the injection or by a fix applied by the agent)
     if GROUP1_RESTORE_PATHS:
         subprocess.run(
             ["git", "checkout", "HEAD", "--", *GROUP1_RESTORE_PATHS],
             capture_output=True
         )
 
-    # 5. Rimuovi qualsiasi file di test non autorizzato
+    # 5. Remove any unauthorized test file
     tests_dir = repo_root / "tests"
     if tests_dir.exists():
         for f in tests_dir.rglob("*.py"):
             if f.name not in ALLOWED_TEST_FILES:
                 f.unlink()
-                log.debug(f"Rimosso file di test spurio: {f.name}")
+                log.debug(f"Removed spurious test file: {f.name}")
 
 
 def resolve_test_target_file(error: dict, repo_root: Path):
     """
-    Determina il file di test reale da modificare per un caso 'test',
-    leggendo il path dai ci_logs sintetici (stesso pattern usato da
+    Determines the actual test file to modify for a 'test' case,
+    reading the path from the synthetic ci_logs (same pattern used by
     agent.agents.test_agent.find_test_file).
-    Ritorna None se nei log non compare un path riconoscibile.
+    Returns None if no recognizable path appears in the logs.
     """
     import re
     match = re.search(r'(?:FAILED|ERROR)\s+(tests/[\w./]+\.py)', error.get("ci_logs", ""))
@@ -289,7 +290,7 @@ def resolve_test_target_file(error: dict, repo_root: Path):
 
 
 def _inject_test_generic(target: "Path", diff: str) -> bool:
-    """Injection generica: find/replace riga per riga (stesso pattern di 'config')."""
+    """Generic injection: line-by-line find/replace (same pattern as 'config')."""
     if not target.exists():
         return False
     content = target.read_text(encoding="utf-8")
@@ -307,12 +308,12 @@ def _inject_test_generic(target: "Path", diff: str) -> bool:
 
 def _inject_test_023(repo_root: Path) -> bool:
     """
-    test_023: il git_diff del caso descrive uno spostamento di file
-    (app/services/payment.py -> app/billing/payment.py), non un diff di
-    righe di codice — il find/replace generico non si applica. La baseline
-    di tests/test_payment.py importa già dal path corretto (app.billing.payment,
-    coerente con expected_fix); l'injection riscrive l'import sul path vecchio
-    per riprodurre il ModuleNotFoundError descritto nel caso.
+    test_023: the case's git_diff describes a file move
+    (app/services/payment.py -> app/billing/payment.py), not a diff of
+    code lines — the generic find/replace does not apply. The baseline
+    of tests/test_payment.py already imports from the correct path (app.billing.payment,
+    consistent with expected_fix); the injection rewrites the import to the old path
+    to reproduce the ModuleNotFoundError described in the case.
     """
     target = repo_root / "tests/test_payment.py"
     if not target.exists():
@@ -329,9 +330,9 @@ def _inject_test_023(repo_root: Path) -> bool:
 
 def _inject_test_027(repo_root: Path) -> bool:
     """
-    test_027: il git_diff descrive la rimozione di un file di fixture dal
-    commit, non un diff di righe — l'injection cancella il file di fixture
-    per riprodurre il FileNotFoundError descritto nel caso.
+    test_027: the git_diff describes the removal of a fixture file from the
+    commit, not a line diff — the injection deletes the fixture file
+    to reproduce the FileNotFoundError described in the case.
     """
     fixture = repo_root / "tests/fixtures/sample.json"
     if not fixture.exists():
@@ -342,12 +343,12 @@ def _inject_test_027(repo_root: Path) -> bool:
 
 def _inject_test_010(repo_root: Path) -> bool:
     """
-    test_010: il git_diff mostra solo una riga aggiunta (nessuna riga
-    rimossa in coppia) — il find/replace generico basato su zip(removed,
-    added) non produce nulla. La baseline di tests/test_api.py è già nello
-    stato corretto (assert include 'price'); l'injection rimuove la chiave
-    'price' dall'assert per riprodurre il disallineamento col dict reale
-    restituito da create_item (che la include sempre).
+    test_010: the git_diff shows only one added line (no paired removed
+    line) — the generic find/replace based on zip(removed,
+    added) produces nothing. The baseline of tests/test_api.py is already in
+    the correct state (the assert includes 'price'); the injection removes the
+    'price' key from the assert to reproduce the mismatch with the actual dict
+    returned by create_item (which always includes it).
     """
     target = repo_root / "tests/test_api.py"
     if not target.exists():
@@ -365,11 +366,11 @@ def _inject_test_010(repo_root: Path) -> bool:
 
 def _inject_test_012(repo_root: Path) -> bool:
     """
-    test_012: il diff originale mostra l'aggiunta di 'commit=True' (un
-    parametro CON default), che non romperebbe mai una chiamata save(record)
-    esistente — non riproduce l'errore "missing required argument" descritto
-    nei ci_logs. Injection custom: rende 'commit' posizionale obbligatorio
-    (senza default), coerente con l'errore realmente osservato.
+    test_012: the original diff shows the addition of 'commit=True' (a
+    parameter WITH a default), which would never break an existing
+    save(record) call — it does not reproduce the "missing required argument"
+    error described in the ci_logs. Custom injection: makes 'commit' a required
+    positional argument (no default), consistent with the actually observed error.
     """
     target = repo_root / "src/db.py"
     if not target.exists():
@@ -387,12 +388,12 @@ def _inject_test_012(repo_root: Path) -> bool:
 
 def _inject_test_030(repo_root: Path) -> bool:
     """
-    test_030: il git_diff descrive il fix storico gia' applicato a
-    src/legacy.py (fuori dal nostro controllo, e' gia' nello stato corretto
-    nella baseline) — non c'e' nulla da reiniettare li'. Il vero elemento
-    rotto e' un marker @pytest.mark.xfail(strict=True) rimasto sul test
-    dopo che il bug e' stato risolto: l'injection lo riaggiunge, causando un
-    XPASS(strict) che pytest tratta come fallimento.
+    test_030: the git_diff describes the historical fix already applied to
+    src/legacy.py (outside our control, it is already in the correct state
+    in the baseline) — there is nothing to re-inject there. The actual broken
+    element is an @pytest.mark.xfail(strict=True) marker left on the test
+    after the bug was fixed: the injection adds it back, causing an
+    XPASS(strict) that pytest treats as a failure.
     """
     target = repo_root / "tests/test_legacy.py"
     if not target.exists():
@@ -410,13 +411,13 @@ def _inject_test_030(repo_root: Path) -> bool:
 
 def _inject_test_033(repo_root: Path) -> bool:
     """
-    test_033: il git_diff ha 3 righe rimosse e 2 aggiunte — lo zip(removed,
-    added) del find/replace generico accoppia solo le prime 2 e lascia
-    orfana la terza riga rimossa (mutazione diretta di CONFIG accanto alla
-    variabile locale 'config' ormai indefinita: rompe comunque il test, ma
-    con un NameError invece del comportamento voluto). Injection custom:
-    sostituisce l'intero corpo del test con la mutazione diretta dello stato
-    globale condiviso CONFIG, riproducendo esattamente lo scenario descritto.
+    test_033: the git_diff has 3 removed lines and 2 added ones — the zip(removed,
+    added) of the generic find/replace pairs only the first 2 and leaves
+    the third removed line orphaned (direct mutation of CONFIG next to the
+    now-undefined local variable 'config': it still breaks the test, but
+    with a NameError instead of the intended behavior). Custom injection:
+    replaces the whole test body with the direct mutation of the shared
+    global state CONFIG, reproducing exactly the described scenario.
     """
     target = repo_root / "tests/test_settings.py"
     if not target.exists():
@@ -437,13 +438,13 @@ def _inject_test_033(repo_root: Path) -> bool:
 
 def _inject_test_016(repo_root: Path) -> bool:
     """
-    test_016: il fix sostituisce l'intera riga 'result = asyncio.run(fetch_data())'
-    con un blocco di 4 righe (funzione runner() annidata + chiamata) — numero di
-    righe rimosse/aggiunte non accoppiabile dal find/replace generico. Injection
-    custom: introduce un runner() che chiama loop.run_until_complete() mentre
-    quello stesso loop è già in esecuzione (avviato da asyncio.run), riproducendo
-    deterministicamente "RuntimeError: This event loop is already running" (solo
-    asyncio stdlib, nessuna dipendenza da pytest-asyncio).
+    test_016: the fix replaces the whole line 'result = asyncio.run(fetch_data())'
+    with a 4-line block (nested runner() function + call) — a number of
+    removed/added lines that the generic find/replace cannot pair. Custom
+    injection: introduces a runner() that calls loop.run_until_complete() while
+    that same loop is already running (started by asyncio.run), deterministically
+    reproducing "RuntimeError: This event loop is already running" (stdlib
+    asyncio only, no dependency on pytest-asyncio).
     """
     target = repo_root / "tests/test_async.py"
     if not target.exists():
@@ -465,11 +466,11 @@ def _inject_test_016(repo_root: Path) -> bool:
 
 def _inject_test_047(repo_root: Path) -> bool:
     """
-    test_047: caso composito con due difetti indipendenti nello stesso file
-    (assert con ordine di tie-break errato E funzione test_edge_case_empty_input
-    rimossa) — non esprimibile come find/replace riga per riga generico.
-    Injection custom: sostituisce l'intero contenuto del file con la versione
-    che ha entrambi i problemi.
+    test_047: composite case with two independent defects in the same file
+    (assert with wrong tie-break order AND test_edge_case_empty_input function
+    removed) — not expressible as a generic line-by-line find/replace.
+    Custom injection: replaces the whole file content with the version
+    that has both problems.
     """
     target = repo_root / "tests/test_recommender.py"
     if not target.exists():
@@ -500,12 +501,12 @@ SPECIAL_TEST_INJECTORS = {
     "test_047": _inject_test_047,
 }
 
-# Casi in cui il git_diff descrive letteralmente una riga di codice SORGENTE
-# (non del file di test) — l'injection generica va applicata al modulo src/
-# indicato qui invece che al file risolto da resolve_test_target_file().
-# Tutti questi seguono la convenzione standard "-"=stato corretto,
-# "+"=stato introdotto dal fix a monte non riflesso nel test (vedi notes
-# di ciascun caso in experiments/dataset.py).
+# Cases in which the git_diff literally describes a line of SOURCE code
+# (not of the test file) — the generic injection must be applied to the src/
+# module listed here instead of the file resolved by resolve_test_target_file().
+# All of these follow the standard convention "-"=correct state,
+# "+"=state introduced by the upstream fix not reflected in the test (see the notes
+# of each case in experiments/dataset.py).
 TEST_TARGET_OVERRIDE = {
     "test_009": "src/services.py",
     "test_011": "src/auth.py",
@@ -521,12 +522,12 @@ TEST_TARGET_OVERRIDE = {
 
 def inject_error(error: dict) -> bool:
     """
-    Introduce l'errore specifico nel file corretto in base alla categoria.
-    Chiamato dopo reset_files() per ogni test case.
+    Introduces the specific error into the right file based on the category.
+    Called after reset_files() for every test case.
 
-    Ritorna True se l'injection è stata applicata con successo, False se non
-    è stato trovato alcun file target valido per l'injection (es. i log
-    sintetici non contengono un path riconoscibile).
+    Returns True if the injection was applied successfully, False if no
+    valid target file was found for the injection (e.g. the synthetic
+    logs do not contain a recognizable path).
     """
     repo_root = Path(".")
     category  = error["category"]
@@ -560,7 +561,7 @@ def inject_error(error: dict) -> bool:
         override = TEST_TARGET_OVERRIDE.get(error_id)
         target = (repo_root / override) if override else resolve_test_target_file(error, repo_root)
         if target is None or not target.exists():
-            log.warning(f"{error_id}: file target non trovato ({target}) — escluso dal Success Rate")
+            log.warning(f"{error_id}: target file not found ({target}) — excluded from the Success Rate")
             return False
         return _inject_test_generic(target, diff)
 
@@ -568,38 +569,38 @@ def inject_error(error: dict) -> bool:
 
 
 # ══════════════════════════════════════════════════════════════
-# PULIZIA BRANCH REMOTI — rimuove i branch "fix/ai-*" residui
+# REMOTE BRANCH CLEANUP — removes leftover "fix/ai-*" branches
 # ══════════════════════════════════════════════════════════════
 
 def cleanup_fix_branches(repo_name: str = "") -> int:
     """
-    Cancella dal repository remoto tutti i branch che matchano il pattern
-    "fix/ai-*", creati da fix_executor_node ad ogni tentativo di fix
-    (vedi agent/pipeline/fix_executor.py::build_branch_name). Senza pulizia
-    si accumulano ad ogni run del benchmark.
+    Deletes from the remote repository all the branches matching the pattern
+    "fix/ai-*", created by fix_executor_node on every fix attempt
+    (see agent/pipeline/fix_executor.py::build_branch_name). Without cleanup
+    they accumulate on every benchmark run.
 
-    Usa l'istanza GitHub gia' configurata nel progetto (PyGitHub +
-    GITHUB_TOKEN dal .env, vedi agent/github/client.py::get_repo).
+    Uses the GitHub instance already configured in the project (PyGitHub +
+    GITHUB_TOKEN from .env, see agent/github/client.py::get_repo).
 
-    Non solleva eccezioni: un fallimento nella pulizia non deve interrompere
-    il benchmark. Ritorna il numero di branch effettivamente rimossi.
+    Does not raise exceptions: a cleanup failure must not interrupt
+    the benchmark. Returns the number of branches actually removed.
     """
     from agent.github.client import get_repo
 
     repo_name = repo_name or os.getenv("GITHUB_REPO", "")
     if not repo_name:
-        log.warning("cleanup_fix_branches: GITHUB_REPO non configurato — skip")
+        log.warning("cleanup_fix_branches: GITHUB_REPO not configured — skip")
         return 0
 
     try:
         repo = get_repo(repo_name)
         targets = [b for b in repo.get_branches() if fnmatch.fnmatch(b.name, "fix/ai-*")]
     except Exception as e:
-        log.warning(f"cleanup_fix_branches: impossibile leggere i branch remoti: {e}")
+        log.warning(f"cleanup_fix_branches: unable to read the remote branches: {e}")
         return 0
 
     if not targets:
-        log.info("cleanup_fix_branches: nessun branch 'fix/ai-*' da rimuovere")
+        log.info("cleanup_fix_branches: no 'fix/ai-*' branch to remove")
         return 0
 
     removed = 0
@@ -608,38 +609,38 @@ def cleanup_fix_branches(repo_name: str = "") -> int:
             repo.get_git_ref(f"heads/{branch.name}").delete()
             removed += 1
         except Exception as e:
-            log.warning(f"cleanup_fix_branches: impossibile rimuovere {branch.name}: {e}")
-        time.sleep(0.5)  # rate limiting sull'API GitHub
+            log.warning(f"cleanup_fix_branches: unable to remove {branch.name}: {e}")
+        time.sleep(0.5)  # rate limiting on the GitHub API
 
-    log.info(f"cleanup_fix_branches: rimossi {removed}/{len(targets)} branch 'fix/ai-*'")
+    log.info(f"cleanup_fix_branches: removed {removed}/{len(targets)} 'fix/ai-*' branches")
     return removed
 
 
 # ══════════════════════════════════════════════════════════════
-# STOP OLLAMA — libera VRAM tra modelli locali
+# STOP OLLAMA — frees VRAM between local models
 # ══════════════════════════════════════════════════════════════
 
 def stop_ollama_model(model_name: str):
-    """Scarica il modello Ollama dalla VRAM e attende la liberazione."""
+    """Unloads the Ollama model from VRAM and waits for it to be released."""
     try:
         subprocess.run(
             ["ollama", "stop", model_name],
             capture_output=True, timeout=15
         )
         time.sleep(5)
-        log.info(f"Ollama: modello {model_name} scaricato dalla VRAM")
+        log.info(f"Ollama: model {model_name} unloaded from VRAM")
     except Exception as e:
-        log.warning(f"Ollama stop fallito per {model_name}: {e}")
+        log.warning(f"Ollama stop failed for {model_name}: {e}")
 
 
 # ══════════════════════════════════════════════════════════════
-# TIMEOUT HANDLER — cross-platform (funziona su Windows)
+# TIMEOUT HANDLER — cross-platform (works on Windows)
 # ══════════════════════════════════════════════════════════════
 
 def run_with_timeout(func, args=(), timeout=300):
     """
-    Esegue func con timeout usando threading.
-    Compatibile con Windows dove signal.alarm non è disponibile.
+    Runs func with a timeout using threading.
+    Compatible with Windows, where signal.alarm is not available.
     """
     import threading
 
@@ -657,69 +658,75 @@ def run_with_timeout(func, args=(), timeout=300):
     thread.join(timeout=timeout)
 
     if thread.is_alive():
-        raise TimeoutError(f"Timeout dopo {timeout}s")
+        raise TimeoutError(f"Timeout after {timeout}s")
     if exception[0]:
         raise exception[0]
     return result[0]
 
 
 # ══════════════════════════════════════════════════════════════
-# ESECUZIONE SINGOLO ERRORE
+# SINGLE ERROR EXECUTION
 # ══════════════════════════════════════════════════════════════
 
-def run_single_error(error: dict, dry_run: bool, no_memory: bool) -> dict:
+def run_single_error(error: dict, dry_run: bool, no_memory: bool, readonly_memory: bool = False) -> dict:
     """
-    Esegue il sistema su un singolo errore del dataset.
-    Ritorna un dizionario con tutte le metriche del run.
+    Runs the system on a single dataset error.
+    Returns a dictionary with all the metrics of the run.
     """
-    # Import lazy per evitare problemi di reload
+    # Lazy import to avoid reload issues
     from agent.graph import app
 
     state = {
         "ci_logs":          error["ci_logs"],
         "ci_job_name":      error["ci_job_name"],
         "ci_conclusion":    "failure",
-        "commit_sha":       f"{error['id']}_benchmark",
+        # opaque SHA1 of the case id: must NOT reveal the ground-truth category
+        "commit_sha":       hashlib.sha1(error['id'].encode()).hexdigest(),
+        # used only to tag/exclude episodes in memory; never part of an LLM prompt
+        "case_id":          error['id'],
         "repo_name":        os.getenv("GITHUB_REPO", ""),
         "git_diff":         error.get("git_diff", ""),
         "repo_path":        ".",
         "attempt_number":   1,
         "attempts_history": [],
-        # dry_run: salta CI reale → ci_fixed=True da subito
+        # dry_run: skip the real CI → ci_fixed=True right away
         "ci_fixed":         True if dry_run else None,
-        # no_memory / dry_run: salta salvataggio ChromaDB
+        # no_memory / dry_run: skip ChromaDB saving
         "skip_memory":      no_memory or dry_run,
+        # readonly_memory: RAG retrieval enabled but episode saving disabled
+        # (only has an effect when memory is enabled, i.e. no_memory=False)
+        "skip_memory_save": readonly_memory if not no_memory else False,
     }
 
     start_time = time.time()
     result     = app.invoke(state) #type: ignore
     elapsed    = round(time.time() - start_time, 2)
 
-    # ── Estrai metriche ──
+    # ── Extract metrics ──
     history      = result.get("attempts_history", [])
     final_status = result.get("final_status", "unknown")
     router_cat   = result.get("error_category", "unknown")
     router_conf  = result.get("error_confidence", 0.0) or 0.0
     router_reason= result.get("router_reasoning", "") or ""
 
-    # Routing corretto rispetto al ground truth del dataset
+    # Correct routing with respect to the dataset ground truth
     router_correct = 1 if router_cat == error["category"] else 0
 
-    # Tentativo al quale è stato fixato (1, 2 o 3) — None se escalated
+    # Attempt at which it was fixed (1, 2 or 3) — None if escalated
     fix_attempt = len(history) if final_status == "fixed" and history else None
 
-    # JSON parse failure: fallback attivato nel router
+    # JSON parse failure: fallback triggered in the router
     json_parse_fail = 1 if (
         router_cat == "unknown" and
         router_conf == 0.0 and
-        "Parsing fallito" in router_reason
+        "Parsing failed" in router_reason
     ) else 0
 
 
-    # Cerca nel reasoning o nella history se la memoria è stata usata
+    # Check in the reasoning or in the history whether memory was used
     memory_hits = 0
     for h in history:
-        if h.get("memory_used"):  # campo da aggiungere negli agenti
+        if h.get("memory_used"):  # field to be added in the agents
             memory_hits += 1
 
     return {
@@ -736,33 +743,33 @@ def run_single_error(error: dict, dry_run: bool, no_memory: bool) -> dict:
         "fix_attempt":        fix_attempt,
         "json_parse_fail":    json_parse_fail,
         "latency_sec":        elapsed,
-        "memory_hits":   memory_hits,   # quante volte RAG ha trovato episodi
-        "memory_active": 0 if no_memory else 1,  # condizione sperimentale
+        "memory_hits":   memory_hits,   # how many times RAG found episodes
+        "memory_active": 0 if no_memory else 1,  # experimental condition
     }
 
 
 # ══════════════════════════════════════════════════════════════
-# ESECUZIONE MODELLO COMPLETO
+# FULL MODEL EXECUTION
 # ══════════════════════════════════════════════════════════════
 
 def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
-              keep_branches: bool = False) -> list:
+              keep_branches: bool = False, readonly_memory: bool = False) -> list:
     """
-    Esegue tutti gli errori su un modello specifico.
-    Gestisce reset file, timeout, pause e liberazione VRAM.
+    Runs all the errors on a specific model.
+    Handles file reset, timeouts, pauses and VRAM release.
     """
-    # Configura provider per questo modello
+    # Configure the provider for this model
     os.environ["LLM_PROVIDER"] = model["provider"]
     if model["provider"] == "ollama":
-        os.environ["OLLAMA_MODEL"] = model.get("ollama_model", "llama3.1:8b")
+        os.environ["OLLAMA_MODEL"] = model.get("ollama_model", "llama31-4k")
 
     results = []
     total   = len(errors)
     timeout = model["timeout"]
 
     log.info(f"\n{'='*60}")
-    log.info(f"MODELLO: {model['name']} ({model['id']})")
-    log.info(f"Errori: {total} | Timeout: {timeout}s | "
+    log.info(f"MODEL: {model['name']} ({model['id']})")
+    log.info(f"Errors: {total} | Timeout: {timeout}s | "
              f"dry-run: {dry_run} | no-memory: {no_memory}")
     log.info(f"{'='*60}")
 
@@ -772,19 +779,19 @@ def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
             f"({error['category']} / {error['difficulty']})"
         )
 
-        # ── Reset file prima di ogni test ──
+        # ── File reset before every test ──
         reset_files()
 
-        # ── Inject errore nel file (solo se non dry-run) ──
+        # ── Inject the error into the file (only if not dry-run) ──
         if not dry_run:
             try:
                 injected = inject_error(error)
                 if not injected:
-                    log.warning(f"{error['id']}: nessun target trovato per l'injection — uso log sintetici")
+                    log.warning(f"{error['id']}: no target found for the injection — using synthetic logs")
             except Exception as e:
-                log.warning(f"inject_error fallito: {e} — uso log sintetici")
+                log.warning(f"inject_error failed: {e} — using synthetic logs")
 
-        # ── Riga di risultato di default (per timeout o errori) ──
+        # ── Default result row (for timeouts or errors) ──
         row = {
             "model_id":           model["id"],
             "model_name":         model["name"],
@@ -810,7 +817,7 @@ def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
         try:
             run_result = run_with_timeout(
                 run_single_error,
-                args=(error, dry_run, no_memory),
+                args=(error, dry_run, no_memory, readonly_memory),
                 timeout=timeout
             )
             # Merge
@@ -828,25 +835,25 @@ def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
 
         except TimeoutError:
             row["error_msg"] = "TIMEOUT"
-            log.warning(f"  ⏰ TIMEOUT dopo {timeout}s")
+            log.warning(f"  ⏰ TIMEOUT after {timeout}s")
 
         except Exception as e:
             row["final_status"] = "error"
             row["error_msg"]    = str(e)[:300]
-            log.error(f"  💥 ERRORE: {e}")
+            log.error(f"  💥 ERROR: {e}")
 
         results.append(row)
 
-        # ── Pausa tra errori ──
+        # ── Pause between errors ──
         pause = 1 if model["provider"] in ("anthropic", "groq") else 2
         time.sleep(pause)
 
-    # ── Libera VRAM dopo modello locale ──
+    # ── Free VRAM after a local model ──
     if model["provider"] == "ollama":
         stop_ollama_model(model.get("ollama_model", ""))
-        time.sleep(8)  # pausa generosa tra modelli locali
+        time.sleep(8)  # generous pause between local models
 
-    # ── Pulizia incrementale branch "fix/ai-*" creati da questo modello ──
+    # ── Incremental cleanup of the "fix/ai-*" branches created by this model ──
     if not keep_branches:
         cleanup_fix_branches()
 
@@ -854,13 +861,13 @@ def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
 
 
 # ══════════════════════════════════════════════════════════════
-# SALVATAGGIO RISULTATI
+# RESULTS SAVING
 # ══════════════════════════════════════════════════════════════
 
 def save_results(all_results: list, run_id: str):
-    """Salva i risultati in CSV e JSON. Chiamato dopo ogni modello."""
+    """Saves the results as CSV and JSON. Called after every model."""
     if not all_results:
-        log.warning("Nessun risultato da salvare")
+        log.warning("No results to save")
         return None
 
     csv_path  = RESULTS_DIR / f"benchmark_{run_id}.csv"
@@ -875,20 +882,20 @@ def save_results(all_results: list, run_id: str):
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
 
-    log.info(f"Salvati {len(all_results)} risultati → {csv_path.name}")
+    log.info(f"Saved {len(all_results)} results → {csv_path.name}")
     return csv_path
 
 
 # ══════════════════════════════════════════════════════════════
-# RIEPILOGO A TERMINALE
+# TERMINAL SUMMARY
 # ══════════════════════════════════════════════════════════════
 
 def print_summary(all_results: list):
-    """Stampa tabelle riassuntive a terminale al termine del benchmark."""
+    """Prints summary tables to the terminal at the end of the benchmark."""
     if not all_results:
         return
 
-    # Raggruppa per modello
+    # Group by model
     by_model = {}
     for r in all_results:
         mid = r["model_id"]
@@ -897,9 +904,9 @@ def print_summary(all_results: list):
         by_model[mid].append(r)
 
     print("\n" + "="*72)
-    print("RIEPILOGO BENCHMARK — SUCCESS RATE GLOBALE")
+    print("BENCHMARK SUMMARY — OVERALL SUCCESS RATE")
     print("="*72)
-    print(f"{'Modello':<30} {'SR%':>6} {'Router%':>8} {'AvgLat':>8} {'JSONfail':>9} {'N':>4}")
+    print(f"{'Model':<30} {'SR%':>6} {'Router%':>8} {'AvgLat':>8} {'JSONfail':>9} {'N':>4}")
     print("-"*72)
 
     for mid, rows in by_model.items():
@@ -911,10 +918,10 @@ def print_summary(all_results: list):
         name       = rows[0]["model_name"]
         print(f"{name:<30} {sr:>5.1f}% {ra:>7.1f}% {lat:>7.1f}s {jf:>9} {n:>4}")
 
-    print("\nSUCCESS RATE PER CATEGORIA")
+    print("\nSUCCESS RATE BY CATEGORY")
     print("="*72)
     cats = ["dependency", "test", "config"]
-    print(f"{'Modello':<30}" + "".join(f" {c[:6]:>9}" for c in cats))
+    print(f"{'Model':<30}" + "".join(f" {c[:6]:>9}" for c in cats))
     print("-"*60)
 
     for mid, rows in by_model.items():
@@ -926,10 +933,10 @@ def print_summary(all_results: list):
             line += f" {sr:>8.1f}%" if sr >= 0 else f" {'N/A':>9}"
         print(line)
 
-    print("\nSUCCESS RATE PER DIFFICOLTÀ")
+    print("\nSUCCESS RATE BY DIFFICULTY")
     print("="*72)
     diffs = ["easy", "medium", "hard"]
-    print(f"{'Modello':<30}" + "".join(f" {d[:6]:>9}" for d in diffs))
+    print(f"{'Model':<30}" + "".join(f" {d[:6]:>9}" for d in diffs))
     print("-"*60)
 
     for mid, rows in by_model.items():
@@ -950,7 +957,7 @@ def print_summary(all_results: list):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Benchmark multi-modello — Self-Healing CI Tesi LM-32"
+        description="Multi-model benchmark — Self-Healing CI"
     )
     parser.add_argument(
         "--provider",
@@ -961,64 +968,70 @@ def main():
     parser.add_argument(
         "--ollama-model",
         dest="ollama_model",
-        choices=["llama3.1:8b", "llama3.3:70b", "qwen3.8:27b",
-                 "qwen3-coder:30b", "mistral:7b", "all"],
+        choices=["llama31-4k", "llama3.3:70b", "qwen38-4k",
+                 "qwen3coder-4k", "mistral-4k", "all"],
         default="all",
-        help="Modello Ollama specifico (usare con --provider ollama)"
+        help="Specific Ollama model (use with --provider ollama)"
     )
     parser.add_argument(
         "--category",
         choices=["dependency", "test", "config", "all"],
         default="all",
-        help="Categoria errori (default: all)"
+        help="Error category (default: all)"
     )
     parser.add_argument(
         "--difficulty",
         choices=["easy", "medium", "hard", "all"],
         default="all",
-        help="Difficoltà errori (default: all)"
+        help="Error difficulty (default: all)"
     )
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Solo Router, nessuna CI reale. Implica --no-memory."
+        help="Router only, no real CI. Implies --no-memory."
     )
     parser.add_argument(
         "--no-memory",
         action="store_true",
-        help="Disabilita salvataggio in ChromaDB. "
-             "Usare per benchmark comparativo (condizioni identiche tra modelli)."
+        help="Disables saving to ChromaDB. "
+             "Use for comparative benchmarks (identical conditions across models)."
     )
     parser.add_argument(
         "--clean-memory",
         action="store_true",
-        help="Cancella ChromaDB prima di iniziare il benchmark."
+        help="Wipes ChromaDB before starting the benchmark."
     )
+    parser.add_argument(
+        "--readonly-memory",
+        action="store_true",
+        help="Enables RAG retrieval but disables episode saving. "
+             "Use to test models against a pre-populated memory "
+             "without polluting it.")
     parser.add_argument(
         "--limit",
         type=int,
         default=None,
-        help="Limita a N errori per modello (test rapido)"
+        help="Limit to N errors per model (quick test)"
     )
     parser.add_argument(
         "--keep-branches",
         action="store_true",
-        help="Disabilita la pulizia automatica dei branch 'fix/ai-*' su GitHub "
-             "(utile per debug)."
+        help="Disables the automatic cleanup of the 'fix/ai-*' branches on GitHub "
+             "(useful for debugging)."
     )
     args = parser.parse_args()
 
-    # dry-run implica no-memory
+    # dry-run implies no-memory
     if args.dry_run:
         args.no_memory = True
 
-    # ── Pulizia ChromaDB se richiesta ──
+    # ── ChromaDB cleanup if requested ──
     if args.clean_memory:
-        log.info("Pulizia ChromaDB richiesta...")
+        log.info("ChromaDB cleanup requested...")
         clean_chromadb()
 
 
-    # ── Filtra dataset ──
+    # ── Filter the dataset ──
     errors = DATASET
     if args.category != "all":
         errors = [e for e in errors if e["category"] == args.category]
@@ -1027,9 +1040,9 @@ def main():
     if args.limit:
         errors = errors[:args.limit]
 
-    log.info(f"Dataset: {len(errors)} errori selezionati")
+    log.info(f"Dataset: {len(errors)} errors selected")
 
-    # ── Filtra modelli ──
+    # ── Filter the models ──
     models = MODELS
     if args.provider != "all":
         models = [m for m in models if m["provider"] == args.provider]
@@ -1037,17 +1050,17 @@ def main():
         models = [m for m in models if m.get("ollama_model") == args.ollama_model]
 
     if not models:
-        log.error("Nessun modello selezionato — controlla --provider e --ollama-model")
+        log.error("No model selected — check --provider and --ollama-model")
         sys.exit(1)
 
-    log.info(f"Modelli: {[m['name'] for m in models]}")
+    log.info(f"Models: {[m['name'] for m in models]}")
     log.info(
-        f"Modalità: {'dry-run' if args.dry_run else 'full'} | "
-        f"memoria: {'OFF' if args.no_memory else 'ON'}"
+        f"Mode: {'dry-run' if args.dry_run else 'full'} | "
+        f"memory: {'OFF' if args.no_memory else 'ON'}"
     )
 
-    # ── Run ID per i file di output ──
-    # Formato: benchmark_{YYYYMMDD}_{HHMMSS}_{model_id}_{memory_condition}.csv
+    # ── Run ID for the output files ──
+    # Format: benchmark_{YYYYMMDD}_{HHMMSS}_{model_id}_{memory_condition}.csv
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     if args.dry_run:
         memory_condition = "dryrun"
@@ -1059,54 +1072,55 @@ def main():
     def build_run_id(model_id: str) -> str:
         return f"{timestamp}_{model_id}_{memory_condition}"
 
-    # model_id "all_models" quando il run copre più di un modello
-    # (es. --provider all, oppure --provider ollama --ollama-model all)
+    # model_id "all_models" when the run covers more than one model
+    # (e.g. --provider all, or --provider ollama --ollama-model all)
     final_model_id = "all_models" if len(models) > 1 else models[0]["id"]
     run_id = build_run_id(final_model_id)
 
-    # ── Pulizia branch "fix/ai-*" residui da run precedenti ──
+    # ── Cleanup of "fix/ai-*" branches left over from previous runs ──
     if not args.keep_branches:
-        log.info("Pulizia branch 'fix/ai-*' residui da run precedenti...")
+        log.info("Cleaning up 'fix/ai-*' branches left over from previous runs...")
         cleanup_fix_branches()
     else:
-        log.info("--keep-branches attivo: salto la pulizia dei branch 'fix/ai-*'")
+        log.info("--keep-branches enabled: skipping the cleanup of the 'fix/ai-*' branches")
 
     all_results = []
 
     for model in models:
-        log.info(f"\n▶ Avvio: {model['name']}")
+        log.info(f"\n▶ Starting: {model['name']}")
         try:
             model_results = run_model(
                 model, errors,
                 dry_run=args.dry_run,
                 no_memory=args.no_memory,
-                keep_branches=args.keep_branches
+                keep_branches=args.keep_branches,
+                readonly_memory=args.readonly_memory
             )
             all_results.extend(model_results)
 
-            # Salvataggio intermedio dopo ogni modello — CSV/JSON separato per
-            # modello (model_id specifico, non il run_id globale), così un
-            # benchmark interrotto a metà lascia comunque i file per modello.
+            # Intermediate save after every model — separate CSV/JSON per
+            # model (specific model_id, not the global run_id), so that a
+            # benchmark interrupted halfway still leaves the per-model files.
             save_results(model_results, build_run_id(model["id"]))
-            log.info(f"✓ {model['name']} completato — risultati salvati")
+            log.info(f"✓ {model['name']} completed — results saved")
 
             time.sleep(3)
 
         except KeyboardInterrupt:
-            log.warning("Benchmark interrotto dall'utente (Ctrl+C)")
+            log.warning("Benchmark interrupted by the user (Ctrl+C)")
             break
         except Exception as e:
-            log.error(f"Errore critico su {model['name']}: {e}")
+            log.error(f"Critical error on {model['name']}: {e}")
             continue
 
-    # ── Salvataggio finale e riepilogo ──
+    # ── Final save and summary ──
     csv_path = save_results(all_results, run_id)
     print_summary(all_results)
 
-    print(f"\n✅ Benchmark completato — {len(all_results)} run totali")
+    print(f"\n✅ Benchmark completed — {len(all_results)} total runs")
     if csv_path:
         print(f"📄 CSV: {csv_path}")
-    print(f"📁 Risultati: {RESULTS_DIR}")
+    print(f"📁 Results: {RESULTS_DIR}")
 
 
 if __name__ == "__main__":

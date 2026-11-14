@@ -1,5 +1,5 @@
 class User:
-    """Modello utente minimale."""
+    """Minimal user model."""
 
     def __init__(self, name):
         self.name = name

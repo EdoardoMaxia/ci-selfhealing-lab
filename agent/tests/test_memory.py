@@ -6,13 +6,13 @@ from agent.memory.episodic_store import (
     format_episodes_for_prompt, memory_stats
 )
 
-# Elimino i vecchi state di test così non si sovrappone
+# Delete the old test states so they do not overlap
 from agent.memory.episodic_store import get_collection
 get_collection().delete(where={"error_category": {"$eq": "dependency"}})
 
-print("=== TEST MEMORIA EPISODICA ===\n")
+print("=== EPISODIC MEMORY TEST ===\n")
 
-# 1. Salva alcuni episodi di esempio
+# 1. Save some example episodes
 state1 = {
     "error_category":  "dependency",
     "ci_job_name":     "Install dependencies",
@@ -39,38 +39,38 @@ state2 = {
     }]
 }
 
-print("💾 Salvo 2 episodi di esempio...")
+print("💾 Saving 2 example episodes...")
 save_episode(state1, "success")
 save_episode(state2, "success")
 
-# 2. Statistiche memoria
+# 2. Memory statistics
 stats = memory_stats()
-print(f"\n📊 Statistiche memoria: {stats}")
+print(f"\n📊 Memory statistics: {stats}")
 
-# 3. Retrieval — cerca episodi simili a un nuovo errore
-print("\n🔍 Cerco episodi simili a 'scipy version not found'...")
+# 3. Retrieval — look for episodes similar to a new error
+print("\n🔍 Looking for episodes similar to 'scipy version not found'...")
 similar = retrieve_similar_episodes(
     error_logs="ERROR: scipy==9.9.9 not found, no matching distribution found",
     category="dependency",
     top_k=3
 )
 
-print(f"   Trovati: {len(similar)} episodi simili")
+print(f"   Found: {len(similar)} similar episodes")
 for ep in similar:
     print(f"   [{ep['similarity']:.0%}] {ep['fix_applied']}")
 
-# 4. Formato per prompt LLM
-print("\n📝 Formato per prompt LLM:")
+# 4. Format for the LLM prompt
+print("\n📝 Format for the LLM prompt:")
 print(format_episodes_for_prompt(similar))
 
 
 
-# Cerca qualcosa semanticamente DISTANTE
-print("\n🔍 Cerco episodi distanti (test fallito)...")
-distanti = retrieve_similar_episodes(
+# Look for something semantically DISTANT
+print("\n🔍 Looking for distant episodes (failed test)...")
+distant = retrieve_similar_episodes(
     error_logs="AssertionError: assert add(2,3) == 99, test failed",
     category="dependency",
     top_k=2
 )
-for ep in distanti:
+for ep in distant:
     print(f"   [{ep['similarity']:.0%}] {ep['fix_applied']}")

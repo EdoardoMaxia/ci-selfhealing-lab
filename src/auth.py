@@ -8,7 +8,7 @@ class LoginResponse:
 
 
 def login(username, password):
-    """Login minimale: rifiuta password piu' corte del minimo configurato."""
+    """Minimal login: rejects passwords shorter than the configured minimum."""
     if len(password) < AuthConfig.MIN_PASSWORD_LENGTH:
         return LoginResponse(ok=False)
     return LoginResponse(ok=True)
