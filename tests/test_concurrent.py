@@ -1,6 +1,5 @@
 from src.counter import Counter, run_workers
 
-
 def test_thread_safety():
     counter = Counter()
     worker_a = [1] * 50
