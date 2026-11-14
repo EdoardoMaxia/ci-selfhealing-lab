@@ -1,6 +1,5 @@
 from src.metrics import increment_counter, reset, make_key
 
-
 def test_increment_counter():
     reset()
     key_a = make_key("service-a")
