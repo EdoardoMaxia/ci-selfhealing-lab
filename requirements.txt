@@ -1,2 +1,5 @@
 pytest==7.4.0
 pytest-cov==4.1.0
+django==5.0
+django-filter==21.1
+djangorestframework==3.14.0
