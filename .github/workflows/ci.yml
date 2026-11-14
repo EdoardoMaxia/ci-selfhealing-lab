@@ -34,7 +34,7 @@ jobs:
 
   C:
     needs: [A, B]
-    if: always()
+    if: always() && needs.A.result == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
