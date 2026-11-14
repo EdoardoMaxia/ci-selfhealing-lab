@@ -69,7 +69,10 @@ stop_ollama() { [ "$DRY" = 1 ] || ollama stop "$1" >/dev/null 2>&1; }
 say "=== A3 rerun start | branch $(git rev-parse --abbrev-ref HEAD) @ $(git rev-parse --short HEAD) ==="
 if [ "$DRY" != 1 ]; then
   [ "$(git rev-parse --abbrev-ref HEAD)" = "msr-revision" ] || die "not on branch msr-revision"
-  python -m pytest agent/tests -q || die "tests failed"
+  # Only the deterministic unit tests: test_config_agent/test_dependency_agent/test_end_to_end/
+  # test_router/test_test_agent are integration SCRIPTS that call the LLM and GitHub at import time.
+  python -m pytest agent/tests/test_memory_exclusion.py agent/tests/test_benchmark_state_leakage.py \
+    agent/tests/test_router_dryrun_state.py -q || die "unit tests failed"
   python experiments/check_api.py --providers anthropic openai github || die "API/GitHub check failed (GITHUB_TOKEN in .env must be valid: the Fix Executor needs it)"
   read -r total _ <<<"$(store_stat)"
   if [ "${total:-0}" -gt 0 ] && [ ! -d "$BACKUP" ]; then cp -r data/episodic_memory "$BACKUP" && say "backup of the existing store ($total episodes) -> $BACKUP"; fi
