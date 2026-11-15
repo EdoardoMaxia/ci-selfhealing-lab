@@ -1,7 +1,13 @@
 from src.auth import login
 
-
 def test_login():
-    # 5 characters: rejected with minimum 8, (wrongly) accepted with minimum 4
     response = login("user", "abcde")
+    assert response.ok == False
+
+def test_login_with_correct_password():
+    response = login("user", "password1234")
+    assert response.ok == True
+
+def test_login_with_short_password():
+    response = login("user", "abc")
     assert response.ok == False
