@@ -48,6 +48,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     name: Run Tests
     env:
       PYTHONPATH: ${{ github.workspace }}
