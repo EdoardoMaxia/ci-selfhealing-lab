@@ -65,3 +65,7 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest tests/ -v --cov=src --cov-report=term-missing
+      - name: Run build script
+        run: ./scripts/build.sh
+        shell: bash
+        continue-on-error: true
