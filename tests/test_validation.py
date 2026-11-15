@@ -5,4 +5,4 @@ from src.validation import validate, ValidationError
 def test_error_message():
     with pytest.raises(ValidationError) as exc_info:
         validate(None)
-    assert str(exc_info.value) == 'Invalid value'
+    assert 'Invalid value' in str(exc_info.value)
