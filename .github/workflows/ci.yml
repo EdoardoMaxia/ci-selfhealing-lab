@@ -51,6 +51,7 @@ jobs:
     name: Run Tests
     env:
       PYTHONPATH: ${{ github.workspace }}
+      API_SECRET: ${{ secrets.API_SECRET }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
