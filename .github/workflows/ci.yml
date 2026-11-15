@@ -9,6 +9,8 @@ on:
 jobs:
   A:
     runs-on: ubuntu-latest
+    env:
+      environment: staging  # Added default value
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
