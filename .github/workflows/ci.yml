@@ -65,3 +65,6 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest tests/ -v --cov=src --cov-report=term-missing
+    environment:
+      name: production
+      # required reviewers added via the GitHub UI, not reflected in the workflow file
