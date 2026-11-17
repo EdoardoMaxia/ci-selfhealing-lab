@@ -1,7 +1,9 @@
 import os
 import time
+import base64
+import hashlib
 import logging
-from github import Github
+from github import Github, InputGitTreeElement
 from github.GithubException import GithubException, UnknownObjectException
 from dotenv import load_dotenv
 
@@ -220,6 +222,99 @@ def wait_for_ci(repo, branch: str,
     print(f"   ⏰ Timeout ({timeout_sec}s) — CI not completed")
     return False
 
+
+
+# ══════════════════════════════════════════════════════════════
+# PROTOCOL B helpers (used only by `benchmark.py --test-protocol-b` /
+# `--verify-excluded` and by the Fix Executor when state["fix_base_sha"] is set).
+# The functions above are unchanged and still drive the default protocol.
+# ══════════════════════════════════════════════════════════════
+
+def git_blob_sha(data: bytes) -> str:
+    """SHA-1 that git assigns to a blob with this content (same as `git hash-object`)."""
+    return hashlib.sha1(b"blob %d\0" % len(data) + data).hexdigest()
+
+
+def commit_files_on_new_branch(repo, base_sha: str, branch: str,
+                               changes: dict, commit_message: str) -> str:
+    """
+    Creates ONE commit on top of `base_sha` with every change in `changes`
+    ({repo-relative path: bytes content, or None to delete the file}) and a new
+    branch `branch` pointing at it. Returns the SHA of the new commit.
+
+    Git Data API (blob -> tree -> commit -> ref) instead of create_branch() +
+    commit_file(): the ref is created directly on the new commit, so the push
+    triggers exactly one workflow run, for that commit. create_branch() on an
+    existing commit triggers an extra run on the base commit (visible in the
+    Actions history as a second "push" run per fix/ai-* branch).
+    Contents are uploaded as base64, byte for byte.
+    """
+    base_commit = repo.get_git_commit(base_sha)
+    base_tree   = repo.get_git_tree(base_commit.tree.sha, recursive=True)
+    modes       = {e.path: e.mode for e in base_tree.tree if e.type == "blob"}
+
+    elements = []
+    for path, content in sorted(changes.items()):
+        path = path.replace("\\", "/").lstrip("/")
+        if content is None:
+            if path in modes:   # deleting a path the base tree does not have is a no-op
+                elements.append(InputGitTreeElement(path, modes[path], "blob", sha=None))
+            continue
+        blob = repo.create_git_blob(base64.b64encode(content).decode("ascii"), "base64")
+        elements.append(InputGitTreeElement(path, modes.get(path, "100644"), "blob", sha=blob.sha))
+
+    tree   = repo.create_git_tree(elements, base_tree=base_commit.tree) if elements else base_commit.tree
+    commit = repo.create_git_commit(commit_message, tree, [base_commit])
+    repo.create_git_ref(ref=f"refs/heads/{branch}", sha=commit.sha)
+    print(f"🌿 Branch created: {branch} @ {commit.sha[:8]} ({len(elements)} file change(s) on {base_sha[:8]})")
+    return commit.sha
+
+
+def wait_for_ci_run(repo, branch: str, head_sha: str,
+                    timeout_sec: int = 300, poll_interval: int = 15) -> dict:
+    """
+    Like wait_for_ci(), but only the "push" workflow run of `head_sha` counts:
+    a run of another commit on the same branch (e.g. the one triggered by the
+    branch creation) is never taken for the result. Returns
+        {"conclusion": "success"|"failure"|...|None, "status": str|None,
+         "run_id": int|None, "run_url": str|None, "head_sha": head_sha}
+    conclusion is None when no matching run completed within timeout_sec.
+    """
+    print(f"⏳ Waiting for the CI run of {head_sha[:8]} on branch '{branch}'...")
+    elapsed = 0
+    latest  = None
+    while elapsed < timeout_sec:
+        try:
+            runs = [r for r in repo.get_workflow_runs(branch=branch, head_sha=head_sha, event="push")
+                    if r.head_sha == head_sha]
+            if runs:
+                latest = max(runs, key=lambda r: r.id)
+                if latest.status == "completed":
+                    print(f"    CI run {latest.id} completed: {latest.conclusion}")
+                    return {"conclusion": latest.conclusion, "status": latest.status,
+                            "run_id": latest.id, "run_url": latest.html_url, "head_sha": head_sha}
+                print(f"   ⏳ CI run {latest.id} {latest.status}... [{elapsed}s/{timeout_sec}s]")
+            else:
+                print("    No run for this commit yet, waiting...")
+        except Exception as e:
+            print(f"   ⚠️  CI polling error: {e}")
+        time.sleep(poll_interval)
+        elapsed += poll_interval
+
+    print(f"   ⏰ Timeout ({timeout_sec}s) — CI run of {head_sha[:8]} not completed")
+    return {"conclusion": None, "status": getattr(latest, "status", None),
+            "run_id": getattr(latest, "id", None), "run_url": getattr(latest, "html_url", None),
+            "head_sha": head_sha}
+
+
+def delete_branch(repo, branch: str) -> bool:
+    """Deletes a remote branch; returns False (never raises) if it cannot."""
+    try:
+        repo.get_git_ref(f"heads/{branch}").delete()
+        return True
+    except Exception as e:
+        log.warning(f"delete_branch: unable to remove {branch}: {e}")
+        return False
 
 
 def create_pull_request(repo, branch: str, base: str,

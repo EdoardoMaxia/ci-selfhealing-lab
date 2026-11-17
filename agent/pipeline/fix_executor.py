@@ -13,7 +13,8 @@ from datetime import datetime
 from dotenv import load_dotenv
 from agent.github.client import (
     get_repo, create_branch, commit_file,
-    wait_for_ci, create_pull_request
+    wait_for_ci, create_pull_request,
+    commit_files_on_new_branch, wait_for_ci_run,
 )
 
 
@@ -72,6 +73,54 @@ def build_pr_body(state: dict) -> str:
 
 
 
+def build_commit_message(state: dict, category: str) -> str:
+    return (
+        f"fix(ai): auto-fix {category} error\n\n"
+        f"Original commit: {state.get('commit_sha','')[:8]}\n"
+        f"Attempt: {state.get('attempt_number', 1) - 1}/3\n"
+        f"[self-healing-ci]"
+    )
+
+
+def execute_on_failed_state(repo, state: dict, file_path: str, local_file: Path, category: str) -> dict:
+    """
+    Protocol B (opt-in: state["fix_base_sha"] is set only by
+    `experiments/benchmark.py --test-protocol-b`).
+
+    The fix branch is created from the commit that holds the FULL failed state
+    (pre-check commit, CI verified red), not from clean main: the CI therefore
+    runs on "injected error + agent fix", never on a clean tree that only
+    contains the fixed file. The CI result is the run of the fix commit itself
+    (filtered by head SHA). Each attempt still gets its own branch, and every
+    attempt starts again from the failed state, as in the default protocol.
+    """
+    base_sha    = state["fix_base_sha"]
+    branch_name = build_branch_name(state)
+    fix_sha = commit_files_on_new_branch(
+        repo, base_sha, branch_name,
+        {file_path: local_file.read_bytes()},
+        build_commit_message(state, category),
+    )
+    ci = wait_for_ci_run(repo, branch_name, head_sha=fix_sha, timeout_sec=300)
+    ci_passed = ci["conclusion"] == "success"
+    record = {
+        "attempt":    state.get("attempt_number", 1) - 1,
+        "branch":     branch_name,
+        "base_sha":   base_sha,
+        "commit_sha": fix_sha,
+        "file":       file_path,
+        "run_id":     ci["run_id"],
+        "run_url":    ci["run_url"],
+        "conclusion": ci["conclusion"],
+    }
+    print("✅ CI green — ready for the PR" if ci_passed else "❌ CI still red")
+    return {
+        "ci_fixed":   ci_passed,
+        "fix_branch": branch_name,
+        "ci_runs":    list(state.get("ci_runs") or []) + [record],
+    }
+
+
 def fix_executor_node(state: dict) -> dict:
     """
     Fix Executor node: after an agent has modified the file locally,
@@ -104,6 +153,8 @@ def fix_executor_node(state: dict) -> dict:
 
     # 2. Connect to the GitHub repo
     repo       = get_repo(repo_name) #type: ignore
+    if state.get("fix_base_sha"):
+        return execute_on_failed_state(repo, state, file_path, local_file, category)
     main_sha   = repo.get_branch("main").commit.sha
     branch_name = build_branch_name(state)
 

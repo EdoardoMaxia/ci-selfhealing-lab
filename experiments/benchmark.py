@@ -24,6 +24,14 @@ Usage:
 
     # Quick test (5 errors per model)
     python experiments/benchmark.py --provider anthropic --dry-run --limit 5
+
+    # Protocol B for the "test" category (MSR revision A2): 39 valid cases,
+    # CI verified red on the full failed state before the agent runs
+    python experiments/benchmark.py --provider anthropic --category test \
+        --test-protocol-b --no-memory --output-dir experiments/results/a2_test_rerun
+
+    # Documents the bug on the 11 excluded cases (no LLM involved)
+    python experiments/benchmark.py --verify-excluded --output-dir experiments/results/a2_test_rerun
 """
 
 import os
@@ -519,6 +527,20 @@ TEST_TARGET_OVERRIDE = {
     "test_049": "src/logger.py",
 }
 
+# Protocol B (--test-protocol-b): the Test Agent may modify ONLY test files.
+# In these 11 cases the error is injected outside the test file the agent edits
+# (the 9 source modules above, src/db.py for test_012, the fixture
+# tests/fixtures/sample.json for test_027), so they cannot be repaired under
+# that definition and are excluded: 39 "test" cases remain, 139 overall.
+# Under the default protocol their fix branch (clean main + test file only)
+# never contained the injected error, so the CI passed without a real repair
+# (see --verify-excluded). case_id -> file where the error is injected.
+EXCLUDED_TEST_CASES = {
+    **TEST_TARGET_OVERRIDE,
+    "test_012": "src/db.py",
+    "test_027": "tests/fixtures/sample.json",
+}
+
 
 def inject_error(error: dict) -> bool:
     """
@@ -668,10 +690,15 @@ def run_with_timeout(func, args=(), timeout=300):
 # SINGLE ERROR EXECUTION
 # ══════════════════════════════════════════════════════════════
 
-def run_single_error(error: dict, dry_run: bool, no_memory: bool, readonly_memory: bool = False) -> dict:
+def run_single_error(error: dict, dry_run: bool, no_memory: bool, readonly_memory: bool = False,
+                     fix_base_sha: str = None) -> dict:
     """
     Runs the system on a single dataset error.
     Returns a dictionary with all the metrics of the run.
+
+    fix_base_sha (protocol B only): commit holding the full failed state; the
+    Fix Executor branches from it instead of main. The returned dict then also
+    carries "ci_runs" and "modified_file" (consumed by run_test_case_protocol_b).
     """
     # Lazy import to avoid reload issues
     from agent.graph import app
@@ -697,6 +724,9 @@ def run_single_error(error: dict, dry_run: bool, no_memory: bool, readonly_memor
         # (only has an effect when memory is enabled, i.e. no_memory=False)
         "skip_memory_save": readonly_memory if not no_memory else False,
     }
+    if fix_base_sha:
+        state["fix_base_sha"] = fix_base_sha
+        state["ci_runs"]      = []
 
     start_time = time.time()
     result     = app.invoke(state) #type: ignore
@@ -729,7 +759,7 @@ def run_single_error(error: dict, dry_run: bool, no_memory: bool, readonly_memor
         if h.get("memory_used"):  # field to be added in the agents
             memory_hits += 1
 
-    return {
+    metrics = {
         "error_id":           error["id"],
         "category":           error["category"],
         "difficulty":         error["difficulty"],
@@ -746,6 +776,299 @@ def run_single_error(error: dict, dry_run: bool, no_memory: bool, readonly_memor
         "memory_hits":   memory_hits,   # how many times RAG found episodes
         "memory_active": 0 if no_memory else 1,  # experimental condition
     }
+    if fix_base_sha:
+        metrics["ci_runs"]       = result.get("ci_runs") or []
+        metrics["modified_file"] = result.get("modified_file")
+    return metrics
+
+
+# ══════════════════════════════════════════════════════════════
+# PROTOCOL B — "test" category (MSR revision A2, reviewer concern 2)
+# ══════════════════════════════════════════════════════════════
+#
+# Per valid case (39):
+#   1. SETUP      reset_files() + inject_error(), as in the default protocol
+#   2. PRE-CHECK  one commit on top of GitHub main with EVERY file that differs
+#                 locally (CI_SCOPE: src/ app/ tests/ requirements.txt workflows),
+#                 pushed to fix/ai-precheck-<case>-<time>; the CI MUST be red,
+#                 otherwise the case is skipped and logged as an anomaly
+#   3. AGENT RUN  Router -> specialist -> Fix Executor, unchanged; every fix
+#                 branch starts from the pre-check commit (state["fix_base_sha"])
+#   4. POST-CHECK CI of the fix commit (filtered by head SHA), green = fixed
+#   5. VERIFY     repaired test on the clean source (HEAD) + assertions of the
+#                 original test kept / modified / removed
+# The pre-check branch is deleted at the end of the case (not right after the
+# pre-check: the fix branches are built on its commit).
+# Branch names stay under fix/ because ci.yml only triggers on main and fix/**.
+
+PROTOCOL_B_COLUMNS = [
+    "excluded", "exclusion_reason", "valid_case", "injected_files",
+    "pre_ci_status", "pre_ci_sha", "pre_ci_run_id",
+    "post_ci_status", "post_ci_sha", "post_ci_run_id", "post_ci_attempts",
+    "agent_modified_file", "agent_file_is_injected",
+    "test_on_clean_source", "clean_source_detail",
+    "assertions_preserved", "assertions_detail",
+]
+
+
+def _protocol_b_row(model: dict, error: dict, no_memory: bool, timeout: int) -> dict:
+    """Default row: same columns as the default protocol + PROTOCOL_B_COLUMNS."""
+    row = {
+        "model_id":           model["id"],
+        "model_name":         model["name"],
+        "model_type":         model["type"],
+        "dry_run":            0,
+        "no_memory":          1 if no_memory else 0,
+        "error_id":           error["id"],
+        "category":           error["category"],
+        "difficulty":         error["difficulty"],
+        "final_status":       "timeout",
+        "success":            0,
+        "router_category":    "",
+        "router_correct":     0,
+        "router_confidence":  0.0,
+        "router_reasoning":   "",
+        "attempts_count":     0,
+        "fix_attempt":        None,
+        "json_parse_fail":    0,
+        "latency_sec":        float(timeout),
+        "error_msg":          "",
+        "memory_hits":        0,
+        "memory_active":      0 if no_memory else 1,
+    }
+    row.update({c: "" for c in PROTOCOL_B_COLUMNS})
+    row["excluded"]   = False
+    row["valid_case"] = 0
+    return row
+
+
+def ci_precheck(repo, error: dict, ci_timeout: int) -> dict:
+    """
+    Step 2: commits the full local failed state on top of GitHub main and
+    waits for the CI run of that commit. status: red / green / error.
+    """
+    from experiments import protocol_b
+    from agent.github.client import commit_files_on_new_branch, wait_for_ci_run
+
+    base_sha = repo.get_branch("main").commit.sha
+    changes  = protocol_b.diff_against_remote(protocol_b.remote_scope_blobs(repo, base_sha))
+    branch   = f"fix/ai-precheck-{error['id']}-{datetime.now().strftime('%H%M%S')}"
+    sha = commit_files_on_new_branch(
+        repo, base_sha, branch, changes,
+        f"benchmark(protocol-b): failed state of {error['id']} [pre-check]",
+    )
+    ci = wait_for_ci_run(repo, branch, head_sha=sha, timeout_sec=ci_timeout)
+    return {
+        "status":   protocol_b.ci_status(ci["conclusion"]),
+        "sha":      sha,
+        "run_id":   ci["run_id"],
+        "run_url":  ci["run_url"],
+        "branch":   branch,
+        "base_sha": base_sha,
+        "changes":  changes,
+    }
+
+
+def _head_text(rel_path: str) -> str:
+    """Content of rel_path at HEAD (the clean baseline), "" if absent."""
+    out = subprocess.run(["git", "show", f"HEAD:{rel_path}"], capture_output=True)
+    return out.stdout.decode("utf-8", "replace") if out.returncode == 0 else ""
+
+
+def run_test_case_protocol_b(model: dict, error: dict, no_memory: bool,
+                             readonly_memory: bool, timeout: int, ci_timeout: int) -> dict:
+    """One "test" case under protocol B (see the section header). Returns the CSV row."""
+    from experiments import protocol_b
+    from agent.github.client import get_repo, delete_branch
+
+    row = _protocol_b_row(model, error, no_memory, timeout)
+    cid = error["id"]
+
+    if cid in EXCLUDED_TEST_CASES:
+        reason = f"error injected in {EXCLUDED_TEST_CASES[cid]}, not in the test file"
+        log.info(f"  Excluded: {cid} — {reason}")
+        row.update(final_status="excluded", excluded=True, exclusion_reason=reason, latency_sec=0.0)
+        return row
+
+    # 1. SETUP
+    reset_files()
+    try:
+        injected_ok = inject_error(error)
+    except Exception as e:
+        injected_ok = False
+        row["error_msg"] = f"inject_error failed: {e}"[:300]
+    if not injected_ok:
+        log.warning(f"  ⚠️  {cid}: injection not applied — case skipped")
+        row.update(final_status="injection_failed", latency_sec=0.0)
+        return row
+
+    pre  = None
+    repo = None
+    try:
+        repo = get_repo(os.getenv("GITHUB_REPO", ""))
+
+        # 2. PRE-CHECK
+        try:
+            pre = ci_precheck(repo, error, ci_timeout)
+        except Exception as e:
+            log.error(f"  💥 {cid}: pre-check failed: {e}")
+            row.update(final_status="precheck_error", pre_ci_status="error",
+                       error_msg=f"pre-check: {e}"[:300], latency_sec=0.0)
+            return row
+        injected = pre["changes"]
+        row.update(injected_files=json.dumps(sorted(injected)), pre_ci_status=pre["status"],
+                   pre_ci_sha=pre["sha"], pre_ci_run_id=pre["run_id"] or "")
+        log.info(f"  pre-check: CI {pre['status'].upper()} on {pre['sha'][:8]} "
+                 f"(run {pre['run_id']}) files={sorted(injected)}")
+        if pre["status"] != "red":
+            log.warning(f"  ⚠️  ANOMALY {cid}: pre-check CI is {pre['status'].upper()} "
+                        f"({pre['run_url']}) — case skipped")
+            row.update(final_status=f"precheck_{pre['status']}", latency_sec=0.0)
+            return row
+        row["valid_case"] = 1
+
+        # 3. AGENT RUN + 4. POST-CHECK
+        try:
+            result = run_with_timeout(
+                run_single_error,
+                args=(error, False, no_memory, readonly_memory, pre["sha"]),
+                timeout=timeout,
+            )
+        except TimeoutError:
+            row.update(error_msg="TIMEOUT", post_ci_status="error")
+            log.warning(f"  ⏰ TIMEOUT after {timeout}s")
+            return row
+        except Exception as e:
+            row.update(final_status="error", error_msg=str(e)[:300], post_ci_status="error")
+            log.error(f"  💥 ERROR: {e}")
+            return row
+
+        ci_runs  = result.pop("ci_runs", []) or []
+        modified = result.pop("modified_file", None)
+        row.update(result)
+        row["error_msg"] = ""
+        if ci_runs:
+            last = ci_runs[-1]
+            row.update(post_ci_status=protocol_b.ci_status(last["conclusion"]),
+                       post_ci_sha=last["commit_sha"], post_ci_run_id=last["run_id"] or "")
+        else:
+            row["post_ci_status"] = "not_run"      # escalated by the Router, no fix attempted
+        row["post_ci_attempts"] = json.dumps(ci_runs)
+
+        # 5. VERIFY: repaired test on the clean source + assertions
+        if modified:
+            rel = Path(modified).as_posix()
+            rel = rel[2:] if rel.startswith("./") else rel
+            row["agent_modified_file"]    = rel
+            row["agent_file_is_injected"] = rel in injected
+            if Path(rel).is_file():
+                repaired = Path(rel).read_bytes()
+                clean = protocol_b.run_test_on_clean_source(rel, repaired)
+                row["test_on_clean_source"] = clean["result"]
+                row["clean_source_detail"]  = clean["summary"]
+                inj = injected.get(rel)
+                row["assertions_preserved"], row["assertions_detail"] = protocol_b.assertions_report(
+                    _head_text(rel),
+                    inj.decode("utf-8", "replace") if inj is not None else None,
+                    repaired.decode("utf-8", "replace"),
+                )
+        else:
+            row["test_on_clean_source"] = "n/a"    # the Test Agent never ran (misrouted / escalated)
+            row["assertions_preserved"] = "n/a"
+
+        status_icon = "✅" if row["success"] else "❌"
+        log.info(
+            f"  {status_icon} {row['final_status']} | router: {row['router_category']} "
+            f"({row['router_confidence']:.0%}) | attempts: {row['attempts_count']} | "
+            f"post-CI: {row['post_ci_status']} | clean source: {row['test_on_clean_source']} | "
+            f"assertions k/m/r: {row['assertions_preserved']} | {row['latency_sec']}s"
+        )
+        return row
+
+    finally:
+        if pre and repo is not None:
+            delete_branch(repo, pre["branch"])
+
+
+VERIFY_EXCLUDED_COLUMNS = [
+    "case_id", "injected_target", "injection_applied", "injected_files", "test_file", "base_sha",
+    "testonly_ci_status", "testonly_sha", "testonly_run_id", "testonly_run_url",
+    "fullstate_ci_status", "fullstate_sha", "fullstate_run_id", "fullstate_run_url",
+    "bug_confirmed", "error_msg",
+]
+
+
+def verify_excluded_cases(ci_timeout: int, out_dir: Path, run_ts: str) -> list:
+    """
+    --verify-excluded: documents the bug on the 11 EXCLUDED_TEST_CASES (no LLM).
+    Per case, after the injection, two branches on top of GitHub main:
+      testonly  — ONLY the test file the Test Agent edits (as the default
+                  protocol committed it): expected GREEN, the CI never sees the error
+      fullstate — every file that differs locally, i.e. the injected source:
+                  expected RED
+    bug_confirmed = testonly green AND fullstate red.
+    """
+    from experiments import protocol_b
+    from agent.github.client import get_repo, commit_files_on_new_branch, wait_for_ci_run, delete_branch
+    from agent.agents.test_agent import find_test_file
+
+    repo  = get_repo(os.getenv("GITHUB_REPO", ""))
+    by_id = {e["id"]: e for e in DATASET}
+    rows  = []
+
+    for i, cid in enumerate(sorted(EXCLUDED_TEST_CASES)):
+        error = by_id[cid]
+        log.info(f"\n[verify-excluded {i+1}/{len(EXCLUDED_TEST_CASES)}] {cid} "
+                 f"(error injected in {EXCLUDED_TEST_CASES[cid]})")
+        row = {c: "" for c in VERIFY_EXCLUDED_COLUMNS}
+        row.update(case_id=cid, injected_target=EXCLUDED_TEST_CASES[cid])
+        branches = []
+        try:
+            reset_files()
+            row["injection_applied"] = inject_error(error)
+            test_file = find_test_file(error["ci_logs"], ".").replace("\\", "/")
+            test_file = test_file[2:] if test_file.startswith("./") else test_file
+            base_sha  = repo.get_branch("main").commit.sha
+            changes   = protocol_b.diff_against_remote(protocol_b.remote_scope_blobs(repo, base_sha))
+            row.update(injected_files=json.dumps(sorted(changes)), test_file=test_file, base_sha=base_sha)
+
+            pushed = []
+            for label, files in (("testonly",  {test_file: Path(test_file).read_bytes()}),
+                                 ("fullstate", changes)):
+                branch = f"fix/ai-verifyexcl-{cid}-{label}-{datetime.now().strftime('%H%M%S')}"
+                sha = commit_files_on_new_branch(
+                    repo, base_sha, branch, files, f"benchmark(verify-excluded): {cid} {label}")
+                branches.append(branch)
+                pushed.append((label, branch, sha))
+            for label, branch, sha in pushed:      # both runs are queued in parallel
+                ci = wait_for_ci_run(repo, branch, head_sha=sha, timeout_sec=ci_timeout)
+                row.update({f"{label}_ci_status": protocol_b.ci_status(ci["conclusion"]),
+                            f"{label}_sha": sha, f"{label}_run_id": ci["run_id"] or "",
+                            f"{label}_run_url": ci["run_url"] or ""})
+        except Exception as e:
+            row["error_msg"] = str(e)[:300]
+            log.error(f"  💥 {cid}: {e}")
+        finally:
+            for b in branches:
+                delete_branch(repo, b)
+
+        row["bug_confirmed"] = (row["testonly_ci_status"] == "green"
+                                and row["fullstate_ci_status"] == "red")
+        log.info(f"  test file only: {row['testonly_ci_status'] or '-'} | "
+                 f"full failed state: {row['fullstate_ci_status'] or '-'} | "
+                 f"bug confirmed: {row['bug_confirmed']}")
+        rows.append(row)
+
+    reset_files()
+    csv_path = out_dir / f"verify_excluded_{run_ts}.csv"
+    with open(csv_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=VERIFY_EXCLUDED_COLUMNS)
+        writer.writeheader()
+        writer.writerows(rows)
+    with open(out_dir / f"verify_excluded_{run_ts}.json", "w", encoding="utf-8") as f:
+        json.dump(rows, f, indent=2, ensure_ascii=False)
+    log.info(f"Saved {len(rows)} rows → {csv_path}")
+    return rows
 
 
 # ══════════════════════════════════════════════════════════════
@@ -753,7 +1076,8 @@ def run_single_error(error: dict, dry_run: bool, no_memory: bool, readonly_memor
 # ══════════════════════════════════════════════════════════════
 
 def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
-              keep_branches: bool = False, readonly_memory: bool = False) -> list:
+              keep_branches: bool = False, readonly_memory: bool = False,
+              test_protocol_b: bool = False, ci_timeout: int = 300) -> list:
     """
     Runs all the errors on a specific model.
     Handles file reset, timeouts, pauses and VRAM release.
@@ -770,7 +1094,8 @@ def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
     log.info(f"\n{'='*60}")
     log.info(f"MODEL: {model['name']} ({model['id']})")
     log.info(f"Errors: {total} | Timeout: {timeout}s | "
-             f"dry-run: {dry_run} | no-memory: {no_memory}")
+             f"dry-run: {dry_run} | no-memory: {no_memory}"
+             + (" | test protocol: B" if test_protocol_b else ""))
     log.info(f"{'='*60}")
 
     for i, error in enumerate(errors):
@@ -778,6 +1103,15 @@ def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
             f"\n[{i+1}/{total}] {error['id']} "
             f"({error['category']} / {error['difficulty']})"
         )
+
+        # ── Protocol B for the "test" category (opt-in, --test-protocol-b) ──
+        if test_protocol_b and error["category"] == "test":
+            row = run_test_case_protocol_b(model, error, no_memory, readonly_memory,
+                                           timeout, ci_timeout)
+            results.append(row)
+            if row["final_status"] != "excluded":
+                time.sleep(1 if model["provider"] in ("anthropic", "groq") else 2)
+            continue
 
         # ── File reset before every test ──
         reset_files()
@@ -864,16 +1198,19 @@ def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
 # RESULTS SAVING
 # ══════════════════════════════════════════════════════════════
 
-def save_results(all_results: list, run_id: str):
+def save_results(all_results: list, run_id: str, out_dir: Path = None):
     """Saves the results as CSV and JSON. Called after every model."""
     if not all_results:
         log.warning("No results to save")
         return None
 
-    csv_path  = RESULTS_DIR / f"benchmark_{run_id}.csv"
-    json_path = RESULTS_DIR / f"benchmark_{run_id}.json"
+    out_dir   = out_dir or RESULTS_DIR
+    csv_path  = out_dir / f"benchmark_{run_id}.csv"
+    json_path = out_dir / f"benchmark_{run_id}.json"
 
-    fieldnames = list(all_results[0].keys())
+    # Union of the keys in first-seen order: rows of different shapes (protocol B
+    # rows next to default ones, or a timeout row first) share one header.
+    fieldnames = list(dict.fromkeys(k for r in all_results for k in r))
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
@@ -951,6 +1288,34 @@ def print_summary(all_results: list):
     print("="*72)
 
 
+def print_protocol_b_summary(all_results: list):
+    """Case accounting of protocol B per model (test category only)."""
+    rows = [r for r in all_results if "valid_case" in r]
+    if not rows:
+        return
+    print("\nTEST PROTOCOL B — CASE ACCOUNTING")
+    print("="*72)
+    print(f"{'Model':<24} {'excl':>5} {'injF':>5} {'preR':>5} {'preG':>5} {'preE':>5} "
+          f"{'valid':>6} {'fixed':>6} {'SR%':>6} {'clean✓':>7}")
+    print("-"*72)
+    by_model = {}
+    for r in rows:
+        by_model.setdefault(r["model_id"], []).append(r)
+    for mid, rs in by_model.items():
+        cnt = lambda pred: sum(1 for r in rs if pred(r))
+        valid = cnt(lambda r: r["valid_case"])
+        fixed = cnt(lambda r: r["valid_case"] and r["success"])
+        clean = cnt(lambda r: r["valid_case"] and r["success"] and r["test_on_clean_source"] == "pass")
+        sr = f"{fixed / valid * 100:5.1f}%" if valid else "   N/A"
+        print(f"{rs[0]['model_name'][:24]:<24} {cnt(lambda r: r['excluded']):>5} "
+              f"{cnt(lambda r: r['final_status'] == 'injection_failed'):>5} "
+              f"{cnt(lambda r: r['pre_ci_status'] == 'red'):>5} "
+              f"{cnt(lambda r: r['pre_ci_status'] == 'green'):>5} "
+              f"{cnt(lambda r: r['pre_ci_status'] == 'error'):>5} "
+              f"{valid:>6} {fixed:>6} {sr:>6} {clean:>7}")
+    print("="*72)
+
+
 # ══════════════════════════════════════════════════════════════
 # MAIN
 # ══════════════════════════════════════════════════════════════
@@ -1019,11 +1384,60 @@ def main():
         help="Disables the automatic cleanup of the 'fix/ai-*' branches on GitHub "
              "(useful for debugging)."
     )
+    parser.add_argument(
+        "--test-protocol-b",
+        dest="test_protocol_b",
+        action="store_true",
+        help="Corrected protocol for the 'test' category (MSR revision A2): skips the "
+             f"{len(EXCLUDED_TEST_CASES)} EXCLUDED_TEST_CASES, verifies the CI is RED on the full "
+             "failed state before the agent runs, branches every fix from that state, "
+             "then checks the repaired test on the clean source and its assertions. "
+             "Other categories keep the default protocol."
+    )
+    parser.add_argument(
+        "--verify-excluded",
+        dest="verify_excluded",
+        action="store_true",
+        help="Only documents the bug on the excluded test cases (no LLM): CI with only "
+             "the test file committed (expected green) vs full failed state (expected red). "
+             "Writes verify_excluded_<timestamp>.csv and exits."
+    )
+    parser.add_argument(
+        "--output-dir",
+        dest="output_dir",
+        default=None,
+        help="Directory for the CSV/JSON results (default: experiments/results)"
+    )
+    parser.add_argument(
+        "--ci-timeout",
+        dest="ci_timeout",
+        type=int,
+        default=300,
+        help="Seconds to wait for the pre-check / verify-excluded CI runs (default: 300)"
+    )
     args = parser.parse_args()
 
     # dry-run implies no-memory
     if args.dry_run:
         args.no_memory = True
+
+    if args.test_protocol_b and args.dry_run:
+        parser.error("--test-protocol-b needs the real CI: it cannot be combined with --dry-run")
+
+    out_dir = Path(args.output_dir) if args.output_dir else RESULTS_DIR
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # ── --verify-excluded: documentation run, no model involved ──
+    if args.verify_excluded:
+        run_ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+        rows = verify_excluded_cases(args.ci_timeout, out_dir, run_ts)
+        confirmed = sum(1 for r in rows if r["bug_confirmed"])
+        failed    = [r["case_id"] for r in rows if r["error_msg"]
+                     or "error" in (r["testonly_ci_status"], r["fullstate_ci_status"])]
+        print(f"\n✅ verify-excluded: bug confirmed on {confirmed}/{len(rows)} cases"
+              + (f" | CI errors on {failed}" if failed else ""))
+        print(f"📄 CSV: {out_dir / f'verify_excluded_{run_ts}.csv'}")
+        sys.exit(1 if failed else 0)
 
     # ── ChromaDB cleanup if requested ──
     if args.clean_memory:
@@ -1041,6 +1455,11 @@ def main():
         errors = errors[:args.limit]
 
     log.info(f"Dataset: {len(errors)} errors selected")
+    if args.test_protocol_b:
+        n_test = sum(1 for e in errors if e["category"] == "test")
+        n_excl = sum(1 for e in errors if e["id"] in EXCLUDED_TEST_CASES)
+        log.info(f"Test protocol B: {n_test} 'test' cases selected, {n_excl} excluded "
+                 f"→ {n_test - n_excl} valid")
 
     # ── Filter the models ──
     models = MODELS
@@ -1068,6 +1487,8 @@ def main():
         memory_condition = "nomemory"
     else:
         memory_condition = "memory"
+    if args.test_protocol_b:
+        memory_condition += "_protob"
 
     def build_run_id(model_id: str) -> str:
         return f"{timestamp}_{model_id}_{memory_condition}"
@@ -1094,14 +1515,16 @@ def main():
                 dry_run=args.dry_run,
                 no_memory=args.no_memory,
                 keep_branches=args.keep_branches,
-                readonly_memory=args.readonly_memory
+                readonly_memory=args.readonly_memory,
+                test_protocol_b=args.test_protocol_b,
+                ci_timeout=args.ci_timeout,
             )
             all_results.extend(model_results)
 
             # Intermediate save after every model — separate CSV/JSON per
             # model (specific model_id, not the global run_id), so that a
             # benchmark interrupted halfway still leaves the per-model files.
-            save_results(model_results, build_run_id(model["id"]))
+            save_results(model_results, build_run_id(model["id"]), out_dir)
             log.info(f"✓ {model['name']} completed — results saved")
 
             time.sleep(3)
@@ -1114,13 +1537,18 @@ def main():
             continue
 
     # ── Final save and summary ──
-    csv_path = save_results(all_results, run_id)
-    print_summary(all_results)
+    csv_path = save_results(all_results, run_id, out_dir)
+    if args.test_protocol_b:
+        # Excluded / skipped test cases are not part of any denominator
+        print_summary([r for r in all_results if r.get("valid_case", 1)])
+        print_protocol_b_summary(all_results)
+    else:
+        print_summary(all_results)
 
     print(f"\n✅ Benchmark completed — {len(all_results)} total runs")
     if csv_path:
         print(f"📄 CSV: {csv_path}")
-    print(f"📁 Results: {RESULTS_DIR}")
+    print(f"📁 Results: {out_dir}")
 
 
 if __name__ == "__main__":

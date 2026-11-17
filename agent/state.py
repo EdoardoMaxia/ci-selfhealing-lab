@@ -33,6 +33,11 @@ class AgentState(TypedDict):
     ci_fixed: Optional[bool]         # True if the CI is green after the fix
     modified_file: Optional[str]
 
+    # --- PROTOCOL B (set only by `experiments/benchmark.py --test-protocol-b`; absent otherwise) ---
+    fix_base_sha: Optional[str]       # commit holding the full failed state (pre-check, CI verified red):
+                                      # the Fix Executor branches from it instead of clean main
+    ci_runs: Optional[List[dict]]     # one record per Fix Executor attempt: branch, commit, run id, conclusion
+
     # --- RAG ---
     skip_memory: Optional[bool]    # True → skip ChromaDB saving
     skip_memory_save: Optional[bool]  # True → RAG retrieval enabled but episode saving disabled
