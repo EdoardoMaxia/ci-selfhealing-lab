@@ -9,6 +9,11 @@ on:
 jobs:
   A:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment:
+          - staging
+          - production
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
