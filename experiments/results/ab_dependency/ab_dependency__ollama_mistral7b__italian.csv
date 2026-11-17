@@ -1,0 +1,251 @@
+case_id,variant,rep,valid,problems,output
+dep_001,italian,0,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nnumpy==1.26.4`
+dep_001,italian,1,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nnumpy==1.26.4`
+dep_001,italian,2,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nnumpy==1.26.4`
+dep_001,italian,3,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nnumpy==1.26.4`
+dep_001,italian,4,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nnumpy==1.26.4`
+dep_002,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npandas==2.0.3
+dep_002,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npandas==2.0.3
+dep_002,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npandas==2.0.3
+dep_002,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npandas==2.0.3
+dep_002,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npandas==2.0.3
+dep_003,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nscikit-learn==1.3.2
+dep_003,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nscikit-learn==1.3.2
+dep_003,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nscikit-learn==1.3.2
+dep_003,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nscikit-learn==1.3.2
+dep_003,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nscikit-learn==1.3.2
+dep_004,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0
+dep_004,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0
+dep_004,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0
+dep_004,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0
+dep_004,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0
+dep_005,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nflask==3.0.3
+dep_005,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nflask==3.0.3
+dep_005,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nflask==3.0.3
+dep_005,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nflask==3.0.3
+dep_005,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nflask==3.0.3
+dep_006,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\ntensorflow>=2.0
+dep_006,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\ntensorflow>=2.0
+dep_006,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\ntensorflow>=2.0
+dep_006,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\ntensorflow>=2.0
+dep_006,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\ntensorflow>=2.0
+dep_007,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\nscipy==1.11.3
+dep_007,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\nscipy==1.11.3
+dep_007,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\nscipy==1.11.3
+dep_007,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\nscipy==1.11.3
+dep_007,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\nscipy==1.11.3
+dep_008,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nmatplotlib==3.8.0
+dep_008,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nmatplotlib==3.8.0
+dep_008,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nmatplotlib==3.8.0
+dep_008,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nmatplotlib==3.8.0
+dep_008,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nmatplotlib==3.8.0
+dep_009,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npandas==1.5.3\nscipy==1.18.5\nnumpy==1.23.2
+dep_009,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npandas==1.5.3\nscipy==1.18.5\nnumpy==1.23.2
+dep_009,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npandas==1.5.3\nscipy==1.18.5\nnumpy==1.23.2
+dep_009,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npandas==1.5.3\nscipy==1.18.5\nnumpy==1.23.2
+dep_009,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npandas==1.5.3\nscipy==1.18.5\nnumpy==1.23.2
+dep_010,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\ntorch==1.13.1
+dep_010,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\ntorch==1.13.1
+dep_010,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\ntorch==1.13.1
+dep_010,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\ntorch==1.13.1
+dep_010,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\ntorch==1.13.1
+dep_011,italian,0,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nmy-internal-lib==1.2.2  # Tentativo 1: pinning a slightly older version
+dep_011,italian,1,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nmy-internal-lib==1.2.2  # Tentativo conservativo
+dep_011,italian,2,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nmy-internal-lib==1.2.2  # Tentativo conservativo
+dep_011,italian,3,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nmy-internal-lib==1.2.2  # Tentativo conservativo
+dep_011,italian,4,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nmy-internal-lib==1.2.2  # Tentativo conservativo
+dep_012,italian,0,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\n\nsqlalchemy==1.4.46\ntyping-extensions>=4.6.0\npydantic==2.0.0
+dep_012,italian,1,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\n\nsqlalchemy==1.4.46\ntyping-extensions>=4.6.0\npydantic==2.0.0
+dep_012,italian,2,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\n\nsqlalchemy==1.4.46\ntyping-extensions>=4.6.0\npydantic==2.0.0
+dep_012,italian,3,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\n\nsqlalchemy==1.4.46\ntyping-extensions>=4.6.0\npydantic==2.0.0
+dep_012,italian,4,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\n\nsqlalchemy==1.4.46\ntyping-extensions>=4.6.0\npydantic==2.0.0
+dep_013,italian,0,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\ncryptography==39.0.2`
+dep_013,italian,1,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\ncryptography==39.0.2`
+dep_013,italian,2,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\ncryptography==39.0.2`
+dep_013,italian,3,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\ncryptography==39.0.2`
+dep_013,italian,4,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\ncryptography==39.0.2`
+dep_014,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\nnewpackage>=3.10
+dep_014,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\nnewpackage>=3.10
+dep_014,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\nnewpackage>=3.10
+dep_014,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\nnewpackage>=3.10
+dep_014,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\nnewpackage>=3.10
+dep_015,italian,0,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nbroken-lib==0.0.2`
+dep_015,italian,1,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nbroken-lib==0.0.2`
+dep_015,italian,2,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nbroken-lib==0.0.2`
+dep_015,italian,3,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nbroken-lib==0.0.2`
+dep_015,italian,4,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nbroken-lib==0.0.2`
+dep_016,italian,0,0,invalid_line,"pytest==7.4.0\npytest-cov==4.1.0\n\nlangchain<2,>=1\nlangchain-openai>=2.0\nlangchain-community<2,>=1"
+dep_016,italian,1,0,invalid_line,"pytest==7.4.0\npytest-cov==4.1.0\n\nlangchain<2,>=1\nlangchain-openai>=2.0\nlangchain-community<2,>=1"
+dep_016,italian,2,0,invalid_line,"pytest==7.4.0\npytest-cov==4.1.0\n\nlangchain<2,>=1\nlangchain-openai>=2.0\nlangchain-community<2,>=1"
+dep_016,italian,3,0,invalid_line,"pytest==7.4.0\npytest-cov==4.1.0\n\nlangchain<2,>=1\nlangchain-openai>=2.0\nlangchain-community<2,>=1"
+dep_016,italian,4,0,invalid_line,"pytest==7.4.0\npytest-cov==4.1.0\n\nlangchain<2,>=1\nlangchain-openai>=2.0\nlangchain-community<2,>=1"
+dep_017,italian,0,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nnumpy>=1.20.3`
+dep_017,italian,1,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nnumpy>=1.20.3`
+dep_017,italian,2,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nnumpy>=1.20.3`
+dep_017,italian,3,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nnumpy>=1.20.3`
+dep_017,italian,4,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nnumpy>=1.20.3`
+dep_018,italian,0,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nprotobuf>=4.21.6\ngrpcio>=4.21.6\ngrpcio-tools>=4.21.6`
+dep_018,italian,1,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nprotobuf>=4.21.6\ngrpcio>=4.21.6\ngrpcio-tools>=4.21.6`
+dep_018,italian,2,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nprotobuf>=4.21.6\ngrpcio>=4.21.6\ngrpcio-tools>=4.21.6`
+dep_018,italian,3,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nprotobuf>=4.21.6\ngrpcio>=4.21.6\ngrpcio-tools>=4.21.6`
+dep_018,italian,4,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nprotobuf>=4.21.6\ngrpcio>=4.21.6\ngrpcio-tools>=4.21.6`
+dep_019,italian,0,0,bad_pin_kept|invalid_line,"pytest==7.4.0\npytest-cov==4.1.0\n\nspacy==3.7.0\nthinc>=8.2.2,<8.4\nspacy-legacy>=3.0.11,<3.1.0\ncymem>=2.0.2,<2.1.0"
+dep_019,italian,1,0,bad_pin_kept|invalid_line,"pytest==7.4.0\npytest-cov==4.1.0\n\nspacy==3.7.0\nthinc>=8.2.2,<8.4\nspacy-legacy>=3.0.11,<3.1.0\ncymem>=2.0.2,<2.1.0"
+dep_019,italian,2,0,bad_pin_kept|invalid_line,"pytest==7.4.0\npytest-cov==4.1.0\n\nspacy==3.7.0\nthinc>=8.2.2,<8.4\nspacy-legacy>=3.0.11,<3.1.0\ncymem>=2.0.2,<2.1.0"
+dep_019,italian,3,0,bad_pin_kept|invalid_line,"pytest==7.4.0\npytest-cov==4.1.0\n\nspacy==3.7.0\nthinc>=8.2.2,<8.4\nspacy-legacy>=3.0.11,<3.1.0\ncymem>=2.0.2,<2.1.0"
+dep_019,italian,4,0,bad_pin_kept|invalid_line,"pytest==7.4.0\npytest-cov==4.1.0\n\nspacy==3.7.0\nthinc>=8.2.2,<8.4\nspacy-legacy>=3.0.11,<3.1.0\ncymem>=2.0.2,<2.1.0"
+dep_020,italian,0,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\ncelery==5.2.7\nkombu==5.3.0`
+dep_020,italian,1,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\n\ncelery==5.2.7\nkombu==5.2.0
+dep_020,italian,2,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\n\ncelery==5.2.7\nkombu==5.2.0
+dep_020,italian,3,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\n\ncelery==5.2.7\nkombu==5.2.0
+dep_020,italian,4,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\n\ncelery==5.2.7\nkombu==5.2.0
+dep_021,italian,0,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\n\nurllib3==2.0.2`
+dep_021,italian,1,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\n\nurllib3==2.0.2`
+dep_021,italian,2,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\n\nurllib3==2.0.2`
+dep_021,italian,3,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\n\nurllib3==2.0.2`
+dep_021,italian,4,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\n\nurllib3==2.0.2`
+dep_022,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nnumpy==1.24.0\nflask==3.0.2
+dep_022,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nnumpy==1.24.0\nflask==3.0.2
+dep_022,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nnumpy==1.24.0\nflask==3.0.2
+dep_022,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nnumpy==1.24.0\nflask==3.0.2
+dep_022,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nnumpy==1.24.0\nflask==3.0.2
+dep_023,italian,0,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\npyyaml==6.0.0`
+dep_023,italian,1,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\npyyaml==6.0.0`
+dep_023,italian,2,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\npyyaml==6.0.0`
+dep_023,italian,3,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\npyyaml==6.0.0`
+dep_023,italian,4,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\npyyaml==6.0.0`
+dep_024,italian,0,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\npsycopg2-binary==2.9.9`
+dep_024,italian,1,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\npsycopg2-binary==2.9.9`
+dep_024,italian,2,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\npsycopg2-binary==2.9.9`
+dep_024,italian,3,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\npsycopg2-binary==2.9.9`
+dep_024,italian,4,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\npsycopg2-binary==2.9.9`
+dep_025,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.7
+dep_025,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.7
+dep_025,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.7
+dep_025,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.7
+dep_025,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.7
+dep_026,italian,0,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nhttpx==1.27.0`
+dep_026,italian,1,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nhttpx==1.27.0`
+dep_026,italian,2,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nhttpx==1.27.0`
+dep_026,italian,3,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nhttpx==1.27.0`
+dep_026,italian,4,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nhttpx==1.27.0`
+dep_027,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.30.0
+dep_027,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.29.0
+dep_027,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.29.0
+dep_027,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.29.0
+dep_027,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.29.0
+dep_028,italian,0,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\nuvicorn==0.20.0\nfastapi==0.104.1
+dep_028,italian,1,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\nuvicorn==0.20.0\nfastapi==0.104.1
+dep_028,italian,2,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\nuvicorn==0.20.0\nfastapi==0.104.1
+dep_028,italian,3,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\nuvicorn==0.20.0\nfastapi==0.104.1
+dep_028,italian,4,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\nuvicorn==0.20.0\nfastapi==0.104.1
+dep_029,italian,0,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\n# Tentativo 1: pin della versione corretta per pywin32\npywin32==307  # o qualunque versione disponibile per Linux
+dep_029,italian,1,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\n# Tentativo 1: pin della versione corretta per pywin32\npywin32==307  # o qualunque versione disponibile per Linux
+dep_029,italian,2,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\n# Tentativo 1: pin della versione corretta per pywin32\npywin32==307  # o qualunque versione disponibile per Linux
+dep_029,italian,3,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\n# Tentativo 1: pin della versione corretta per pywin32\npywin32==307  # o qualunque versione disponibile per Linux
+dep_029,italian,4,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\n# Tentativo 1: pin della versione corretta per pywin32\npywin32==307  # o qualunque versione disponibile per Linux
+dep_030,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npillow==8.3.2
+dep_030,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npillow==8.3.2
+dep_030,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npillow==8.3.2
+dep_030,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npillow==8.3.2
+dep_030,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\n\npillow==8.3.2
+dep_031,italian,0,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0; python_version >= '3.8'
+dep_031,italian,1,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0; python_version >= '3.8'
+dep_031,italian,2,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0; python_version >= '3.8'
+dep_031,italian,3,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0; python_version >= '3.8'
+dep_031,italian,4,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0; python_version >= '3.8'
+dep_032,italian,0,0,backtick|dropped_base_lines|bad_pin_kept|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\nsphinx==7.2.6\ndocutils>=0.18.1,<0.21`"
+dep_032,italian,1,0,backtick|dropped_base_lines|bad_pin_kept|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\nsphinx==7.2.6\ndocutils>=0.18.1,<0.21`"
+dep_032,italian,2,0,backtick|dropped_base_lines|bad_pin_kept|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\nsphinx==7.2.6\ndocutils>=0.18.1,<0.21`"
+dep_032,italian,3,0,backtick|dropped_base_lines|bad_pin_kept|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\nsphinx==7.2.6\ndocutils>=0.18.1,<0.21`"
+dep_032,italian,4,0,backtick|dropped_base_lines|bad_pin_kept|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\nsphinx==7.2.6\ndocutils>=0.18.1,<0.21`"
+dep_033,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\ntorch==2.1.0+cpu
+dep_033,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\ntorch==2.1.0+cpu
+dep_033,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\ntorch==2.1.0+cpu
+dep_033,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\ntorch==2.1.0+cpu
+dep_033,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\ntorch==2.1.0+cpu
+dep_034,italian,0,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.6 # (sha256:a61c...)
+dep_034,italian,1,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.6 # (sha256:a61c...)
+dep_034,italian,2,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.6 # (sha256:a61c...)
+dep_034,italian,3,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.6 # (sha256:a61c...)
+dep_034,italian,4,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.6 # (sha256:a61c...)
+dep_035,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\nscikit-learn==1.2
+dep_035,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\nscikit-learn==1.2
+dep_035,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\nscikit-learn==1.2
+dep_035,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\nscikit-learn==1.2
+dep_035,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\nscikit-learn==1.2
+dep_036,italian,0,0,backtick|invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\nacme-internal-utils==0.1.0 # FIX: consider using a trusted source for this package\n```\n
+dep_036,italian,1,0,backtick|invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\nacme-internal-utils==0.1.0 # FIX: consider using a trusted source for this package\n```\n
+dep_036,italian,2,0,backtick|invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\nacme-internal-utils==0.1.0 # FIX: consider using a trusted source for this package\n```\n
+dep_036,italian,3,0,backtick|invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\nacme-internal-utils==0.1.0 # FIX: consider using a trusted source for this package\n```\n
+dep_036,italian,4,0,backtick|invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\nacme-internal-utils==0.1.0 # FIX: consider using a trusted source for this package\n```\n
+dep_037,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\nsetuptools<68
+dep_037,italian,1,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nsetuptools<68`
+dep_037,italian,2,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nsetuptools<68`
+dep_037,italian,3,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nsetuptools<68`
+dep_037,italian,4,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nsetuptools<68`
+dep_038,italian,0,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\ngit+https://username:password@github.com/myorg/internal-tool.git@v1.2.0
+dep_038,italian,1,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\ngit+https://username:password@github.com/myorg/internal-tool.git@v1.2.0
+dep_038,italian,2,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\ngit+https://username:password@github.com/myorg/internal-tool.git@v1.2.0
+dep_038,italian,3,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\ngit+https://username:password@github.com/myorg/internal-tool.git@v1.2.0
+dep_038,italian,4,0,invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n\ngit+https://username:password@github.com/myorg/internal-tool.git@v1.2.0
+dep_039,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\nblack==23.9.1
+dep_039,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\nblack==23.9.1
+dep_039,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\nblack==23.9.1
+dep_039,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\nblack==23.9.1
+dep_039,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\nblack==23.9.1
+dep_040,italian,0,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.7`
+dep_040,italian,1,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.7`
+dep_040,italian,2,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.7`
+dep_040,italian,3,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.7`
+dep_040,italian,4,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.7`
+dep_041,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\ntokenizers==0.13.3
+dep_041,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\ntokenizers==0.13.3
+dep_041,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\ntokenizers==0.13.3
+dep_041,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\ntokenizers==0.13.3
+dep_041,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\ntokenizers==0.13.3
+dep_042,italian,0,0,backtick|dropped_base_lines|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\npackage-a<2.0,>=1.9\npackage-b<1.6,>=1.5`"
+dep_042,italian,1,0,backtick|dropped_base_lines|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\npackage-a<2.0,>=1.9\npackage-b<1.6,>=1.5`"
+dep_042,italian,2,0,backtick|dropped_base_lines|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\npackage-a<2.0,>=1.9\npackage-b<1.6,>=1.5`"
+dep_042,italian,3,0,backtick|dropped_base_lines|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\npackage-a<2.0,>=1.9\npackage-b<1.6,>=1.5`"
+dep_042,italian,4,0,backtick|dropped_base_lines|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\npackage-a<2.0,>=1.9\npackage-b<1.6,>=1.5`"
+dep_043,italian,0,0,backtick|dropped_base_lines|bad_pin_kept|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\n\npandas==2.0.3\nnumpy>=1.20.3,<2`"
+dep_043,italian,1,0,backtick|dropped_base_lines|bad_pin_kept|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\n\npandas==2.0.3\nnumpy>=1.20.3,<2`"
+dep_043,italian,2,0,backtick|dropped_base_lines|bad_pin_kept|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\n\npandas==2.0.3\nnumpy>=1.20.3,<2`"
+dep_043,italian,3,0,backtick|dropped_base_lines|bad_pin_kept|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\n\npandas==2.0.3\nnumpy>=1.20.3,<2`"
+dep_043,italian,4,0,backtick|dropped_base_lines|bad_pin_kept|invalid_line,"`pytest==7.4.0\npytest-cov==4.1.0\n\npandas==2.0.3\nnumpy>=1.20.3,<2`"
+dep_044,italian,0,0,invalid_line,somepkg==version_che_funziona_su_ubuntu_18.04\npytest==7.4.0\npytest-cov==4.1.0
+dep_044,italian,1,0,invalid_line,somepkg==version_che_funziona_su_ubuntu_18.04\npytest==7.4.0\npytest-cov==4.1.0
+dep_044,italian,2,0,invalid_line,somepkg==version_che_funziona_su_ubuntu_18.04\npytest==7.4.0\npytest-cov==4.1.0
+dep_044,italian,3,0,invalid_line,somepkg==version_che_funziona_su_ubuntu_18.04\npytest==7.4.0\npytest-cov==4.1.0
+dep_044,italian,4,0,invalid_line,somepkg==version_che_funziona_su_ubuntu_18.04\npytest==7.4.0\npytest-cov==4.1.0
+dep_045,italian,0,0,bad_pin_kept|invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n-c constraints.txt\nnumpy==1.24.0
+dep_045,italian,1,0,bad_pin_kept|invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n-c constraints.txt\nnumpy==1.24.0  # (aggiungi questa riga per risolvere l'errore)
+dep_045,italian,2,0,bad_pin_kept|invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n-c constraints.txt\nnumpy==1.24.0  # (aggiungi questa riga per risolvere l'errore)
+dep_045,italian,3,0,bad_pin_kept|invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n-c constraints.txt\nnumpy==1.24.0  # (aggiungi questa riga per risolvere l'errore)
+dep_045,italian,4,0,bad_pin_kept|invalid_line,pytest==7.4.0\npytest-cov==4.1.0\n-c constraints.txt\nnumpy==1.24.0  # (aggiungi questa riga per risolvere l'errore)
+dep_046,italian,0,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\n\ndjango-filter==22.1\ndjangorestframework==3.13.1\ndjango==5.0
+dep_046,italian,1,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\n\ndjango-filter==22.1\ndjangorestframework==3.13.1\ndjango==5.0
+dep_046,italian,2,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\n\ndjango-filter==22.1\ndjangorestframework==3.13.1\ndjango==5.0
+dep_046,italian,3,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\n\ndjango-filter==22.1\ndjangorestframework==3.13.1\ndjango==5.0
+dep_046,italian,4,0,bad_pin_kept,pytest==7.4.0\npytest-cov==4.1.0\n\ndjango-filter==22.1\ndjangorestframework==3.13.1\ndjango==5.0
+dep_047,italian,0,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nstreamlit==1.27.0`
+dep_047,italian,1,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nstreamlit==1.27.0`
+dep_047,italian,2,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nstreamlit==1.27.0`
+dep_047,italian,3,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nstreamlit==1.27.0`
+dep_047,italian,4,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nstreamlit==1.27.0`
+dep_048,italian,0,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nbotocore==1.34.10`
+dep_048,italian,1,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nbotocore==1.34.10`
+dep_048,italian,2,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nbotocore==1.34.10`
+dep_048,italian,3,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nbotocore==1.34.10`
+dep_048,italian,4,0,backtick|dropped_base_lines,`pytest==7.4.0\npytest-cov==4.1.0\nbotocore==1.34.10`
+dep_049,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0
+dep_049,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0
+dep_049,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0
+dep_049,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0
+dep_049,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\nrequests==2.31.0
+dep_050,italian,0,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nmypackage==1.9.1
+dep_050,italian,1,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nmypackage==1.9.1
+dep_050,italian,2,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nmypackage==1.9.1
+dep_050,italian,3,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nmypackage==1.9.1
+dep_050,italian,4,1,,pytest==7.4.0\npytest-cov==4.1.0\n\nmypackage==1.9.1
