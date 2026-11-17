@@ -6,20 +6,20 @@ from typing import Optional
 import chromadb
 from chromadb.utils import embedding_functions
 
-# Path where ChromaDB persists its data on disk
+# Path dove ChromaDB persiste i dati sul disco
 DB_PATH = str(Path(__file__).parent.parent.parent / "data" / "episodic_memory")
 
 
 def get_collection():
     """
-    Returns the ChromaDB collection, creating it if it does not exist.
-    Uses the default embedding function (local sentence-transformers)
-    or OpenAI if the key is available.
+    Restituisce la collection ChromaDB, creandola se non esiste.
+    Usa l'embedding function di default (sentence-transformers locale)
+    oppure OpenAI se la key è disponibile.
     """
     os.makedirs(DB_PATH, exist_ok=True)
     client = chromadb.PersistentClient(path=DB_PATH)
 
-    # Use OpenAI embeddings if available, otherwise the local default
+    # Usa OpenAI embeddings se disponibile, altrimenti default locale
     openai_key = os.getenv("OPENAI_API_KEY")
     if openai_key:
         print("||||:__ OpenAI Embeddings :__||||")
@@ -34,15 +34,15 @@ def get_collection():
     return client.get_or_create_collection(
         name="ci_episodes",
         embedding_function=ef, #type: ignore
-        metadata={"hnsw:space": "cosine"}  # cosine similarity
+        metadata={"hnsw:space": "cosine"}  # similarità coseno
     )
 
 
 def save_episode(state: dict, outcome: str, case_id: Optional[str] = None) -> str:
     """
-    Saves an episode in ChromaDB after a cycle completes.
+    Salva un episodio in ChromaDB dopo il completamento di un ciclo.
     outcome: "success" | "failed" | "escalated"
-    Returns the ID of the saved episode.
+    Ritorna l'ID dell'episodio salvato.
     """
     collection = get_collection()
 
@@ -53,7 +53,7 @@ def save_episode(state: dict, outcome: str, case_id: Optional[str] = None) -> st
     history   = state.get("attempts_history", [])
     last_fix  = history[-1] if history else {}
 
-    # The text that will be embedded for semantic search
+    # Il testo che verrà embeddato per la ricerca semantica
     error_signature = f"""
     category: {state.get('error_category', 'unknown')}
     job: {state.get('ci_job_name', '')}
@@ -80,7 +80,7 @@ def save_episode(state: dict, outcome: str, case_id: Optional[str] = None) -> st
         }]
     )
 
-    print(f"💾 Episode saved to memory (outcome: {outcome}, id: {episode_id[:8]})")
+    print(f"💾 Episodio salvato in memoria (outcome: {outcome}, id: {episode_id[:8]})")
     return episode_id
 
 
@@ -92,14 +92,14 @@ def retrieve_similar_episodes(
     current_case_id: Optional[str] = None
 ) -> list[dict]:
     """
-    Retrieves the episodes most similar to the current error.
-    only_successful=True keeps only the fixes that worked.
-    Returns a list of dicts with fix_applied, fix_diff, similarity score.
+    Recupera gli episodi più simili all'errore corrente.
+    only_successful=True filtra solo i fix che hanno funzionato.
+    Ritorna lista di dict con fix_applied, fix_diff, similarity score.
     """
     collection = get_collection()
 
     if collection.count() == 0:
-        return []  # empty memory
+        return []  # memoria vuota
 
     clauses = [{"error_category": {"$eq": category}}]
     if only_successful:
@@ -111,16 +111,16 @@ def retrieve_similar_episodes(
 
     try:
         results = collection.query(
-            query_texts=[error_logs[:1000]], # list of queries, ChromaDB is optimized to accept N of them
+            query_texts=[error_logs[:1000]], # lista di query, ChromaDB è ottimizzato per prenderne N
             n_results=min(top_k, collection.count()),
             where=where_filter, #type: ignore
         )
     except Exception as e:
-        print(f" ⚠️ Retrieval error: {e}")
+        print(f" ⚠️ Errore retrieval: {e}")
         return []
 
     episodes = []
-    # [0] refers to the index of the query in query_texts. Since only one query is used, index 0 is referenced
+    # Si usa [0] perchè fa riferimento all'indice della query nel query_text. Avendone usata solo una, faccio riferimento idx 0
     if results["metadatas"] and results["metadatas"][0]:
         for i, meta in enumerate(results["metadatas"][0]):
             score = 1 - results["distances"][0][i] #type: ignore  # cosine: distance→similarity
@@ -137,13 +137,13 @@ def retrieve_similar_episodes(
 
 def format_episodes_for_prompt(episodes: list[dict]) -> str:
     """
-    Formats the retrieved episodes as text readable by the LLM.
-    Used as context in the attempt-3 prompt.
+    Formatta gli episodi recuperati in testo leggibile dall'LLM.
+    Usato come context nel prompt del tentativo 3.
     """
     if not episodes:
-        return "No similar episode found in memory."
+        return "Nessun episodio simile trovato in memoria."
 
-    lines = ["Similar past fixes (sorted by similarity):\n"]
+    lines = ["Fix simili dal passato (ordinati per similarità):\n"]
     for i, ep in enumerate(episodes, 1):
         lines.append(
             f"{i}. [similarity: {ep['similarity']:.0%}] {ep['fix_applied']}\n"
@@ -153,7 +153,7 @@ def format_episodes_for_prompt(episodes: list[dict]) -> str:
 
 
 def memory_stats() -> dict:
-    """Memory statistics — useful for the paper figures."""
+    """Statistiche sulla memoria — utile per i grafici della tesi."""
     collection = get_collection()
     total      = collection.count()
     if total == 0:

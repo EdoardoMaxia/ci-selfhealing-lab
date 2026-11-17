@@ -14,20 +14,20 @@ load_dotenv()
 
 
 TEST_SYSTEM_PROMPT = """
-You are an expert in Python testing with pytest.
-Your task is to analyze a failed test and propose the correct fix.
+Sei un esperto di testing Python con pytest.
+Il tuo compito è analizzare un test fallito e proporre il fix corretto.
 
-CRITICAL RULE: you must distinguish between two scenarios:
-1. The TEST is wrong (assert with wrong value, outdated mock) → fix the test
-2. The SOURCE CODE is wrong → fix the source code
+REGOLA CRITICA: devi distinguere due scenari:
+1. Il TEST è sbagliato (assert con valore errato, mock non aggiornato) → fix il test
+2. Il CODICE SORGENTE è sbagliato → fix il codice sorgente
 
-In both cases, respond with the COMPLETE and CORRECT content of the file
-to modify. Respond ONLY with the file content, without markdown or explanations.
+In entrambi i casi, rispondi con il contenuto COMPLETO e CORRETTO del file
+da modificare. Rispondi SOLO con il contenuto del file, senza markdown né spiegazioni.
 
-Strategies per attempt:
-- Attempt 1: minimal fix — change only the line causing the failure
-- Attempt 2: contextual fix — also update related tests or the setup
-- Attempt 3: approach different from the previous ones — consider rewriting the test
+Strategie per tentativo:
+- Tentativo 1: fix minimale — cambia solo la riga che causa il fallimento
+- Tentativo 2: fix contestuale — aggiorna anche i test correlati o il setup
+- Tentativo 3: approccio diverso dai precedenti — considera di riscrivere il test
 """
 
 
@@ -38,7 +38,7 @@ def read_file(path: str) -> str:
 
 def write_file(path: str, content: str) -> None:
     Path(path).write_text(content, encoding="utf-8")
-    print(f"✍️  File updated: {path}")
+    print(f"✍️  File aggiornato: {path}")
 
 
 def compute_diff(original: str, updated: str) -> str:
@@ -49,19 +49,19 @@ def compute_diff(original: str, updated: str) -> str:
         if l not in new: lines.append(f"- {l}")
     for l in new:
         if l not in orig: lines.append(f"+ {l}")
-    return "\n".join(lines) if lines else "(no changes)"
+    return "\n".join(lines) if lines else "(nessuna modifica)"
 
 
 def find_test_file(ci_logs: str, repo_path: str) -> str:
     """
-    Extracts the test file path from the pytest logs.
-    E.g.: 'FAILED tests/test_calculator.py::test_add' → 'tests/test_calculator.py'
+    Estrae il path del file di test dai log pytest.
+    Es: 'FAILED tests/test_calculator.py::test_add' → 'tests/test_calculator.py'
     """
     match = re.search(r'FAILED\s+([\w/\\]+\.py)', ci_logs)
     if match:
         rel_path = match.group(1).replace("\\", "/")
         return str(Path(repo_path) / rel_path).replace(os.sep, "/")
-    # Fallback: look for any .py file in the logs
+    # Fallback: cerca qualsiasi file .py nei log
     match2 = re.search(r'(tests/[\w]+\.py)', ci_logs)
     if match2:
         return str(Path(repo_path) / match2.group(1)).replace(os.sep, "/")
@@ -74,26 +74,26 @@ def test_agent_node(state: dict) -> dict:
     repo_path = state.get("repo_path", ".")
     history   = state.get("attempts_history", [])
 
-    print(f"\n🧪 Test Agent — Attempt {attempt}/3")
+    print(f"\n🧪 Test Agent — Tentativo {attempt}/3")
 
-    # Locate the test file from the logs
+    # Individua il file di test dai log
     test_file  = find_test_file(state["ci_logs"], repo_path)
     test_code  = read_file(test_file)
 
-    # Also read the source code for context
+    # Legge anche il codice sorgente per contesto
     src_file   = str(Path(repo_path) / "src/calculator.py")
     src_code   = read_file(src_file)
 
     similar = []
 
-    # Strategy per attempt
+    # Strategia per tentativo
     if attempt == 1:
-        attempt_context = "MINIMAL fix: correct only the line causing the failure."
+        attempt_context = "Fix MINIMALE: correggi solo la riga che causa il fallimento."
     elif attempt == 2:
-        prev = history[-1]["fix_applied"] if history else "none"
-        attempt_context = f"The previous attempt ({prev}) failed. BROADER fix: also update the related tests."
+        prev = history[-1]["fix_applied"] if history else "nessuno"
+        attempt_context = f"Il tentativo precedente ({prev}) ha fallito. Fix PIÙ AMPIO: aggiorna anche i test correlati."
     else:
-        # Retrieve similar fixes from the episodic memory
+        # Recupera fix simili dalla memoria episodica
         similar = retrieve_similar_episodes(
             error_logs=state["ci_logs"],
             category="test",
@@ -103,41 +103,41 @@ def test_agent_node(state: dict) -> dict:
         memory_context = format_episodes_for_prompt(similar)
 
         prev_list = "\n".join([f"- {h['fix_applied']}" for h in history])
-        attempt_context = f"""The previous attempts failed:
+        attempt_context = f"""I tentativi precedenti hanno fallito:
             {prev_list}
 
             {memory_context}
 
-            Use the information from memory to propose a fix different from the previous ones."""
+            Usa le informazioni dalla memoria per proporre un fix diverso dai precedenti."""
 
         if similar:
-            print(f"   🧠 Memory: found {len(similar)} similar episodes")
+            print(f"   🧠 Memoria: trovati {len(similar)} episodi simili")
 
     user_message = f"""
-        **Strategy:** {attempt_context}
+        **Strategia:** {attempt_context}
 
-        **CI log (pytest error):**
+        **Log CI (errore pytest):**
         ```
         {state['ci_logs'][-2000:]}
         ```
 
-        **Current content of the test file ({test_file}):**
+        **Contenuto attuale del file di test ({test_file}):**
         ```python
         {test_code}
         ```
 
-        **Source code (for context):**
+        **Codice sorgente (per contesto):**
         ```python
         {src_code}
         ```
 
-        **Git diff of the commit:**
+        **Git diff del commit:**
         ```
         {state.get('git_diff', 'N/A')}
         ```
 
-        Generate the COMPLETE and CORRECT content of the test file.
-        Respond ONLY with the Python code, without backticks or explanations.
+        Genera il contenuto COMPLETO e CORRETTO del file di test.
+        Rispondi SOLO con il codice Python, senza backtick né spiegazioni.
     """
 
     response    = llm.invoke([
@@ -146,25 +146,25 @@ def test_agent_node(state: dict) -> dict:
     ])
     new_content = response.content.strip() #type: ignore
 
-    # Remove any <think>...</think> blocks (Qwen3.8, Qwen3-Coder, ...)
+    # Rimuove eventuali blocchi <think>...</think> (Qwen3.8, Qwen3-Coder, ...)
     new_content = strip_think_blocks(new_content)
 
-    # Clean up leftover backticks
+    # Pulisce backtick residui
     if new_content.startswith("```"):
         lines = new_content.split("\n")
         new_content = "\n".join(lines[1:-1])
 
 
     diff = compute_diff(test_code, new_content)
-    print(f"   Changes:\n{diff}")
+    print(f"   Modifiche:\n{diff}")
 
     write_file(test_file, new_content)
 
-    # Also save the path of the modified file in the state
+    # Salva anche il path del file modificato nello state
     new_history = history + [{
         "attempt":     attempt,
         "agent":       "test",
-        "fix_applied": f"test file updated (attempt {attempt})",
+        "fix_applied": f"test file aggiornato (tentativo {attempt})",
         "fix_diff":    diff,
         "file_path":   test_file,
         "memory_used": len(similar) > 0,
@@ -172,7 +172,7 @@ def test_agent_node(state: dict) -> dict:
     }]
 
     return {
-        "fix_applied":      f"Test fix attempt {attempt}: {diff[:80]}",
+        "fix_applied":      f"Test fix tentativo {attempt}: {diff[:80]}",
         "fix_diff":         diff,
         "modified_file":    test_file,
         "attempt_number":   attempt + 1,

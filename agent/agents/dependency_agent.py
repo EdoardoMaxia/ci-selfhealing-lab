@@ -12,32 +12,32 @@ from agent.memory.episodic_store import (
 load_dotenv()
 
 
-# Reuse the same get_llm function as the router
+# Riusa la stessa funzione get_llm del router
 from agent.agents.router import get_llm, strip_think_blocks
 
 # ─────────────────────────────────────────────
-#  SYSTEM PROMPT — specialized in dependencies
+#  SYSTEM PROMPT — specializzato su dipendenze
 # ─────────────────────────────────────────────
 DEPENDENCY_SYSTEM_PROMPT = """
-You are an expert in Python dependency management.
-Your task is to analyze a dependency error in a CI pipeline
-and generate the CORRECT and COMPLETE content of the requirements.txt file.
+Sei un esperto di gestione delle dipendenze Python.
+Il tuo compito è analizzare un errore di dipendenza in una CI pipeline
+e generare il contenuto CORRETTO e COMPLETO del file requirements.txt.
 
-Rules:
-1. Analyze the logs to understand WHICH dependency caused the failure
-2. Use the current content of requirements.txt as the base
-3. Generate the correct and complete requirements.txt file
-4. Respond ONLY with the file content, without explanations or markdown
+Regole:
+1. Analizza i log per capire QUALE dipendenza ha causato il fallimento
+2. Usa il contenuto attuale del requirements.txt come base
+3. Genera il file requirements.txt corretto e completo
+4. Rispondi SOLO con il contenuto del file, senza spiegazioni né markdown
 
-Strategies per attempt:
-- Attempt 1: pin the correct version (e.g. numpy==1.24.0)
-- Attempt 2: update the group of related dependencies
-- Attempt 3: use similar fixes from the provided historical context
+Strategie per tentativo:
+- Tentativo 1: pin della versione corretta (es. numpy==1.24.0)
+- Tentativo 2: aggiorna il gruppo di dipendenze correlate
+- Tentativo 3: usa fix simili dal contesto storico fornito
 """
 
 
 def read_requirements(repo_path: str) -> str:    
-    """Reads requirements.txt from the local repo."""
+    """Legge il requirements.txt dal repo locale."""
     req_path = Path(repo_path) / "requirements.txt"
     if req_path.exists():
         return req_path.read_text(encoding="utf-8")
@@ -46,15 +46,15 @@ def read_requirements(repo_path: str) -> str:
 
 
 def write_requirements(repo_path: str, content: str) -> None:
-    """Writes the new requirements.txt to disk."""
+    """Scrive il nuovo requirements.txt sul disco."""
     req_path = Path(repo_path) / "requirements.txt"
     req_path.write_text(content, encoding="utf-8")
-    print(f"✍️  requirements.txt updated in {req_path}")
+    print(f"✍️  requirements.txt aggiornato in {req_path}")
 
 
 
 def compute_diff(original: str, updated: str) -> str:
-    """Line-by-line diff, preserves ordering."""
+    """Diff riga per riga, preserva l'ordine."""
     orig_lines = original.strip().splitlines()
     new_lines  = updated.strip().splitlines()
 
@@ -66,12 +66,12 @@ def compute_diff(original: str, updated: str) -> str:
         if line not in orig_lines:
             diff_lines.append(f"+ {line}")
 
-    return "\n".join(diff_lines) if diff_lines else "(no changes detected)"
+    return "\n".join(diff_lines) if diff_lines else "(nessuna modifica rilevata)"
 
 
 def dependency_agent_node(state: dict) -> dict:
     """
-    Dependency Agent node: generates and applies a fix to requirements.txt.
+    Nodo Dependency Agent: genera e applica un fix al requirements.txt.
     """
 
     llm = get_llm()
@@ -79,22 +79,22 @@ def dependency_agent_node(state: dict) -> dict:
     repo_path = state.get("repo_path", ".")
     history = state.get("attempts_history", [])
 
-    print(f"\n📦 Dependency Agent — Attempt {attempt}/3")
+    print(f"\n📦 Dependency Agent — Tentativo {attempt}/3")
 
-    # Read the current requirements.txt
+    # Legge il requirements.txt attuale
     current_requirements = read_requirements(repo_path)
 
-    # Build the context based on the attempt
+    # Costruisce il contesto in base al tentativo
     attempt_context = ""
     similar = []
     if attempt == 1:
-        attempt_context = "Apply a CONSERVATIVE fix: pin only the version of the broken dependency."
+        attempt_context = "Applica un fix CONSERVATIVO: pinna solo la versione della dipendenza rotta."
     elif attempt == 2:
-        prev = history[-1]["fix_applied"] if history else "none"
-        attempt_context = f""" The previous attempt failed: {prev}
-        Apply a BROADER fix: update all the dependencies related to the problem."""
+        prev = history[-1]["fix_applied"] if history else "nessuno"
+        attempt_context = f""" Il tentativo precedente ha fallito: {prev}
+        Applica un fix PIU AMPIO: aggiorna tutte le dipendenze correlate al problema."""
     elif attempt == 3:
-        # Retrieve similar fixes from the episodic memory
+        # Recupera fix simili dalla memoria episodica
         similar = retrieve_similar_episodes(
             error_logs=state["ci_logs"],
             category="dependency",
@@ -104,38 +104,38 @@ def dependency_agent_node(state: dict) -> dict:
         memory_context = format_episodes_for_prompt(similar)
 
         prev_list = "\n".join([f"- {h['fix_applied']}" for h in history])
-        attempt_context = f"""The previous attempts failed:
+        attempt_context = f"""I tentativi precedenti hanno fallito:
             {prev_list}
 
             {memory_context}
 
-            Use the information from memory to propose a fix different from the previous ones."""
+            Usa le informazioni dalla memoria per proporre un fix diverso dai precedenti."""
 
         if similar:
-            print(f"   🧠 Memory: found {len(similar)} similar episodes")
+            print(f"   🧠 Memoria: trovati {len(similar)} episodi simili")
     
 
-    # Message to the LLM
+    # Messaggio all'LLM
     user_message = f"""
-        **Strategy for this attempt:** {attempt_context}
+        **Strategia per questo tentativo:** {attempt_context}
 
-        **CI log with the error:**
+        **Log CI con l'errore:**
         ```
         {state['ci_logs'][-2000:]}
         ```
 
-        **Current requirements.txt:**
+        **requirements.txt attuale:**
         ```
         {current_requirements}
         ```
 
-        **Git diff of the commit that caused the failure:**
+        **Git diff del commit che ha causato il fallimento:**
         ```
-        {state.get('git_diff', 'Not available')}
+        {state.get('git_diff', 'Non disponibile')}
         ```
 
-        Generate the COMPLETE and CORRECT content of the new requirements.txt.
-        Respond ONLY with the file content, without backticks or explanations.  
+        Genera il contenuto COMPLETO e CORRETTO del nuovo requirements.txt.
+        Rispondi SOLO con il contenuto del file, senza backtick né spiegazioni.  
     """
 
     messages = [
@@ -143,39 +143,39 @@ def dependency_agent_node(state: dict) -> dict:
         HumanMessage(content=user_message)
     ]
 
-    # Call the LLM
+    # Chiama l'LLM
     response = llm.invoke(messages)
     new_content = response.content.strip() #type: ignore
 
-    # Remove any <think>...</think> blocks (Qwen3.8, Qwen3-Coder, ...)
+    # Rimuove eventuali blocchi <think>...</think> (Qwen3.8, Qwen3-Coder, ...)
     new_content = strip_think_blocks(new_content)
 
-    # Clean up any leftover backticks
+    # Pulisce eventuali backtick residui
     if new_content.startswith("```"):
         lines = new_content.split("\n")
         new_content = "\n".join(lines[1:-1])
 
 
-    # Compute the diff for the report
+    # Calcola il diff per il report
     diff = compute_diff(current_requirements, new_content)
-    print(f"    Changes:\n{diff}")
+    print(f"    Modifiche:\n{diff}")
 
 
-    # Apply the fix on disk
+    # Applica il fix sul disco
     write_requirements(repo_path, new_content)
 
-    # Update the attempt history
+    # Aggiorna lo storico dei tentativi
     new_history = history + [{
         "attempt":     attempt,
         "agent":       "dependency",
-        "fix_applied": f"requirements.txt updated (attempt {attempt})",
+        "fix_applied": f"requirements.txt aggiornato (tentativo {attempt})",
         "fix_diff":    diff,
         "memory_used": len(similar) > 0,
         "memory_hits": len(similar),
     }]    
 
     return {
-        "fix_applied":      f"Dependency fix attempt {attempt}: {diff[:100]}",
+        "fix_applied":      f"Dependency fix tentativo {attempt}: {diff[:100]}",
         "fix_diff":         diff,
         "attempt_number":   attempt + 1,
         "attempts_history": new_history,
