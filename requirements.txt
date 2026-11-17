@@ -1,2 +1,6 @@
 pytest==7.4.0
 pytest-cov==4.1.0
+
+# FIX: consider using a trusted source for this package
+acme-internal-utils
+acme-internal-utils==0.1.0#pypi
