@@ -1,2 +1,6 @@
 pytest==7.4.0
 pytest-cov==4.1.0
+
+sqlalchemy==1.4.46
+typing-extensions>=4.6.0
+pydantic==2.0.0
