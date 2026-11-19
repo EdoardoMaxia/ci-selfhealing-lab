@@ -9,4 +9,4 @@ def test_status_code():
 
 def test_create_item():
     result = create_item(1, "item", 10.0)
-    assert result == {"id": 1, "name": "item"}
+    assert result == {"id": 1, "name": "item", "price": 10.0}
