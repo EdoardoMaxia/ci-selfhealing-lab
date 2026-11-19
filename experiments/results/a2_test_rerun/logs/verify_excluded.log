@@ -1,0 +1,129 @@
+2026-11-19 11:38:20,828 [INFO] 
+[verify-excluded 1/11] test_009 (error injected in src/services.py)
+🌿 Branch created: fix/ai-verifyexcl-test_009-testonly-113822 @ 40b9e75e (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verifyexcl-test_009-fullstate-113829 @ f8c81086 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 40b9e75e on branch 'fix/ai-verifyexcl-test_009-testonly-113822'...
+   ⏳ CI run 44507547523 in_progress... [0s/300s]
+   ⏳ CI run 44507547523 in_progress... [15s/300s]
+   ⏳ CI run 44507547523 in_progress... [30s/300s]
+    CI run 44507547523 completed: success
+⏳ Waiting for the CI run of f8c81086 on branch 'fix/ai-verifyexcl-test_009-fullstate-113829'...
+    CI run 44507561223 completed: failure
+2026-11-19 11:39:28,698 [INFO]   test file only: green | full failed state: red | bug confirmed: True
+2026-11-19 11:39:28,698 [INFO] 
+[verify-excluded 2/11] test_011 (error injected in src/auth.py)
+🌿 Branch created: fix/ai-verifyexcl-test_011-testonly-113932 @ 9e1c33e4 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verifyexcl-test_011-fullstate-113939 @ 830b136e (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 9e1c33e4 on branch 'fix/ai-verifyexcl-test_011-testonly-113932'...
+   ⏳ CI run 44507719275 in_progress... [0s/300s]
+   ⏳ CI run 44507719275 in_progress... [15s/300s]
+    CI run 44507719275 completed: success
+⏳ Waiting for the CI run of 830b136e on branch 'fix/ai-verifyexcl-test_011-fullstate-113939'...
+    CI run 44507734661 completed: failure
+2026-11-19 11:40:23,034 [INFO]   test file only: green | full failed state: red | bug confirmed: True
+2026-11-19 11:40:23,034 [INFO] 
+[verify-excluded 3/11] test_012 (error injected in src/db.py)
+🌿 Branch created: fix/ai-verifyexcl-test_012-testonly-114024 @ b9591cde (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verifyexcl-test_012-fullstate-114031 @ b6fbdff8 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of b9591cde on branch 'fix/ai-verifyexcl-test_012-testonly-114024'...
+   ⏳ CI run 44507852366 in_progress... [0s/300s]
+   ⏳ CI run 44507852366 in_progress... [15s/300s]
+    CI run 44507852366 completed: success
+⏳ Waiting for the CI run of b6fbdff8 on branch 'fix/ai-verifyexcl-test_012-fullstate-114031'...
+   ⏳ CI run 44507868127 in_progress... [0s/300s]
+    CI run 44507868127 completed: failure
+2026-11-19 11:41:29,362 [INFO]   test file only: green | full failed state: red | bug confirmed: True
+2026-11-19 11:41:29,363 [INFO] 
+[verify-excluded 4/11] test_013 (error injected in src/mailer.py)
+🌿 Branch created: fix/ai-verifyexcl-test_013-testonly-114131 @ 85b9b251 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verifyexcl-test_013-fullstate-114138 @ 66b9aed1 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 85b9b251 on branch 'fix/ai-verifyexcl-test_013-testonly-114131'...
+   ⏳ CI run 44508020750 in_progress... [0s/300s]
+   ⏳ CI run 44508020750 in_progress... [15s/300s]
+    CI run 44508020750 completed: success
+⏳ Waiting for the CI run of 66b9aed1 on branch 'fix/ai-verifyexcl-test_013-fullstate-114138'...
+    CI run 44508040112 completed: failure
+2026-11-19 11:42:21,084 [INFO]   test file only: green | full failed state: red | bug confirmed: True
+2026-11-19 11:42:21,084 [INFO] 
+[verify-excluded 5/11] test_014 (error injected in src/config.py)
+🌿 Branch created: fix/ai-verifyexcl-test_014-testonly-114223 @ 230e69d3 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verifyexcl-test_014-fullstate-114229 @ 47921042 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 230e69d3 on branch 'fix/ai-verifyexcl-test_014-testonly-114223'...
+   ⏳ CI run 44508150420 in_progress... [0s/300s]
+   ⏳ CI run 44508150420 in_progress... [15s/300s]
+    CI run 44508150420 completed: success
+⏳ Waiting for the CI run of 47921042 on branch 'fix/ai-verifyexcl-test_014-fullstate-114229'...
+    CI run 44508167006 completed: failure
+2026-11-19 11:43:12,922 [INFO]   test file only: green | full failed state: red | bug confirmed: True
+2026-11-19 11:43:12,922 [INFO] 
+[verify-excluded 6/11] test_015 (error injected in src/validator.py)
+🌿 Branch created: fix/ai-verifyexcl-test_015-testonly-114314 @ 4878fef0 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verifyexcl-test_015-fullstate-114321 @ 010a7eb5 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 4878fef0 on branch 'fix/ai-verifyexcl-test_015-testonly-114314'...
+   ⏳ CI run 44508278175 in_progress... [0s/300s]
+   ⏳ CI run 44508278175 queued... [15s/300s]
+    CI run 44508278175 completed: success
+⏳ Waiting for the CI run of 010a7eb5 on branch 'fix/ai-verifyexcl-test_015-fullstate-114321'...
+   ⏳ CI run 44508294124 in_progress... [0s/300s]
+    CI run 44508294124 completed: failure
+2026-11-19 11:44:19,772 [INFO]   test file only: green | full failed state: red | bug confirmed: True
+2026-11-19 11:44:19,773 [INFO] 
+[verify-excluded 7/11] test_019 (error injected in src/serializer.py)
+🌿 Branch created: fix/ai-verifyexcl-test_019-testonly-114421 @ 860ec298 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verifyexcl-test_019-fullstate-114428 @ e7ee7c09 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 860ec298 on branch 'fix/ai-verifyexcl-test_019-testonly-114421'...
+   ⏳ CI run 44508448693 in_progress... [0s/300s]
+   ⏳ CI run 44508448693 in_progress... [15s/300s]
+    CI run 44508448693 completed: success
+⏳ Waiting for the CI run of e7ee7c09 on branch 'fix/ai-verifyexcl-test_019-fullstate-114428'...
+    CI run 44508465013 completed: failure
+2026-11-19 11:45:11,094 [INFO]   test file only: green | full failed state: red | bug confirmed: True
+2026-11-19 11:45:11,094 [INFO] 
+[verify-excluded 8/11] test_022 (error injected in src/parser.py)
+🌿 Branch created: fix/ai-verifyexcl-test_022-testonly-114512 @ 8b45b2c4 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verifyexcl-test_022-fullstate-114519 @ 17c78076 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 8b45b2c4 on branch 'fix/ai-verifyexcl-test_022-testonly-114512'...
+   ⏳ CI run 44508582159 in_progress... [0s/300s]
+   ⏳ CI run 44508582159 in_progress... [15s/300s]
+    CI run 44508582159 completed: success
+⏳ Waiting for the CI run of 17c78076 on branch 'fix/ai-verifyexcl-test_022-fullstate-114519'...
+    CI run 44508597351 completed: failure
+2026-11-19 11:46:01,950 [INFO]   test file only: green | full failed state: red | bug confirmed: True
+2026-11-19 11:46:01,950 [INFO] 
+[verify-excluded 9/11] test_027 (error injected in tests/fixtures/sample.json)
+🌿 Branch created: fix/ai-verifyexcl-test_027-testonly-114603 @ 70023e6e (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verifyexcl-test_027-fullstate-114609 @ 6847b2a8 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 70023e6e on branch 'fix/ai-verifyexcl-test_027-testonly-114603'...
+   ⏳ CI run 44508712930 in_progress... [0s/300s]
+   ⏳ CI run 44508712930 queued... [15s/300s]
+    CI run 44508712930 completed: success
+⏳ Waiting for the CI run of 6847b2a8 on branch 'fix/ai-verifyexcl-test_027-fullstate-114609'...
+    CI run 44508724849 completed: failure
+2026-11-19 11:46:50,867 [INFO]   test file only: green | full failed state: red | bug confirmed: True
+2026-11-19 11:46:50,867 [INFO] 
+[verify-excluded 10/11] test_040 (error injected in src/validation.py)
+🌿 Branch created: fix/ai-verifyexcl-test_040-testonly-114652 @ 95606da3 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verifyexcl-test_040-fullstate-114659 @ 1a42dbdb (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 95606da3 on branch 'fix/ai-verifyexcl-test_040-testonly-114652'...
+   ⏳ CI run 44508837024 in_progress... [0s/300s]
+   ⏳ CI run 44508837024 in_progress... [15s/300s]
+    CI run 44508837024 completed: success
+⏳ Waiting for the CI run of 1a42dbdb on branch 'fix/ai-verifyexcl-test_040-fullstate-114659'...
+    CI run 44508852973 completed: failure
+2026-11-19 11:47:41,520 [INFO]   test file only: green | full failed state: red | bug confirmed: True
+2026-11-19 11:47:41,520 [INFO] 
+[verify-excluded 11/11] test_049 (error injected in src/logger.py)
+🌿 Branch created: fix/ai-verifyexcl-test_049-testonly-114743 @ 73dcc8a6 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verifyexcl-test_049-fullstate-114749 @ e59d51ab (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 73dcc8a6 on branch 'fix/ai-verifyexcl-test_049-testonly-114743'...
+   ⏳ CI run 44508964654 in_progress... [0s/300s]
+   ⏳ CI run 44508964654 in_progress... [15s/300s]
+    CI run 44508964654 completed: success
+⏳ Waiting for the CI run of e59d51ab on branch 'fix/ai-verifyexcl-test_049-fullstate-114749'...
+   ⏳ CI run 44508981368 in_progress... [0s/300s]
+    CI run 44508981368 completed: failure
+2026-11-19 11:48:47,748 [INFO]   test file only: green | full failed state: red | bug confirmed: True
+2026-11-19 11:48:47,761 [INFO] Saved 11 rows → experiments/results/a2_test_rerun/verify_excluded_20261119_113819.csv
+
+✅ verify-excluded: bug confirmed on 11/11 cases
+📄 CSV: experiments/results/a2_test_rerun/verify_excluded_20261119_113819.csv
