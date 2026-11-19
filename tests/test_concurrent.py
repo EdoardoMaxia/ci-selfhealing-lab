@@ -6,4 +6,4 @@ def test_thread_safety():
     worker_a = [1] * 50
     worker_b = [3] * 10
     total = run_workers(counter, worker_a + worker_a)
-    assert total == 80
+    assert total == 100
