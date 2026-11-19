@@ -9,7 +9,7 @@ def db_engine():
     engine.close()
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope='function')
 def report_writer(db_engine):
     return ReportWriter(db_engine)
 
