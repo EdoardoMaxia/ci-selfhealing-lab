@@ -2,7 +2,7 @@ import pytest
 from src.integration_db import get_connection
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='session')
 def db_setup():
     conn = get_connection()
     conn.execute("INSERT INTO users (name) VALUES ('alice')")
