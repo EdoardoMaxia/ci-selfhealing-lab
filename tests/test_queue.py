@@ -11,5 +11,5 @@ def test_consumer_processes_message():
         return msg.upper()
 
     producer()
-    result = run_pipeline([], consumer)
+    result = run_pipeline(queue, consumer)
     assert result == "HELLO"
