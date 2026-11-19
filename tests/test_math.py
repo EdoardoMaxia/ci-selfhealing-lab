@@ -15,6 +15,6 @@ def square(n):
     return n * n
 
 
-@pytest.mark.parametrize('n,expected', [(2,4),(3,9),(4,15)])
+@pytest.mark.parametrize('n,expected', [(2,4),(3,9),(4,16)])
 def test_square(n, expected):
     assert square(n) == expected
