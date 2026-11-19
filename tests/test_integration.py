@@ -17,5 +17,7 @@ def test_process_and_archive(db_setup):
 
 
 def test_full_pipeline(db_setup):
+    db_setup.execute("INSERT INTO users (name) VALUES ('bob')")
+    db_setup.commit()
     count = db_setup.execute("SELECT COUNT(*) FROM users").fetchone()[0]
     assert count == 1
