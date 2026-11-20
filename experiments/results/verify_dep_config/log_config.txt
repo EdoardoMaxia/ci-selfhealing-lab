@@ -1,0 +1,296 @@
+2026-11-20 14:25:04,570 [INFO] verify-dep-config: 50 cases (config), batch 5, ci-timeout 600s, no-run-timeout 120s
+2026-11-20 14:25:05,631 [INFO] Control run on the baseline state (main @ 020a1904)...
+🌿 Branch created: fix/ai-verify-control-142505 @ ffb9f644 (0 file change(s) on 020a1904)
+⏳ Waiting for the CI run of ffb9f644 on branch 'fix/ai-verify-control-142505'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 44744142298 in_progress... [10s/120s]
+   ⏳ CI run 44744142298 in_progress... [20s/120s]
+    CI run 44744142298 completed: success
+2026-11-20 14:25:42,820 [INFO]   control OK: run 44744142298 green
+🌿 Branch created: fix/ai-verify-conf_001-142544 @ 434c2959 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_002-142547 @ cae2a567 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_003-142550 @ 6929db5a (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_004-142554 @ 07bc7928 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_005-142557 @ d5ab222d (0 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 434c2959 on branch 'fix/ai-verify-conf_001-142544'...
+   ⏳ CI run 44744236984 in_progress... [0s/120s]
+    CI run 44744236984 completed: success
+2026-11-20 14:26:12,113 [INFO]   ⚠️  conf_001  CI success         run 44744236984 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of cae2a567 on branch 'fix/ai-verify-conf_002-142547'...
+   ⏳ CI run 44744244107 in_progress... [0s/120s]
+   ⏳ CI run 44744244107 in_progress... [10s/120s]
+    CI run 44744244107 completed: success
+2026-11-20 14:26:33,429 [INFO]   ⚠️  conf_002  CI success         run 44744244107 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 6929db5a on branch 'fix/ai-verify-conf_003-142550'...
+    CI run 44744253882 completed: success
+2026-11-20 14:26:34,058 [INFO]   ⚠️  conf_003  CI success         run 44744253882 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 07bc7928 on branch 'fix/ai-verify-conf_004-142554'...
+    CI run 44744260884 completed: success
+2026-11-20 14:26:34,643 [INFO]   ⚠️  conf_004  CI success         run 44744260884 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of d5ab222d on branch 'fix/ai-verify-conf_005-142557'...
+    CI run 44744268188 completed: success
+2026-11-20 14:26:35,260 [INFO]   ⚠️  conf_005  CI success         run 44744268188 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+🌿 Branch created: fix/ai-verify-conf_006-142644 @ 0190efc7 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_007-142650 @ 2f41f477 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_008-142654 @ 1cc09613 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_009-142657 @ 46d2a141 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_010-142700 @ ae426255 (0 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 0190efc7 on branch 'fix/ai-verify-conf_006-142644'...
+   ⏳ CI run 44744387397 queued... [0s/120s]
+   ⏳ CI run 44744387397 queued... [10s/120s]
+   ⏳ CI run 44744387397 queued... [20s/120s]
+   ⏳ CI run 44744387397 queued... [30s/120s]
+   ⏳ CI run 44744387397 queued... [40s/120s]
+   ⏳ CI run 44744387397 queued... [50s/120s]
+   ⏳ CI run 44744387397 queued... [60s/120s]
+   ⏳ CI run 44744387397 queued... [70s/120s]
+   ⏳ CI run 44744387397 queued... [80s/120s]
+   ⏳ CI run 44744387397 queued... [90s/120s]
+   ⏳ CI run 44744387397 queued... [100s/120s]
+   ⏳ CI run 44744387397 queued... [110s/120s]
+   ⏰ Timeout (120s) — CI run of 0190efc7 not completed
+⏳ Waiting for the CI run of 0190efc7 on branch 'fix/ai-verify-conf_006-142644'...
+   ⏳ CI run 44744387397 queued... [0s/600s]
+   ⏳ CI run 44744387397 queued... [15s/600s]
+   ⏳ CI run 44744387397 queued... [30s/600s]
+   ⏳ CI run 44744387397 queued... [45s/600s]
+   ⏳ CI run 44744387397 queued... [60s/600s]
+   ⏳ CI run 44744387397 queued... [75s/600s]
+   ⏳ CI run 44744387397 queued... [90s/600s]
+   ⏳ CI run 44744387397 queued... [105s/600s]
+   ⏳ CI run 44744387397 queued... [120s/600s]
+   ⏳ CI run 44744387397 queued... [135s/600s]
+   ⏳ CI run 44744387397 queued... [150s/600s]
+   ⏳ CI run 44744387397 queued... [165s/600s]
+   ⏳ CI run 44744387397 queued... [180s/600s]
+   ⏳ CI run 44744387397 queued... [195s/600s]
+   ⏳ CI run 44744387397 queued... [210s/600s]
+   ⏳ CI run 44744387397 queued... [225s/600s]
+   ⏳ CI run 44744387397 queued... [240s/600s]
+   ⏳ CI run 44744387397 queued... [255s/600s]
+   ⏳ CI run 44744387397 queued... [270s/600s]
+   ⏳ CI run 44744387397 queued... [285s/600s]
+   ⏳ CI run 44744387397 queued... [300s/600s]
+   ⏳ CI run 44744387397 queued... [315s/600s]
+   ⏳ CI run 44744387397 queued... [330s/600s]
+   ⏳ CI run 44744387397 queued... [345s/600s]
+   ⏳ CI run 44744387397 queued... [360s/600s]
+   ⏳ CI run 44744387397 queued... [375s/600s]
+   ⏳ CI run 44744387397 queued... [390s/600s]
+   ⏳ CI run 44744387397 queued... [405s/600s]
+   ⏳ CI run 44744387397 queued... [420s/600s]
+   ⏳ CI run 44744387397 queued... [435s/600s]
+   ⏳ CI run 44744387397 queued... [450s/600s]
+   ⏳ CI run 44744387397 queued... [465s/600s]
+   ⏳ CI run 44744387397 queued... [480s/600s]
+   ⏳ CI run 44744387397 queued... [495s/600s]
+   ⏳ CI run 44744387397 queued... [510s/600s]
+   ⏳ CI run 44744387397 queued... [525s/600s]
+   ⏳ CI run 44744387397 queued... [540s/600s]
+   ⏳ CI run 44744387397 queued... [555s/600s]
+   ⏳ CI run 44744387397 queued... [570s/600s]
+   ⏳ CI run 44744387397 queued... [585s/600s]
+   ⏰ Timeout (600s) — CI run of 0190efc7 not completed
+2026-11-20 14:39:23,782 [INFO]   ⚠️  conf_006  CI error           run 44744387397 | run did not complete within --ci-timeout
+⏳ Waiting for the CI run of 2f41f477 on branch 'fix/ai-verify-conf_007-142650'...
+    CI run 44744394833 completed: success
+2026-11-20 14:39:24,129 [INFO]   ⚠️  conf_007  CI success         run 44744394833 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 1cc09613 on branch 'fix/ai-verify-conf_008-142654'...
+    CI run 44744401792 completed: success
+2026-11-20 14:39:24,812 [INFO]   ⚠️  conf_008  CI success         run 44744401792 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 46d2a141 on branch 'fix/ai-verify-conf_009-142657'...
+    CI run 44744409759 completed: success
+2026-11-20 14:39:25,478 [INFO]   ⚠️  conf_009  CI success         run 44744409759 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of ae426255 on branch 'fix/ai-verify-conf_010-142700'...
+    CI run 44744418067 completed: success
+2026-11-20 14:39:26,184 [INFO]   ⚠️  conf_010  CI success         run 44744418067 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+🌿 Branch created: fix/ai-verify-conf_011-143936 @ 85d14360 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_012-143939 @ 9b18a291 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_013-143943 @ f5aac256 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_014-143949 @ f1799366 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_015-143952 @ a8b49494 (0 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 85d14360 on branch 'fix/ai-verify-conf_011-143936'...
+   ⏳ CI run 44746251187 queued... [0s/120s]
+    CI run 44746251187 completed: success
+2026-11-20 14:40:06,979 [INFO]   ⚠️  conf_011  CI success         run 44746251187 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 9b18a291 on branch 'fix/ai-verify-conf_012-143939'...
+   ⏳ CI run 44746258508 in_progress... [0s/120s]
+    CI run 44746258508 completed: success
+2026-11-20 14:40:17,938 [INFO]   ⚠️  conf_012  CI success         run 44746258508 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of f5aac256 on branch 'fix/ai-verify-conf_013-143943'...
+   ⏳ CI run 44746273324 in_progress... [0s/120s]
+    CI run 44746273324 completed: failure
+2026-11-20 14:40:28,953 [INFO]   ✅ conf_013  CI failure         run 44746273324
+⏳ Waiting for the CI run of f1799366 on branch 'fix/ai-verify-conf_014-143949'...
+    CI run 44746280970 completed: success
+2026-11-20 14:40:29,519 [INFO]   ⚠️  conf_014  CI success         run 44746280970 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of a8b49494 on branch 'fix/ai-verify-conf_015-143952'...
+    CI run 44746289150 completed: success
+2026-11-20 14:40:30,216 [INFO]   ⚠️  conf_015  CI success         run 44746289150 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+🌿 Branch created: fix/ai-verify-conf_016-144039 @ 79cc8152 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_017-144043 @ 3bf6d29e (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_018-144046 @ da8c8e34 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_019-144050 @ 0e64e949 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_020-144053 @ 5bc4d490 (0 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 79cc8152 on branch 'fix/ai-verify-conf_016-144039'...
+   ⏳ CI run 44746409565 in_progress... [0s/120s]
+   ⏳ CI run 44746409565 in_progress... [10s/120s]
+    CI run 44746409565 completed: success
+2026-11-20 14:41:18,779 [INFO]   ⚠️  conf_016  CI success         run 44746409565 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 3bf6d29e on branch 'fix/ai-verify-conf_017-144043'...
+    CI run 44746417728 completed: success
+2026-11-20 14:41:19,383 [INFO]   ⚠️  conf_017  CI success         run 44746417728 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of da8c8e34 on branch 'fix/ai-verify-conf_018-144046'...
+    CI run 44746426298 completed: success
+2026-11-20 14:41:19,978 [INFO]   ⚠️  conf_018  CI success         run 44746426298 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 0e64e949 on branch 'fix/ai-verify-conf_019-144050'...
+    CI run 44746436233 completed: success
+2026-11-20 14:41:20,616 [INFO]   ⚠️  conf_019  CI success         run 44746436233 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 5bc4d490 on branch 'fix/ai-verify-conf_020-144053'...
+   ⏳ CI run 44746444363 in_progress... [0s/120s]
+    CI run 44746444363 completed: success
+2026-11-20 14:41:31,650 [INFO]   ⚠️  conf_020  CI success         run 44746444363 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+🌿 Branch created: fix/ai-verify-conf_021-144141 @ b38b2246 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_022-144144 @ e9572147 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_023-144147 @ ca70e110 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_024-144151 @ d476f40e (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_025-144154 @ 6e4597d7 (0 file change(s) on 020a1904)
+⏳ Waiting for the CI run of b38b2246 on branch 'fix/ai-verify-conf_021-144141'...
+   ⏳ CI run 44746560136 in_progress... [0s/120s]
+   ⏳ CI run 44746560136 in_progress... [10s/120s]
+    CI run 44746560136 completed: success
+2026-11-20 14:42:19,316 [INFO]   ⚠️  conf_021  CI success         run 44746560136 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of e9572147 on branch 'fix/ai-verify-conf_022-144144'...
+    CI run 44746567387 completed: success
+2026-11-20 14:42:19,916 [INFO]   ⚠️  conf_022  CI success         run 44746567387 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of ca70e110 on branch 'fix/ai-verify-conf_023-144147'...
+    CI run 44746576303 completed: success
+2026-11-20 14:42:20,537 [INFO]   ⚠️  conf_023  CI success         run 44746576303 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of d476f40e on branch 'fix/ai-verify-conf_024-144151'...
+   ⏳ CI run 44746583022 in_progress... [0s/120s]
+    CI run 44746583022 completed: success
+2026-11-20 14:42:31,552 [INFO]   ⚠️  conf_024  CI success         run 44746583022 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 6e4597d7 on branch 'fix/ai-verify-conf_025-144154'...
+    CI run 44746592535 completed: success
+2026-11-20 14:42:32,142 [INFO]   ⚠️  conf_025  CI success         run 44746592535 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+🌿 Branch created: fix/ai-verify-conf_026-144241 @ 307bf77c (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_027-144245 @ 57033d2a (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_028-144248 @ 718b265b (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_029-144252 @ 85b38a16 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_030-144255 @ e8ec0f5d (0 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 307bf77c on branch 'fix/ai-verify-conf_026-144241'...
+   ⏳ CI run 44746711442 in_progress... [0s/120s]
+    CI run 44746711442 completed: success
+2026-11-20 14:43:09,945 [INFO]   ⚠️  conf_026  CI success         run 44746711442 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 57033d2a on branch 'fix/ai-verify-conf_027-144245'...
+   ⏳ CI run 44746719267 in_progress... [0s/120s]
+    CI run 44746719267 completed: success
+2026-11-20 14:43:20,930 [INFO]   ⚠️  conf_027  CI success         run 44746719267 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 718b265b on branch 'fix/ai-verify-conf_028-144248'...
+    CI run 44746727401 completed: success
+2026-11-20 14:43:21,527 [INFO]   ⚠️  conf_028  CI success         run 44746727401 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 85b38a16 on branch 'fix/ai-verify-conf_029-144252'...
+   ⏳ CI run 44746735732 queued... [0s/120s]
+    CI run 44746735732 completed: success
+2026-11-20 14:43:32,558 [INFO]   ⚠️  conf_029  CI success         run 44746735732 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of e8ec0f5d on branch 'fix/ai-verify-conf_030-144255'...
+    CI run 44746743617 completed: success
+2026-11-20 14:43:33,177 [INFO]   ⚠️  conf_030  CI success         run 44746743617 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+🌿 Branch created: fix/ai-verify-conf_031-144343 @ 7a7c69e1 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_032-144349 @ e2426bc9 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_033-144353 @ e11d17f5 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_034-144356 @ da04f992 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_035-144400 @ d377d512 (0 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 7a7c69e1 on branch 'fix/ai-verify-conf_031-144343'...
+    CI run 44746868564 completed: failure
+2026-11-20 14:44:04,620 [INFO]   ✅ conf_031  CI failure         run 44746868564 | workflow check: yaml_error: mapping values are not allowed here
+⏳ Waiting for the CI run of e2426bc9 on branch 'fix/ai-verify-conf_032-144349'...
+   ⏳ CI run 44746877593 queued... [0s/120s]
+    CI run 44746877593 completed: success
+2026-11-20 14:44:15,634 [INFO]   ⚠️  conf_032  CI success         run 44746877593 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of e11d17f5 on branch 'fix/ai-verify-conf_033-144353'...
+   ⏳ CI run 44746885357 queued... [0s/120s]
+    CI run 44746885357 completed: success
+2026-11-20 14:44:26,611 [INFO]   ⚠️  conf_033  CI success         run 44746885357 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of da04f992 on branch 'fix/ai-verify-conf_034-144356'...
+    CI run 44746895348 completed: success
+2026-11-20 14:44:27,234 [INFO]   ⚠️  conf_034  CI success         run 44746895348 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of d377d512 on branch 'fix/ai-verify-conf_035-144400'...
+   ⏳ CI run 44746903629 queued... [0s/120s]
+    CI run 44746903629 completed: success
+2026-11-20 14:44:38,323 [INFO]   ⚠️  conf_035  CI success         run 44746903629 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+🌿 Branch created: fix/ai-verify-conf_036-144447 @ 48bfad8e (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_037-144451 @ bac1d9f7 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_038-144454 @ ef20f7f9 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_039-144457 @ c4163e6d (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_040-144501 @ 644a7309 (0 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 48bfad8e on branch 'fix/ai-verify-conf_036-144447'...
+   ⏳ CI run 44747019312 in_progress... [0s/120s]
+   ⏳ CI run 44747019312 in_progress... [10s/120s]
+    CI run 44747019312 completed: success
+2026-11-20 14:45:25,871 [INFO]   ⚠️  conf_036  CI success         run 44747019312 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of bac1d9f7 on branch 'fix/ai-verify-conf_037-144451'...
+    CI run 44747027933 completed: success
+2026-11-20 14:45:26,506 [INFO]   ⚠️  conf_037  CI success         run 44747027933 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of ef20f7f9 on branch 'fix/ai-verify-conf_038-144454'...
+    CI run 44747035129 completed: success
+2026-11-20 14:45:27,129 [INFO]   ⚠️  conf_038  CI success         run 44747035129 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of c4163e6d on branch 'fix/ai-verify-conf_039-144457'...
+    CI run 44747045296 completed: success
+2026-11-20 14:45:27,752 [INFO]   ⚠️  conf_039  CI success         run 44747045296 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 644a7309 on branch 'fix/ai-verify-conf_040-144501'...
+   ⏳ CI run 44747053644 in_progress... [0s/120s]
+    CI run 44747053644 completed: success
+2026-11-20 14:45:38,747 [INFO]   ⚠️  conf_040  CI success         run 44747053644 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+🌿 Branch created: fix/ai-verify-conf_041-144548 @ bee332eb (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_042-144552 @ 16ef428b (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_043-144555 @ 63ec699b (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_044-144559 @ 199e5f18 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_045-144602 @ 51fe070d (0 file change(s) on 020a1904)
+⏳ Waiting for the CI run of bee332eb on branch 'fix/ai-verify-conf_041-144548'...
+   ⏳ CI run 44747178290 in_progress... [0s/120s]
+   ⏳ CI run 44747178290 in_progress... [10s/120s]
+    CI run 44747178290 completed: success
+2026-11-20 14:46:27,673 [INFO]   ⚠️  conf_041  CI success         run 44747178290 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 16ef428b on branch 'fix/ai-verify-conf_042-144552'...
+    CI run 44747185274 completed: success
+2026-11-20 14:46:28,331 [INFO]   ⚠️  conf_042  CI success         run 44747185274 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 63ec699b on branch 'fix/ai-verify-conf_043-144555'...
+    CI run 44747194523 completed: success
+2026-11-20 14:46:28,947 [INFO]   ⚠️  conf_043  CI success         run 44747194523 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 199e5f18 on branch 'fix/ai-verify-conf_044-144559'...
+   ⏳ CI run 44747201890 in_progress... [0s/120s]
+    CI run 44747201890 completed: success
+2026-11-20 14:46:40,007 [INFO]   ⚠️  conf_044  CI success         run 44747201890 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 51fe070d on branch 'fix/ai-verify-conf_045-144602'...
+    CI run 44747210834 completed: success
+2026-11-20 14:46:40,642 [INFO]   ⚠️  conf_045  CI success         run 44747210834 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+🌿 Branch created: fix/ai-verify-conf_046-144650 @ 9916dc09 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_047-144654 @ 00a18da6 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_048-144701 @ b39a8d15 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_049-144705 @ cb32e455 (0 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-conf_050-144708 @ ec538d23 (0 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 9916dc09 on branch 'fix/ai-verify-conf_046-144650'...
+   ⏳ CI run 44747329997 in_progress... [0s/120s]
+    CI run 44747329997 completed: success
+2026-11-20 14:47:22,838 [INFO]   ⚠️  conf_046  CI success         run 44747329997 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of 00a18da6 on branch 'fix/ai-verify-conf_047-144654'...
+   ⏳ CI run 44747348795 in_progress... [0s/120s]
+    CI run 44747348795 completed: success
+2026-11-20 14:47:33,829 [INFO]   ⚠️  conf_047  CI success         run 44747348795 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of b39a8d15 on branch 'fix/ai-verify-conf_048-144701'...
+    CI run 44747356318 completed: success
+2026-11-20 14:47:34,680 [INFO]   ⚠️  conf_048  CI success         run 44747356318 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of cb32e455 on branch 'fix/ai-verify-conf_049-144705'...
+   ⏳ CI run 44747364565 in_progress... [0s/120s]
+    CI run 44747364565 completed: success
+2026-11-20 14:47:46,091 [INFO]   ⚠️  conf_049  CI success         run 44747364565 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+⏳ Waiting for the CI run of ec538d23 on branch 'fix/ai-verify-conf_050-144708'...
+    CI run 44747372587 completed: success
+2026-11-20 14:47:46,830 [INFO]   ⚠️  conf_050  CI success         run 44747372587 | ANOMALY: CI green on the injected state | injection_noop: inject_error changed no file (state identical to main)
+
+✅ verify-dep-config: 2/50 injected states fail the CI
+⚠️  CI green on the injected state (anomalies): 47 ['conf_001', 'conf_002', 'conf_003', 'conf_004', 'conf_005', 'conf_007', 'conf_008', 'conf_009', 'conf_010', 'conf_011', 'conf_012', 'conf_014', 'conf_015', 'conf_016', 'conf_017', 'conf_018', 'conf_019', 'conf_020', 'conf_021', 'conf_022', 'conf_023', 'conf_024', 'conf_025', 'conf_026', 'conf_027', 'conf_028', 'conf_029', 'conf_030', 'conf_032', 'conf_033', 'conf_034', 'conf_035', 'conf_036', 'conf_037', 'conf_038', 'conf_039', 'conf_040', 'conf_041', 'conf_042', 'conf_043', 'conf_044', 'conf_045', 'conf_046', 'conf_047', 'conf_048', 'conf_049', 'conf_050']
+   of which injection changed no file: 46
+❓ inconclusive / errors (re-run these): ['conf_006']
+📄 CSV: /home/aiteam/project/code/edoardo/ci-selfhealing-lab/experiments/results/verify_dep_config/verify_results.csv

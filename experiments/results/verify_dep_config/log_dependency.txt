@@ -1,0 +1,252 @@
+2026-11-20 14:10:31,577 [INFO] verify-dep-config: 50 cases (dependency), batch 5, ci-timeout 600s, no-run-timeout 120s
+2026-11-20 14:10:32,682 [INFO] Control run on the baseline state (main @ 020a1904)...
+🌿 Branch created: fix/ai-verify-control-141032 @ bebea229 (0 file change(s) on 020a1904)
+⏳ Waiting for the CI run of bebea229 on branch 'fix/ai-verify-control-141032'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 44742003608 in_progress... [10s/120s]
+   ⏳ CI run 44742003608 in_progress... [20s/120s]
+   ⏳ CI run 44742003608 in_progress... [30s/120s]
+    CI run 44742003608 completed: success
+2026-11-20 14:11:19,753 [INFO]   control OK: run 44742003608 green
+🌿 Branch created: fix/ai-verify-dep_001-141121 @ fcf70695 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_002-141127 @ fa49827f (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_003-141133 @ 30ba1397 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_004-141139 @ c67b3a39 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_005-141145 @ 6c2a963c (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of fcf70695 on branch 'fix/ai-verify-dep_001-141121'...
+    CI run 44742123936 completed: failure
+2026-11-20 14:11:52,765 [INFO]   ✅ dep_001   CI failure         run 44742123936
+⏳ Waiting for the CI run of fa49827f on branch 'fix/ai-verify-dep_002-141127'...
+   ⏳ CI run 44742139272 in_progress... [0s/120s]
+    CI run 44742139272 completed: failure
+2026-11-20 14:12:03,811 [INFO]   ✅ dep_002   CI failure         run 44742139272
+⏳ Waiting for the CI run of 30ba1397 on branch 'fix/ai-verify-dep_003-141133'...
+    CI run 44742155255 completed: failure
+2026-11-20 14:12:04,371 [INFO]   ✅ dep_003   CI failure         run 44742155255
+⏳ Waiting for the CI run of c67b3a39 on branch 'fix/ai-verify-dep_004-141139'...
+   ⏳ CI run 44742170308 queued... [0s/120s]
+   ⏳ CI run 44742170308 in_progress... [10s/120s]
+   ⏳ CI run 44742170308 in_progress... [20s/120s]
+    CI run 44742170308 completed: failure
+2026-11-20 14:12:36,074 [INFO]   ✅ dep_004   CI failure         run 44742170308
+⏳ Waiting for the CI run of 6c2a963c on branch 'fix/ai-verify-dep_005-141145'...
+    CI run 44742185589 completed: failure
+2026-11-20 14:12:36,707 [INFO]   ✅ dep_005   CI failure         run 44742185589
+🌿 Branch created: fix/ai-verify-dep_006-141246 @ c7842796 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_007-141252 @ 9cd82482 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_008-141259 @ 96a56ed7 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_009-141305 @ f70ad5f6 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_010-141311 @ cbc8ad89 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of c7842796 on branch 'fix/ai-verify-dep_006-141246'...
+   ⏳ CI run 44742331664 in_progress... [0s/120s]
+    CI run 44742331664 completed: failure
+2026-11-20 14:13:28,667 [INFO]   ✅ dep_006   CI failure         run 44742331664
+⏳ Waiting for the CI run of 9cd82482 on branch 'fix/ai-verify-dep_007-141252'...
+   ⏳ CI run 44742348002 in_progress... [0s/120s]
+    CI run 44742348002 completed: failure
+2026-11-20 14:13:39,654 [INFO]   ✅ dep_007   CI failure         run 44742348002
+⏳ Waiting for the CI run of 96a56ed7 on branch 'fix/ai-verify-dep_008-141259'...
+    CI run 44742362811 completed: failure
+2026-11-20 14:13:40,239 [INFO]   ✅ dep_008   CI failure         run 44742362811
+⏳ Waiting for the CI run of f70ad5f6 on branch 'fix/ai-verify-dep_009-141305'...
+   ⏳ CI run 44742378849 in_progress... [0s/120s]
+    CI run 44742378849 completed: failure
+2026-11-20 14:13:51,231 [INFO]   ✅ dep_009   CI failure         run 44742378849
+⏳ Waiting for the CI run of cbc8ad89 on branch 'fix/ai-verify-dep_010-141311'...
+   ⏳ CI run 44742394353 in_progress... [0s/120s]
+   ⏳ CI run 44742394353 in_progress... [10s/120s]
+   ⏳ CI run 44742394353 in_progress... [20s/120s]
+   ⏳ CI run 44742394353 in_progress... [30s/120s]
+   ⏳ CI run 44742394353 in_progress... [40s/120s]
+    CI run 44742394353 completed: success
+2026-11-20 14:14:43,621 [INFO]   ⚠️  dep_010   CI success         run 44742394353 | ANOMALY: CI green on the injected state
+🌿 Branch created: fix/ai-verify-dep_011-141453 @ 89e0f35a (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_012-141459 @ 41ef081c (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_013-141505 @ 39258bdb (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_014-141511 @ 268b1875 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_015-141518 @ 825bb52c (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 89e0f35a on branch 'fix/ai-verify-dep_011-141453'...
+   ⏳ CI run 44742643605 in_progress... [0s/120s]
+    CI run 44742643605 completed: failure
+2026-11-20 14:15:36,242 [INFO]   ✅ dep_011   CI failure         run 44742643605
+⏳ Waiting for the CI run of 41ef081c on branch 'fix/ai-verify-dep_012-141459'...
+    CI run 44742660778 completed: success
+2026-11-20 14:15:36,871 [INFO]   ⚠️  dep_012   CI success         run 44742660778 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of 39258bdb on branch 'fix/ai-verify-dep_013-141505'...
+   ⏳ CI run 44742677948 in_progress... [0s/120s]
+    CI run 44742677948 completed: success
+2026-11-20 14:15:47,961 [INFO]   ⚠️  dep_013   CI success         run 44742677948 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of 268b1875 on branch 'fix/ai-verify-dep_014-141511'...
+    CI run 44742696663 completed: failure
+2026-11-20 14:15:48,693 [INFO]   ✅ dep_014   CI failure         run 44742696663
+⏳ Waiting for the CI run of 825bb52c on branch 'fix/ai-verify-dep_015-141518'...
+   ⏳ CI run 44742714935 in_progress... [0s/120s]
+    CI run 44742714935 completed: failure
+2026-11-20 14:15:59,782 [INFO]   ✅ dep_015   CI failure         run 44742714935
+🌿 Branch created: fix/ai-verify-dep_016-141609 @ ae33e075 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_017-141616 @ 8900efd7 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_018-141622 @ 9496346b (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_019-141628 @ 51035737 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_020-141634 @ 1b29c4fd (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of ae33e075 on branch 'fix/ai-verify-dep_016-141609'...
+   ⏳ CI run 44742843602 in_progress... [0s/120s]
+    CI run 44742843602 completed: success
+2026-11-20 14:16:51,478 [INFO]   ⚠️  dep_016   CI success         run 44742843602 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of 8900efd7 on branch 'fix/ai-verify-dep_017-141616'...
+   ⏳ CI run 44742858505 queued... [0s/120s]
+    CI run 44742858505 completed: success
+2026-11-20 14:17:02,423 [INFO]   ⚠️  dep_017   CI success         run 44742858505 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of 9496346b on branch 'fix/ai-verify-dep_018-141622'...
+    CI run 44742872353 completed: success
+2026-11-20 14:17:02,995 [INFO]   ⚠️  dep_018   CI success         run 44742872353 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of 51035737 on branch 'fix/ai-verify-dep_019-141628'...
+   ⏳ CI run 44742885671 queued... [0s/120s]
+   ⏳ CI run 44742885671 in_progress... [10s/120s]
+    CI run 44742885671 completed: success
+2026-11-20 14:17:24,335 [INFO]   ⚠️  dep_019   CI success         run 44742885671 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of 1b29c4fd on branch 'fix/ai-verify-dep_020-141634'...
+    CI run 44742900297 completed: failure
+2026-11-20 14:17:24,951 [INFO]   ✅ dep_020   CI failure         run 44742900297
+🌿 Branch created: fix/ai-verify-dep_021-141734 @ d63f2f4b (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_022-141740 @ 66fd0ef0 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_023-141746 @ ab99bd9b (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_024-141753 @ f1d2418b (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_025-141759 @ 6ebf976a (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of d63f2f4b on branch 'fix/ai-verify-dep_021-141734'...
+   ⏳ CI run 44743049460 in_progress... [0s/120s]
+    CI run 44743049460 completed: success
+2026-11-20 14:18:16,364 [INFO]   ⚠️  dep_021   CI success         run 44743049460 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of 66fd0ef0 on branch 'fix/ai-verify-dep_022-141740'...
+    CI run 44743062902 completed: failure
+2026-11-20 14:18:16,959 [INFO]   ✅ dep_022   CI failure         run 44743062902
+⏳ Waiting for the CI run of ab99bd9b on branch 'fix/ai-verify-dep_023-141746'...
+   ⏳ CI run 44743077378 in_progress... [0s/120s]
+    CI run 44743077378 completed: failure
+2026-11-20 14:18:27,914 [INFO]   ✅ dep_023   CI failure         run 44743077378
+⏳ Waiting for the CI run of f1d2418b on branch 'fix/ai-verify-dep_024-141753'...
+    CI run 44743091378 completed: success
+2026-11-20 14:18:28,557 [INFO]   ⚠️  dep_024   CI success         run 44743091378 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of 6ebf976a on branch 'fix/ai-verify-dep_025-141759'...
+   ⏳ CI run 44743106703 in_progress... [0s/120s]
+    CI run 44743106703 completed: success
+2026-11-20 14:18:39,660 [INFO]   ⚠️  dep_025   CI success         run 44743106703 | ANOMALY: CI green on the injected state
+🌿 Branch created: fix/ai-verify-dep_026-141849 @ 6572eb6f (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_027-141855 @ bbae5b8b (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_028-141901 @ c911f942 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_029-141908 @ 9269d6f1 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_030-141914 @ db326721 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 6572eb6f on branch 'fix/ai-verify-dep_026-141849'...
+    CI run 44743228455 completed: success
+2026-11-20 14:19:21,328 [INFO]   ⚠️  dep_026   CI success         run 44743228455 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of bbae5b8b on branch 'fix/ai-verify-dep_027-141855'...
+   ⏳ CI run 44743244082 in_progress... [0s/120s]
+   ⏳ CI run 44743244082 queued... [10s/120s]
+    CI run 44743244082 completed: failure
+2026-11-20 14:19:42,629 [INFO]   ✅ dep_027   CI failure         run 44743244082
+⏳ Waiting for the CI run of c911f942 on branch 'fix/ai-verify-dep_028-141901'...
+    CI run 44743259257 completed: success
+2026-11-20 14:19:43,214 [INFO]   ⚠️  dep_028   CI success         run 44743259257 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of 9269d6f1 on branch 'fix/ai-verify-dep_029-141908'...
+   ⏳ CI run 44743274178 in_progress... [0s/120s]
+    CI run 44743274178 completed: failure
+2026-11-20 14:19:54,184 [INFO]   ✅ dep_029   CI failure         run 44743274178
+⏳ Waiting for the CI run of db326721 on branch 'fix/ai-verify-dep_030-141914'...
+    CI run 44743289215 completed: failure
+2026-11-20 14:19:54,741 [INFO]   ✅ dep_030   CI failure         run 44743289215
+🌿 Branch created: fix/ai-verify-dep_031-142004 @ c96d2d14 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_032-142010 @ 3f553afe (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_033-142017 @ a72f9e57 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_034-142023 @ e1582ae2 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_035-142029 @ c9ae4bf9 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of c96d2d14 on branch 'fix/ai-verify-dep_031-142004'...
+   ⏳ CI run 44743409699 in_progress... [0s/120s]
+    CI run 44743409699 completed: failure
+2026-11-20 14:20:46,821 [INFO]   ✅ dep_031   CI failure         run 44743409699
+⏳ Waiting for the CI run of 3f553afe on branch 'fix/ai-verify-dep_032-142010'...
+    CI run 44743426048 completed: failure
+2026-11-20 14:20:47,417 [INFO]   ✅ dep_032   CI failure         run 44743426048
+⏳ Waiting for the CI run of a72f9e57 on branch 'fix/ai-verify-dep_033-142017'...
+   ⏳ CI run 44743441326 in_progress... [0s/120s]
+    CI run 44743441326 completed: failure
+2026-11-20 14:20:58,388 [INFO]   ✅ dep_033   CI failure         run 44743441326
+⏳ Waiting for the CI run of e1582ae2 on branch 'fix/ai-verify-dep_034-142023'...
+   ⏳ CI run 44743457823 in_progress... [0s/120s]
+    CI run 44743457823 completed: success
+2026-11-20 14:21:09,313 [INFO]   ⚠️  dep_034   CI success         run 44743457823 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of c9ae4bf9 on branch 'fix/ai-verify-dep_035-142029'...
+    CI run 44743472808 completed: success
+2026-11-20 14:21:09,966 [INFO]   ⚠️  dep_035   CI success         run 44743472808 | ANOMALY: CI green on the injected state
+🌿 Branch created: fix/ai-verify-dep_036-142119 @ ca0c93a4 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_037-142125 @ 064d4f47 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_038-142132 @ 0724f04b (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_039-142138 @ 2810aff5 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_040-142144 @ 1355c6f1 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of ca0c93a4 on branch 'fix/ai-verify-dep_036-142119'...
+   ⏳ CI run 44743597226 queued... [0s/120s]
+    CI run 44743597226 completed: failure
+2026-11-20 14:22:01,721 [INFO]   ✅ dep_036   CI failure         run 44743597226
+⏳ Waiting for the CI run of 064d4f47 on branch 'fix/ai-verify-dep_037-142125'...
+    CI run 44743611996 completed: failure
+2026-11-20 14:22:02,330 [INFO]   ✅ dep_037   CI failure         run 44743611996
+⏳ Waiting for the CI run of 0724f04b on branch 'fix/ai-verify-dep_038-142132'...
+    CI run 44743626975 completed: failure
+2026-11-20 14:22:02,906 [INFO]   ✅ dep_038   CI failure         run 44743626975
+⏳ Waiting for the CI run of 2810aff5 on branch 'fix/ai-verify-dep_039-142138'...
+   ⏳ CI run 44743642433 in_progress... [0s/120s]
+   ⏳ CI run 44743642433 in_progress... [10s/120s]
+    CI run 44743642433 completed: success
+2026-11-20 14:22:24,190 [INFO]   ⚠️  dep_039   CI success         run 44743642433 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of 1355c6f1 on branch 'fix/ai-verify-dep_040-142144'...
+    CI run 44743656379 completed: failure
+2026-11-20 14:22:24,842 [INFO]   ✅ dep_040   CI failure         run 44743656379
+🌿 Branch created: fix/ai-verify-dep_041-142234 @ bc9cfd80 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_042-142240 @ c215607f (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_043-142247 @ 8e8be74d (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_044-142253 @ 785ded6a (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_045-142259 @ 08a15407 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of bc9cfd80 on branch 'fix/ai-verify-dep_041-142234'...
+    CI run 44743778672 completed: success
+2026-11-20 14:23:06,315 [INFO]   ⚠️  dep_041   CI success         run 44743778672 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of c215607f on branch 'fix/ai-verify-dep_042-142240'...
+   ⏳ CI run 44743792025 queued... [0s/120s]
+    CI run 44743792025 completed: failure
+2026-11-20 14:23:17,314 [INFO]   ✅ dep_042   CI failure         run 44743792025
+⏳ Waiting for the CI run of 8e8be74d on branch 'fix/ai-verify-dep_043-142247'...
+   ⏳ CI run 44743807599 in_progress... [0s/120s]
+    CI run 44743807599 completed: success
+2026-11-20 14:23:28,279 [INFO]   ⚠️  dep_043   CI success         run 44743807599 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of 785ded6a on branch 'fix/ai-verify-dep_044-142253'...
+    CI run 44743823415 completed: failure
+2026-11-20 14:23:28,875 [INFO]   ✅ dep_044   CI failure         run 44743823415
+⏳ Waiting for the CI run of 08a15407 on branch 'fix/ai-verify-dep_045-142259'...
+   ⏳ CI run 44743837095 in_progress... [0s/120s]
+    CI run 44743837095 completed: failure
+2026-11-20 14:23:39,827 [INFO]   ✅ dep_045   CI failure         run 44743837095
+🌿 Branch created: fix/ai-verify-dep_046-142349 @ 05d47b9b (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_047-142355 @ 4fde9274 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_048-142402 @ 38c8416d (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_049-142408 @ d7b23e58 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_050-142414 @ d0a1453a (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 05d47b9b on branch 'fix/ai-verify-dep_046-142349'...
+    CI run 44743959451 completed: success
+2026-11-20 14:24:21,314 [INFO]   ⚠️  dep_046   CI success         run 44743959451 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of 4fde9274 on branch 'fix/ai-verify-dep_047-142355'...
+   ⏳ CI run 44743974734 in_progress... [0s/120s]
+    CI run 44743974734 completed: failure
+2026-11-20 14:24:32,333 [INFO]   ✅ dep_047   CI failure         run 44743974734
+⏳ Waiting for the CI run of 38c8416d on branch 'fix/ai-verify-dep_048-142402'...
+   ⏳ CI run 44743990164 in_progress... [0s/120s]
+   ⏳ CI run 44743990164 in_progress... [10s/120s]
+    CI run 44743990164 completed: success
+2026-11-20 14:24:53,662 [INFO]   ⚠️  dep_048   CI success         run 44743990164 | ANOMALY: CI green on the injected state
+⏳ Waiting for the CI run of d7b23e58 on branch 'fix/ai-verify-dep_049-142408'...
+    CI run 44744004946 completed: failure
+2026-11-20 14:24:54,265 [INFO]   ✅ dep_049   CI failure         run 44744004946
+⏳ Waiting for the CI run of d0a1453a on branch 'fix/ai-verify-dep_050-142414'...
+    CI run 44744021331 completed: failure
+2026-11-20 14:24:54,900 [INFO]   ✅ dep_050   CI failure         run 44744021331
+
+✅ verify-dep-config: 31/50 injected states fail the CI
+⚠️  CI green on the injected state (anomalies): 19 ['dep_010', 'dep_012', 'dep_013', 'dep_016', 'dep_017', 'dep_018', 'dep_019', 'dep_021', 'dep_024', 'dep_025', 'dep_026', 'dep_028', 'dep_034', 'dep_035', 'dep_039', 'dep_041', 'dep_043', 'dep_046', 'dep_048']
+   of which injection changed no file: 0
+📄 CSV: /home/aiteam/project/code/edoardo/ci-selfhealing-lab/experiments/results/verify_dep_config/verify_results.csv
