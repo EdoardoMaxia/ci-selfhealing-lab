@@ -256,3 +256,89 @@ def assertions_report(baseline: str, injected: str, repaired: str) -> tuple:
     detail = {"reference": "baseline (clean test before injection)",
               "vs_baseline": vs_base, "vs_injected": vs_inj}
     return vs_base["summary"], json.dumps(detail, ensure_ascii=False)
+
+
+# ──────────────────────────────────────────────────────────────
+# Failing-state verification for dependency / config (--verify-dep-config)
+# ──────────────────────────────────────────────────────────────
+
+def gh_branch_match(pattern: str, ref: str) -> bool:
+    """GitHub Actions branch filter: '*' does not cross '/', '**' does, '?' one char."""
+    import re
+    rx, i = "", 0
+    while i < len(pattern):
+        if pattern.startswith("**", i):
+            rx += ".*"; i += 2
+        elif pattern[i] == "*":
+            rx += "[^/]*"; i += 1
+        elif pattern[i] == "?":
+            rx += "."; i += 1
+        else:
+            rx += re.escape(pattern[i]); i += 1
+    return re.fullmatch(rx, ref) is not None
+
+
+def workflow_check(text: str, branch: str = "fix/ai-verify-x") -> str:
+    """
+    Static reading of an (injected) ci.yml, used only as a NOTE next to the real
+    CI result: would GitHub even parse it, and would a push to `branch` trigger it?
+    Returns "ok" or a short reason.
+    """
+    try:
+        import yaml
+    except ImportError:
+        return "not checked (PyYAML missing)"
+    try:
+        d = yaml.safe_load(text)
+    except Exception as e:
+        return f"yaml_error: {str(e).splitlines()[0][:80]}"
+    if not isinstance(d, dict):
+        return "not a YAML mapping"
+    on = d.get("on", d.get(True))            # YAML 1.1 reads the bare key `on` as True
+    if on is None:
+        return "no 'on' trigger"
+    if isinstance(on, str):
+        on = {on: None}
+    if isinstance(on, list):
+        on = {k: None for k in on}
+    if not isinstance(on, dict) or "push" not in on:
+        return "no push trigger"
+    push = on["push"] or {}
+    branches = push.get("branches")
+    if branches is not None:
+        branches = [branches] if isinstance(branches, str) else list(branches)
+        pos = [str(p) for p in branches if not str(p).startswith("!")]
+        neg = [str(p)[1:] for p in branches if str(p).startswith("!")]
+        if not any(gh_branch_match(p, branch) for p in pos) or any(gh_branch_match(p, branch) for p in neg):
+            return f"push trigger does not match {branch}: {branches}"
+    if not isinstance(d.get("jobs"), dict) or not d["jobs"]:
+        return "no jobs"
+    return "ok"
+
+
+# Conclusions that prove the injected state is NOT green.
+FAILING_CONCLUSIONS = ("failure", "startup_failure")
+
+
+def classify_failing_state(appeared: bool, conclusion, control_ok: bool) -> tuple:
+    """
+    (ci_conclusion, verified_failing, note) for one pushed failing state.
+    - no run at all  -> "no_run": counts as failing ONLY if the control branch
+      (baseline state, same naming) did trigger a run, so the absence is caused
+      by the injected file and not by the branch name or by GitHub;
+    - failure / startup_failure -> verified;
+    - success -> anomaly (the injected state passes the CI);
+    - a run that never completed -> "error"; any other conclusion
+      (cancelled, timed_out, ...) -> inconclusive, to be re-run.
+    """
+    if not appeared:
+        if control_ok:
+            return "no_run", True, "no workflow run for this commit; the control branch did trigger one"
+        return "no_run", False, "no workflow run and no valid control run: inconclusive"
+    if conclusion is None:
+        return "error", False, "run did not complete within --ci-timeout"
+    if conclusion == "success":
+        return "success", False, "ANOMALY: CI green on the injected state"
+    if conclusion in FAILING_CONCLUSIONS:
+        return conclusion, True, ""
+    return conclusion, False, f"inconclusive conclusion '{conclusion}': re-run this case"

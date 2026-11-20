@@ -32,6 +32,9 @@ Usage:
 
     # Documents the bug on the 11 excluded cases (no LLM involved)
     python experiments/benchmark.py --verify-excluded --output-dir experiments/results/a2_test_rerun
+
+    # Verifies that every injected dependency/config state really fails the CI (no LLM)
+    python experiments/benchmark.py --verify-dep-config --category dependency
 """
 
 import os
@@ -1072,6 +1075,176 @@ def verify_excluded_cases(ci_timeout: int, out_dir: Path, run_ts: str) -> list:
 
 
 # ══════════════════════════════════════════════════════════════
+# FAILING-STATE VERIFICATION — dependency / config (MSR revision §9a)
+# ══════════════════════════════════════════════════════════════
+#
+# --verify-dep-config, no LLM. For every selected dependency/config case:
+#   inject the error, commit EVERY file that differs from GitHub main (the full
+#   failing state) on its own branch, wait for the CI run of that commit and
+#   record whether the CI is NOT green.
+# failure / startup_failure -> verified failing; success -> ANOMALY (the injected
+# state passes the CI); no run at all -> "no_run", verified only because a
+# CONTROL branch (baseline state, same naming) is checked first and must trigger
+# a green run. Branches are named fix/ai-verify-* because ci.yml only triggers on
+# main and fix/** (a verify/* branch would never run, and every case would look
+# like "no_run"). Cases are pushed in batches so their runs execute in parallel.
+
+VERIFY_DC_COLUMNS = [
+    "case_id", "category", "injected_file", "branch", "ci_conclusion", "ci_run_id",
+    "ci_run_url", "commit_sha", "verified_failing", "notes",
+    "difficulty", "injection_applied", "injected_files", "workflow_check", "base_sha",
+]
+VERIFY_DC_INJECTED_FILE = {"dependency": "requirements.txt", "config": ".github/workflows/ci.yml"}
+
+
+def prepare_failing_states(errors: list, remote_blobs: dict) -> list:
+    """Injects each case locally and keeps the resulting changes in memory (nothing is pushed)."""
+    from experiments import protocol_b
+    states = []
+    for error in errors:
+        reset_files()
+        note = ""
+        try:
+            inject_error(error)
+        except Exception as e:
+            note = f"inject_error raised: {e}"[:200]
+        changes = protocol_b.diff_against_remote(remote_blobs)
+        wf = ""
+        if error["category"] == "config":
+            wf = protocol_b.workflow_check(
+                Path(".github/workflows/ci.yml").read_text(encoding="utf-8"), "fix/ai-verify-x")
+        states.append({"error": error, "changes": changes, "workflow_check": wf, "note": note})
+    reset_files()
+    return states
+
+
+def _wait_run_or_absence(repo, branch: str, sha: str, no_run_timeout: int, ci_timeout: int):
+    """(appeared, ci): a run that does not show up within no_run_timeout counts as absent."""
+    from agent.github.client import wait_for_ci_run
+    first = wait_for_ci_run(repo, branch, head_sha=sha, timeout_sec=no_run_timeout, poll_interval=10)
+    if first["run_id"] is None:
+        return False, first
+    if first["conclusion"] is not None:
+        return True, first
+    return True, wait_for_ci_run(repo, branch, head_sha=sha, timeout_sec=ci_timeout)
+
+
+def verify_control_run(repo, base_sha: str, no_run_timeout: int, ci_timeout: int) -> dict:
+    """Pushes the baseline state (no injection) under the same naming: it must trigger a green run."""
+    from agent.github.client import commit_files_on_new_branch, delete_branch
+    branch = f"fix/ai-verify-control-{datetime.now().strftime('%H%M%S')}"
+    sha = commit_files_on_new_branch(
+        repo, base_sha, branch, {}, "benchmark(verify-dep-config): control, baseline state")
+    try:
+        appeared, ci = _wait_run_or_absence(repo, branch, sha, no_run_timeout, ci_timeout)
+    finally:
+        delete_branch(repo, branch)
+    return {"branch": branch, "commit_sha": sha, "base_sha": base_sha, "appeared": appeared,
+            "conclusion": ci["conclusion"], "run_id": ci["run_id"], "run_url": ci["run_url"]}
+
+
+def save_verify_dep_config(rows: list, out_dir: Path, run_ts: str) -> Path:
+    """Per-run CSV/JSON + verify_results.csv merged by case_id (re-running a case replaces its row)."""
+    def norm(r):
+        r = dict(r)
+        if isinstance(r.get("verified_failing"), bool):
+            r["verified_failing"] = "true" if r["verified_failing"] else "false"
+        if isinstance(r.get("injection_applied"), bool):
+            r["injection_applied"] = "true" if r["injection_applied"] else "false"
+        return {c: r.get(c, "") for c in VERIFY_DC_COLUMNS}
+    rows = [norm(r) for r in rows]
+    with open(out_dir / f"verify_dep_config_{run_ts}.csv", "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=VERIFY_DC_COLUMNS); w.writeheader(); w.writerows(rows)
+    with open(out_dir / f"verify_dep_config_{run_ts}.json", "w", encoding="utf-8") as f:
+        json.dump(rows, f, indent=2, ensure_ascii=False)
+    merged_path = out_dir / "verify_results.csv"
+    merged = {}
+    if merged_path.exists():
+        with open(merged_path, newline="", encoding="utf-8") as f:
+            merged = {r["case_id"]: r for r in csv.DictReader(f)}
+    merged.update({r["case_id"]: r for r in rows})
+    order = sorted(merged.values(), key=lambda r: (r["category"], r["case_id"]))
+    with open(merged_path, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=VERIFY_DC_COLUMNS); w.writeheader()
+        w.writerows({c: r.get(c, "") for c in VERIFY_DC_COLUMNS} for r in order)
+    return merged_path
+
+
+def verify_dep_config_cases(errors: list, out_dir: Path, run_ts: str, ci_timeout: int,
+                            no_run_timeout: int, batch: int):
+    """--verify-dep-config. Returns the rows, or None if the control run failed."""
+    from experiments import protocol_b
+    from agent.github.client import get_repo, commit_files_on_new_branch, delete_branch
+
+    repo     = get_repo(os.getenv("GITHUB_REPO", ""))
+    base_sha = repo.get_branch("main").commit.sha
+
+    log.info(f"Control run on the baseline state (main @ {base_sha[:8]})...")
+    control = verify_control_run(repo, base_sha, no_run_timeout, ci_timeout)
+    with open(out_dir / f"verify_control_{run_ts}.json", "w", encoding="utf-8") as f:
+        json.dump(control, f, indent=2)
+    if not (control["appeared"] and control["conclusion"] == "success"):
+        log.error(f"Control run not green ({control}): the baseline must pass the CI and the "
+                  f"fix/ai-* naming must trigger it, otherwise no result would be meaningful")
+        return None
+    log.info(f"  control OK: run {control['run_id']} green")
+
+    states = prepare_failing_states(errors, protocol_b.remote_scope_blobs(repo, base_sha))
+    rows = []
+    for start in range(0, len(states), batch):
+        chunk, pushed, branches = states[start:start + batch], [], []
+        try:
+            for st in chunk:
+                cid = st["error"]["id"]
+                branch = f"fix/ai-verify-{cid}-{datetime.now().strftime('%H%M%S')}"
+                try:
+                    sha = commit_files_on_new_branch(
+                        repo, base_sha, branch, st["changes"],
+                        f"benchmark(verify-dep-config): failing state of {cid}")
+                    branches.append(branch)
+                    pushed.append((st, branch, sha, ""))
+                except Exception as e:
+                    pushed.append((st, branch, "", f"push failed: {e}"[:200]))
+            for st, branch, sha, err in pushed:
+                e = st["error"]
+                notes = [n for n in (st["note"],) if n]
+                if not st["changes"]:
+                    notes.append("injection_noop: inject_error changed no file (state identical to main)")
+                if st["workflow_check"] and st["workflow_check"] != "ok":
+                    notes.append(f"workflow check: {st['workflow_check']}")
+                row = {"case_id": e["id"], "category": e["category"], "difficulty": e["difficulty"],
+                       "injected_file": VERIFY_DC_INJECTED_FILE[e["category"]], "branch": branch,
+                       "commit_sha": sha, "base_sha": base_sha,
+                       "injection_applied": bool(st["changes"]),
+                       "injected_files": json.dumps(sorted(st["changes"])),
+                       "workflow_check": st["workflow_check"],
+                       "ci_conclusion": "error", "ci_run_id": "", "ci_run_url": "", "verified_failing": False}
+                if err:
+                    notes.insert(0, err)
+                else:
+                    try:
+                        appeared, ci = _wait_run_or_absence(repo, branch, sha, no_run_timeout, ci_timeout)
+                        concl, ok, note = protocol_b.classify_failing_state(appeared, ci["conclusion"], True)
+                        if concl == "no_run":
+                            note += f" (control run {control['run_id']}, no run within {no_run_timeout}s)"
+                        row.update(ci_conclusion=concl, verified_failing=ok,
+                                   ci_run_id=ci["run_id"] or "", ci_run_url=ci["run_url"] or "")
+                        if note:
+                            notes.insert(0, note)
+                    except Exception as ex:
+                        notes.insert(0, f"error while waiting for the CI: {ex}"[:200])
+                row["notes"] = " | ".join(notes)
+                icon = "✅" if row["verified_failing"] else "⚠️ "
+                log.info(f"  {icon} {e['id']:<9} CI {row['ci_conclusion']:<15} run {row['ci_run_id'] or '-'}"
+                         + (f" | {row['notes']}" if row["notes"] else ""))
+                rows.append(row)
+        finally:
+            for b in branches:
+                delete_branch(repo, b)
+    return rows
+
+
+# ══════════════════════════════════════════════════════════════
 # FULL MODEL EXECUTION
 # ══════════════════════════════════════════════════════════════
 
@@ -1403,6 +1576,31 @@ def main():
              "Writes verify_excluded_<timestamp>.csv and exits."
     )
     parser.add_argument(
+        "--verify-dep-config",
+        dest="verify_dep_config",
+        action="store_true",
+        help="Only verifies that every injected dependency/config state fails the CI (no LLM): "
+             "commits the full failing state on fix/ai-verify-* branches and records the CI "
+             "conclusion (failure / startup_failure / no_run = verified; success = anomaly). "
+             "Use with --category dependency|config (default: both). Writes "
+             "experiments/results/verify_dep_config/verify_results.csv and exits."
+    )
+    parser.add_argument(
+        "--verify-batch",
+        dest="verify_batch",
+        type=int,
+        default=5,
+        help="--verify-dep-config: cases pushed together, so their CI runs execute in parallel (default: 5)"
+    )
+    parser.add_argument(
+        "--no-run-timeout",
+        dest="no_run_timeout",
+        type=int,
+        default=120,
+        help="--verify-dep-config: seconds without any workflow run for a pushed state "
+             "before it counts as 'no_run' (default: 120)"
+    )
+    parser.add_argument(
         "--output-dir",
         dest="output_dir",
         default=None,
@@ -1423,6 +1621,38 @@ def main():
 
     if args.test_protocol_b and args.dry_run:
         parser.error("--test-protocol-b needs the real CI: it cannot be combined with --dry-run")
+
+    # ── --verify-dep-config: failing-state verification, no model involved ──
+    if args.verify_dep_config:
+        if args.category == "test":
+            parser.error("--verify-dep-config covers the dependency and config categories")
+        cats = ("dependency", "config") if args.category == "all" else (args.category,)
+        cases = [e for e in DATASET if e["category"] in cats]
+        if args.difficulty != "all":
+            cases = [e for e in cases if e["difficulty"] == args.difficulty]
+        if args.limit:
+            cases = cases[:args.limit]
+        vdir = Path(args.output_dir) if args.output_dir else RESULTS_DIR / "verify_dep_config"
+        vdir.mkdir(parents=True, exist_ok=True)
+        run_ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+        log.info(f"verify-dep-config: {len(cases)} cases ({', '.join(cats)}), batch {args.verify_batch}, "
+                 f"ci-timeout {args.ci_timeout}s, no-run-timeout {args.no_run_timeout}s")
+        rows = verify_dep_config_cases(cases, vdir, run_ts, args.ci_timeout,
+                                       args.no_run_timeout, max(1, args.verify_batch))
+        if rows is None:
+            sys.exit(1)
+        merged = save_verify_dep_config(rows, vdir, run_ts)
+        verified  = sum(1 for r in rows if r["verified_failing"])
+        anomalies = [r["case_id"] for r in rows if r["ci_conclusion"] == "success"]
+        noop      = [r["case_id"] for r in rows if not r["injection_applied"]]
+        other     = [r["case_id"] for r in rows if not r["verified_failing"] and r["ci_conclusion"] != "success"]
+        print(f"\n✅ verify-dep-config: {verified}/{len(rows)} injected states fail the CI")
+        print(f"⚠️  CI green on the injected state (anomalies): {len(anomalies)} {anomalies}")
+        print(f"   of which injection changed no file: {len([c for c in anomalies if c in noop])}")
+        if other:
+            print(f"❓ inconclusive / errors (re-run these): {other}")
+        print(f"📄 CSV: {merged}")
+        sys.exit(1 if other else 0)
 
     out_dir = Path(args.output_dir) if args.output_dir else RESULTS_DIR
     out_dir.mkdir(parents=True, exist_ok=True)
