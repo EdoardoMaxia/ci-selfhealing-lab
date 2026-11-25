@@ -326,7 +326,7 @@ committed yet (by policy: commits are made only on explicit request). For
 `reset_files()` to work correctly in a real benchmark run,
 `git add` + commit of all these files is needed.
 
-## 8. MSR 2027 revision F1 — corrected benchmark: 79 cases kept, 71 excluded
+## 8. MSR 2027 revision F1 — corrected benchmark: 78 cases kept, 72 excluded
 
 Date: 2026-11-25. Context: the failing-state verification of 20 Nov 2026
 (`--verify-dep-config`) found that only 73/150 injected states made the CI fail.
@@ -334,7 +334,7 @@ Rule adopted for the corrected benchmark: **a case stays only if its error is th
 same as in the submission** (same `git_diff`, `ci_logs` and `expected_fix`, at most
 a different version number) **and the CI actually turns red**. Every other case is
 excluded, with a one-line reason, in `experiments/excluded_cases.json`
-(11 test, 15 dependency, 45 config). Kept: 39 test, 35 dependency, 5 config.
+(11 test, 15 dependency, 46 config). Kept: 39 test, 35 dependency, 4 config.
 
 ### 8.1 Harness
 - `inject_error()` returns `False` when the target file is unchanged (dependency
@@ -350,12 +350,18 @@ excluded, with a one-line reason, in `experiments/excluded_cases.json`
 ### 8.2 Config — only cases whose error is unchanged
 - `conf_001`, `conf_003`: `git_diff` aligned to `ci.yml` (double quotes). The
   first occurrence of `python-version: "3.11"` is the setup-python step of job A.
-- `conf_002`: Python 3.15 has been released (3.15.2 in the setup-python manifest),
-  so the injected version is now 3.17 (absent from the manifest), in `git_diff`,
-  `ci_logs`, `ci_job_name` and `notes`; the "-" line and `expected_fix` use 3.11,
-  the version actually in `ci.yml`.
-- Kept unchanged: `conf_006` (the run never starts: runner label retired),
-  `conf_013`.
+- `conf_002`, two distinct changes:
+  - alignment to `ci.yml`, the same as `conf_001`/`conf_003`: the "-" line and
+    `expected_fix` go from 3.12 to 3.11, the version actually in `ci.yml`;
+  - injected version 3.15 → 3.17, in `git_diff`, `ci_logs`, `ci_job_name` and
+    `notes`: Python 3.15 has become stable (3.15.2 in the setup-python manifest),
+    so the original error is no longer reproducible; 3.17 is absent from the
+    manifest. The error type is unchanged: Python version not available.
+- Kept unchanged: `conf_013`.
+- Excluded after the CI verification of 25 Nov: `conf_006`. Its workflow run is
+  not created or stays queued (`runs-on: ubuntu-18.04`): the CI never turns red,
+  and the red pre-check of the unified protocol cannot verify it. The pre-check
+  was not changed.
 
 ### 8.3 Dependency — pre-existing context (D1)
 New optional field `context_requirements`: pins quoted in the case's `ci_logs`
@@ -369,7 +375,23 @@ Tried and excluded: `dep_017`, `dep_046` (still install: PyPI metadata lacks the
 upper bound quoted in the log), `dep_019` (cymem==2.0.1 does not exist on PyPI),
 `dep_039` (depends on requirements-dev.txt).
 
+Differences between the text of the synthetic log and the real pip output. The
+`ci_logs` are unchanged; cause and `expected_fix` are identical:
+- `dep_012`: the log attributes `typing-extensions>=4.6.0` to sqlalchemy 2.0.0
+  too; its real metadata requires `>=4.2.0`, so the conflict comes from
+  pydantic 2.0 alone (`>=4.6.1`).
+- `dep_018`: the log attributes the protobuf constraint to grpcio too; it comes
+  from grpcio-tools alone.
+- `dep_025`: the log reads "Double requirement given", the wording of pip < 20.3;
+  current pip reports ResolutionImpossible between the two click pins.
+
 ### 8.4 Clean reference per case
 `experiments/reference_states.json` (`--export-references`): for each kept
-dependency/config case, the clean file its specialist repairs
+dependency/config case (39), the clean file its specialist repairs
 (requirements.txt + context, or ci.yml at HEAD).
+
+### 8.5 CI verification (v2, 25 Nov 2026)
+`--verify-dep-config` on the DGX, `main` @ `020a1904`, before the exclusion of
+`conf_006`: 35/35 dependency and 5/5 config injected states fail the CI (4
+`failure` + `conf_006` `no_run`); both control runs green; the 4 "clean state +
+context" controls green. Results: branch `results-verify-dep-config-v2`.

@@ -1,9 +1,9 @@
 {
-  "description": "Cases excluded from the corrected benchmark (MSR 2027 revision, F1, 25 Nov 2026). A case stays only if its error is the same as in the submission (same git_diff, ci_logs and expected_fix, at most a different version number) and the CI actually turns red. experiments/benchmark.py skips every case listed here.",
+  "description": "Cases excluded from the corrected benchmark (MSR 2027 revision, F1, 25 Nov 2026; conf_006 added after the CI verification of the same day). A case stays only if its error is the same as in the submission (same git_diff, ci_logs and expected_fix, at most a different version number) and the CI actually turns red. experiments/benchmark.py skips every case listed here.",
   "counts": {
     "dependency": 15,
     "test": 11,
-    "config": 45
+    "config": 46
   },
   "cases": [
     {
@@ -173,6 +173,12 @@
       "category": "config",
       "group": "D-not-reproducible",
       "reason": "setup-python@v1 works today (GITHUB_PATH, forced onto a supported Node): the add-path/set-env failure of the log no longer occurs"
+    },
+    {
+      "case_id": "conf_006",
+      "category": "config",
+      "group": "no-red-run",
+      "reason": "the workflow run is not created or stays queued (runs-on: ubuntu-18.04): the CI never turns red, and the red pre-check of the unified protocol cannot verify it"
     },
     {
       "case_id": "conf_007",

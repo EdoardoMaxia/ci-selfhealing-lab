@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Failing-state verification for dependency + config (MSR revision, analysis A2 §9a). No LLM.
 #
-# v2 (F1, 25 Nov 2026): the cases in experiments/excluded_cases.json are skipped (40 cases left:
-# 35 dependency + 5 config); non-injectable cases are reported and never pushed; cases with
+# v2 (F1, 25 Nov 2026): the cases in experiments/excluded_cases.json are skipped (39 cases left:
+# 35 dependency + 4 config; the v2 run of 25 Nov still had conf_006, excluded afterwards); non-injectable cases are reported and never pushed; cases with
 # context_requirements also push "clean state + context", which must be green.
 # Results go to $OUT (default experiments/results/verify_dep_config_v2) and the local branch
 # $RESULTS_BRANCH (default results-verify-dep-config-v2); v1 used verify_dep_config/ and

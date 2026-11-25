@@ -109,8 +109,8 @@ def test_run_model_skips_excluded_cases(repo_cwd, monkeypatch):
 def test_excluded_cases_file():
     data = json.loads(benchmark.EXCLUDED_CASES_FILE.read_text(encoding="utf-8"))
     cases = data["cases"]
-    assert len(cases) == len({c["case_id"] for c in cases}) == 71
-    assert data["counts"] == {"dependency": 15, "test": 11, "config": 45}
+    assert len(cases) == len({c["case_id"] for c in cases}) == 72
+    assert data["counts"] == {"dependency": 15, "test": 11, "config": 46}
     for c in cases:
         assert BY_ID[c["case_id"]]["category"] == c["category"]
         assert c["group"] and c["reason"] and "\n" not in c["reason"]
@@ -118,7 +118,7 @@ def test_excluded_cases_file():
     assert {c["case_id"] for c in cases if c["category"] == "test"} == set(benchmark.EXCLUDED_TEST_CASES)
     included = [e for e in DATASET if e["id"] not in benchmark.EXCLUDED_CASES]
     assert {cat: sum(e["category"] == cat for e in included) for cat in ("dependency", "test", "config")} \
-        == {"dependency": 35, "test": 39, "config": 5}
+        == {"dependency": 35, "test": 39, "config": 4}
 
 
 # ── 1.3 dependency context (D1) ───────────────────────────────
@@ -178,7 +178,7 @@ def test_repair_matches_reference_normalization():
 def test_reference_states_json_is_up_to_date():
     stored = json.loads((REPO_ROOT / "experiments" / "reference_states.json").read_text(encoding="utf-8"))
     assert stored == benchmark.export_reference_states(DATASET)
-    assert len(stored) == 40 and all(cid not in benchmark.EXCLUDED_CASES for cid in stored)
+    assert len(stored) == 39 and all(cid not in benchmark.EXCLUDED_CASES for cid in stored)
 
 
 # ── 1.5 protocol B for every category ─────────────────────────
@@ -280,5 +280,7 @@ def test_failing_state_green_precheck_and_excluded_are_skipped(repo_cwd, monkeyp
     assert called == [] and row["final_status"] == "precheck_green" and row["valid_case"] == 0
     row = benchmark.run_case_protocol_b(MODEL, BY_ID["conf_047"], True, False, 60, 60)
     assert row["final_status"] == "excluded" and "ruleset" in row["exclusion_reason"]
+    row = benchmark.run_case_protocol_b(MODEL, BY_ID["conf_006"], True, False, 60, 60)
+    assert row["final_status"] == "excluded" and "ubuntu-18.04" in row["exclusion_reason"]
     row = benchmark.run_case_protocol_b(MODEL, NOOP_CONFIG, True, False, 60, 60)
     assert called == [] and row["final_status"] == "injection_failed"
