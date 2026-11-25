@@ -1,4 +1,3 @@
 pytest==7.4.0
 pytest-cov==4.1.0
-
-key: pip-${{ hashFiles('requirements-base.txt') }}
+requests==2.31.0
