@@ -1,0 +1,187 @@
+2026-11-25 12:17:22,231 [INFO] verify-dep-config: 15 cases skipped (experiments/excluded_cases.json)
+2026-11-25 12:17:22,231 [INFO] verify-dep-config: 35 cases (dependency), batch 5, ci-timeout 600s, no-run-timeout 120s
+2026-11-25 12:17:23,929 [INFO] Control run on the baseline state (main @ 020a1904)...
+🌿 Branch created: fix/ai-verify-control-121723 @ 195977bd (0 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 195977bd on branch 'fix/ai-verify-control-121723'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45603070671 in_progress... [10s/120s]
+   ⏳ CI run 45603070671 in_progress... [20s/120s]
+    CI run 45603070671 completed: success
+2026-11-25 12:18:04,686 [INFO]   control OK: run 45603070671 green
+🌿 Branch created: fix/ai-verify-dep_001-121806 @ 9878c935 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_002-121813 @ 6f91a761 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_003-121822 @ 95517a2d (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_004-121830 @ fe70461a (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_005-121837 @ d677538f (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 9878c935 on branch 'fix/ai-verify-dep_001-121806'...
+   ⏳ CI run 45603176344 in_progress... [0s/120s]
+    CI run 45603176344 completed: failure
+2026-11-25 12:18:55,804 [INFO]   ✅ dep_001   CI failure         run 45603176344
+⏳ Waiting for the CI run of 6f91a761 on branch 'fix/ai-verify-dep_002-121813'...
+    CI run 45603196755 completed: failure
+2026-11-25 12:18:56,713 [INFO]   ✅ dep_002   CI failure         run 45603196755
+⏳ Waiting for the CI run of 95517a2d on branch 'fix/ai-verify-dep_003-121822'...
+   ⏳ CI run 45603220138 in_progress... [0s/120s]
+    CI run 45603220138 completed: failure
+2026-11-25 12:19:07,805 [INFO]   ✅ dep_003   CI failure         run 45603220138
+⏳ Waiting for the CI run of fe70461a on branch 'fix/ai-verify-dep_004-121830'...
+    CI run 45603235533 completed: failure
+2026-11-25 12:19:08,479 [INFO]   ✅ dep_004   CI failure         run 45603235533
+⏳ Waiting for the CI run of d677538f on branch 'fix/ai-verify-dep_005-121837'...
+   ⏳ CI run 45603258705 in_progress... [0s/120s]
+    CI run 45603258705 completed: failure
+2026-11-25 12:19:19,559 [INFO]   ✅ dep_005   CI failure         run 45603258705
+🌿 Branch created: fix/ai-verify-dep_006-121929 @ 6cae9874 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_007-121937 @ 4d9fd210 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_008-121944 @ 2fc3c9b7 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_009-121952 @ 733f9924 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_011-122000 @ b87498f5 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 6cae9874 on branch 'fix/ai-verify-dep_006-121929'...
+    CI run 45603391668 completed: failure
+2026-11-25 12:20:09,700 [INFO]   ✅ dep_006   CI failure         run 45603391668
+⏳ Waiting for the CI run of 4d9fd210 on branch 'fix/ai-verify-dep_007-121937'...
+    CI run 45603411416 completed: failure
+2026-11-25 12:20:10,362 [INFO]   ✅ dep_007   CI failure         run 45603411416
+⏳ Waiting for the CI run of 2fc3c9b7 on branch 'fix/ai-verify-dep_008-121944'...
+   ⏳ CI run 45603430105 in_progress... [0s/120s]
+   ⏳ CI run 45603430105 queued... [10s/120s]
+    CI run 45603430105 completed: failure
+2026-11-25 12:20:31,926 [INFO]   ✅ dep_008   CI failure         run 45603430105
+⏳ Waiting for the CI run of 733f9924 on branch 'fix/ai-verify-dep_009-121952'...
+   ⏳ CI run 45603449731 in_progress... [0s/120s]
+    CI run 45603449731 completed: failure
+2026-11-25 12:20:43,115 [INFO]   ✅ dep_009   CI failure         run 45603449731
+⏳ Waiting for the CI run of b87498f5 on branch 'fix/ai-verify-dep_011-122000'...
+    CI run 45603473121 completed: failure
+2026-11-25 12:20:43,777 [INFO]   ✅ dep_011   CI failure         run 45603473121
+🌿 Branch created: fix/ai-verify-ctx-dep_012-122054 @ 5e27bacf (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_012-122102 @ aff9156a (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_014-122109 @ 441f8140 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_015-122116 @ d210f366 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-ctx-dep_018-122123 @ af70862c (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_018-122131 @ 8df2431b (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_020-122139 @ cdb40c57 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of aff9156a on branch 'fix/ai-verify-dep_012-122102'...
+    CI run 45603631716 completed: failure
+⏳ Waiting for the CI run of 5e27bacf on branch 'fix/ai-verify-ctx-dep_012-122054'...
+    CI run 45603614362 completed: success
+2026-11-25 12:21:49,515 [INFO]   ✅ dep_012   CI failure         run 45603631716
+⏳ Waiting for the CI run of 441f8140 on branch 'fix/ai-verify-dep_014-122109'...
+    CI run 45603652463 completed: failure
+2026-11-25 12:21:51,777 [INFO]   ✅ dep_014   CI failure         run 45603652463
+⏳ Waiting for the CI run of d210f366 on branch 'fix/ai-verify-dep_015-122116'...
+    CI run 45603668946 completed: failure
+2026-11-25 12:21:52,488 [INFO]   ✅ dep_015   CI failure         run 45603668946
+⏳ Waiting for the CI run of 8df2431b on branch 'fix/ai-verify-dep_018-122131'...
+   ⏳ CI run 45603710189 in_progress... [0s/120s]
+   ⏳ CI run 45603710189 queued... [10s/120s]
+    CI run 45603710189 completed: failure
+⏳ Waiting for the CI run of af70862c on branch 'fix/ai-verify-ctx-dep_018-122123'...
+    CI run 45603689478 completed: success
+2026-11-25 12:22:14,617 [INFO]   ✅ dep_018   CI failure         run 45603710189
+⏳ Waiting for the CI run of cdb40c57 on branch 'fix/ai-verify-dep_020-122139'...
+    CI run 45603729991 completed: failure
+2026-11-25 12:22:15,312 [INFO]   ✅ dep_020   CI failure         run 45603729991
+🌿 Branch created: fix/ai-verify-dep_022-122230 @ 3f3e4543 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_023-122238 @ b1ccda36 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-ctx-dep_025-122245 @ 498aab34 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_025-122253 @ ca98545c (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_027-122301 @ 9ba8bfe9 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_029-122309 @ 84a7496c (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 3f3e4543 on branch 'fix/ai-verify-dep_022-122230'...
+    CI run 45603859732 completed: failure
+2026-11-25 12:23:17,394 [INFO]   ✅ dep_022   CI failure         run 45603859732
+⏳ Waiting for the CI run of b1ccda36 on branch 'fix/ai-verify-dep_023-122238'...
+    CI run 45603878489 completed: failure
+2026-11-25 12:23:18,026 [INFO]   ✅ dep_023   CI failure         run 45603878489
+⏳ Waiting for the CI run of ca98545c on branch 'fix/ai-verify-dep_025-122253'...
+   ⏳ CI run 45603921145 in_progress... [0s/120s]
+    CI run 45603921145 completed: failure
+⏳ Waiting for the CI run of 498aab34 on branch 'fix/ai-verify-ctx-dep_025-122245'...
+    CI run 45603901073 completed: success
+2026-11-25 12:23:29,752 [INFO]   ✅ dep_025   CI failure         run 45603921145
+⏳ Waiting for the CI run of 9ba8bfe9 on branch 'fix/ai-verify-dep_027-122301'...
+   ⏳ CI run 45603939821 in_progress... [0s/120s]
+    CI run 45603939821 completed: failure
+2026-11-25 12:23:40,870 [INFO]   ✅ dep_027   CI failure         run 45603939821
+⏳ Waiting for the CI run of 84a7496c on branch 'fix/ai-verify-dep_029-122309'...
+   ⏳ CI run 45603962311 in_progress... [0s/120s]
+    CI run 45603962311 completed: failure
+2026-11-25 12:23:51,878 [INFO]   ✅ dep_029   CI failure         run 45603962311
+🌿 Branch created: fix/ai-verify-dep_030-122404 @ 857ab2d7 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_031-122412 @ bf9b7225 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_032-122419 @ 7d72b32e (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_033-122427 @ 49343e8c (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_036-122435 @ 4fdfdb01 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 857ab2d7 on branch 'fix/ai-verify-dep_030-122404'...
+    CI run 45604108152 completed: failure
+2026-11-25 12:24:43,524 [INFO]   ✅ dep_030   CI failure         run 45604108152
+⏳ Waiting for the CI run of bf9b7225 on branch 'fix/ai-verify-dep_031-122412'...
+   ⏳ CI run 45604128370 in_progress... [0s/120s]
+    CI run 45604128370 completed: failure
+2026-11-25 12:24:54,539 [INFO]   ✅ dep_031   CI failure         run 45604128370
+⏳ Waiting for the CI run of 7d72b32e on branch 'fix/ai-verify-dep_032-122419'...
+   ⏳ CI run 45604145236 in_progress... [0s/120s]
+    CI run 45604145236 completed: failure
+2026-11-25 12:25:05,638 [INFO]   ✅ dep_032   CI failure         run 45604145236
+⏳ Waiting for the CI run of 49343e8c on branch 'fix/ai-verify-dep_033-122427'...
+    CI run 45604168011 completed: failure
+2026-11-25 12:25:06,326 [INFO]   ✅ dep_033   CI failure         run 45604168011
+⏳ Waiting for the CI run of 4fdfdb01 on branch 'fix/ai-verify-dep_036-122435'...
+   ⏳ CI run 45604186662 in_progress... [0s/120s]
+    CI run 45604186662 completed: failure
+2026-11-25 12:25:17,370 [INFO]   ✅ dep_036   CI failure         run 45604186662
+🌿 Branch created: fix/ai-verify-dep_037-122527 @ b2943961 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_038-122535 @ a3e63aaf (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_040-122542 @ 515975c9 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_042-122549 @ ebd3298c (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_044-122557 @ 64c0e78c (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of b2943961 on branch 'fix/ai-verify-dep_037-122527'...
+    CI run 45604327849 completed: failure
+2026-11-25 12:26:05,799 [INFO]   ✅ dep_037   CI failure         run 45604327849
+⏳ Waiting for the CI run of a3e63aaf on branch 'fix/ai-verify-dep_038-122535'...
+   ⏳ CI run 45604348574 in_progress... [0s/120s]
+    CI run 45604348574 completed: failure
+2026-11-25 12:26:16,854 [INFO]   ✅ dep_038   CI failure         run 45604348574
+⏳ Waiting for the CI run of 515975c9 on branch 'fix/ai-verify-dep_040-122542'...
+   ⏳ CI run 45604367347 in_progress... [0s/120s]
+    CI run 45604367347 completed: failure
+2026-11-25 12:26:27,883 [INFO]   ✅ dep_040   CI failure         run 45604367347
+⏳ Waiting for the CI run of ebd3298c on branch 'fix/ai-verify-dep_042-122549'...
+   ⏳ CI run 45604385331 queued... [0s/120s]
+    CI run 45604385331 completed: failure
+2026-11-25 12:26:38,823 [INFO]   ✅ dep_042   CI failure         run 45604385331
+⏳ Waiting for the CI run of 64c0e78c on branch 'fix/ai-verify-dep_044-122557'...
+    CI run 45604405555 completed: failure
+2026-11-25 12:26:39,469 [INFO]   ✅ dep_044   CI failure         run 45604405555
+🌿 Branch created: fix/ai-verify-dep_045-122649 @ ea1bbf90 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_047-122656 @ 6c233e4a (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-ctx-dep_048-122703 @ f77e4274 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_048-122711 @ 542697ba (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_049-122718 @ af992bc0 (1 file change(s) on 020a1904)
+🌿 Branch created: fix/ai-verify-dep_050-122725 @ 82cfc703 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of ea1bbf90 on branch 'fix/ai-verify-dep_045-122649'...
+   ⏳ CI run 45604536373 in_progress... [0s/120s]
+    CI run 45604536373 completed: failure
+2026-11-25 12:27:43,970 [INFO]   ✅ dep_045   CI failure         run 45604536373
+⏳ Waiting for the CI run of 6c233e4a on branch 'fix/ai-verify-dep_047-122656'...
+    CI run 45604555181 completed: failure
+2026-11-25 12:27:44,587 [INFO]   ✅ dep_047   CI failure         run 45604555181
+⏳ Waiting for the CI run of 542697ba on branch 'fix/ai-verify-dep_048-122711'...
+    CI run 45604592709 completed: failure
+⏳ Waiting for the CI run of f77e4274 on branch 'fix/ai-verify-ctx-dep_048-122703'...
+    CI run 45604573353 completed: success
+2026-11-25 12:27:45,820 [INFO]   ✅ dep_048   CI failure         run 45604592709
+⏳ Waiting for the CI run of af992bc0 on branch 'fix/ai-verify-dep_049-122718'...
+   ⏳ CI run 45604610145 queued... [0s/120s]
+    CI run 45604610145 completed: failure
+2026-11-25 12:27:56,932 [INFO]   ✅ dep_049   CI failure         run 45604610145
+⏳ Waiting for the CI run of 82cfc703 on branch 'fix/ai-verify-dep_050-122725'...
+   ⏳ CI run 45604626746 in_progress... [0s/120s]
+    CI run 45604626746 completed: failure
+2026-11-25 12:28:07,962 [INFO]   ✅ dep_050   CI failure         run 45604626746
+
+✅ verify-dep-config: 35/35 injected states fail the CI
+⚠️  CI green on the injected state (anomalies): 0 []
+   of which injection changed no file: 0
+📄 CSV: experiments/results/verify_dep_config_v2/verify_results.csv

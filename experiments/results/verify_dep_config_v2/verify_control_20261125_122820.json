@@ -1,0 +1,9 @@
+{
+  "branch": "fix/ai-verify-control-122821",
+  "commit_sha": "d6ab15d28ff6cc9fb4a2b05a9adc3370622a1e08",
+  "base_sha": "020a190482f47606f1ee19619c75e0dac800ff25",
+  "appeared": true,
+  "conclusion": "success",
+  "run_id": 45604761580,
+  "run_url": "https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45604761580"
+}
