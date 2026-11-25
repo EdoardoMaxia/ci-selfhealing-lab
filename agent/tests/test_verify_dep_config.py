@@ -145,6 +145,7 @@ def test_verify_dep_config_cases(monkeypatch, tmp_path):
     cases.append({"id": "conf_noop", "category": "config", "difficulty": "easy",
                   "git_diff": "-    not-in-file\n+    x"})
     fake = FakeGitHub({"fix/ai-verify-control": (True, "success"),
+                       "fix/ai-verify-ctx-": (True, "success"),          # dep_025: clean state + context
                        "fix/ai-verify-dep_001": (True, "failure"),
                        "fix/ai-verify-dep_025": (True, "success"),
                        "fix/ai-verify-conf_006": (False, None),
@@ -161,11 +162,17 @@ def test_verify_dep_config_cases(monkeypatch, tmp_path):
     assert (by["conf_006"]["ci_conclusion"], by["conf_006"]["verified_failing"]) == ("no_run", True)
     assert "control run" in by["conf_006"]["notes"]
     assert by["conf_noop"]["injection_applied"] is False and "injection_noop" in by["conf_noop"]["notes"]
+    # F1: a non-injectable case is never pushed (it would be a commit identical to main)
+    assert by["conf_noop"]["ci_conclusion"] == "not_injectable" and by["conf_noop"]["branch"] == ""
+    assert not any("conf_noop" in b for b in fake.pushed)
+    # F1: dep_025 has context_requirements -> its "clean state + context" control is pushed too
+    assert by["dep_025"]["context_control_conclusion"] == "success"
+    ctx_branch = next(b for b in fake.pushed if b.startswith("fix/ai-verify-ctx-dep_025"))
+    assert fake.pushed[ctx_branch][1]["requirements.txt"].decode().splitlines()[-1] == "click==8.1.7"
     # every branch is under fix/ (ci.yml triggers only on main and fix/**) and is deleted
     assert all(b.startswith("fix/ai-verify-") for b in fake.pushed)
     assert sorted(fake.deleted) == sorted(fake.pushed)
     assert fake.pushed[by["dep_001"]["branch"]][1].keys() == {"requirements.txt"}
-    assert fake.pushed[by["conf_noop"]["branch"]][1] == {}
     assert json.load(open(tmp_path / "verify_control_ts.json"))["conclusion"] == "success"
 
     merged = benchmark.save_verify_dep_config(rows, tmp_path, "ts")

@@ -183,6 +183,33 @@ def clean_chromadb():
 
 ORIGINAL_REQUIREMENTS = "pytest==7.4.0\npytest-cov==4.1.0\n"
 
+# Cases excluded from the corrected benchmark (MSR revision F1): one record per
+# case with case_id, category, group and a one-line reason. Every mode of this
+# script skips them; the file ships with the replication package.
+EXCLUDED_CASES_FILE = Path(__file__).resolve().parent / "excluded_cases.json"
+
+
+def load_excluded_cases(path: Path = EXCLUDED_CASES_FILE) -> dict:
+    """case_id -> {"case_id", "category", "group", "reason"}."""
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    return {c["case_id"]: c for c in data["cases"]}
+
+
+EXCLUDED_CASES = load_excluded_cases()
+
+
+def case_requirements(error: dict) -> str:
+    """
+    Clean requirements.txt of a case: ORIGINAL_REQUIREMENTS + the case's
+    "context_requirements" (MSR revision F1, D1). The context is a pre-existing
+    state of the repository for that case (e.g. boto3==1.34.10 for dep_048),
+    quoted in the case's ci_logs and written BEFORE the injection; it is not part
+    of the git_diff. GitHub main never contains it: it only lives in the commits
+    of the failing states.
+    """
+    ctx = error.get("context_requirements") or []
+    return ORIGINAL_REQUIREMENTS + "".join(f"{line}\n" for line in ctx)
+
 
 # Test files created for Group 1 (see experiments/CHANGELOG_DATASET.md).
 # Without this whitelist reset_files() would delete them on every run, since
@@ -550,9 +577,13 @@ def inject_error(error: dict) -> bool:
     Introduces the specific error into the right file based on the category.
     Called after reset_files() for every test case.
 
-    Returns True if the injection was applied successfully, False if no
-    valid target file was found for the injection (e.g. the synthetic
-    logs do not contain a recognizable path).
+    Returns True only if the injection actually changed the target file.
+    False means the case is not injectable: no valid target file (e.g. the
+    synthetic logs do not contain a recognizable path) or, for dependency and
+    config, the file is left unchanged (e.g. the "-" line of the git_diff is not
+    in ci.yml). Callers skip such a case instead of running the agent on a
+    state identical to the clean baseline (MSR revision F1: 46 config
+    injections were silently null).
     """
     repo_root = Path(".")
     category  = error["category"]
@@ -560,22 +591,31 @@ def inject_error(error: dict) -> bool:
     error_id  = error["id"]
 
     if category == "dependency":
-        current = (repo_root / "requirements.txt").read_text(encoding="utf-8")
-        added   = [l[1:].strip() for l in diff.splitlines() if l.startswith("+")]
+        req_path = repo_root / "requirements.txt"
+        original = req_path.read_text(encoding="utf-8")
+        current  = original
+        added    = [l[1:].strip() for l in diff.splitlines() if l.startswith("+")]
         for line in added:
             if line and line not in current:
                 current += f"\n{line}"
-        (repo_root / "requirements.txt").write_text(current, encoding="utf-8")
+        if current == original:
+            log.warning(f"{error_id}: dependency injection left requirements.txt unchanged")
+            return False
+        req_path.write_text(current, encoding="utf-8")
         return True
 
     elif category == "config":
         ci_path  = repo_root / ".github/workflows/ci.yml"
-        content  = ci_path.read_text(encoding="utf-8")
+        original = ci_path.read_text(encoding="utf-8")
+        content  = original
         removed  = [l[1:].strip() for l in diff.splitlines() if l.startswith("-")]
         added    = [l[1:].strip() for l in diff.splitlines() if l.startswith("+")]
         for old, new in zip(removed, added):
             if old and old in content:
                 content = content.replace(old, new, 1)
+        if content == original:
+            log.warning(f"{error_id}: config injection left ci.yml unchanged (\"-\" line not found)")
+            return False
         ci_path.write_text(content, encoding="utf-8")
         return True
 
@@ -591,6 +631,57 @@ def inject_error(error: dict) -> bool:
         return _inject_test_generic(target, diff)
 
     return False
+
+
+def setup_case(error: dict) -> bool:
+    """
+    Clean baseline, then the case context (if any), then the injection. Every
+    path that runs or verifies a case goes through here. Returns the result of
+    inject_error(): False = not injectable, the caller must skip the case.
+    """
+    reset_files()
+    if error.get("context_requirements"):
+        Path("requirements.txt").write_text(case_requirements(error), encoding="utf-8")
+    return inject_error(error)
+
+
+def reference_state(error: dict):
+    """
+    (path, text) of the clean reference of the file the case's specialist repairs:
+    requirements.txt with the case context (dependency), ci.yml at HEAD (config).
+    (None, None) for the test category (protocol B has its own checks).
+    """
+    if error["category"] == "dependency":
+        return "requirements.txt", case_requirements(error)
+    if error["category"] == "config":
+        return ".github/workflows/ci.yml", _head_text(".github/workflows/ci.yml")
+    return None, None
+
+
+def _normalized_lines(text: str, path: str):
+    """requirements.txt: multiset of non-empty stripped lines; other files: rstripped lines, no blanks."""
+    lines = [l.strip() if path == "requirements.txt" else l.rstrip() for l in text.splitlines()]
+    lines = [l for l in lines if l.strip()]
+    return sorted(lines) if path == "requirements.txt" else lines
+
+
+def repair_matches_reference(error: dict, text: str):
+    """True/False: the repaired file equals the clean reference after _normalized_lines; None for test cases."""
+    path, ref = reference_state(error)
+    if path is None:
+        return None
+    return _normalized_lines(text, path) == _normalized_lines(ref, path)
+
+
+def export_reference_states(errors: list) -> dict:
+    """case_id -> {"category", "file", "content"} for the dependency/config cases not excluded."""
+    out = {}
+    for e in errors:
+        if e["category"] not in ("dependency", "config") or e["id"] in EXCLUDED_CASES:
+            continue
+        path, text = reference_state(e)
+        out[e["id"]] = {"category": e["category"], "file": path, "content": text}
+    return out
 
 
 # ══════════════════════════════════════════════════════════════
@@ -811,6 +902,9 @@ PROTOCOL_B_COLUMNS = [
     "agent_modified_file", "agent_file_is_injected",
     "test_on_clean_source", "clean_source_detail",
     "assertions_preserved", "assertions_detail",
+    # dependency/config (MSR revision F1): file left by the routed specialist (= content of the
+    # last fix commit), clean reference of the case (reference_state) and their comparison
+    "reference_file", "repair_matches_reference", "agent_file_content",
 ]
 
 
@@ -878,25 +972,58 @@ def _head_text(rel_path: str) -> str:
     return out.stdout.decode("utf-8", "replace") if out.returncode == 0 else ""
 
 
-def run_test_case_protocol_b(model: dict, error: dict, no_memory: bool,
-                             readonly_memory: bool, timeout: int, ci_timeout: int) -> dict:
-    """One "test" case under protocol B (see the section header). Returns the CSV row."""
+def _fill_reference_columns(row: dict, error: dict, injected: dict, modified) -> None:
+    """
+    Protocol B step 5 for dependency/config: the file the routed specialist left on
+    disk (its last attempt, i.e. the content of the last fix commit) and whether it
+    equals the clean reference of the case. Pure local comparison, no CI.
+    """
+    from agent.pipeline.fix_executor import AGENT_FILE_MAP
+    row["test_on_clean_source"] = "n/a"
+    row["assertions_preserved"] = "n/a"
+    ref_path, _ = reference_state(error)
+    row["reference_file"] = ref_path
+    routed = row.get("router_category")
+    if not row.get("attempts_count") or (not modified and routed not in AGENT_FILE_MAP):
+        row["repair_matches_reference"] = "n/a"      # escalated without any fix attempt
+        return
+    rel = Path(modified).as_posix() if modified else AGENT_FILE_MAP[routed]
+    rel = rel[2:] if rel.startswith("./") else rel
+    row["agent_modified_file"]    = rel
+    row["agent_file_is_injected"] = rel in injected
+    if Path(rel).is_file():
+        text = Path(rel).read_text(encoding="utf-8", errors="replace")
+        row["agent_file_content"] = text
+        # misrouted: the injected file was never repaired, so it cannot match the reference
+        row["repair_matches_reference"] = (
+            repair_matches_reference(error, text) if rel == ref_path else False)
+
+
+def run_case_protocol_b(model: dict, error: dict, no_memory: bool,
+                        readonly_memory: bool, timeout: int, ci_timeout: int) -> dict:
+    """
+    One case under protocol B (see the section header), any category: excluded
+    cases (excluded_cases.json) and non-injectable ones are skipped, the CI must be
+    red on the full failing state, every fix branch starts from it. Step 5 is
+    category-specific: repaired test on the clean source + assertions (test),
+    comparison with the clean reference of the case (dependency/config).
+    Returns the CSV row.
+    """
     from experiments import protocol_b
     from agent.github.client import get_repo, delete_branch
 
     row = _protocol_b_row(model, error, no_memory, timeout)
     cid = error["id"]
 
-    if cid in EXCLUDED_TEST_CASES:
-        reason = f"error injected in {EXCLUDED_TEST_CASES[cid]}, not in the test file"
+    if cid in EXCLUDED_CASES:
+        reason = EXCLUDED_CASES[cid]["reason"]
         log.info(f"  Excluded: {cid} — {reason}")
         row.update(final_status="excluded", excluded=True, exclusion_reason=reason, latency_sec=0.0)
         return row
 
-    # 1. SETUP
-    reset_files()
+    # 1. SETUP (clean baseline + case context + injection)
     try:
-        injected_ok = inject_error(error)
+        injected_ok = setup_case(error)
     except Exception as e:
         injected_ok = False
         row["error_msg"] = f"inject_error failed: {e}"[:300]
@@ -958,8 +1085,10 @@ def run_test_case_protocol_b(model: dict, error: dict, no_memory: bool,
             row["post_ci_status"] = "not_run"      # escalated by the Router, no fix attempted
         row["post_ci_attempts"] = json.dumps(ci_runs)
 
-        # 5. VERIFY: repaired test on the clean source + assertions
-        if modified:
+        # 5. VERIFY
+        if error["category"] != "test":
+            _fill_reference_columns(row, error, injected, modified)
+        elif modified:                         # repaired test on the clean source + assertions
             rel = Path(modified).as_posix()
             rel = rel[2:] if rel.startswith("./") else rel
             row["agent_modified_file"]    = rel
@@ -991,6 +1120,10 @@ def run_test_case_protocol_b(model: dict, error: dict, no_memory: bool,
     finally:
         if pre and repo is not None:
             delete_branch(repo, pre["branch"])
+
+
+# Historical name (A2 runs, --test-protocol-b): same function.
+run_test_case_protocol_b = run_case_protocol_b
 
 
 VERIFY_EXCLUDED_COLUMNS = [
@@ -1093,6 +1226,9 @@ VERIFY_DC_COLUMNS = [
     "case_id", "category", "injected_file", "branch", "ci_conclusion", "ci_run_id",
     "ci_run_url", "commit_sha", "verified_failing", "notes",
     "difficulty", "injection_applied", "injected_files", "workflow_check", "base_sha",
+    # MSR revision F1: cases with context_requirements also push "clean state + context"
+    # (no injection), which must be green: the context alone must not break the CI
+    "context_control_conclusion", "context_control_run_id", "context_control_sha",
 ]
 VERIFY_DC_INJECTED_FILE = {"dependency": "requirements.txt", "config": ".github/workflows/ci.yml"}
 
@@ -1102,10 +1238,9 @@ def prepare_failing_states(errors: list, remote_blobs: dict) -> list:
     from experiments import protocol_b
     states = []
     for error in errors:
-        reset_files()
-        note = ""
+        note, injected = "", False
         try:
-            inject_error(error)
+            injected = setup_case(error)          # clean baseline + case context + injection
         except Exception as e:
             note = f"inject_error raised: {e}"[:200]
         changes = protocol_b.diff_against_remote(remote_blobs)
@@ -1113,9 +1248,27 @@ def prepare_failing_states(errors: list, remote_blobs: dict) -> list:
         if error["category"] == "config":
             wf = protocol_b.workflow_check(
                 Path(".github/workflows/ci.yml").read_text(encoding="utf-8"), "fix/ai-verify-x")
-        states.append({"error": error, "changes": changes, "workflow_check": wf, "note": note})
+        context_changes = None
+        if error.get("context_requirements"):
+            reset_files()                         # clean baseline + case context, no injection
+            Path("requirements.txt").write_text(case_requirements(error), encoding="utf-8")
+            context_changes = protocol_b.diff_against_remote(remote_blobs)
+        states.append({"error": error, "changes": changes, "workflow_check": wf, "note": note,
+                       "injected": bool(injected), "context_changes": context_changes})
     reset_files()
     return states
+
+
+def _cancel_incomplete_run(repo, run_id) -> bool:
+    """Best effort: cancels a run still queued/in progress after --ci-timeout (e.g. conf_006,
+    whose runner label no longer exists), so it does not linger after the branch is deleted."""
+    if not run_id:
+        return False
+    try:
+        return bool(repo.get_workflow_run(int(run_id)).cancel())
+    except Exception as e:
+        log.warning(f"  could not cancel run {run_id}: {e}")
+        return False
 
 
 def _wait_run_or_absence(repo, branch: str, sha: str, no_run_timeout: int, ci_timeout: int):
@@ -1196,6 +1349,19 @@ def verify_dep_config_cases(errors: list, out_dir: Path, run_ts: str, ci_timeout
         try:
             for st in chunk:
                 cid = st["error"]["id"]
+                if not st["injected"]:
+                    pushed.append((st, "", "", ""))       # not injectable: nothing is pushed
+                    continue
+                if st["context_changes"] is not None:
+                    cb = f"fix/ai-verify-ctx-{cid}-{datetime.now().strftime('%H%M%S')}"
+                    try:
+                        csha = commit_files_on_new_branch(
+                            repo, base_sha, cb, st["context_changes"],
+                            f"benchmark(verify-dep-config): clean state + context of {cid} [control]")
+                        branches.append(cb)
+                        st["ctx_push"] = (cb, csha, "")
+                    except Exception as e:
+                        st["ctx_push"] = (cb, "", f"context control push failed: {e}"[:200])
                 branch = f"fix/ai-verify-{cid}-{datetime.now().strftime('%H%M%S')}"
                 try:
                     sha = commit_files_on_new_branch(
@@ -1219,7 +1385,10 @@ def verify_dep_config_cases(errors: list, out_dir: Path, run_ts: str, ci_timeout
                        "injected_files": json.dumps(sorted(st["changes"])),
                        "workflow_check": st["workflow_check"],
                        "ci_conclusion": "error", "ci_run_id": "", "ci_run_url": "", "verified_failing": False}
-                if err:
+                if not st["injected"]:
+                    row["ci_conclusion"] = "not_injectable"
+                    notes.insert(0, "inject_error changed no file: not pushed (fix the dataset or exclude the case)")
+                elif err:
                     notes.insert(0, err)
                 else:
                     try:
@@ -1227,12 +1396,32 @@ def verify_dep_config_cases(errors: list, out_dir: Path, run_ts: str, ci_timeout
                         concl, ok, note = protocol_b.classify_failing_state(appeared, ci["conclusion"], True)
                         if concl == "no_run":
                             note += f" (control run {control['run_id']}, no run within {no_run_timeout}s)"
+                        if appeared and ci["conclusion"] is None and _cancel_incomplete_run(repo, ci["run_id"]):
+                            note += " (run cancelled after --ci-timeout)"
                         row.update(ci_conclusion=concl, verified_failing=ok,
                                    ci_run_id=ci["run_id"] or "", ci_run_url=ci["run_url"] or "")
                         if note:
                             notes.insert(0, note)
                     except Exception as ex:
                         notes.insert(0, f"error while waiting for the CI: {ex}"[:200])
+                if st.get("ctx_push"):
+                    cb, csha, cerr = st["ctx_push"]
+                    row["context_control_sha"] = csha
+                    if cerr:
+                        row["context_control_conclusion"] = "error"
+                        notes.append(cerr)
+                    else:
+                        try:
+                            appeared, cci = _wait_run_or_absence(repo, cb, csha, no_run_timeout, ci_timeout)
+                            row["context_control_conclusion"] = (cci["conclusion"] or "error") if appeared else "no_run"
+                            row["context_control_run_id"] = cci["run_id"] or ""
+                        except Exception as ex:
+                            row["context_control_conclusion"] = "error"
+                            notes.append(f"error while waiting for the context control: {ex}"[:200])
+                    if row["context_control_conclusion"] != "success":
+                        # a failing state that may come from the context alone does not count
+                        row["verified_failing"] = False
+                        notes.append("context control NOT green: the context alone may break the CI")
                 row["notes"] = " | ".join(notes)
                 icon = "✅" if row["verified_failing"] else "⚠️ "
                 log.info(f"  {icon} {e['id']:<9} CI {row['ci_conclusion']:<15} run {row['ci_run_id'] or '-'}"
@@ -1250,7 +1439,8 @@ def verify_dep_config_cases(errors: list, out_dir: Path, run_ts: str, ci_timeout
 
 def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
               keep_branches: bool = False, readonly_memory: bool = False,
-              test_protocol_b: bool = False, ci_timeout: int = 300) -> list:
+              test_protocol_b: bool = False, ci_timeout: int = 300,
+              failing_state: bool = False) -> list:
     """
     Runs all the errors on a specific model.
     Handles file reset, timeouts, pauses and VRAM release.
@@ -1268,7 +1458,8 @@ def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
     log.info(f"MODEL: {model['name']} ({model['id']})")
     log.info(f"Errors: {total} | Timeout: {timeout}s | "
              f"dry-run: {dry_run} | no-memory: {no_memory}"
-             + (" | test protocol: B" if test_protocol_b else ""))
+             + (" | protocol B: all categories" if failing_state
+                else " | test protocol: B" if test_protocol_b else ""))
     log.info(f"{'='*60}")
 
     for i, error in enumerate(errors):
@@ -1277,28 +1468,16 @@ def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
             f"({error['category']} / {error['difficulty']})"
         )
 
-        # ── Protocol B for the "test" category (opt-in, --test-protocol-b) ──
-        if test_protocol_b and error["category"] == "test":
-            row = run_test_case_protocol_b(model, error, no_memory, readonly_memory,
-                                           timeout, ci_timeout)
+        # ── Protocol B: every category with --failing-state, "test" only with --test-protocol-b ──
+        if failing_state or (test_protocol_b and error["category"] == "test"):
+            row = run_case_protocol_b(model, error, no_memory, readonly_memory,
+                                      timeout, ci_timeout)
             results.append(row)
             if row["final_status"] != "excluded":
                 time.sleep(1 if model["provider"] in ("anthropic", "groq") else 2)
             continue
 
-        # ── File reset before every test ──
-        reset_files()
-
-        # ── Inject the error into the file (only if not dry-run) ──
-        if not dry_run:
-            try:
-                injected = inject_error(error)
-                if not injected:
-                    log.warning(f"{error['id']}: no target found for the injection — using synthetic logs")
-            except Exception as e:
-                log.warning(f"inject_error failed: {e} — using synthetic logs")
-
-        # ── Default result row (for timeouts or errors) ──
+        # ── Default result row (for timeouts, errors and skipped cases) ──
         row = {
             "model_id":           model["id"],
             "model_name":         model["name"],
@@ -1319,7 +1498,34 @@ def run_model(model: dict, errors: list, dry_run: bool, no_memory: bool,
             "json_parse_fail":    0,
             "latency_sec":        float(timeout),
             "error_msg":          "",
+            "valid_case":         1,
+            "excluded":           False,
+            "exclusion_reason":   "",
         }
+
+        # ── Excluded cases (excluded_cases.json) are never run ──
+        if error["id"] in EXCLUDED_CASES:
+            reason = EXCLUDED_CASES[error["id"]]["reason"]
+            log.info(f"  Excluded: {error['id']} — {reason}")
+            row.update(final_status="excluded", valid_case=0, excluded=True,
+                       exclusion_reason=reason, latency_sec=0.0)
+            results.append(row)
+            continue
+
+        # ── Reset + case context + injection (dry-run: reset only) ──
+        if dry_run:
+            reset_files()
+        else:
+            try:
+                injected, msg = setup_case(error), ""
+            except Exception as e:
+                injected, msg = False, f"inject_error failed: {e}"[:300]
+            if not injected:
+                # never run the agent on a state identical to the clean baseline
+                log.warning(f"  ⚠️  {error['id']}: injection not applied — case skipped, agent not run")
+                row.update(final_status="injection_failed", valid_case=0, error_msg=msg, latency_sec=0.0)
+                results.append(row)
+                continue
 
         try:
             run_result = run_with_timeout(
@@ -1462,14 +1668,14 @@ def print_summary(all_results: list):
 
 
 def print_protocol_b_summary(all_results: list):
-    """Case accounting of protocol B per model (test category only)."""
-    rows = [r for r in all_results if "valid_case" in r]
+    """Case accounting of protocol B per model. ok✓ = clean source passes (test) / repair == reference (dep, config)."""
+    rows = [r for r in all_results if "pre_ci_status" in r]
     if not rows:
         return
-    print("\nTEST PROTOCOL B — CASE ACCOUNTING")
+    print("\nPROTOCOL B — CASE ACCOUNTING")
     print("="*72)
     print(f"{'Model':<24} {'excl':>5} {'injF':>5} {'preR':>5} {'preG':>5} {'preE':>5} "
-          f"{'valid':>6} {'fixed':>6} {'SR%':>6} {'clean✓':>7}")
+          f"{'valid':>6} {'fixed':>6} {'SR%':>6} {'ok✓':>7}")
     print("-"*72)
     by_model = {}
     for r in rows:
@@ -1478,7 +1684,8 @@ def print_protocol_b_summary(all_results: list):
         cnt = lambda pred: sum(1 for r in rs if pred(r))
         valid = cnt(lambda r: r["valid_case"])
         fixed = cnt(lambda r: r["valid_case"] and r["success"])
-        clean = cnt(lambda r: r["valid_case"] and r["success"] and r["test_on_clean_source"] == "pass")
+        clean = cnt(lambda r: r["valid_case"] and r["success"]
+                    and (r["test_on_clean_source"] == "pass" or r.get("repair_matches_reference") is True))
         sr = f"{fixed / valid * 100:5.1f}%" if valid else "   N/A"
         print(f"{rs[0]['model_name'][:24]:<24} {cnt(lambda r: r['excluded']):>5} "
               f"{cnt(lambda r: r['final_status'] == 'injection_failed'):>5} "
@@ -1568,6 +1775,24 @@ def main():
              "Other categories keep the default protocol."
     )
     parser.add_argument(
+        "--failing-state",
+        dest="failing_state",
+        action="store_true",
+        help="Protocol B for EVERY category (MSR revision F1): skips the cases in "
+             "experiments/excluded_cases.json and the non-injectable ones, commits the full failing "
+             "state (case context + injection) on top of GitHub main, requires a RED pre-check, "
+             "branches every fix from that commit. Rows carry pre-check/fix SHAs and run ids; "
+             "dependency/config rows also carry the repaired file vs the clean reference of the case."
+    )
+    parser.add_argument(
+        "--export-references",
+        dest="export_references",
+        default=None,
+        metavar="PATH",
+        help="Writes the clean reference file of every included dependency/config case "
+             "(requirements.txt + case context, or ci.yml at HEAD) to PATH as JSON and exits."
+    )
+    parser.add_argument(
         "--verify-excluded",
         dest="verify_excluded",
         action="store_true",
@@ -1621,6 +1846,16 @@ def main():
 
     if args.test_protocol_b and args.dry_run:
         parser.error("--test-protocol-b needs the real CI: it cannot be combined with --dry-run")
+    if args.failing_state and args.dry_run:
+        parser.error("--failing-state needs the real CI: it cannot be combined with --dry-run")
+
+    # ── --export-references: clean reference file per case (for F3/F6), no model involved ──
+    if args.export_references:
+        refs = export_reference_states(DATASET)
+        Path(args.export_references).write_text(
+            json.dumps(refs, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        print(f"✅ {len(refs)} reference states written to {args.export_references}")
+        sys.exit(0)
 
     # ── --verify-dep-config: failing-state verification, no model involved ──
     if args.verify_dep_config:
@@ -1628,6 +1863,9 @@ def main():
             parser.error("--verify-dep-config covers the dependency and config categories")
         cats = ("dependency", "config") if args.category == "all" else (args.category,)
         cases = [e for e in DATASET if e["category"] in cats]
+        n_excluded = sum(1 for e in cases if e["id"] in EXCLUDED_CASES)
+        cases = [e for e in cases if e["id"] not in EXCLUDED_CASES]
+        log.info(f"verify-dep-config: {n_excluded} cases skipped (experiments/excluded_cases.json)")
         if args.difficulty != "all":
             cases = [e for e in cases if e["difficulty"] == args.difficulty]
         if args.limit:
@@ -1645,14 +1883,21 @@ def main():
         verified  = sum(1 for r in rows if r["verified_failing"])
         anomalies = [r["case_id"] for r in rows if r["ci_conclusion"] == "success"]
         noop      = [r["case_id"] for r in rows if not r["injection_applied"]]
-        other     = [r["case_id"] for r in rows if not r["verified_failing"] and r["ci_conclusion"] != "success"]
+        noinj     = [r["case_id"] for r in rows if r["ci_conclusion"] == "not_injectable"]
+        ctx_bad   = [r["case_id"] for r in rows if r.get("context_control_conclusion") not in (None, "", "success")]
+        other     = [r["case_id"] for r in rows if not r["verified_failing"] and r["ci_conclusion"] != "success"
+                     and r["case_id"] not in noinj and r["case_id"] not in ctx_bad]
         print(f"\n✅ verify-dep-config: {verified}/{len(rows)} injected states fail the CI")
         print(f"⚠️  CI green on the injected state (anomalies): {len(anomalies)} {anomalies}")
         print(f"   of which injection changed no file: {len([c for c in anomalies if c in noop])}")
+        if noinj:
+            print(f"❌ not injectable (fix the dataset or exclude): {noinj}")
+        if ctx_bad:
+            print(f"❌ context control not green (the context alone breaks the CI): {ctx_bad}")
         if other:
             print(f"❓ inconclusive / errors (re-run these): {other}")
         print(f"📄 CSV: {merged}")
-        sys.exit(1 if other else 0)
+        sys.exit(1 if (other or noinj or ctx_bad) else 0)
 
     out_dir = Path(args.output_dir) if args.output_dir else RESULTS_DIR
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -1684,7 +1929,8 @@ def main():
     if args.limit:
         errors = errors[:args.limit]
 
-    log.info(f"Dataset: {len(errors)} errors selected")
+    log.info(f"Dataset: {len(errors)} errors selected, "
+             f"{sum(1 for e in errors if e['id'] in EXCLUDED_CASES)} of them excluded (excluded_cases.json)")
     if args.test_protocol_b:
         n_test = sum(1 for e in errors if e["category"] == "test")
         n_excl = sum(1 for e in errors if e["id"] in EXCLUDED_TEST_CASES)
@@ -1717,7 +1963,9 @@ def main():
         memory_condition = "nomemory"
     else:
         memory_condition = "memory"
-    if args.test_protocol_b:
+    if args.failing_state:
+        memory_condition += "_failstate"
+    elif args.test_protocol_b:
         memory_condition += "_protob"
 
     def build_run_id(model_id: str) -> str:
@@ -1748,6 +1996,7 @@ def main():
                 readonly_memory=args.readonly_memory,
                 test_protocol_b=args.test_protocol_b,
                 ci_timeout=args.ci_timeout,
+                failing_state=args.failing_state,
             )
             all_results.extend(model_results)
 
@@ -1768,12 +2017,10 @@ def main():
 
     # ── Final save and summary ──
     csv_path = save_results(all_results, run_id, out_dir)
-    if args.test_protocol_b:
-        # Excluded / skipped test cases are not part of any denominator
-        print_summary([r for r in all_results if r.get("valid_case", 1)])
+    # Excluded / skipped cases are not part of any denominator
+    print_summary([r for r in all_results if r.get("valid_case", 1)])
+    if args.test_protocol_b or args.failing_state:
         print_protocol_b_summary(all_results)
-    else:
-        print_summary(all_results)
 
     print(f"\n✅ Benchmark completed — {len(all_results)} total runs")
     if csv_path:

@@ -1,0 +1,436 @@
+{
+  "description": "Cases excluded from the corrected benchmark (MSR 2027 revision, F1, 25 Nov 2026). A case stays only if its error is the same as in the submission (same git_diff, ci_logs and expected_fix, at most a different version number) and the CI actually turns red. experiments/benchmark.py skips every case listed here.",
+  "counts": {
+    "dependency": 15,
+    "test": 11,
+    "config": 45
+  },
+  "cases": [
+    {
+      "case_id": "dep_010",
+      "category": "dependency",
+      "group": "toolchain-or-wheel",
+      "reason": "torch==2.0.0 installs on the runner (CI green, verified 20 Nov); the corrupt-wheel (RECORD) error of the log does not occur"
+    },
+    {
+      "case_id": "dep_013",
+      "category": "dependency",
+      "group": "toolchain-or-wheel",
+      "reason": "cryptography==41.0.0 installs from a prebuilt wheel; the gcc build failure of the log does not occur"
+    },
+    {
+      "case_id": "dep_016",
+      "category": "dependency",
+      "group": "no-context",
+      "reason": "conflict among the injected pins only, with no pre-existing pin; pip resolves it and the CI is green (verified 20 Nov)"
+    },
+    {
+      "case_id": "dep_017",
+      "category": "dependency",
+      "group": "D1-not-reproducible",
+      "reason": "with the context pin pandas==1.5.3, numpy==2.0.0 still installs: pandas 1.5.3 declares no numpy<1.25 bound on PyPI"
+    },
+    {
+      "case_id": "dep_019",
+      "category": "dependency",
+      "group": "D1-not-reproducible",
+      "reason": "the context pin cymem==2.0.1 does not exist on PyPI, so the context alone breaks the install"
+    },
+    {
+      "case_id": "dep_021",
+      "category": "dependency",
+      "group": "yanked",
+      "reason": "pip installs a yanked version when it is pinned exactly; the 'yanked' failure of the log does not occur"
+    },
+    {
+      "case_id": "dep_024",
+      "category": "dependency",
+      "group": "builds-on-runner",
+      "reason": "psycopg2==2.9.9 builds from source on the runner (libpq-dev present); CI green (verified 20 Nov)"
+    },
+    {
+      "case_id": "dep_026",
+      "category": "dependency",
+      "group": "files-or-tooling",
+      "reason": "depends on requirements.in / pip-compile and on tests importing httpx; absent"
+    },
+    {
+      "case_id": "dep_028",
+      "category": "dependency",
+      "group": "files-or-tooling",
+      "reason": "depends on tests/test_server.py and app.server importing uvicorn; absent"
+    },
+    {
+      "case_id": "dep_034",
+      "category": "dependency",
+      "group": "files-or-tooling",
+      "reason": "depends on `pip install --require-hashes` and hashed pins; absent"
+    },
+    {
+      "case_id": "dep_035",
+      "category": "dependency",
+      "group": "files-or-tooling",
+      "reason": "depends on a conda environment.yml; pip ignores the injected line"
+    },
+    {
+      "case_id": "dep_039",
+      "category": "dependency",
+      "group": "files-or-tooling",
+      "reason": "depends on requirements-dev.txt (`pip install -r requirements.txt -r requirements-dev.txt`); absent"
+    },
+    {
+      "case_id": "dep_041",
+      "category": "dependency",
+      "group": "toolchain-or-wheel",
+      "reason": "tokenizers==0.15.0 installs from a prebuilt wheel; the missing-Rust build failure of the log does not occur"
+    },
+    {
+      "case_id": "dep_043",
+      "category": "dependency",
+      "group": "import-oracle",
+      "reason": "only an import test would expose it (a different oracle); excluded by decision for a single case"
+    },
+    {
+      "case_id": "dep_046",
+      "category": "dependency",
+      "group": "D1-not-reproducible",
+      "reason": "with the context pins django-filter==22.1 and djangorestframework==3.14.0, django==5.0 still installs: no Django<5.0 bound on PyPI"
+    },
+    {
+      "case_id": "test_009",
+      "category": "test",
+      "group": "A2-error-outside-test-file",
+      "reason": "A2: error injected in src/services.py, outside the test file the Test Agent may edit (protocol B)"
+    },
+    {
+      "case_id": "test_011",
+      "category": "test",
+      "group": "A2-error-outside-test-file",
+      "reason": "A2: error injected in src/auth.py, outside the test file the Test Agent may edit (protocol B)"
+    },
+    {
+      "case_id": "test_012",
+      "category": "test",
+      "group": "A2-error-outside-test-file",
+      "reason": "A2: error injected in src/db.py, outside the test file the Test Agent may edit (protocol B)"
+    },
+    {
+      "case_id": "test_013",
+      "category": "test",
+      "group": "A2-error-outside-test-file",
+      "reason": "A2: error injected in src/mailer.py, outside the test file the Test Agent may edit (protocol B)"
+    },
+    {
+      "case_id": "test_014",
+      "category": "test",
+      "group": "A2-error-outside-test-file",
+      "reason": "A2: error injected in src/config.py, outside the test file the Test Agent may edit (protocol B)"
+    },
+    {
+      "case_id": "test_015",
+      "category": "test",
+      "group": "A2-error-outside-test-file",
+      "reason": "A2: error injected in src/validator.py, outside the test file the Test Agent may edit (protocol B)"
+    },
+    {
+      "case_id": "test_019",
+      "category": "test",
+      "group": "A2-error-outside-test-file",
+      "reason": "A2: error injected in src/serializer.py, outside the test file the Test Agent may edit (protocol B)"
+    },
+    {
+      "case_id": "test_022",
+      "category": "test",
+      "group": "A2-error-outside-test-file",
+      "reason": "A2: error injected in src/parser.py, outside the test file the Test Agent may edit (protocol B)"
+    },
+    {
+      "case_id": "test_027",
+      "category": "test",
+      "group": "A2-error-outside-test-file",
+      "reason": "A2: error injected in tests/fixtures/sample.json, outside the test file the Test Agent may edit (protocol B)"
+    },
+    {
+      "case_id": "test_040",
+      "category": "test",
+      "group": "A2-error-outside-test-file",
+      "reason": "A2: error injected in src/validation.py, outside the test file the Test Agent may edit (protocol B)"
+    },
+    {
+      "case_id": "test_049",
+      "category": "test",
+      "group": "A2-error-outside-test-file",
+      "reason": "A2: error injected in src/logger.py, outside the test file the Test Agent may edit (protocol B)"
+    },
+    {
+      "case_id": "conf_004",
+      "category": "config",
+      "group": "C-harness-change-needed",
+      "reason": "adding `with: token:` to checkout needs a multi-line injection (harness change)"
+    },
+    {
+      "case_id": "conf_005",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "setup-python@v1 works today (GITHUB_PATH, forced onto a supported Node): the add-path/set-env failure of the log no longer occurs"
+    },
+    {
+      "case_id": "conf_007",
+      "category": "config",
+      "group": "C-harness-change-needed",
+      "reason": "no `working-directory` in ci.yml: needs a change to the clean ci.yml or a multi-line injection"
+    },
+    {
+      "case_id": "conf_008",
+      "category": "config",
+      "group": "C-harness-change-needed",
+      "reason": "removing the multi-line setup-python step needs a multi-line injection (harness change)"
+    },
+    {
+      "case_id": "conf_009",
+      "category": "config",
+      "group": "C-harness-change-needed",
+      "reason": "indentation error: inject_error strips both lines, so it cannot change indentation (harness change)"
+    },
+    {
+      "case_id": "conf_010",
+      "category": "config",
+      "group": "B-new-error-needed",
+      "reason": "duplicate top-level `on:` cannot be injected (pure insertion); a one-line variant would need new ci_logs/expected_fix"
+    },
+    {
+      "case_id": "conf_011",
+      "category": "config",
+      "group": "B-new-error-needed",
+      "reason": "no upload-artifact step in ci.yml; injecting one in place of an existing step would need new ci_logs/expected_fix"
+    },
+    {
+      "case_id": "conf_012",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "the `python-versions` typo only yields an 'Unexpected input' warning: setup-python falls back to the Python on PATH"
+    },
+    {
+      "case_id": "conf_014",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a DATABASE_URL secret and a database test; neither exists in the repository"
+    },
+    {
+      "case_id": "conf_015",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "no schedule trigger; a cron frequency change is not a CI failure"
+    },
+    {
+      "case_id": "conf_016",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "no build matrix; the job-count limit of the log needs a multi-dimensional matrix absent from ci.yml"
+    },
+    {
+      "case_id": "conf_017",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a deployment job with `permissions`; absent"
+    },
+    {
+      "case_id": "conf_018",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "removing the coverage flags does not fail the CI (no coverage upload step)"
+    },
+    {
+      "case_id": "conf_019",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a Docker build step and a Dockerfile; absent"
+    },
+    {
+      "case_id": "conf_020",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a PyPI trusted-publishing job; absent"
+    },
+    {
+      "case_id": "conf_021",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a setup-node step; absent (Python-only workflow)"
+    },
+    {
+      "case_id": "conf_022",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs git submodules; the repository has none"
+    },
+    {
+      "case_id": "conf_023",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a workflow_dispatch input; absent"
+    },
+    {
+      "case_id": "conf_024",
+      "category": "config",
+      "group": "B-new-error-needed",
+      "reason": "no `runs-on: [self-hosted, linux]` in ci.yml; changing another runner label would need new ci_logs/expected_fix"
+    },
+    {
+      "case_id": "conf_025",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "no timeout-minutes; the test suite takes well under 5 minutes, so the timeout would not fire"
+    },
+    {
+      "case_id": "conf_026",
+      "category": "config",
+      "group": "B-new-error-needed",
+      "reason": "no `if: github.ref == ...` in ci.yml; reusing `if: always()` would need new ci_logs/expected_fix"
+    },
+    {
+      "case_id": "conf_027",
+      "category": "config",
+      "group": "B-new-error-needed",
+      "reason": "no `needs: build` in ci.yml; a typo on `needs: A` would need new ci_logs/expected_fix"
+    },
+    {
+      "case_id": "conf_028",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a setup-java step; absent"
+    },
+    {
+      "case_id": "conf_029",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a PR-commenting job with `permissions`; absent"
+    },
+    {
+      "case_id": "conf_030",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a Windows runner and a bash script; absent"
+    },
+    {
+      "case_id": "conf_031",
+      "category": "config",
+      "group": "0-wrong-failure",
+      "reason": "CI fails for a different reason than the log: the replacement turns the test job's `env:` into `run:` (invalid workflow), while the log describes a missing API_SECRET"
+    },
+    {
+      "case_id": "conf_032",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs an actions/cache step; a wrong cache key is a cache miss, not a CI failure"
+    },
+    {
+      "case_id": "conf_033",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs an artifact upload/download matrix; absent"
+    },
+    {
+      "case_id": "conf_034",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a deploy job with `concurrency`; not a CI failure in this repository"
+    },
+    {
+      "case_id": "conf_035",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a reusable publish workflow and secrets; absent"
+    },
+    {
+      "case_id": "conf_036",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs branch protection requiring a check name; the repository has none"
+    },
+    {
+      "case_id": "conf_037",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a protected `production` environment; absent"
+    },
+    {
+      "case_id": "conf_038",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a matrix strategy; fail-fast alone does not fail the CI"
+    },
+    {
+      "case_id": "conf_039",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a composite action with inputs; absent"
+    },
+    {
+      "case_id": "conf_040",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a third-party action pinned by SHA; absent"
+    },
+    {
+      "case_id": "conf_041",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs Git LFS files; the repository has none"
+    },
+    {
+      "case_id": "conf_042",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs nested reusable workflows and secrets; absent"
+    },
+    {
+      "case_id": "conf_043",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a matrix with a concurrency group; intermittent cancellation is not reproducible"
+    },
+    {
+      "case_id": "conf_044",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs an actions/cache step and a cache polluted by another branch; absent"
+    },
+    {
+      "case_id": "conf_045",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs AWS OIDC credentials and an IAM trust policy; absent"
+    },
+    {
+      "case_id": "conf_046",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a non-ephemeral self-hosted runner with a stale lock file; absent"
+    },
+    {
+      "case_id": "conf_047",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a ruleset requiring the 'ci/test' check; absent (the rename alone leaves the CI green)"
+    },
+    {
+      "case_id": "conf_048",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs a pull_request_target workflow with secrets and a PR event; absent"
+    },
+    {
+      "case_id": "conf_049",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "needs an actions/cache step and the 10 GB cache limit; not reproducible"
+    },
+    {
+      "case_id": "conf_050",
+      "category": "config",
+      "group": "D-not-reproducible",
+      "reason": "removing `if: always()` from job C leaves the CI green (A and B succeed); the skip of B in the log is absent"
+    }
+  ]
+}

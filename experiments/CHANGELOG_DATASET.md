@@ -325,3 +325,51 @@ modified ones (`src/orders.py`, `tests/test_orders.py`, `tests/test_async.py`,
 committed yet (by policy: commits are made only on explicit request). For
 `reset_files()` to work correctly in a real benchmark run,
 `git add` + commit of all these files is needed.
+
+## 8. MSR 2027 revision F1 — corrected benchmark: 79 cases kept, 71 excluded
+
+Date: 2026-11-25. Context: the failing-state verification of 20 Nov 2026
+(`--verify-dep-config`) found that only 73/150 injected states made the CI fail.
+Rule adopted for the corrected benchmark: **a case stays only if its error is the
+same as in the submission** (same `git_diff`, `ci_logs` and `expected_fix`, at most
+a different version number) **and the CI actually turns red**. Every other case is
+excluded, with a one-line reason, in `experiments/excluded_cases.json`
+(11 test, 15 dependency, 45 config). Kept: 39 test, 35 dependency, 5 config.
+
+### 8.1 Harness
+- `inject_error()` returns `False` when the target file is unchanged (dependency
+  and config too). Callers skip such a case: the agent is never run on a state
+  identical to the clean baseline (the 46 null config injections were silent).
+- `setup_case()`: clean baseline, then the case context, then the injection.
+- Every mode of `experiments/benchmark.py` skips the cases in `excluded_cases.json`.
+- `--failing-state`: protocol B (pre-check red on the full failing state, fix
+  branches from it) for every category.
+- `--verify-dep-config`: non-injectable cases are not pushed; cases with context
+  also push "clean state + context" (must be green).
+
+### 8.2 Config — only cases whose error is unchanged
+- `conf_001`, `conf_003`: `git_diff` aligned to `ci.yml` (double quotes). The
+  first occurrence of `python-version: "3.11"` is the setup-python step of job A.
+- `conf_002`: Python 3.15 has been released (3.15.2 in the setup-python manifest),
+  so the injected version is now 3.17 (absent from the manifest), in `git_diff`,
+  `ci_logs`, `ci_job_name` and `notes`; the "-" line and `expected_fix` use 3.11,
+  the version actually in `ci.yml`.
+- Kept unchanged: `conf_006` (the run never starts: runner label retired),
+  `conf_013`.
+
+### 8.3 Dependency — pre-existing context (D1)
+New optional field `context_requirements`: pins quoted in the case's `ci_logs`
+that are a pre-existing state of the repository for that case, written before
+the injection (never in the `git_diff`, never on GitHub `main`). Kept only where,
+on Python 3.11 with pip, clean state + context installs and the suite passes,
+and clean state + context + injection makes `pip install` fail with the resolver:
+`dep_012` (typing-extensions==4.2.0), `dep_018` (protobuf==3.20.3),
+`dep_025` (click==8.1.7), `dep_048` (boto3==1.34.10).
+Tried and excluded: `dep_017`, `dep_046` (still install: PyPI metadata lacks the
+upper bound quoted in the log), `dep_019` (cymem==2.0.1 does not exist on PyPI),
+`dep_039` (depends on requirements-dev.txt).
+
+### 8.4 Clean reference per case
+`experiments/reference_states.json` (`--export-references`): for each kept
+dependency/config case, the clean file its specialist repairs
+(requirements.txt + context, or ci.yml at HEAD).

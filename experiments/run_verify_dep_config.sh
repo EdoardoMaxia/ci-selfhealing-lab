@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 # Failing-state verification for dependency + config (MSR revision, analysis A2 §9a). No LLM.
 #
-# For each of the 100 dependency/config cases: inject the error, commit the FULL failing state
+# v2 (F1, 25 Nov 2026): the cases in experiments/excluded_cases.json are skipped (40 cases left:
+# 35 dependency + 5 config); non-injectable cases are reported and never pushed; cases with
+# context_requirements also push "clean state + context", which must be green.
+# Results go to $OUT (default experiments/results/verify_dep_config_v2) and the local branch
+# $RESULTS_BRANCH (default results-verify-dep-config-v2); v1 used verify_dep_config/ and
+# results-verify-dep-config. Override with VERIFY_OUT=... RESULTS_BRANCH=...
+#
+# For each included dependency/config case: set up the case, commit the FULL failing state
 # on a fix/ai-verify-* branch, wait for the CI of that commit, record whether it is NOT green.
 # A control branch with the baseline state runs first and must be green (otherwise "no_run"
 # would be meaningless). Runs are pushed in batches of 5, so they execute in parallel.
@@ -18,9 +25,9 @@ cd "$(dirname "$0")/.." || exit 1
 [ -f .venv/bin/activate ] && source .venv/bin/activate
 
 DRY="${DRY_RUN:-0}"
-OUT=experiments/results/verify_dep_config
+OUT="${VERIFY_OUT:-experiments/results/verify_dep_config_v2}"
 DONE=$OUT/.done
-RESULTS_BRANCH=results-verify-dep-config
+RESULTS_BRANCH="${RESULTS_BRANCH:-results-verify-dep-config-v2}"
 CI_SCOPE=(src app tests requirements.txt .github/workflows)
 mkdir -p "$OUT" "$DONE"
 ts() { date '+%Y-%m-%d %H:%M:%S'; }
@@ -46,7 +53,8 @@ if [ "$DRY" != 1 ]; then
   # The token lives in .env (read by the benchmark): checked through check_api.py, not $GITHUB_TOKEN.
   python experiments/check_api.py --providers github || die "GitHub check failed (GITHUB_TOKEN / GITHUB_REPO in .env)"
   python -c "import yaml" 2>/dev/null || say "WARNING: PyYAML missing, the static workflow check of config cases is skipped"
-  python -m pytest agent/tests/test_protocol_b.py agent/tests/test_verify_dep_config.py -q || die "unit tests failed"
+  python -m pytest agent/tests/test_protocol_b.py agent/tests/test_verify_dep_config.py \
+    agent/tests/test_f1_failing_state.py -q || die "unit tests failed"
   [ -z "$(git status --porcelain --untracked-files=all -- "${CI_SCOPE[@]}")" ] || die "unit tests left changes under the CI scope"
   say "prerequisites OK"
 fi
@@ -57,13 +65,14 @@ run_category() {   # run_category <category> <ci-timeout>
   local cat="$1" tmo="$2"
   if [ -f "$DONE/$cat" ]; then say "skip $cat (already done)"; return 0; fi
   say "START $cat (ci-timeout ${tmo}s)"
-  [ "$DRY" = 1 ] && { echo "  python -u experiments/benchmark.py --verify-dep-config --category $cat --ci-timeout $tmo"; return 0; }
-  python -u experiments/benchmark.py --verify-dep-config --category "$cat" --ci-timeout "$tmo" 2>&1 | tee "$OUT/log_$cat.txt"
+  [ "$DRY" = 1 ] && { echo "  python -u experiments/benchmark.py --verify-dep-config --category $cat --ci-timeout $tmo --output-dir $OUT"; return 0; }
+  python -u experiments/benchmark.py --verify-dep-config --category "$cat" --ci-timeout "$tmo" \
+    --output-dir "$OUT" 2>&1 | tee "$OUT/log_$cat.txt"
   local rc=${PIPESTATUS[0]}
   if [ "$rc" = 0 ]; then touch "$DONE/$cat"; say "OK    $cat"
   else FAILED+=("$cat"); say "FAIL  $cat (exit $rc): control run not green, or inconclusive cases to re-run — see $OUT/log_$cat.txt"; fi
 }
-run_category dependency 600   # torch==2.0.0 (dep_010) downloads ~2 GB of wheels before failing or passing
+run_category dependency 600
 run_category config 600
 
 # ── Report ─────────────────────────────────────────────────────────────────────
@@ -83,6 +92,13 @@ for cat in ("dependency", "config"):
     inc = sum(r["verified_failing"] != "true" and r["ci_conclusion"] != "success" for r in rs)
     print(f"| {cat} | {len(rs)} | {v} | {len(g)} | {noop} | {inc} |")
 print("\nCI conclusions:", dict(collections.Counter(r["ci_conclusion"] for r in rows)))
+ctx = [r for r in rows if r.get("context_control_conclusion")]
+if ctx:
+    print("\n## Context controls (clean state + context_requirements, must be green)\n")
+    print("| Case | control CI | run |")
+    print("|---|---|---|")
+    for r in ctx:
+        print(f"| {r['case_id']} | {r['context_control_conclusion']} | {r['context_control_run_id']} |")
 print("\n## Cases that are NOT verified failing\n")
 print("| Case | CI | run | notes |")
 print("|---|---|---|---|")
@@ -98,7 +114,7 @@ if [ "$DRY" != 1 ] && [ "${NO_COMMIT:-0}" != 1 ] && [ ${#FAILED[@]} -eq 0 ]; the
   if git show-ref --verify --quiet "refs/heads/$RESULTS_BRANCH"; then git worktree add -q "$wt" "$RESULTS_BRANCH"
   else git worktree add -q -b "$RESULTS_BRANCH" "$wt" HEAD; fi \
     && mkdir -p "$wt/$OUT" && cp -r "$OUT"/. "$wt/$OUT"/ && rm -rf "$wt/$OUT/.done" \
-    && (cd "$wt" && git add -f "$OUT" && git commit -q -m "results: dependency/config failing-state verification ($(date +%Y-%m-%d))") \
+    && (cd "$wt" && git add -f "$OUT" && git commit -q -m "results: dependency/config failing-state verification v2 ($(date +%Y-%m-%d))") \
     && say "results committed on $RESULTS_BRANCH (NOT pushed: git push origin $RESULTS_BRANCH)" \
     || say "WARNING: results NOT committed (they are in $OUT)"
   git worktree remove --force "$wt" 2>/dev/null

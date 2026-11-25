@@ -1,0 +1,202 @@
+{
+  "dep_001": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_002": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_003": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_004": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_005": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_006": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_007": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_008": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_009": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_011": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_012": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\ntyping-extensions==4.2.0\n"
+  },
+  "dep_014": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_015": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_018": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\nprotobuf==3.20.3\n"
+  },
+  "dep_020": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_022": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_023": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_025": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\nclick==8.1.7\n"
+  },
+  "dep_027": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_029": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_030": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_031": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_032": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_033": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_036": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_037": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_038": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_040": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_042": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_044": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_045": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_047": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_048": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\nboto3==1.34.10\n"
+  },
+  "dep_049": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "dep_050": {
+    "category": "dependency",
+    "file": "requirements.txt",
+    "content": "pytest==7.4.0\npytest-cov==4.1.0\n"
+  },
+  "conf_001": {
+    "category": "config",
+    "file": ".github/workflows/ci.yml",
+    "content": "name: CI Pipeline\n\non:\n  push:\n    branches: [main, fix/**]\n  pull_request:\n    branches: [main]\n\njobs:\n  A:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run job A tasks\n        run: echo \"Running tasks for job A\"\n\n  B:\n    needs: A\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run job B tasks\n        run: echo \"Running tasks for job B\"\n\n  C:\n    needs: [A, B]\n    if: always()\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run additional tasks\n        run: echo \"Running additional tasks for job C\"\n\n  test:\n    runs-on: ubuntu-latest\n    name: Run Tests\n    env:\n      PYTHONPATH: ${{ github.workspace }}\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Install dependencies\n        run: |\n          python -m pip install --upgrade pip\n          pip install -r requirements.txt\n      - name: Run tests with coverage\n        run: |\n          pytest tests/ -v --cov=src --cov-report=term-missing"
+  },
+  "conf_002": {
+    "category": "config",
+    "file": ".github/workflows/ci.yml",
+    "content": "name: CI Pipeline\n\non:\n  push:\n    branches: [main, fix/**]\n  pull_request:\n    branches: [main]\n\njobs:\n  A:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run job A tasks\n        run: echo \"Running tasks for job A\"\n\n  B:\n    needs: A\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run job B tasks\n        run: echo \"Running tasks for job B\"\n\n  C:\n    needs: [A, B]\n    if: always()\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run additional tasks\n        run: echo \"Running additional tasks for job C\"\n\n  test:\n    runs-on: ubuntu-latest\n    name: Run Tests\n    env:\n      PYTHONPATH: ${{ github.workspace }}\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Install dependencies\n        run: |\n          python -m pip install --upgrade pip\n          pip install -r requirements.txt\n      - name: Run tests with coverage\n        run: |\n          pytest tests/ -v --cov=src --cov-report=term-missing"
+  },
+  "conf_003": {
+    "category": "config",
+    "file": ".github/workflows/ci.yml",
+    "content": "name: CI Pipeline\n\non:\n  push:\n    branches: [main, fix/**]\n  pull_request:\n    branches: [main]\n\njobs:\n  A:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run job A tasks\n        run: echo \"Running tasks for job A\"\n\n  B:\n    needs: A\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run job B tasks\n        run: echo \"Running tasks for job B\"\n\n  C:\n    needs: [A, B]\n    if: always()\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run additional tasks\n        run: echo \"Running additional tasks for job C\"\n\n  test:\n    runs-on: ubuntu-latest\n    name: Run Tests\n    env:\n      PYTHONPATH: ${{ github.workspace }}\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Install dependencies\n        run: |\n          python -m pip install --upgrade pip\n          pip install -r requirements.txt\n      - name: Run tests with coverage\n        run: |\n          pytest tests/ -v --cov=src --cov-report=term-missing"
+  },
+  "conf_006": {
+    "category": "config",
+    "file": ".github/workflows/ci.yml",
+    "content": "name: CI Pipeline\n\non:\n  push:\n    branches: [main, fix/**]\n  pull_request:\n    branches: [main]\n\njobs:\n  A:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run job A tasks\n        run: echo \"Running tasks for job A\"\n\n  B:\n    needs: A\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run job B tasks\n        run: echo \"Running tasks for job B\"\n\n  C:\n    needs: [A, B]\n    if: always()\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run additional tasks\n        run: echo \"Running additional tasks for job C\"\n\n  test:\n    runs-on: ubuntu-latest\n    name: Run Tests\n    env:\n      PYTHONPATH: ${{ github.workspace }}\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Install dependencies\n        run: |\n          python -m pip install --upgrade pip\n          pip install -r requirements.txt\n      - name: Run tests with coverage\n        run: |\n          pytest tests/ -v --cov=src --cov-report=term-missing"
+  },
+  "conf_013": {
+    "category": "config",
+    "file": ".github/workflows/ci.yml",
+    "content": "name: CI Pipeline\n\non:\n  push:\n    branches: [main, fix/**]\n  pull_request:\n    branches: [main]\n\njobs:\n  A:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run job A tasks\n        run: echo \"Running tasks for job A\"\n\n  B:\n    needs: A\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run job B tasks\n        run: echo \"Running tasks for job B\"\n\n  C:\n    needs: [A, B]\n    if: always()\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Run additional tasks\n        run: echo \"Running additional tasks for job C\"\n\n  test:\n    runs-on: ubuntu-latest\n    name: Run Tests\n    env:\n      PYTHONPATH: ${{ github.workspace }}\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Set up Python 3.11\n        uses: actions/setup-python@v5\n        with:\n          python-version: \"3.11\"\n      - name: Install dependencies\n        run: |\n          python -m pip install --upgrade pip\n          pip install -r requirements.txt\n      - name: Run tests with coverage\n        run: |\n          pytest tests/ -v --cov=src --cov-report=term-missing"
+  }
+}

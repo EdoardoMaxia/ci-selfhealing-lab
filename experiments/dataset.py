@@ -226,6 +226,7 @@ DATASET = [
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "+sqlalchemy==2.0.0\n+pydantic==2.0.0\n-sqlalchemy==1.4.46",
+        "context_requirements": ["typing-extensions==4.2.0"],
         "ci_job_name": "Install dependencies",
         "expected_fix": "Upgrade typing-extensions>=4.6.0 in requirements.txt",
         "notes": "Transitive dependency conflict — requires identifying the missing package"
@@ -345,6 +346,7 @@ DATASET = [
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "+grpcio==1.60.0\n+grpcio-tools==1.60.0",
+        "context_requirements": ["protobuf==3.20.3"],
         "ci_job_name": "Install dependencies",
         "expected_fix": "Upgrade protobuf>=4.21.6 and verify compatibility with tensorflow and google-cloud-storage",
         "notes": "Classic protobuf conflict in the Google ecosystem — requires specific knowledge"
@@ -483,6 +485,7 @@ DATASET = [
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "  click==8.1.7\n+click==8.0.0",
+        "context_requirements": ["click==8.1.7"],
         "ci_job_name": "Install dependencies",
         "expected_fix": "Remove the duplicate line click==8.0.0, keeping only click==8.1.7",
         "notes": "Same package pinned twice with different versions in the same file"
@@ -965,6 +968,7 @@ DATASET = [
             ##[error]Process completed with exit code 1.
         """,
         "git_diff": "-botocore==1.34.10\n+botocore==1.33.0",
+        "context_requirements": ["boto3==1.34.10"],
         "ci_job_name": "Install dependencies",
         "expected_fix": "Align botocore==1.34.10 (or remove the explicit pin and let boto3 resolve the compatible version automatically)",
         "notes": "boto3 and botocore must be upgraded together — manually pinning botocore to an older version breaks the constraint"
@@ -2002,7 +2006,7 @@ DATASET = [
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-          python-version: '3.11'\n+          python-version: '3.99'",
+        "git_diff": "-          python-version: \"3.11\"\n+          python-version: \"3.99\"",
         "ci_job_name": "Set up Python 3.99",
         "expected_fix": "Restore python-version: '3.11'",
         "notes": "Non-existent Python version — base config case"
@@ -2013,16 +2017,16 @@ DATASET = [
         "category": "config",
         "difficulty": "easy",
         "ci_logs": """
-            ##[group]Set up Python 3.15
-            Error: Version 3.15 with arch x64 not found
+            ##[group]Set up Python 3.17
+            Error: Version 3.17 with arch x64 not found
             The following versions of Python are currently available: 3.8, 3.9, 3.10, 3.11, 3.12
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-          python-version: '3.12'\n+          python-version: '3.15'",
-        "ci_job_name": "Set up Python 3.15",
-        "expected_fix": "Use python-version: '3.12'",
-        "notes": "Python 3.15 not yet released"
+        "git_diff": "-          python-version: \"3.11\"\n+          python-version: \"3.17\"",
+        "ci_job_name": "Set up Python 3.17",
+        "expected_fix": "Use python-version: '3.11'",
+        "notes": "Python 3.17 not yet released"
     },
 
     {
@@ -2036,7 +2040,7 @@ DATASET = [
             ##[endgroup]
             ##[error]Process completed with exit code 1.
         """,
-        "git_diff": "-          python-version: '3.11'\n+          python-version: '2.7'",
+        "git_diff": "-          python-version: \"3.11\"\n+          python-version: \"2.7\"",
         "ci_job_name": "Set up Python 2.7",
         "expected_fix": "Use python-version: '3.11' or higher",
         "notes": "Python 2.7 EOL — not supported in GitHub Actions"
