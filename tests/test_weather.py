@@ -6,5 +6,5 @@ def fake_fetch(city):
 
 
 def test_get_forecast():
-    result = get_forecast("Rome")
+    result = get_forecast("Rome", fetch=fake_fetch)
     assert result == "sunny"
