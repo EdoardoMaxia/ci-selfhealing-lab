@@ -3,9 +3,8 @@ from src.settings import CONFIG
 
 
 def test_override_config():
-    config = copy.deepcopy(CONFIG)
-    config['env'] = 'production'
-    assert config['env'] == 'production'
+    CONFIG['env'] = 'production'
+    assert CONFIG['env'] == 'production'
 
 
 def test_default_config():
