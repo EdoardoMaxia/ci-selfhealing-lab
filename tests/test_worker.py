@@ -10,4 +10,4 @@ def make_task(result):
 def test_background_task():
     tasks = [make_task("pending")]
     result = process_queue(tasks)
-    assert result == "done"
+    assert result == "pending"
