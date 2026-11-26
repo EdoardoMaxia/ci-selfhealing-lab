@@ -2,12 +2,14 @@ import pytest
 from src.integration_db import get_connection
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope='function')
 def db_setup():
     conn = get_connection()
     conn.execute("INSERT INTO users (name) VALUES ('alice')")
     conn.commit()
     yield conn
+    conn.execute("DELETE FROM users")
+    conn.commit()
     conn.close()
 
 
