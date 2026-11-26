@@ -23,4 +23,4 @@ def test_factorial_base():
     assert factorial(1) == 1
 
 def test_factorial_normal():
-    assert factorial(5) == 60
+    assert factorial(5) == 120
