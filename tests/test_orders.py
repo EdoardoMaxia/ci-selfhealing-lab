@@ -14,4 +14,4 @@ def test_create_order(db_session):
 
 def test_order_status(db_session):
     order = create_order(db_session, item_id=2)
-    assert order["status"] == "pending"
+    assert order["status"] == "new"
