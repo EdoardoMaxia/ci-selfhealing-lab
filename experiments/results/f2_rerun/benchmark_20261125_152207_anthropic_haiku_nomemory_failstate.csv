@@ -1,0 +1,281 @@
+model_id,model_name,model_type,dry_run,no_memory,error_id,category,difficulty,final_status,success,router_category,router_correct,router_confidence,router_reasoning,attempts_count,fix_attempt,json_parse_fail,latency_sec,error_msg,memory_hits,memory_active,excluded,exclusion_reason,valid_case,injected_files,pre_ci_status,pre_ci_sha,pre_ci_run_id,post_ci_status,post_ci_sha,post_ci_run_id,post_ci_attempts,agent_modified_file,agent_file_is_injected,test_on_clean_source,clean_source_detail,assertions_preserved,assertions_detail,reference_file,repair_matches_reference,agent_file_content
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_001,dependency,easy,fixed,1,dependency,1,0.99,"pip install failed because numpy version 99.99.99 does not exist in PyPI. The requirements.txt specifies an invalid/non-existent package version, which is a dependency resolution error.",1,1,0,59.65,,0,0,False,,1,"[""requirements.txt""]",red,9a101f7fb00ce2f053155ea3273663e90aeda71f,45633314904,green,12b20664e02856c0685052c44bd38ca149c96f47,45633443112,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-298e45c-t1-152253"", ""base_sha"": ""9a101f7fb00ce2f053155ea3273663e90aeda71f"", ""commit_sha"": ""12b20664e02856c0685052c44bd38ca149c96f47"", ""file"": ""requirements.txt"", ""run_id"": 45633443112, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45633443112"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+numpy==1.26.4"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_002,dependency,easy,fixed,1,dependency,1,0.95,pip install failed because the specified pandas version 999.0.0 does not exist in any distribution repository. This is a dependency resolution error caused by an invalid package version specification.,1,1,0,43.68,,0,0,False,,1,"[""requirements.txt""]",red,f2f5a1b3b46d82f1506a213be8bdf64924846c5a,45633633731,green,a5ef492d037e61b3bc382b6c6cd018ea007bce05,45633807604,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-438ad80-t1-152452"", ""base_sha"": ""f2f5a1b3b46d82f1506a213be8bdf64924846c5a"", ""commit_sha"": ""a5ef492d037e61b3bc382b6c6cd018ea007bce05"", ""file"": ""requirements.txt"", ""run_id"": 45633807604, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45633807604"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+pandas==2.0.3"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_003,dependency,easy,fixed,1,dependency,1,0.99,"pip install failed because scikit-learn==0.0.1 does not exist in PyPI. The version constraint in requirements.txt is invalid, causing a dependency resolution failure.",1,1,0,44.06,,0,0,False,,1,"[""requirements.txt""]",red,a6d2279036766b7e7ce290429cf6ef3f97d37b24,45633946911,green,37606dc0bcb484d61e86c1747ddd6dd193e90010,45634073198,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-711fba2-t1-152618"", ""base_sha"": ""a6d2279036766b7e7ce290429cf6ef3f97d37b24"", ""commit_sha"": ""37606dc0bcb484d61e86c1747ddd6dd193e90010"", ""file"": ""requirements.txt"", ""run_id"": 45634073198, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45634073198"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+scikit-learn==1.3.2"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_004,dependency,easy,fixed,1,dependency,1,0.95,pip install failed because the specified version requests==2.99.99 does not exist in PyPI. This is a dependency resolution error caused by an invalid/non-existent package version.,1,1,0,43.07,,0,0,False,,1,"[""requirements.txt""]",red,c272350139b1c0a267ad2eaeeabd1dbe4bf5fb1a,45634215696,green,b8ff464147f3a72cc8937b8cd667e1eb44708a7a,45634337170,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-616c2d4-t1-152745"", ""base_sha"": ""c272350139b1c0a267ad2eaeeabd1dbe4bf5fb1a"", ""commit_sha"": ""b8ff464147f3a72cc8937b8cd667e1eb44708a7a"", ""file"": ""requirements.txt"", ""run_id"": 45634337170, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45634337170"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+requests==2.31.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_005,dependency,easy,fixed,1,dependency,1,0.95,"pip install failed because flask==3.99.0 does not exist in PyPI. The available versions show the latest is 3.0.3, indicating an invalid version specification in requirements.txt.",1,1,0,43.31,,0,0,False,,1,"[""requirements.txt""]",red,18c475b91891e776c5139d9069e8c584a46f6e39,45634476917,green,5bfee7e8497ed0fefd975ed6899dee6da8493ba5,45634596192,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-116b52a-t1-152911"", ""base_sha"": ""18c475b91891e776c5139d9069e8c584a46f6e39"", ""commit_sha"": ""5bfee7e8497ed0fefd975ed6899dee6da8493ba5"", ""file"": ""requirements.txt"", ""run_id"": 45634596192, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45634596192"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+flask==3.0.3"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_006,dependency,easy,fixed,1,dependency,1,0.95,"pip install failed due to incompatible tensorflow version (1.0.0) with Python 3.11. The error explicitly states tensorflow 1.x is not compatible with Python 3.11, indicating a version mismatch issue.",1,1,0,58.95,,0,0,False,,1,"[""requirements.txt""]",red,55c083af4527afc03e2ee89e39aeda376cc5c7ef,45634733068,green,5144923f175faca312d1687247b67fff091e380a,45634862782,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-84dbff0-t1-153038"", ""base_sha"": ""55c083af4527afc03e2ee89e39aeda376cc5c7ef"", ""commit_sha"": ""5144923f175faca312d1687247b67fff091e380a"", ""file"": ""requirements.txt"", ""run_id"": 45634862782, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45634862782"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+tensorflow==2.13.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_007,dependency,easy,fixed,1,dependency,1,0.95,"pip install failed because scipy==1.99.0 does not exist as a published distribution. The version specified in requirements.txt is invalid/non-existent, causing a dependency resolution failure.",1,1,0,59.07,,0,0,False,,1,"[""requirements.txt""]",red,e7c8cbe019d545d19c47cc7e1dda47b903e7c3a1,45635051520,green,de1e28f2cfdf9ece5411fa67102e68b810029735,45635179116,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-257f077-t1-153221"", ""base_sha"": ""e7c8cbe019d545d19c47cc7e1dda47b903e7c3a1"", ""commit_sha"": ""de1e28f2cfdf9ece5411fa67102e68b810029735"", ""file"": ""requirements.txt"", ""run_id"": 45635179116, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45635179116"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+scipy==1.11.3"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_008,dependency,easy,fixed,1,dependency,1,0.95,"pip install failed because matplotlib==10.0.0 does not exist in PyPI. The commit changed the version to a non-existent release, causing a dependency resolution failure.",1,1,0,43.45,,0,0,False,,1,"[""requirements.txt""]",red,2a53d7c898cfd5ba2b6cd7af4e72e917062cacc3,45635360420,green,d575b5fc13254cb5262daa38c267d3ff2dd4037d,45635535991,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-a174f76-t1-153418"", ""base_sha"": ""2a53d7c898cfd5ba2b6cd7af4e72e917062cacc3"", ""commit_sha"": ""d575b5fc13254cb5262daa38c267d3ff2dd4037d"", ""file"": ""requirements.txt"", ""run_id"": 45635535991, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45635535991"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+matplotlib==3.8.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_009,dependency,medium,fixed,1,dependency,1,0.95,"Package version conflict between numpy, pandas, and scipy dependencies. The pip install failed due to incompatible version constraints that cannot be simultaneously satisfied.",2,2,0,113.77,,0,0,False,,1,"[""requirements.txt""]",red,42ffd87148728a93978d3f6c0ff900e549060304,45635679760,green,fe399e896d5fbe388905f8bfca5723d0f06b71ff,45635978135,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-96019cd-t1-153600"", ""base_sha"": ""42ffd87148728a93978d3f6c0ff900e549060304"", ""commit_sha"": ""0669071ad81bf8aeec8379dc856b245b10547d82"", ""file"": ""requirements.txt"", ""run_id"": 45635856954, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45635856954"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-96019cd-t2-153640"", ""base_sha"": ""42ffd87148728a93978d3f6c0ff900e549060304"", ""commit_sha"": ""fe399e896d5fbe388905f8bfca5723d0f06b71ff"", ""file"": ""requirements.txt"", ""run_id"": 45635978135, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45635978135"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+pandas==2.0.0
+scipy==1.10.0
+numpy==1.23.5"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_010,dependency,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"torch==2.0.0 installs on the runner (CI green, verified 20 Nov); the corrupt-wheel (RECORD) error of the log does not occur",0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_011,dependency,medium,fixed,1,dependency,1,0.95,pip install failed to find my-internal-lib==1.2.3 on PyPI. The error indicates a missing or unavailable package dependency that requires configuration of a private package index.,1,1,0,63.83,,0,0,False,,1,"[""requirements.txt""]",red,f58b2bb396bbbfcdb7bf6d152947bac11d95dde4,45636206217,green,526383db41851c1a3ef2fb001c3d1d04218640fa,45636384562,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-b87215e-t1-153852"", ""base_sha"": ""f58b2bb396bbbfcdb7bf6d152947bac11d95dde4"", ""commit_sha"": ""526383db41851c1a3ef2fb001c3d1d04218640fa"", ""file"": ""requirements.txt"", ""run_id"": 45636384562, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45636384562"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,True,"pytest==7.4.0
+pytest-cov==4.1.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_012,dependency,medium,fixed,1,dependency,1,0.95,"Dependency conflict: sqlalchemy 2.0.0 and pydantic 2.0.0 require typing-extensions>=4.6.0, but only 4.2.0 is installed. The pip resolver failed due to incompatible package versions.",2,2,0,84.01,,0,0,False,,1,"[""requirements.txt""]",red,8f72c02aeb3236ff1909a3f079320c8c221caf74,45636553875,green,9c97883e96e80ec437072667a72833f6a4218457,45636806819,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-3fa55c2-t1-154040"", ""base_sha"": ""8f72c02aeb3236ff1909a3f079320c8c221caf74"", ""commit_sha"": ""07b98e22e27b1f9bc31e5291701bb69b72dc1927"", ""file"": ""requirements.txt"", ""run_id"": 45636684341, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45636684341"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-3fa55c2-t2-154120"", ""base_sha"": ""8f72c02aeb3236ff1909a3f079320c8c221caf74"", ""commit_sha"": ""9c97883e96e80ec437072667a72833f6a4218457"", ""file"": ""requirements.txt"", ""run_id"": 45636806819, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45636806819"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+typing-extensions==4.6.1
+
+sqlalchemy==2.0.0
+pydantic==2.0.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_013,dependency,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,cryptography==41.0.0 installs from a prebuilt wheel; the gcc build failure of the log does not occur,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_014,dependency,medium,escalated,0,dependency,1,0.95,"Package 'newpackage' version 2.0.0 requires Python >=3.10, but the CI environment is running Python 3.9.18. This is a dependency compatibility issue.",3,,0,122.42,,0,0,False,,1,"[""requirements.txt""]",red,55e13b3d1aa9a31ee90e057cec5ce51bec6860bc,45636942986,red,1469dcffe488e22d559fd70570033b1714982585,45637364105,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-940a978-t1-154303"", ""base_sha"": ""55e13b3d1aa9a31ee90e057cec5ce51bec6860bc"", ""commit_sha"": ""4826f16f5a5148f7723ca30f35e00677305ac55c"", ""file"": ""requirements.txt"", ""run_id"": 45637114745, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45637114745"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-940a978-t2-154343"", ""base_sha"": ""55e13b3d1aa9a31ee90e057cec5ce51bec6860bc"", ""commit_sha"": ""fad0a568d73ea17935125946488f5fa192defba4"", ""file"": ""requirements.txt"", ""run_id"": 45637237552, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45637237552"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-940a978-t3-154423"", ""base_sha"": ""55e13b3d1aa9a31ee90e057cec5ce51bec6860bc"", ""commit_sha"": ""1469dcffe488e22d559fd70570033b1714982585"", ""file"": ""requirements.txt"", ""run_id"": 45637364105, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45637364105"", ""conclusion"": ""failure""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+newpackage==0.9.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_015,dependency,medium,fixed,1,dependency,1,0.95,pip install failed because the specified package version 'broken-lib==0.0.1' does not exist in any PyPI repository. This is a dependency resolution error.,1,1,0,58.73,,0,0,False,,1,"[""requirements.txt""]",red,a8715bcdd7f3ff6240dc76a80cd5ed5990044c38,45637495795,green,cd7bb624b56d4f52e939e90a1dd487958d4c1ff9,45637674591,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-9c1cc23-t1-154604"", ""base_sha"": ""a8715bcdd7f3ff6240dc76a80cd5ed5990044c38"", ""commit_sha"": ""cd7bb624b56d4f52e939e90a1dd487958d4c1ff9"", ""file"": ""requirements.txt"", ""run_id"": 45637674591, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45637674591"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,True,"pytest==7.4.0
+pytest-cov==4.1.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_016,dependency,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"conflict among the injected pins only, with no pre-existing pin; pip resolves it and the CI is green (verified 20 Nov)",0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_017,dependency,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"with the context pin pandas==1.5.3, numpy==2.0.0 still installs: pandas 1.5.3 declares no numpy<1.25 bound on PyPI",0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_018,dependency,hard,fixed,1,dependency,1,0.95,Protobuf version conflict between grpcio (requires >=4.21.6) and installed version (3.20.3). Multiple packages have incompatible protobuf requirements causing dependency resolution failure.,1,1,0,43.19,,0,0,False,,1,"[""requirements.txt""]",red,4de97893efbfbf40622dd211a75292a4caa8be5d,45637816285,green,a9cf6d3e63d5c82548593f010db913e35faae45f,45637987542,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-08a8548-t1-154746"", ""base_sha"": ""4de97893efbfbf40622dd211a75292a4caa8be5d"", ""commit_sha"": ""a9cf6d3e63d5c82548593f010db913e35faae45f"", ""file"": ""requirements.txt"", ""run_id"": 45637987542, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45637987542"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+protobuf==4.21.6
+grpcio==1.60.0
+grpcio-tools==1.60.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_019,dependency,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"the context pin cymem==2.0.1 does not exist on PyPI, so the context alone breaks the install",0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_020,dependency,hard,fixed,1,dependency,1,0.98,"Package version conflict: celery 5.3.0 requires kombu>=5.3.0 but kombu 5.2.0 is pinned in requirements, causing ResolutionImpossible error during pip install.",1,1,0,44.43,,0,0,False,,1,"[""requirements.txt""]",red,45753cc502c6ccb229736ea134870eec3b2472d2,45638126503,green,14a242f5eb589f7b7534ae6b97483768c4c30689,45638255385,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-8f86359-t1-154912"", ""base_sha"": ""45753cc502c6ccb229736ea134870eec3b2472d2"", ""commit_sha"": ""14a242f5eb589f7b7534ae6b97483768c4c30689"", ""file"": ""requirements.txt"", ""run_id"": 45638255385, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45638255385"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+celery==5.3.0
+kombu==5.3.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_021,dependency,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,pip installs a yanked version when it is pinned exactly; the 'yanked' failure of the log does not occur,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_022,dependency,easy,fixed,1,dependency,1,0.95,Package 'flaks' does not exist in PyPI (typo of 'flask'). The pip install failed because the misspelled package name has no matching distribution available.,1,1,0,43.95,,0,0,False,,1,"[""requirements.txt""]",red,f5303542449cc5d9bcb0971a9d3409e5fc7754b1,45638394817,green,fe96dbd488b282c38c23c1e581933b105246bb1b,45638569032,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-992ef90-t1-155055"", ""base_sha"": ""f5303542449cc5d9bcb0971a9d3409e5fc7754b1"", ""commit_sha"": ""fe96dbd488b282c38c23c1e581933b105246bb1b"", ""file"": ""requirements.txt"", ""run_id"": 45638569032, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45638569032"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+flask==3.0.3"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_023,dependency,easy,fixed,1,dependency,1,0.95,Invalid pip requirement syntax: single '=' instead of '==' for version specifier. This is a dependency specification error that prevents package installation.,1,1,0,43.63,,0,0,False,,1,"[""requirements.txt""]",red,46b70bca89046913411260ba0dbe905b86c33545,45638710944,green,b546e69447b4ee937e75b1593bc2673aee18e55c,45638838027,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-230a7b5-t1-155224"", ""base_sha"": ""46b70bca89046913411260ba0dbe905b86c33545"", ""commit_sha"": ""b546e69447b4ee937e75b1593bc2673aee18e55c"", ""file"": ""requirements.txt"", ""run_id"": 45638838027, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45638838027"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+pyyaml==6.0.1"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_024,dependency,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,psycopg2==2.9.9 builds from source on the runner (libpq-dev present); CI green (verified 20 Nov),0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_025,dependency,easy,fixed,1,dependency,1,0.95,Conflicting versions of the same package (click) specified in requirements.txt. pip install failed due to duplicate requirement with incompatible versions.,1,1,0,43.91,,0,0,False,,1,"[""requirements.txt""]",red,526712e3141bc68ec686adbb0c02d9fbc658cc45,45638976367,green,0164518965350a8254b6d52c05d8241952b9e29e,45639149507,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-2346926-t1-155406"", ""base_sha"": ""526712e3141bc68ec686adbb0c02d9fbc658cc45"", ""commit_sha"": ""0164518965350a8254b6d52c05d8241952b9e29e"", ""file"": ""requirements.txt"", ""run_id"": 45639149507, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45639149507"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,True,"pytest==7.4.0
+pytest-cov==4.1.0
+click==8.1.7"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_026,dependency,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,depends on requirements.in / pip-compile and on tests importing httpx; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_027,dependency,easy,fixed,1,dependency,1,0.95,"Invalid pip requirement syntax in requirements.txt. The format was changed from valid pip syntax (requests==2.31.0) to invalid JSON-like syntax (""requests"": ""2.31.0""), causing pip install to fail with",1,1,0,43.95,,0,0,False,,1,"[""requirements.txt""]",red,633d7078a2f377a668343a4bb968436ff45d63b4,45639287195,green,190e1fc3b68cc250642dec04735aa6b67e4b8dc2,45639417362,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-3c25a61-t1-155533"", ""base_sha"": ""633d7078a2f377a668343a4bb968436ff45d63b4"", ""commit_sha"": ""190e1fc3b68cc250642dec04735aa6b67e4b8dc2"", ""file"": ""requirements.txt"", ""run_id"": 45639417362, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45639417362"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+requests==2.31.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_028,dependency,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,depends on tests/test_server.py and app.server importing uvicorn; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_029,dependency,easy,fixed,1,dependency,1,0.95,"Failed pip install due to pywin32==306 not being available for Linux platform. The package is Windows-only, causing a version resolution failure during dependency installation.",1,1,0,43.97,,0,0,False,,1,"[""requirements.txt""]",red,c8c1871aa2633d23382dea1925a18ffa2b7789f1,45639558717,green,9666f5ba21147b54fcc6c6506d90e93392b0bbd9,45639729813,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-36c8a7c-t1-155716"", ""base_sha"": ""c8c1871aa2633d23382dea1925a18ffa2b7789f1"", ""commit_sha"": ""9666f5ba21147b54fcc6c6506d90e93392b0bbd9"", ""file"": ""requirements.txt"", ""run_id"": 45639729813, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45639729813"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,True,"pytest==7.4.0
+pytest-cov==4.1.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_030,dependency,easy,fixed,1,dependency,1,0.95,pip install failed because the specified version pillow==10.99.0 does not exist on PyPI. This is a dependency resolution error caused by an invalid/non-existent package version.,1,1,0,44.76,,0,0,False,,1,"[""requirements.txt""]",red,ff194547bc7744252cd0b06e78b8913445dccfdd,45639861354,green,8983b3a024d79478b57b5f9ce944daaa112fed8a,45639980277,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-ace29ac-t1-155843"", ""base_sha"": ""ff194547bc7744252cd0b06e78b8913445dccfdd"", ""commit_sha"": ""8983b3a024d79478b57b5f9ce944daaa112fed8a"", ""file"": ""requirements.txt"", ""run_id"": 45639980277, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45639980277"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+pillow==10.1.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_031,dependency,easy,fixed,1,dependency,1,0.95,"Invalid pip requirement syntax in requirements.txt. The marker 'python_version' is incomplete - missing the comparison operator and version constraint (e.g., >= '3.8'), causing pip to fail during depe",1,1,0,46.92,,0,0,False,,1,"[""requirements.txt""]",red,83ab4efb0fad4e521381267527d8b5690d22a138,45640121477,green,80c90f67ada4545b6286da80fdd25ee8e09bf89c,45640259928,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-7214122-t1-160014"", ""base_sha"": ""83ab4efb0fad4e521381267527d8b5690d22a138"", ""commit_sha"": ""80c90f67ada4545b6286da80fdd25ee8e09bf89c"", ""file"": ""requirements.txt"", ""run_id"": 45640259928, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45640259928"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+requests==2.31.0; python_version >= '3.8'"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_032,dependency,medium,fixed,1,dependency,1,0.98,Package version conflict: docutils==0.22 is incompatible with sphinx==7.2.6 which requires docutils<0.21. This is a direct dependency resolution failure during pip install.,1,1,0,45.45,,0,0,False,,1,"[""requirements.txt""]",red,38393014fb9a27edd0d7edfbe3505a00f213744e,45640415907,green,3fd2aa798c3da8bfe5220f41f7a6dbb17b378f70,45640595038,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-be8ac9b-t1-160200"", ""base_sha"": ""38393014fb9a27edd0d7edfbe3505a00f213744e"", ""commit_sha"": ""3fd2aa798c3da8bfe5220f41f7a6dbb17b378f70"", ""file"": ""requirements.txt"", ""run_id"": 45640595038, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45640595038"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+sphinx==7.2.6
+docutils==0.20.1"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_033,dependency,medium,fixed,1,dependency,1,0.95,Failed to install torch==2.1.0+cu121 because the CUDA-specific build is not available on PyPI. The CI runner lacks GPU support and the specified version variant doesn't exist in the package repository,1,1,0,106.5,,0,0,False,,1,"[""requirements.txt""]",red,7fca2ed5bd853778acdd783711191c5b11ad2c1e,45640737787,green,7c053db12dfecfc0fd6e0c47ccedc896ed52b578,45640872092,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-731a603-t1-160329"", ""base_sha"": ""7fca2ed5bd853778acdd783711191c5b11ad2c1e"", ""commit_sha"": ""7c053db12dfecfc0fd6e0c47ccedc896ed52b578"", ""file"": ""requirements.txt"", ""run_id"": 45640872092, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45640872092"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+torch==2.1.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_034,dependency,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,depends on `pip install --require-hashes` and hashed pins; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_035,dependency,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,depends on a conda environment.yml; pip ignores the injected line,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_036,dependency,medium,fixed,1,dependency,1,0.95,"Package installation failed due to hash mismatch for acme-internal-utils==0.1.0. The warning indicates the downloaded package doesn't match the expected internal package hash, preventing successful de",1,1,0,44.61,,0,0,False,,1,"[""requirements.txt""]",red,1404272baa516a2f3947ac60fd4469bbcd5c8293,45641210818,green,b2b90c9fec45b7a5f31da7cbcf07418dbd672434,45641393299,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-d43bb0a-t1-160615"", ""base_sha"": ""1404272baa516a2f3947ac60fd4469bbcd5c8293"", ""commit_sha"": ""b2b90c9fec45b7a5f31da7cbcf07418dbd672434"", ""file"": ""requirements.txt"", ""run_id"": 45641393299, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45641393299"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,True,"pytest==7.4.0
+pytest-cov==4.1.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_037,dependency,medium,fixed,1,dependency,1,0.95,"Cannot import 'setuptools.build_meta' indicates a setuptools version incompatibility. The commit changed the minimum setuptools requirement from >=65 to >=68, but the build backend cannot be imported,",1,1,0,44.22,,0,0,False,,1,"[""requirements.txt""]",red,716e18093dd242d45fd1ebd2c2be052fd10af7b9,45641535248,green,19b5ac656b82f56e04085b7bafadfad954c0a2d2,45641713784,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-f7502af-t1-160758"", ""base_sha"": ""716e18093dd242d45fd1ebd2c2be052fd10af7b9"", ""commit_sha"": ""19b5ac656b82f56e04085b7bafadfad954c0a2d2"", ""file"": ""requirements.txt"", ""run_id"": 45641713784, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45641713784"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+setuptools==68.0.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_038,dependency,medium,escalated,0,config,0,0.95,Git authentication failure during pip install - missing or unconfigured credentials for private GitHub repository access in CI environment.,3,,0,163.59,,0,0,False,,1,"[""requirements.txt""]",red,b919fcf866a7a27cfa4ad18313b6d075912dc6f4,45641855089,red,17ac89cc679157cfcf5ab58566734656baffbcc8,45642369444,"[{""attempt"": 1, ""branch"": ""fix/ai-config-543f5a9-t1-160945"", ""base_sha"": ""b919fcf866a7a27cfa4ad18313b6d075912dc6f4"", ""commit_sha"": ""e11a09b41b8b1c967d4e9f2c7c7c062ed7e2e9a6"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45642038439, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45642038439"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-config-543f5a9-t2-161028"", ""base_sha"": ""b919fcf866a7a27cfa4ad18313b6d075912dc6f4"", ""commit_sha"": ""708bbc75950ceea775d7a0a04bad781d40e73663"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45642178066, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45642178066"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-config-543f5a9-t3-161127"", ""base_sha"": ""b919fcf866a7a27cfa4ad18313b6d075912dc6f4"", ""commit_sha"": ""17ac89cc679157cfcf5ab58566734656baffbcc8"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45642369444, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45642369444"", ""conclusion"": ""failure""}]",.github/workflows/ci.yml,False,n/a,,n/a,,requirements.txt,False,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Configure git credentials
+        run: |
+          git config --global url.""https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/"".insteadOf ""https://github.com/""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_039,dependency,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,depends on requirements-dev.txt (`pip install -r requirements.txt -r requirements-dev.txt`); absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_040,dependency,medium,fixed,1,dependency,1,0.95,"Invalid version constraint for click package: requires both <8.0 AND >=9.0 simultaneously, which is impossible. No version satisfies this contradictory requirement.",1,1,0,44.73,,0,0,False,,1,"[""requirements.txt""]",red,0fe29adb2957eacefbf58eb88f7130595f154391,45642559439,green,b2fc416c6c6e6dac20f6b0c1cda80518030bcefa,45642736491,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-496fad6-t1-161325"", ""base_sha"": ""0fe29adb2957eacefbf58eb88f7130595f154391"", ""commit_sha"": ""b2fc416c6c6e6dac20f6b0c1cda80518030bcefa"", ""file"": ""requirements.txt"", ""run_id"": 45642736491, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45642736491"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+click==8.1.7"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_041,dependency,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,tokenizers==0.15.0 installs from a prebuilt wheel; the missing-Rust build failure of the log does not occur,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_042,dependency,hard,escalated,0,dependency,1,0.99,Package version conflict: package-a 2.0.0 and package-b 1.5.0 have incompatible requirements for shared-lib. This is a classic dependency resolution failure during pip install.,3,,0,139.94,,0,0,False,,1,"[""requirements.txt""]",red,03781baf727991930afa29c12e092fb68c8c47ca,45642886674,red,c10bafd26837d5100f1bfed3b28cd14e8e0fd978,45643335001,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-065c250-t1-161453"", ""base_sha"": ""03781baf727991930afa29c12e092fb68c8c47ca"", ""commit_sha"": ""95bba8f3555d794cca229ac212dedaa3bec551ad"", ""file"": ""requirements.txt"", ""run_id"": 45643021286, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45643021286"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-065c250-t2-161550"", ""base_sha"": ""03781baf727991930afa29c12e092fb68c8c47ca"", ""commit_sha"": ""5e947f93bb092f92e3a04bcc5966da48d2dc9081"", ""file"": ""requirements.txt"", ""run_id"": 45643203309, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45643203309"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-065c250-t3-161630"", ""base_sha"": ""03781baf727991930afa29c12e092fb68c8c47ca"", ""commit_sha"": ""c10bafd26837d5100f1bfed3b28cd14e8e0fd978"", ""file"": ""requirements.txt"", ""run_id"": 45643335001, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45643335001"", ""conclusion"": ""failure""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+package-a==2.0.0
+package-b==1.0.0
+shared-lib==2.5.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_043,dependency,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,only an import test would expose it (a different oracle); excluded by decision for a single case,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_044,dependency,hard,fixed,1,dependency,1,0.95,"ImportError due to GLIBC version mismatch. The native Python package requires GLIBC_2.29, but ubuntu-18.04 provides an older version. This is a dependency/environment compatibility issue.",1,1,0,43.53,,0,0,False,,1,"[""requirements.txt""]",red,261d1d0fc4039da788444771c399363cea5b2448,45643474263,green,d1da16dd8b58cd71cc5cbf98ea41ea2bd7070df7,45643600127,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-68d1cae-t1-161757"", ""base_sha"": ""261d1d0fc4039da788444771c399363cea5b2448"", ""commit_sha"": ""d1da16dd8b58cd71cc5cbf98ea41ea2bd7070df7"", ""file"": ""requirements.txt"", ""run_id"": 45643600127, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45643600127"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.2.0
+pytest-cov==4.0.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_045,dependency,hard,escalated,0,config,0,0.85,"The pip install command references a constraints.txt file that doesn't exist in the repository. The git diff shows the file was added to the command but not committed, indicating a configuration misma",3,,0,145.8,,0,0,False,,1,"[""requirements.txt""]",red,00b2df1e2876038aa596ecf007e4c35b66b3c41c,45643743760,red,2ebcbd129d5a8a4b35f5df962f53c80cd3a9afe9,45644203776,"[{""attempt"": 1, ""branch"": ""fix/ai-config-95fe969-t1-161927"", ""base_sha"": ""00b2df1e2876038aa596ecf007e4c35b66b3c41c"", ""commit_sha"": ""8cb30c62bc436d5741eaedc07b2f782cf46d65fb"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45643877490, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45643877490"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-config-95fe969-t2-162025"", ""base_sha"": ""00b2df1e2876038aa596ecf007e4c35b66b3c41c"", ""commit_sha"": ""709967cdf0c2217630123c45deb35e11d1181004"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45644063525, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45644063525"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-config-95fe969-t3-162108"", ""base_sha"": ""00b2df1e2876038aa596ecf007e4c35b66b3c41c"", ""commit_sha"": ""2ebcbd129d5a8a4b35f5df962f53c80cd3a9afe9"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45644203776, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45644203776"", ""conclusion"": ""failure""}]",.github/workflows/ci.yml,False,n/a,,n/a,,requirements.txt,False,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -c constraints.txt -r requirements.txt
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_046,dependency,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"with the context pins django-filter==22.1 and djangorestframework==3.14.0, django==5.0 still installs: no Django<5.0 bound on PyPI",0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_047,dependency,hard,fixed,1,dependency,1,0.98,Package version conflict: protobuf==5.28.0 is incompatible with streamlit==1.28.0 which requires protobuf<5 and >=3.20. This is a direct dependency resolution failure.,1,1,0,59.22,,0,0,False,,1,"[""requirements.txt""]",red,365587767271413e1cc7451ac07a2de6d8ecca43,45644338524,green,14423c92a36706e5d9769b115d988fbcb4f2c0fb,45644475355,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-aea2311-t1-162234"", ""base_sha"": ""365587767271413e1cc7451ac07a2de6d8ecca43"", ""commit_sha"": ""14423c92a36706e5d9769b115d988fbcb4f2c0fb"", ""file"": ""requirements.txt"", ""run_id"": 45644475355, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45644475355"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+streamlit==1.28.0
+protobuf==4.25.3"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_048,dependency,hard,fixed,1,dependency,1,0.95,"Package version conflict: boto3==1.34.10 requires botocore>=1.34.10, but requirements.txt specifies botocore==1.33.0, causing pip install to fail.",1,1,0,43.9,,0,0,False,,1,"[""requirements.txt""]",red,ebbedacdc701b0b783a8bffb3ba79b0cfde77636,45644669898,green,4c623d3f08240643a403148861bddebca047415f,45644800629,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-dc4d5af-t1-162416"", ""base_sha"": ""ebbedacdc701b0b783a8bffb3ba79b0cfde77636"", ""commit_sha"": ""4c623d3f08240643a403148861bddebca047415f"", ""file"": ""requirements.txt"", ""run_id"": 45644800629, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45644800629"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+boto3==1.34.10
+botocore==1.34.10"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_049,dependency,hard,fixed,1,dependency,1,0.95,"Cache key mismatch causes outdated requests==2.28.0 to be restored instead of required requests==2.31.0, leading to API incompatibility and test failure with unexpected keyword argument.",1,1,0,58.9,,0,0,False,,1,"[""requirements.txt""]",red,8ab112d4baf949e867091c0da1a35b3aaab6c5ff,45644948948,green,de61024c8feb01c383130be71e8d3d0100530c9b,45645075976,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-ae27863-t1-162543"", ""base_sha"": ""8ab112d4baf949e867091c0da1a35b3aaab6c5ff"", ""commit_sha"": ""de61024c8feb01c383130be71e8d3d0100530c9b"", ""file"": ""requirements.txt"", ""run_id"": 45645075976, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45645075976"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+requests==2.31.0"
+anthropic_haiku,Claude Haiku,proprietary,0,1,dep_050,dependency,hard,escalated,0,dependency,1,0.95,pip install failed because the specified version mypackage==2.0.0rc1 does not exist in the package repository. The error indicates no matching distribution found for the requested pre-release version.,3,,0,135.33,,0,0,False,,1,"[""requirements.txt""]",red,155fbc1231e86acd0cba232997dc772a2ba2f7a3,45645265690,red,a6f369ac053ee053926121835e8f9ad1dcb67ae5,45645674318,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-ca2ed43-t1-162740"", ""base_sha"": ""155fbc1231e86acd0cba232997dc772a2ba2f7a3"", ""commit_sha"": ""e11d10267ddbb38dfea3fe8678af2a285316742f"", ""file"": ""requirements.txt"", ""run_id"": 45645436923, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45645436923"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-ca2ed43-t2-162820"", ""base_sha"": ""155fbc1231e86acd0cba232997dc772a2ba2f7a3"", ""commit_sha"": ""054c61c7acd1c5386d1c482e9a9c3b2745bb7cd9"", ""file"": ""requirements.txt"", ""run_id"": 45645552502, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45645552502"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-ca2ed43-t3-162859"", ""base_sha"": ""155fbc1231e86acd0cba232997dc772a2ba2f7a3"", ""commit_sha"": ""a6f369ac053ee053926121835e8f9ad1dcb67ae5"", ""file"": ""requirements.txt"", ""run_id"": 45645674318, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45645674318"", ""conclusion"": ""failure""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+mypackage==1.9.1"

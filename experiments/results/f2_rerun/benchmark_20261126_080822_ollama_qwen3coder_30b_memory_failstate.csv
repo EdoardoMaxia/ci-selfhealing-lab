@@ -1,0 +1,886 @@
+model_id,model_name,model_type,dry_run,no_memory,error_id,category,difficulty,final_status,success,router_category,router_correct,router_confidence,router_reasoning,attempts_count,fix_attempt,json_parse_fail,latency_sec,error_msg,memory_hits,memory_active,excluded,exclusion_reason,valid_case,injected_files,pre_ci_status,pre_ci_sha,pre_ci_run_id,post_ci_status,post_ci_sha,post_ci_run_id,post_ci_attempts,agent_modified_file,agent_file_is_injected,test_on_clean_source,clean_source_detail,assertions_preserved,assertions_detail,reference_file,repair_matches_reference,agent_file_content
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_001,dependency,easy,fixed,1,dependency,1,0.95,"The error occurs because pip cannot find a version of numpy that matches the specified version '99.99.99', which is an invalid and non-existent version. This is a dependency resolution failure caused ",1,1,0,47.85,,0,1,False,,1,"[""requirements.txt""]",red,c6e620a7109df66df1a70a28166babea13fb5ff4,45773125463,green,14868d09194f41b15a0e6d0743ab15ae9c8c57be,45773217829,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-298e45c-t1-080912"", ""base_sha"": ""c6e620a7109df66df1a70a28166babea13fb5ff4"", ""commit_sha"": ""14868d09194f41b15a0e6d0743ab15ae9c8c57be"", ""file"": ""requirements.txt"", ""run_id"": 45773217829, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45773217829"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+numpy==1.26.4"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_002,dependency,easy,fixed,1,dependency,1,0.95,"The error occurs due to an invalid package version specification in requirements.txt. The version '999.0.0' for pandas does not exist, causing pip to fail during dependency installation.",1,1,0,42.25,,0,1,False,,1,"[""requirements.txt""]",red,f4119d66989986243c0156d5053f4ea9f2adc0b4,45773311058,green,211e9a6f915f203aa5f74765150f5c2723f7cd8c,45773396622,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-438ad80-t1-081038"", ""base_sha"": ""f4119d66989986243c0156d5053f4ea9f2adc0b4"", ""commit_sha"": ""211e9a6f915f203aa5f74765150f5c2723f7cd8c"", ""file"": ""requirements.txt"", ""run_id"": 45773396622, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45773396622"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+pandas==2.0.3"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_003,dependency,easy,fixed,1,dependency,1,0.95,"The error occurs due to an invalid package version specification in requirements.txt. The version '0.0.1' of scikit-learn was never released, causing pip to fail during dependency installation.",2,2,0,98.02,,0,1,False,,1,"[""requirements.txt""]",red,5dec30d3f78e6ce9024d24deba93a86890786109,45773487716,green,9a96d9dbb4e25cf68ae80ad739983ff3aae2f475,45773679023,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-711fba2-t1-081204"", ""base_sha"": ""5dec30d3f78e6ce9024d24deba93a86890786109"", ""commit_sha"": ""25835cb13df46620384157ffb3b532e3b56dff41"", ""file"": ""requirements.txt"", ""run_id"": 45773569795, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45773569795"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-711fba2-t2-081259"", ""base_sha"": ""5dec30d3f78e6ce9024d24deba93a86890786109"", ""commit_sha"": ""9a96d9dbb4e25cf68ae80ad739983ff3aae2f475"", ""file"": ""requirements.txt"", ""run_id"": 45773679023, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45773679023"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+scikit-learn==1.3.2"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_004,dependency,easy,fixed,1,dependency,1,0.95,"The error occurs due to an invalid package version specification in requirements.txt. The requested version '2.99.99' of the 'requests' library does not exist, causing pip to fail during dependency in",1,1,0,43.64,,0,1,False,,1,"[""requirements.txt""]",red,94e0bd7424851b53bf53920a8544aac9a6c08be0,45773773144,green,8fcbdfa64932f1afca55cdf0f342e9bcbd6dcd88,45773857223,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-616c2d4-t1-081426"", ""base_sha"": ""94e0bd7424851b53bf53920a8544aac9a6c08be0"", ""commit_sha"": ""8fcbdfa64932f1afca55cdf0f342e9bcbd6dcd88"", ""file"": ""requirements.txt"", ""run_id"": 45773857223, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45773857223"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+requests==2.31.0"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_005,dependency,easy,fixed,1,dependency,1,0.95,"The error shows pip cannot find flask==3.99.0 as it's not a valid version. The commit changed flask version from 3.0.3 to 3.99.0, which doesn't exist in available versions.",2,2,0,84.4,,0,1,False,,1,"[""requirements.txt""]",red,21fe0cdd2649322446fbb0e02d75641b4577f27f,45773955000,green,4ed0a63e48a3ba49b4758b7ad637326bad7d4d35,45774124510,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-116b52a-t1-081553"", ""base_sha"": ""21fe0cdd2649322446fbb0e02d75641b4577f27f"", ""commit_sha"": ""ddca857f36953bed6bcbce1f8677e34e676e1851"", ""file"": ""requirements.txt"", ""run_id"": 45774044408, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45774044408"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-116b52a-t2-081634"", ""base_sha"": ""21fe0cdd2649322446fbb0e02d75641b4577f27f"", ""commit_sha"": ""4ed0a63e48a3ba49b4758b7ad637326bad7d4d35"", ""file"": ""requirements.txt"", ""run_id"": 45774124510, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45774124510"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+flask==3.0.3"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_006,dependency,easy,escalated,0,dependency,1,0.95,"The error occurs due to an incompatible TensorFlow version specification. The log shows pip cannot find tensorflow==1.0.0 for Python 3.11, and notes that TensorFlow 1.x is incompatible with Python 3.1",3,,0,131.46,,1,1,False,,1,"[""requirements.txt""]",red,90a2fcde0d6530344877ba594bea0279c325939e,45774219846,red,76c3da5c9f67239f59b3445b4d45dea047879af6,45774479138,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-84dbff0-t1-081802"", ""base_sha"": ""90a2fcde0d6530344877ba594bea0279c325939e"", ""commit_sha"": ""7ee7d0c1ffce042999a2fccd48dbfcafadb6c417"", ""file"": ""requirements.txt"", ""run_id"": 45774304449, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45774304449"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-84dbff0-t2-081847"", ""base_sha"": ""90a2fcde0d6530344877ba594bea0279c325939e"", ""commit_sha"": ""2540c29b22063c6180a30b1e887e014903372d99"", ""file"": ""requirements.txt"", ""run_id"": 45774391799, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45774391799"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-84dbff0-t3-081932"", ""base_sha"": ""90a2fcde0d6530344877ba594bea0279c325939e"", ""commit_sha"": ""76c3da5c9f67239f59b3445b4d45dea047879af6"", ""file"": ""requirements.txt"", ""run_id"": 45774479138, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45774479138"", ""conclusion"": ""failure""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+tensorflow==2.13.0
+numpy==1.24.0
+protobuf==3.20.3
+keras==2.13.0
+scipy==1.10.0
+six==1.16.0
+wrapt==1.15.0
+absl-py==1.4.0
+opt-einsum==3.3.0
+grpcio==1.58.0
+google-pasta==0.2.0
+termcolor==1.1.0
+wheel==0.41.0
+setuptools==68.0.0
+importlib-metadata==6.8.0
+typing-extensions==4.7.0
+packaging==23.1
+requests==2.31.0
+urllib3==1.26.15
+certifi==2023.7.22
+charset-normalizer==3.3.0
+idna==3.4
+colorama==0.4.6
+threadpoolctl==3.2.0
+h5py==3.8.0"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_007,dependency,easy,fixed,1,dependency,1,0.95,The error occurs during dependency installation where pip cannot find a matching distribution for scipy==1.99.0. This is a version compatibility issue with a specific package requirement that doesn't ,1,1,0,58.27,,0,1,False,,1,"[""requirements.txt""]",red,328f481419533f09dbd6f7c72b63443cf1572042,45774577915,green,9f76ac38886aada884acd6bcf44f898708a93d94,45774661375,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-257f077-t1-082059"", ""base_sha"": ""328f481419533f09dbd6f7c72b63443cf1572042"", ""commit_sha"": ""9f76ac38886aada884acd6bcf44f898708a93d94"", ""file"": ""requirements.txt"", ""run_id"": 45774661375, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45774661375"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+scipy==1.11.3"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_008,dependency,easy,fixed,1,dependency,1,0.95,"The error shows a failed pip install due to an unmet dependency requirement. The version 'matplotlib==10.0.0' does not exist or is not available in the package index, causing the installation to fail.",1,1,0,58.82,,0,1,False,,1,"[""requirements.txt""]",red,64f1a5f8f8b543318b2e0da11533d629b201be33,45774790205,green,1dc86ef27bb8a8bc6a905f8e9f62eeb6c49853b2,45774874066,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-a174f76-t1-082241"", ""base_sha"": ""64f1a5f8f8b543318b2e0da11533d629b201be33"", ""commit_sha"": ""1dc86ef27bb8a8bc6a905f8e9f62eeb6c49853b2"", ""file"": ""requirements.txt"", ""run_id"": 45774874066, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45774874066"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+matplotlib==3.8.0"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_009,dependency,medium,escalated,0,dependency,1,0.95,"The error occurs due to conflicting dependencies between pandas 2.0.0 and scipy 1.9.0, which have incompatible numpy version requirements. This is a classic dependency resolution issue.",3,,0,121.03,,1,1,False,,1,"[""requirements.txt""]",red,484b9c9e6788d67442e1ee28b6a7b5cf932ce9a0,45774997812,red,7f8e0c6022259bfb97b73f1f7f7d13b00db00ff8,45775285682,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-96019cd-t1-082439"", ""base_sha"": ""484b9c9e6788d67442e1ee28b6a7b5cf932ce9a0"", ""commit_sha"": ""3b703c2a8aed469ac44961882a2e707c4a8d2a3a"", ""file"": ""requirements.txt"", ""run_id"": 45775116756, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45775116756"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-96019cd-t2-082518"", ""base_sha"": ""484b9c9e6788d67442e1ee28b6a7b5cf932ce9a0"", ""commit_sha"": ""ad30d18160e23cb5c6ba54f82d9f8145310d13f5"", ""file"": ""requirements.txt"", ""run_id"": 45775201686, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45775201686"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-96019cd-t3-082559"", ""base_sha"": ""484b9c9e6788d67442e1ee28b6a7b5cf932ce9a0"", ""commit_sha"": ""7f8e0c6022259bfb97b73f1f7f7d13b00db00ff8"", ""file"": ""requirements.txt"", ""run_id"": 45775285682, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45775285682"", ""conclusion"": ""failure""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+pandas==2.0.0
+scipy==1.9.0
+numpy==1.26.4"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_010,dependency,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"torch==2.0.0 installs on the runner (CI green, verified 20 Nov); the corrupt-wheel (RECORD) error of the log does not occur",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_011,dependency,medium,escalated,0,dependency,1,0.95,"The error shows pip cannot find the specified internal library version. The library is not available on PyPI and requires a custom index URL, indicating a dependency resolution issue with an internal ",3,,0,166.58,,1,1,False,,1,"[""requirements.txt""]",red,81b9f048def5171d4c2a5f241720224f8137480f,45775377815,red,532ec045aa45edff1ed797179768c65604a34028,45775684813,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-b87215e-t1-082724"", ""base_sha"": ""81b9f048def5171d4c2a5f241720224f8137480f"", ""commit_sha"": ""0eed8670d452d497592dd02e92fddc17ee3a9b0b"", ""file"": ""requirements.txt"", ""run_id"": 45775457644, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45775457644"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-b87215e-t2-082819"", ""base_sha"": ""81b9f048def5171d4c2a5f241720224f8137480f"", ""commit_sha"": ""92e3a5377783e5b82f784455d5d7a7d200df2869"", ""file"": ""requirements.txt"", ""run_id"": 45775573605, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45775573605"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-b87215e-t3-082915"", ""base_sha"": ""81b9f048def5171d4c2a5f241720224f8137480f"", ""commit_sha"": ""532ec045aa45edff1ed797179768c65604a34028"", ""file"": ""requirements.txt"", ""run_id"": 45775684813, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45775684813"", ""conclusion"": ""failure""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+--extra-index-url=https://your-internal-index-url.com/simple/
+my-internal-lib==1.2.3
+acme-internal-utils==0.1.0
+pywin32==306
+broken-lib==0.0.1"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_012,dependency,medium,fixed,1,dependency,1,0.95,"The error occurs due to version incompatibility between sqlalchemy 2.0.0 and pydantic 2.0.0 which require typing-extensions>=4.6.0, but only version 4.2.0 is installed. This is a classic dependency re",3,3,0,123.0,,1,1,False,,1,"[""requirements.txt""]",red,697739974957050c31bdac732c6fcfa1e7a8f023,45775813168,green,f7cb50d3a773e6bb2817b9256ab9bb00ffc1472b,45776072842,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-3fa55c2-t1-083056"", ""base_sha"": ""697739974957050c31bdac732c6fcfa1e7a8f023"", ""commit_sha"": ""a80c3f9fc19ada43c145e9b890f97a73049e6f07"", ""file"": ""requirements.txt"", ""run_id"": 45775904188, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45775904188"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-3fa55c2-t2-083135"", ""base_sha"": ""697739974957050c31bdac732c6fcfa1e7a8f023"", ""commit_sha"": ""d21ccf56c020ab45789fa7d5cf4240b7577ef328"", ""file"": ""requirements.txt"", ""run_id"": 45775988704, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45775988704"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-3fa55c2-t3-083215"", ""base_sha"": ""697739974957050c31bdac732c6fcfa1e7a8f023"", ""commit_sha"": ""f7cb50d3a773e6bb2817b9256ab9bb00ffc1472b"", ""file"": ""requirements.txt"", ""run_id"": 45776072842, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45776072842"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+typing-extensions==4.8.0
+sqlalchemy==2.0.0
+pydantic==2.0.0"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_013,dependency,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,cryptography==41.0.0 installs from a prebuilt wheel; the gcc build failure of the log does not occur,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_014,dependency,medium,escalated,0,dependency,1,0.95,"The error occurs because a new package dependency 'newpackage==2.0.0' requires Python 3.10 or higher, but the CI environment is running Python 3.9.18. This is a classic dependency version incompatibil",3,,0,134.59,,1,1,False,,1,"[""requirements.txt""]",red,0140436433f6bed47896a1fa83de00147b8579bd,45776168290,red,fba6fda4c4ec41f598656f71edf457eddf5f87be,45776450355,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-940a978-t1-083342"", ""base_sha"": ""0140436433f6bed47896a1fa83de00147b8579bd"", ""commit_sha"": ""d1443304c420cabb8c03477c4d4c812d657569b7"", ""file"": ""requirements.txt"", ""run_id"": 45776253363, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45776253363"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-940a978-t2-083437"", ""base_sha"": ""0140436433f6bed47896a1fa83de00147b8579bd"", ""commit_sha"": ""35d622da089a190ecd0b1990d7ab95434ad65ed3"", ""file"": ""requirements.txt"", ""run_id"": 45776363945, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45776363945"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-940a978-t3-083516"", ""base_sha"": ""0140436433f6bed47896a1fa83de00147b8579bd"", ""commit_sha"": ""fba6fda4c4ec41f598656f71edf457eddf5f87be"", ""file"": ""requirements.txt"", ""run_id"": 45776450355, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45776450355"", ""conclusion"": ""failure""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+newpackage==1.0.0"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_015,dependency,medium,escalated,0,dependency,1,0.95,"The error shows pip cannot find the 'broken-lib==0.0.1' package version, indicating a dependency resolution issue. The commit directly added this problematic dependency to requirements.txt.",3,,0,134.37,,1,1,False,,1,"[""requirements.txt""]",red,62ab233974960f2508477726a9a049a3bea4da25,45776544405,red,43c7f6a491ced7e68355aa7ef7ff2ff1ee8cf9e4,45776825242,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-9c1cc23-t1-083640"", ""base_sha"": ""62ab233974960f2508477726a9a049a3bea4da25"", ""commit_sha"": ""69886aae1d04e3fb2b00ad30f38749fbe5e33692"", ""file"": ""requirements.txt"", ""run_id"": 45776625310, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45776625310"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-9c1cc23-t2-083719"", ""base_sha"": ""62ab233974960f2508477726a9a049a3bea4da25"", ""commit_sha"": ""16483e8dddf2e558b2904ca0ed85962a9033e5af"", ""file"": ""requirements.txt"", ""run_id"": 45776711244, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45776711244"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-9c1cc23-t3-083815"", ""base_sha"": ""62ab233974960f2508477726a9a049a3bea4da25"", ""commit_sha"": ""43c7f6a491ced7e68355aa7ef7ff2ff1ee8cf9e4"", ""file"": ""requirements.txt"", ""run_id"": 45776825242, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45776825242"", ""conclusion"": ""failure""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+broken-lib==0.0.2"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_016,dependency,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"conflict among the injected pins only, with no pre-existing pin; pip resolves it and the CI is green (verified 20 Nov)",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_017,dependency,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"with the context pin pandas==1.5.3, numpy==2.0.0 still installs: pandas 1.5.3 declares no numpy<1.25 bound on PyPI",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_018,dependency,hard,fixed,1,dependency,1,0.95,"The error occurs due to conflicting protobuf version requirements between grpcio and tensorflow packages. The legacy dependency resolver cannot resolve the conflict, causing the installation to fail.",1,1,0,42.9,,0,1,False,,1,"[""requirements.txt""]",red,743ac64ab1b2682ecab463bbb034eac86f291405,45776914992,green,825fb9c43e8d686551017755f425a5d9c1fb17dc,45776994722,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-08a8548-t1-083939"", ""base_sha"": ""743ac64ab1b2682ecab463bbb034eac86f291405"", ""commit_sha"": ""825fb9c43e8d686551017755f425a5d9c1fb17dc"", ""file"": ""requirements.txt"", ""run_id"": 45776994722, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45776994722"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+protobuf==4.21.6
+
+grpcio==1.60.0
+grpcio-tools==1.60.0"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_019,dependency,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"the context pin cymem==2.0.1 does not exist on PyPI, so the context alone breaks the install",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_020,dependency,hard,fixed,1,dependency,1,0.95,"The error occurs due to version conflicts between celery 5.3.0 and kombu 5.2.0 dependencies. Celery 5.3.0 requires kombu>=5.3.0,<6.0, but kombu 5.2.0 is specified in requirements.txt, creating an inco",1,1,0,43.5,,0,1,False,,1,"[""requirements.txt""]",red,f397a48bdd7134c92c57c45ef5a37e7b882450ef,45777093229,green,fabbebfa43ed346f2c1824e2f5588e910e6562cb,45777176726,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-8f86359-t1-084106"", ""base_sha"": ""f397a48bdd7134c92c57c45ef5a37e7b882450ef"", ""commit_sha"": ""fabbebfa43ed346f2c1824e2f5588e910e6562cb"", ""file"": ""requirements.txt"", ""run_id"": 45777176726, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45777176726"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+celery==5.3.0
+kombu==5.3.0
+vine==5.0.0"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_021,dependency,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,pip installs a yanked version when it is pinned exactly; the 'yanked' failure of the log does not occur,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_022,dependency,easy,fixed,1,dependency,1,0.95,The error is a clear package not found issue where 'flaks' is misspelled instead of 'flask'. The pip install fails because the incorrect package name 'flaks' doesn't exist. This is a dependency resolu,1,1,0,42.81,,0,1,False,,1,"[""requirements.txt""]",red,5680f177de590c4c8d07b67f6a2df401d3015eaa,45777269520,green,2bfe17c156358081224700ab86ae8a1b7fb47d58,45777352493,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-992ef90-t1-084233"", ""base_sha"": ""5680f177de590c4c8d07b67f6a2df401d3015eaa"", ""commit_sha"": ""2bfe17c156358081224700ab86ae8a1b7fb47d58"", ""file"": ""requirements.txt"", ""run_id"": 45777352493, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45777352493"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+flask==3.0.3"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_023,dependency,easy,escalated,0,config,0,0.95,The error is a syntax issue in the requirements.txt file where 'pyyaml=6.0.1' uses incorrect version specification syntax. The commit diff shows the change from correct '==' to incorrect '=' operator.,3,,0,135.52,,1,1,False,,1,"[""requirements.txt""]",red,5d0b3d2b011638f660b416d7269b682460911449,45777444188,red,1fc53a99bf53d1f1339c89f4d90ca87a04987e56,45777760087,"[{""attempt"": 1, ""branch"": ""fix/ai-config-230a7b5-t1-084421"", ""base_sha"": ""5d0b3d2b011638f660b416d7269b682460911449"", ""commit_sha"": ""8537e7ff5fb21fc7c114aeb5f479a18f5c11d4e7"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45777569975, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45777569975"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-config-230a7b5-t2-084505"", ""base_sha"": ""5d0b3d2b011638f660b416d7269b682460911449"", ""commit_sha"": ""140015145aa74d854da75dc87463b8b26bd0222c"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45777662777, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45777662777"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-config-230a7b5-t3-084551"", ""base_sha"": ""5d0b3d2b011638f660b416d7269b682460911449"", ""commit_sha"": ""1fc53a99bf53d1f1339c89f4d90ca87a04987e56"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45777760087, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45777760087"", ""conclusion"": ""failure""}]",.github/workflows/ci.yml,False,n/a,,n/a,,requirements.txt,False,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_024,dependency,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,psycopg2==2.9.9 builds from source on the runner (libpq-dev present); CI green (verified 20 Nov),0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_025,dependency,easy,fixed,1,dependency,1,0.95,The error is a double requirement conflict where click==8.0.0 is specified alongside click==8.1.7 in requirements.txt. This is a dependency resolution issue caused by conflicting version specification,1,1,0,42.74,,0,1,False,,1,"[""requirements.txt""]",red,3a8592846fdf707f75ed17a0ff36cc776c0c6f3c,45777852790,green,9501b83b072b46ee14e89f26edcc97799e21333f,45777935386,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-2346926-t1-084715"", ""base_sha"": ""3a8592846fdf707f75ed17a0ff36cc776c0c6f3c"", ""commit_sha"": ""9501b83b072b46ee14e89f26edcc97799e21333f"", ""file"": ""requirements.txt"", ""run_id"": 45777935386, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45777935386"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,True,"pytest==7.4.0
+pytest-cov==4.1.0
+click==8.1.7"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_026,dependency,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,depends on requirements.in / pip-compile and on tests importing httpx; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_027,dependency,easy,escalated,0,config,0,0.95,"The error is caused by invalid syntax in requirements.txt file. The dependency specification uses JSON-style syntax instead of pip-compatible format, making it impossible for pip to parse the requirem",3,,0,165.83,,1,1,False,,1,"[""requirements.txt""]",red,2b69d95e75176ca17c408073148b045c12b38a31,45778028317,red,81fa466a1d3b8088ecebc55be23d8b5f3363bd69,45778376660,"[{""attempt"": 1, ""branch"": ""fix/ai-config-3c25a61-t1-084846"", ""base_sha"": ""2b69d95e75176ca17c408073148b045c12b38a31"", ""commit_sha"": ""259bfeca039037d66cf0b287b0ec9d6615803c01"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45778123109, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45778123109"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-config-3c25a61-t2-084946"", ""base_sha"": ""2b69d95e75176ca17c408073148b045c12b38a31"", ""commit_sha"": ""40d6e576e5c6a8467b965689a0324c4fdd6f474e"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45778245543, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45778245543"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-config-3c25a61-t3-085047"", ""base_sha"": ""2b69d95e75176ca17c408073148b045c12b38a31"", ""commit_sha"": ""81fa466a1d3b8088ecebc55be23d8b5f3363bd69"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45778376660, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45778376660"", ""conclusion"": ""failure""}]",.github/workflows/ci.yml,False,n/a,,n/a,,requirements.txt,False,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_028,dependency,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,depends on tests/test_server.py and app.server importing uvicorn; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_029,dependency,easy,fixed,1,dependency,1,0.95,The error occurs because pywin32==306 cannot be installed on Linux platform as it only provides Windows distributions. This is a dependency resolution issue caused by platform-incompatible package ver,1,1,0,42.45,,0,1,False,,1,"[""requirements.txt""]",red,cb094d88567cda4e9353692e4713b6e6e1e23283,45778467017,green,c7ac466aabed9dc02d970cccd7847b8b865b9085,45778553192,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-36c8a7c-t1-085211"", ""base_sha"": ""cb094d88567cda4e9353692e4713b6e6e1e23283"", ""commit_sha"": ""c7ac466aabed9dc02d970cccd7847b8b865b9085"", ""file"": ""requirements.txt"", ""run_id"": 45778553192, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45778553192"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,True,"pytest==7.4.0
+pytest-cov==4.1.0"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_030,dependency,easy,fixed,1,dependency,1,0.95,The pipeline failed to install the pillow dependency due to specifying a non-existent version (10.99.0) in requirements.txt. This is a clear dependency resolution error where the requested package ver,1,1,0,42.85,,0,1,False,,1,"[""requirements.txt""]",red,67e4f201e29b3c57dfc86430d5f957e681b53952,45778647158,green,5e88bd27fe6b7d672bc7ffeaf5403403cd02156c,45778730583,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-ace29ac-t1-085337"", ""base_sha"": ""67e4f201e29b3c57dfc86430d5f957e681b53952"", ""commit_sha"": ""5e88bd27fe6b7d672bc7ffeaf5403403cd02156c"", ""file"": ""requirements.txt"", ""run_id"": 45778730583, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45778730583"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+pillow==10.0.0"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_031,dependency,easy,escalated,0,config,0,0.95,The error is caused by an invalid requirement syntax in requirements.txt. The marker 'python_version' is incomplete and missing the comparison operator. This is a configuration issue in the dependency,3,,0,135.62,,1,1,False,,1,"[""requirements.txt""]",red,63c62099ebc93ca489c7c5aa9f651f547ff9683d,45778825874,red,d73140294a0f66b3bc6e443c1ff5dc4be6076f7f,45779108255,"[{""attempt"": 1, ""branch"": ""fix/ai-config-7214122-t1-085509"", ""base_sha"": ""63c62099ebc93ca489c7c5aa9f651f547ff9683d"", ""commit_sha"": ""c84c81b49bdddc016b05bb02799b45edd0d76c84"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45778922456, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45778922456"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-config-7214122-t2-085554"", ""base_sha"": ""63c62099ebc93ca489c7c5aa9f651f547ff9683d"", ""commit_sha"": ""e9d04a57d806967ed5fc703d552851b1b976ca78"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45779015394, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45779015394"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-config-7214122-t3-085640"", ""base_sha"": ""63c62099ebc93ca489c7c5aa9f651f547ff9683d"", ""commit_sha"": ""d73140294a0f66b3bc6e443c1ff5dc4be6076f7f"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45779108255, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45779108255"", ""conclusion"": ""failure""}]",.github/workflows/ci.yml,False,n/a,,n/a,,requirements.txt,False,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_032,dependency,medium,fixed,1,dependency,1,0.95,"The error occurs due to conflicting package dependencies between sphinx 7.2.6 and docutils 0.22. The sphinx package requires docutils<0.21, but version 0.22 is explicitly requested, causing a dependen",1,1,0,43.06,,0,1,False,,1,"[""requirements.txt""]",red,e55849a8f525b25daeb1228636ef8ebe24e16563,45779196426,green,df563ffd826d4ddb72bfee7edd14736da61c3bc6,45779279998,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-be8ac9b-t1-085804"", ""base_sha"": ""e55849a8f525b25daeb1228636ef8ebe24e16563"", ""commit_sha"": ""df563ffd826d4ddb72bfee7edd14736da61c3bc6"", ""file"": ""requirements.txt"", ""run_id"": 45779279998, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45779279998"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+
+sphinx==7.2.6
+docutils==0.20.1"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_033,dependency,medium,escalated,0,dependency,1,0.95,"The error occurs because the specified PyTorch version 'torch==2.1.0+cu121' is not available in the default PyPI index. The CI runner lacks GPU support, making the CUDA-specific build incompatible. Th",3,,0,120.0,,1,1,False,,1,"[""requirements.txt""]",red,648eac9313ab1ca940b7b0513c516e9d1481c701,45779373331,red,124bbbfed228475e3b3ae0ef61e8514faa944ac5,45779676755,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-731a603-t1-085946"", ""base_sha"": ""648eac9313ab1ca940b7b0513c516e9d1481c701"", ""commit_sha"": ""14f9b014ec925d728a71987a95227107ca36e6de"", ""file"": ""requirements.txt"", ""run_id"": 45779486580, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45779486580"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-731a603-t2-090026"", ""base_sha"": ""648eac9313ab1ca940b7b0513c516e9d1481c701"", ""commit_sha"": ""4f6b6a6e4078e192fbf0187b0b80845bd1798c17"", ""file"": ""requirements.txt"", ""run_id"": 45779582944, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45779582944"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-731a603-t3-090106"", ""base_sha"": ""648eac9313ab1ca940b7b0513c516e9d1481c701"", ""commit_sha"": ""124bbbfed228475e3b3ae0ef61e8514faa944ac5"", ""file"": ""requirements.txt"", ""run_id"": 45779676755, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45779676755"", ""conclusion"": ""failure""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+torch==2.1.0+cpu
+torchvision==0.16.0+cpu
+torchaudio==2.1.0+cpu"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_034,dependency,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,depends on `pip install --require-hashes` and hashed pins; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_035,dependency,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,depends on a conda environment.yml; pip ignores the injected line,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_036,dependency,medium,escalated,0,dependency,1,0.95,"The error occurs during dependency installation where a package fails due to hash mismatch. The warning indicates the downloaded package doesn't match expected internal package hash, causing the insta",3,,0,188.15,,1,1,False,,1,"[""requirements.txt""]",red,f0fd4cb078a82ffa06798d17b1e22bd926b4d978,45779775604,red,3d3505734798b65831dcb3cf2e147d721c365c84,45780194186,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-d43bb0a-t1-090259"", ""base_sha"": ""f0fd4cb078a82ffa06798d17b1e22bd926b4d978"", ""commit_sha"": ""db8bcf2f16416b873c3cc3f29a8aee9de7489fa2"", ""file"": ""requirements.txt"", ""run_id"": 45779927755, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45779927755"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-d43bb0a-t2-090358"", ""base_sha"": ""f0fd4cb078a82ffa06798d17b1e22bd926b4d978"", ""commit_sha"": ""2679bf2475f3c362affb08a6896ea7ac5a88dd11"", ""file"": ""requirements.txt"", ""run_id"": 45780063033, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45780063033"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-d43bb0a-t3-090458"", ""base_sha"": ""f0fd4cb078a82ffa06798d17b1e22bd926b4d978"", ""commit_sha"": ""3d3505734798b65831dcb3cf2e147d721c365c84"", ""file"": ""requirements.txt"", ""run_id"": 45780194186, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45780194186"", ""conclusion"": ""failure""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+requests==2.31.0
+urllib3==2.0.4
+certifi==2023.7.22
+charset-normalizer==3.3.2
+idna==3.4
+packaging==23.2
+pluggy==1.3.0
+iniconfig==2.0.0
+tomli==2.0.1
+attrs==23.1.0
+coverage==7.3.2
+importlib-metadata==6.8.0
+zipp==3.17.0
+typing-extensions==4.8.0
+exceptiongroup==1.1.3
+toml==0.10.2
+setuptools==68.2.2
+wheel==0.41.2
+build==0.10.0
+twine==4.0.2
+pip==23.3.1
+pkg_resources==0.0.0
+configparser==5.3.0
+contextlib2==21.6.0
+pathlib2==2.3.7.post1
+future==0.18.3
+six==1.16.0
+python-dateutil==2.8.2
+pytz==2023.3
+tzlocal==5.0.1
+PyYAML==6.0.1
+jinja2==3.1.2
+markupsafe==2.1.3
+click==8.1.7
+flask==2.3.3
+werkzeug==2.3.7
+itsdangerous==2.1.2
+wsgiref==0.1.2
+sqlalchemy==2.0.19
+alembic==1.12.1
+psycopg2-binary==2.9.7
+mysql-connector-python==8.1.0
+pymysql==1.1.0
+redis==5.0.1
+celery==5.3.4
+rq==1.12.0
+gunicorn==21.2.0
+gevent==23.9.1
+eventlet==0.33.3
+flask-sqlalchemy==3.0.5
+flask-migrate==4.0.5
+flask-login==0.6.3
+flask-wtf==1.1.1
+wtforms==3.0.1
+flask-session==0.5.0
+flask-cors==4.0.0
+flask-jwt-extended==4.5.2
+flask-bcrypt==1.0.1
+flask-limiter==3.5.0
+flask-restful==0.3.10
+flask-api==3.0.post1
+flask-debugtoolbar==0.13.1
+flask-testing==0.8.0
+flask-mongoengine==1.0.0
+flask-pymongo==2.3.0
+flask-socketio==5.3.6
+flask-caching==2.1.0
+flask-compress==1.14
+flask-talisman==0.8.1
+flask-seasurf==0.5.0
+flask-security-too==0.20.1
+flask-oidc==1.5.0
+flask-oauthlib==0.9.6
+flask-oauth2-provider==2.0.0
+flask-jwt-simple==0.0.3
+flask-restx==1.1.0
+flask-apispec==0.11.0
+flask-marshmallow==0.15.0
+marshmallow==3.20.1
+marshmallow-sqlalchemy==0.29.0
+marshmallow-enum==1.5.1
+marshmallow-jsonschema==0.14.0
+marshmallow-oneofschema==3.0.0
+marshmallow-validators==0.6.0
+flask-babel==3.1.0
+babel==2.12.1
+flask-i18n==0.1.1
+flask-security==3.0.0
+flask-admin==1.6.0
+flask-whooshee==0.8.0
+flask-principal==0.4.0
+flask-openid==1.2.5
+flask-oauth==0.12
+flask-sqlalchemy-views==0.3.0
+flask-graphql==3.0.0
+flask-graphql-relay==0.1.0
+flask-graphql-cursor==0.1.0
+flask-graphql-schema==0.1.0
+flask-graphql-server==0.1.0
+flask-graphql-client==0.1.0
+flask-graphql-django==0.1.0
+flask-graphql-flask==0.1.0
+flask-graphql-sqlalchemy==0.1.0
+flask-graphql-mongoengine==0.1.0
+flask-graphql-pymongo==0.1.0
+flask-graphql-redis==0.1.0
+flask-graphql-celery==0.1.0
+flask-graphql-rq==0.1.0
+flask-graphql-gunicorn==0.1.0
+flask-graphql-gevent==0.1.0
+flask-graphql-eventlet==0.1.0
+flask-graphql-wsgi==0.1.0
+flask-graphql-uwsgi==0.1.0
+flask-graphql-docker==0.1.0
+flask-graphql-kubernetes==0.1.0
+flask-graphql-aws==0.1.0
+flask-graphql-azure==0.1.0
+flask-graphql-gcp==0.1.0
+flask-graphql-openstack==0.1.0
+flask-graphql-jira-api-v3-extended==0.1.0
+flask-graphql-confluence-api-v1-extended==0.1.0
+flask-graphql-slackbot-api-v1-extended==0.1.0
+flask-graphql-telegram-api-v1-extended==0.1.0
+flask-graphql-whatsapp-api-v1-extended==0.1.0
+flask-graphql-microsoft-teams-bot-api-v1-extended==0.1.0
+flask-graphql-facebook-messenger-api-v1-extended==0.1.0
+acme-internal-utils==0.1.0"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_037,dependency,medium,fixed,1,dependency,1,0.95,"The error occurs during package installation due to a setuptools version incompatibility. The commit changed setuptools requirement from >=65 to >=68, causing a backend import failure. This is a depen",1,1,0,43.33,,0,1,False,,1,"[""requirements.txt""]",red,4b68c72ae353a5c537778e1803e1f6b9b82f3adb,45780299338,green,ac859b4354217e428d6c45fd02af9e490eb964c6,45780392205,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-f7502af-t1-090623"", ""base_sha"": ""4b68c72ae353a5c537778e1803e1f6b9b82f3adb"", ""commit_sha"": ""ac859b4354217e428d6c45fd02af9e490eb964c6"", ""file"": ""requirements.txt"", ""run_id"": 45780392205, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45780392205"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+setuptools==68.0.0"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_038,dependency,medium,escalated,0,dependency,1,0.95,"The error occurs during pip install when trying to clone a private GitHub repository. The 'fatal: could not read Username' error indicates authentication failure for the git URL, which is a dependency",3,,0,138.29,,1,1,False,,1,"[""requirements.txt""]",red,8d19503816560715f677d7f0c1bfd1656d6e04b0,45780497948,red,372802c72bcf15bbf8286e05e0c28e6e683ed111,45780780689,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-543f5a9-t1-090750"", ""base_sha"": ""8d19503816560715f677d7f0c1bfd1656d6e04b0"", ""commit_sha"": ""56b896d282f3330b2bf3db82fbc48f53854efa9f"", ""file"": ""requirements.txt"", ""run_id"": 45780591291, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45780591291"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-543f5a9-t2-090830"", ""base_sha"": ""8d19503816560715f677d7f0c1bfd1656d6e04b0"", ""commit_sha"": ""d53db506498fe9dd67506dd1375790bfbff59ed3"", ""file"": ""requirements.txt"", ""run_id"": 45780686046, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45780686046"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-543f5a9-t3-090912"", ""base_sha"": ""8d19503816560715f677d7f0c1bfd1656d6e04b0"", ""commit_sha"": ""372802c72bcf15bbf8286e05e0c28e6e683ed111"", ""file"": ""requirements.txt"", ""run_id"": 45780780689, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45780780689"", ""conclusion"": ""failure""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+git+https://github.com/myorg/internal-tool.git@v1.2.0#egg=internal-tool-v1.2.0
+gitpython==3.1.32
+requests==2.31.0
+urllib3==2.0.4
+colorama==0.4.6
+packaging==23.2
+setuptools==68.2.2
+wheel==0.41.2
+pip==23.3.1
+git+https://github.com/myorg/internal-tool.git@v1.2.0
+--trusted-host github.com"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_039,dependency,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,depends on requirements-dev.txt (`pip install -r requirements.txt -r requirements-dev.txt`); absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_040,dependency,medium,fixed,1,dependency,1,0.95,"The error occurs due to a version conflict in the click dependency specification. The requirements.txt file specifies 'click<8.0,>=9.0' which is impossible since 9.0 is greater than 8.0, making the re",1,1,0,43.38,,0,1,False,,1,"[""requirements.txt""]",red,cc3367b4f923112cf74f1625e32237ecd92c836a,45780920823,green,dd45193e0b2a44ec869099cb5ee30c9296b6da94,45781046279,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-496fad6-t1-091108"", ""base_sha"": ""cc3367b4f923112cf74f1625e32237ecd92c836a"", ""commit_sha"": ""dd45193e0b2a44ec869099cb5ee30c9296b6da94"", ""file"": ""requirements.txt"", ""run_id"": 45781046279, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45781046279"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+click==8.1.7"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_041,dependency,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,tokenizers==0.15.0 installs from a prebuilt wheel; the missing-Rust build failure of the log does not occur,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_042,dependency,hard,escalated,0,dependency,1,0.95,The error is a dependency conflict where package-a and package-b require incompatible versions of shared-lib. This is a classic dependency resolution failure caused by the added packages in the commit,3,,0,120.57,,1,1,False,,1,"[""requirements.txt""]",red,bfb49484c4cf962129952f8d05264410300aaaea,45781153170,red,09ae333420e09a2dbedce00c7ae096d000ec15d8,45781468397,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-065c250-t1-091250"", ""base_sha"": ""bfb49484c4cf962129952f8d05264410300aaaea"", ""commit_sha"": ""5340b046e4b4b2ed8289281d85dfb79ac5c19518"", ""file"": ""requirements.txt"", ""run_id"": 45781284108, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45781284108"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-065c250-t2-091330"", ""base_sha"": ""bfb49484c4cf962129952f8d05264410300aaaea"", ""commit_sha"": ""a792dcee54c789caa8d616aa693f82a0d8ab23ad"", ""file"": ""requirements.txt"", ""run_id"": 45781371310, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45781371310"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-065c250-t3-091410"", ""base_sha"": ""bfb49484c4cf962129952f8d05264410300aaaea"", ""commit_sha"": ""09ae333420e09a2dbedce00c7ae096d000ec15d8"", ""file"": ""requirements.txt"", ""run_id"": 45781468397, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45781468397"", ""conclusion"": ""failure""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+package-a==2.0.0
+package-b==1.5.0
+shared-lib==2.0
+```"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_043,dependency,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,only an import test would expose it (a different oracle); excluded by decision for a single case,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_044,dependency,hard,escalated,0,dependency,1,0.95,"The error occurs due to a GLIBC version incompatibility when loading a native Python package. The CI job changed from ubuntu-22.04 to ubuntu-18.04, which has an older GLIBC version that doesn't meet t",3,,0,120.65,,1,1,False,,1,"[""requirements.txt""]",red,209e70e077e89aa97ae5f7af57631808898930ef,45781570237,red,e5f91ca7604d335ff4743cd8d645d8e4ed23a704,45781892073,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-68d1cae-t1-091550"", ""base_sha"": ""209e70e077e89aa97ae5f7af57631808898930ef"", ""commit_sha"": ""be14a82fbe06a3ccb3a9188f85dc52c99b1a7b0c"", ""file"": ""requirements.txt"", ""run_id"": 45781707516, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45781707516"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-68d1cae-t2-091630"", ""base_sha"": ""209e70e077e89aa97ae5f7af57631808898930ef"", ""commit_sha"": ""df8866d2c65c88845c8a9d4ea5553afd831eb119"", ""file"": ""requirements.txt"", ""run_id"": 45781799617, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45781799617"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-68d1cae-t3-091710"", ""base_sha"": ""209e70e077e89aa97ae5f7af57631808898930ef"", ""commit_sha"": ""e5f91ca7604d335ff4743cd8d645d8e4ed23a704"", ""file"": ""requirements.txt"", ""run_id"": 45781892073, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45781892073"", ""conclusion"": ""failure""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+somepkg==1.2.3
+setuptools==68.0.0
+wheel==0.41.0
+pip==23.3.1
+numpy==1.26.4
+scipy==1.11.3
+pywin32==306"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_045,dependency,hard,escalated,0,config,0,0.95,The error shows pip cannot find 'constraints.txt' file which was added in the commit. This is a configuration issue with missing dependency files.,3,,0,136.2,,1,1,False,,1,"[""requirements.txt""]",red,661716c23d52179f79e13a4d7abc967d11e15b39,45781996325,red,702dcb1a1c88444a3162a02beed0dad6671679bf,45782310172,"[{""attempt"": 1, ""branch"": ""fix/ai-config-95fe969-t1-091841"", ""base_sha"": ""661716c23d52179f79e13a4d7abc967d11e15b39"", ""commit_sha"": ""f5336fc6402745a12c9376566e6364b7294e3b39"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45782103424, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45782103424"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-config-95fe969-t2-091926"", ""base_sha"": ""661716c23d52179f79e13a4d7abc967d11e15b39"", ""commit_sha"": ""ec9d3b22960952559444e90f7d752bf7f6c4af6a"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45782199852, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45782199852"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-config-95fe969-t3-092011"", ""base_sha"": ""661716c23d52179f79e13a4d7abc967d11e15b39"", ""commit_sha"": ""702dcb1a1c88444a3162a02beed0dad6671679bf"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45782310172, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45782310172"", ""conclusion"": ""failure""}]",.github/workflows/ci.yml,False,n/a,,n/a,,requirements.txt,False,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f constraints.txt ]; then pip install -r constraints.txt; fi
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_046,dependency,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"with the context pins django-filter==22.1 and djangorestframework==3.14.0, django==5.0 still installs: no Django<5.0 bound on PyPI",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_047,dependency,hard,fixed,1,dependency,1,0.95,"The error occurs due to version conflicts between streamlit==1.28.0 and protobuf==5.28.0. Streamlit requires protobuf version <5 and >=3.20, but the specified version 5.28.0 creates a dependency confl",1,1,0,43.41,,0,1,False,,1,"[""requirements.txt""]",red,2302cb3195bdc211bec37915c3d5280074a769fc,45782417168,green,6f55779c973a3fd386620afdea3e3980baef4714,45782509532,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-aea2311-t1-092136"", ""base_sha"": ""2302cb3195bdc211bec37915c3d5280074a769fc"", ""commit_sha"": ""6f55779c973a3fd386620afdea3e3980baef4714"", ""file"": ""requirements.txt"", ""run_id"": 45782509532, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45782509532"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+streamlit==1.28.0
+protobuf>=3.20,<5"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_048,dependency,hard,fixed,1,dependency,1,0.95,"The error is a dependency conflict where boto3==1.34.10 and botocore==1.33.0 have incompatible versions. The commit changed botocore version from 1.34.10 to 1.33.0, causing the conflict.",1,1,0,58.84,,0,1,False,,1,"[""requirements.txt""]",red,2b38126410fd235965600a23ca73726bc7db09ce,45782616526,green,836524f0fe3e39bd7e4e9061394bbd04b85394dc,45782712453,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-dc4d5af-t1-092303"", ""base_sha"": ""2b38126410fd235965600a23ca73726bc7db09ce"", ""commit_sha"": ""836524f0fe3e39bd7e4e9061394bbd04b85394dc"", ""file"": ""requirements.txt"", ""run_id"": 45782712453, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45782712453"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+boto3==1.34.10
+botocore==1.34.10"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_049,dependency,hard,fixed,1,dependency,1,0.85,"The log shows a version mismatch where cached dependencies don't match requirements.txt. The git diff indicates a change in cache key from requirements.txt to requirements-base.txt, suggesting depende",1,1,0,42.93,,0,1,False,,1,"[""requirements.txt""]",red,c1e0ccd1cbd51b98f01087e2c3dd5e48015741d2,45782856239,green,851307266e4ec4e0ac5def24885cd7e0bbe950f4,45782951782,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-ae27863-t1-092445"", ""base_sha"": ""c1e0ccd1cbd51b98f01087e2c3dd5e48015741d2"", ""commit_sha"": ""851307266e4ec4e0ac5def24885cd7e0bbe950f4"", ""file"": ""requirements.txt"", ""run_id"": 45782951782, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45782951782"", ""conclusion"": ""success""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+requests==2.31.0"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,dep_050,dependency,hard,escalated,0,dependency,1,0.95,The pipeline failed to install a specific version of mypackage (2.0.0rc1) because it's not available in the package index. The error indicates a dependency resolution issue where the requested pre-rel,3,,0,121.61,,1,1,False,,1,"[""requirements.txt""]",red,75ed08bdd1303e77b20dabb7496f6657aacb653f,45783060952,red,42c99fcafc79fcaae18672f67128561c3be4bfef,45783342821,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-ca2ed43-t1-092612"", ""base_sha"": ""75ed08bdd1303e77b20dabb7496f6657aacb653f"", ""commit_sha"": ""662eb74179b9f2a5217f7a95f1eea9a020483297"", ""file"": ""requirements.txt"", ""run_id"": 45783154003, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45783154003"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-ca2ed43-t2-092652"", ""base_sha"": ""75ed08bdd1303e77b20dabb7496f6657aacb653f"", ""commit_sha"": ""c0a888680e1ed9af10f3a34a2ce3aeee2f727396"", ""file"": ""requirements.txt"", ""run_id"": 45783247945, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45783247945"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-ca2ed43-t3-092733"", ""base_sha"": ""75ed08bdd1303e77b20dabb7496f6657aacb653f"", ""commit_sha"": ""42c99fcafc79fcaae18672f67128561c3be4bfef"", ""file"": ""requirements.txt"", ""run_id"": 45783342821, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45783342821"", ""conclusion"": ""failure""}]",requirements.txt,True,n/a,,n/a,,requirements.txt,False,"pytest==7.4.0
+pytest-cov==4.1.0
+mypackage==2.0.0rc1
+mypackage==1.9.1
+mypackage==1.8.0
+mypackage==1.9.0
+mypackage==1.9.1
+mypackage==2.0.0rc1
+mypackage==1.9.1
+mypackage==2.0.0rc1"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_001,test,easy,escalated,0,test,1,0.95,"The error is a test failure where an assertion expects 5 but gets 99, indicating a broken test case. The git diff shows the test was intentionally modified to expect an incorrect value.",3,,0,125.12,,1,1,False,,1,"[""tests/test_calculator.py""]",red,a39822492f685662644aa561d14e40c514518f7c,45783446319,red,2322326c6a1558fd070ed164ca08a1082909e3fe,45783748708,"[{""attempt"": 1, ""branch"": ""fix/ai-test-a77a022-t1-092900"", ""base_sha"": ""a39822492f685662644aa561d14e40c514518f7c"", ""commit_sha"": ""5d3e20357eb7987b593872686174cdaa17e50fbf"", ""file"": ""tests/test_calculator.py"", ""run_id"": 45783545810, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45783545810"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-a77a022-t2-092941"", ""base_sha"": ""a39822492f685662644aa561d14e40c514518f7c"", ""commit_sha"": ""930ba0b52f02e1fa824b314a55c426a2cd00227e"", ""file"": ""tests/test_calculator.py"", ""run_id"": 45783637024, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45783637024"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-test-a77a022-t3-093023"", ""base_sha"": ""a39822492f685662644aa561d14e40c514518f7c"", ""commit_sha"": ""2322326c6a1558fd070ed164ca08a1082909e3fe"", ""file"": ""tests/test_calculator.py"", ""run_id"": 45783748708, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45783748708"", ""conclusion"": ""failure""}]",tests/test_calculator.py,True,fail,1 error in 0.07s,parse_error,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""parse_error"", ""error"": ""repaired: invalid syntax (<unknown>, line 27)""}, ""vs_injected"": {""summary"": ""parse_error"", ""error"": ""repaired: invalid syntax (<unknown>, line 27)""}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_002,test,easy,escalated,0,test,1,0.95,"The error is a test failure where an assertion check fails. The test expects 2.5 but gets 5.0, indicating a broken test assertion rather than a dependency or configuration issue.",3,,0,140.98,,1,1,False,,1,"[""tests/test_calculator.py""]",red,d73752b012d42f4d6f57131413f6f298e8de9529,45783862175,red,af822e5620662259d0fb4124eec4efec97670006,45784190663,"[{""attempt"": 1, ""branch"": ""fix/ai-test-f9cbd22-t1-093150"", ""base_sha"": ""d73752b012d42f4d6f57131413f6f298e8de9529"", ""commit_sha"": ""5a27eab7cd095dac98fdcefe783c48dbc28d7cfa"", ""file"": ""tests/test_calculator.py"", ""run_id"": 45783958304, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45783958304"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-f9cbd22-t2-093231"", ""base_sha"": ""d73752b012d42f4d6f57131413f6f298e8de9529"", ""commit_sha"": ""b024a7f2a4502ab81e650a63df5bc37e3fc14ef5"", ""file"": ""tests/test_calculator.py"", ""run_id"": 45784058923, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45784058923"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-test-f9cbd22-t3-093328"", ""base_sha"": ""d73752b012d42f4d6f57131413f6f298e8de9529"", ""commit_sha"": ""af822e5620662259d0fb4124eec4efec97670006"", ""file"": ""tests/test_calculator.py"", ""run_id"": 45784190663, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45784190663"", ""conclusion"": ""failure""}]",tests/test_calculator.py,True,fail,1 error in 0.07s,parse_error,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""parse_error"", ""error"": ""repaired: invalid syntax (<unknown>, line 27)""}, ""vs_injected"": {""summary"": ""parse_error"", ""error"": ""repaired: invalid syntax (<unknown>, line 27)""}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_003,test,easy,fixed,1,test,1,0.95,"The error is a test failure where an assertion check fails. The test expected factorial(5) to equal 120 but got 60, indicating a broken test assertion rather than dependency or configuration issues.",1,1,0,44.25,,0,1,False,,1,"[""tests/test_calculator.py""]",red,a9746fff67a7cbc59e0077b6b3339bb1e234a1d7,45784299415,green,3267e979e4459edbe8f64efaca9cc3965dd8184c,45784396711,"[{""attempt"": 1, ""branch"": ""fix/ai-test-5fe410d-t1-093456"", ""base_sha"": ""a9746fff67a7cbc59e0077b6b3339bb1e234a1d7"", ""commit_sha"": ""3267e979e4459edbe8f64efaca9cc3965dd8184c"", ""file"": ""tests/test_calculator.py"", ""run_id"": 45784396711, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45784396711"", ""conclusion"": ""success""}]",tests/test_calculator.py,True,pass,7 passed in 0.00s,8/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""8/0/0"", ""counts"": {""original"": 8, ""repaired"": 8, ""kept"": 8, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_add_positive"", ""text"": ""assert add(2, 3) == 5""}, {""scope"": ""test_add_negative"", ""text"": ""assert add(-1, -1) == -2""}, {""scope"": ""test_divide_normal"", ""text"": ""assert divide(10, 2) == 5.0""}, {""scope"": ""test_divide_by_zero"", ""text"": ""pytest.raises(ValueError)""}, {""scope"": ""test_factorial_less_than_zero"", ""text"": ""pytest.raises(ValueError)""}, {""scope"": ""test_factorial_base"", ""text"": ""assert factorial(0) == 1""}, {""scope"": ""test_factorial_base"", ""text"": ""assert factorial(1) == 1""}, {""scope"": ""test_factorial_normal"", ""text"": ""assert factorial(5) == 120""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""7/1/0"", ""counts"": {""original"": 8, ""repaired"": 8, ""kept"": 7, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_add_positive"", ""text"": ""assert add(2, 3) == 5""}, {""scope"": ""test_add_negative"", ""text"": ""assert add(-1, -1) == -2""}, {""scope"": ""test_divide_normal"", ""text"": ""assert divide(10, 2) == 5.0""}, {""scope"": ""test_divide_by_zero"", ""text"": ""pytest.raises(ValueError)""}, {""scope"": ""test_factorial_less_than_zero"", ""text"": ""pytest.raises(ValueError)""}, {""scope"": ""test_factorial_base"", ""text"": ""assert factorial(0) == 1""}, {""scope"": ""test_factorial_base"", ""text"": ""assert factorial(1) == 1""}], ""modified"": [{""scope"": ""test_factorial_normal"", ""original"": ""assert factorial(5) == 60"", ""repaired"": ""assert factorial(5) == 120""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_004,test,easy,fixed,1,test,1,0.95,"The error is a test failure where an assertion check failed. The test expected 'HELLO' but got 'hello', indicating a broken test assertion that was changed in the commit.",1,1,0,42.84,,0,1,False,,1,"[""tests/test_utils.py""]",red,1ee2c5941d1874c493059056604f789ad59e0d77,45784523309,green,4481b49c5f2bb5377e0d1b8e74551048e75c7621,45784619661,"[{""attempt"": 1, ""branch"": ""fix/ai-test-eb56ec5-t1-093628"", ""base_sha"": ""1ee2c5941d1874c493059056604f789ad59e0d77"", ""commit_sha"": ""4481b49c5f2bb5377e0d1b8e74551048e75c7621"", ""file"": ""tests/test_utils.py"", ""run_id"": 45784619661, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45784619661"", ""conclusion"": ""success""}]",tests/test_utils.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_string_upper"", ""text"": ""assert to_upper('hello') == 'HELLO'""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""0/1/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 0, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_string_upper"", ""original"": ""assert to_upper('hello') == 'hello'"", ""repaired"": ""assert to_upper('hello') == 'HELLO'""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_005,test,easy,fixed,1,test,1,0.95,"The error is a test failure where an assertion check failed. The test expected status code 200 but got 404, which is a clear test assertion error. The git diff shows this was an intentional change fro",3,3,0,142.5,,1,1,False,,1,"[""tests/test_api.py""]",red,2d7c14f1dafd8c4312cdced72a8ea931defe7f11,45784727688,green,5b111fc9e830524798ea40cc2a9bedc1431a4049,45785051244,"[{""attempt"": 1, ""branch"": ""fix/ai-test-24e7d3d-t1-093756"", ""base_sha"": ""2d7c14f1dafd8c4312cdced72a8ea931defe7f11"", ""commit_sha"": ""899d4876281e2bb96be15f5e8bf8ec40c17949a5"", ""file"": ""tests/test_api.py"", ""run_id"": 45784827347, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45784827347"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-24e7d3d-t2-093837"", ""base_sha"": ""2d7c14f1dafd8c4312cdced72a8ea931defe7f11"", ""commit_sha"": ""faa19fcd6af1919d5715dd68f6e3192c77b30595"", ""file"": ""tests/test_api.py"", ""run_id"": 45784919689, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45784919689"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-test-24e7d3d-t3-093934"", ""base_sha"": ""2d7c14f1dafd8c4312cdced72a8ea931defe7f11"", ""commit_sha"": ""5b111fc9e830524798ea40cc2a9bedc1431a4049"", ""file"": ""tests/test_api.py"", ""run_id"": 45785051244, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45785051244"", ""conclusion"": ""success""}]",tests/test_api.py,True,pass,2 passed in 0.00s,2/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""2/0/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 2, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_status_code"", ""text"": ""assert response.status_code == 200""}, {""scope"": ""test_create_item"", ""text"": ""assert result == {'id': 1, 'name': 'item', 'price': 10.0}""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""1/1/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 1, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_create_item"", ""text"": ""assert result == {'id': 1, 'name': 'item', 'price': 10.0}""}], ""modified"": [{""scope"": ""test_status_code"", ""original"": ""assert response.status_code == 404"", ""repaired"": ""assert response.status_code == 200""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_006,test,easy,fixed,1,test,1,0.95,"The error is a test failure due to an assertion mismatch where 'John' != 'john'. The git diff shows the test was intentionally changed to expect lowercase 'john' instead of uppercase 'John', indicatin",2,2,0,99.54,,0,1,False,,1,"[""tests/test_models.py""]",red,9b7f85aad41d046dbc4818690d6105ffe2754eab,45785165609,green,85a8ae9478a7e586b4942b2f9ba967fc70909b6e,45785352328,"[{""attempt"": 1, ""branch"": ""fix/ai-test-1e3a4b8-t1-094103"", ""base_sha"": ""9b7f85aad41d046dbc4818690d6105ffe2754eab"", ""commit_sha"": ""130595aa0e1df2789134c1f74287eca03cbf4579"", ""file"": ""tests/test_models.py"", ""run_id"": 45785261520, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45785261520"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-1e3a4b8-t2-094142"", ""base_sha"": ""9b7f85aad41d046dbc4818690d6105ffe2754eab"", ""commit_sha"": ""85a8ae9478a7e586b4942b2f9ba967fc70909b6e"", ""file"": ""tests/test_models.py"", ""run_id"": 45785352328, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45785352328"", ""conclusion"": ""success""}]",tests/test_models.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_user_creation"", ""text"": ""assert user.name == 'John'""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""0/1/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 0, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_user_creation"", ""original"": ""assert user.name == 'john'"", ""repaired"": ""assert user.name == 'John'""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_007,test,easy,fixed,1,test,1,0.95,"The error is a test failure where an assertion expects 8 but gets 16, indicating a broken test case. The git diff shows the test was modified to expect 8 instead of 16, which is clearly a test logic e",2,2,0,101.98,,0,1,False,,1,"[""tests/test_math.py""]",red,ba5c603daf0ef04185dd3b14cbc29ac9c4571ad6,45785501115,green,5e61409dba232b00bf270784ed84d2ba06a742bf,45785693923,"[{""attempt"": 1, ""branch"": ""fix/ai-test-9812a5d-t1-094328"", ""base_sha"": ""ba5c603daf0ef04185dd3b14cbc29ac9c4571ad6"", ""commit_sha"": ""04d2be5421bebd6091e119e95cb1bfeb2c6cc2ee"", ""file"": ""tests/test_math.py"", ""run_id"": 45785598286, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45785598286"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-9812a5d-t2-094409"", ""base_sha"": ""ba5c603daf0ef04185dd3b14cbc29ac9c4571ad6"", ""commit_sha"": ""5e61409dba232b00bf270784ed84d2ba06a742bf"", ""file"": ""tests/test_math.py"", ""run_id"": 45785693923, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45785693923"", ""conclusion"": ""success""}]",tests/test_math.py,True,pass,5 passed in 0.00s,2/1/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""2/1/0"", ""counts"": {""original"": 3, ""repaired"": 3, ""kept"": 2, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_sum_floats"", ""text"": ""assert result == pytest.approx(0.3)""}, {""scope"": ""test_square"", ""text"": ""assert square(n) == expected""}], ""modified"": [{""scope"": ""test_power"", ""original"": ""assert power(2, 3) == 8"", ""repaired"": ""assert power(2, 4) == 16""}], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""2/1/0"", ""counts"": {""original"": 3, ""repaired"": 3, ""kept"": 2, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_sum_floats"", ""text"": ""assert result == pytest.approx(0.3)""}, {""scope"": ""test_square"", ""text"": ""assert square(n) == expected""}], ""modified"": [{""scope"": ""test_power"", ""original"": ""assert power(2, 4) == 8"", ""repaired"": ""assert power(2, 4) == 16""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_008,test,easy,fixed,1,test,1,0.95,"The error is a test failure where an assertion expects a list of length 3 to equal 5, which is a clear test logic error. The git diff shows the test was intentionally changed to expect the wrong value",1,1,0,43.74,,0,1,False,,1,"[""tests/test_list.py""]",red,3d6aca5202a414b9fd9a0e94966720105b07a244,45785846966,green,f800ec0f4872b6ddb330bb5e8ee170b5597092e3,45785946984,"[{""attempt"": 1, ""branch"": ""fix/ai-test-416a41e-t1-094554"", ""base_sha"": ""3d6aca5202a414b9fd9a0e94966720105b07a244"", ""commit_sha"": ""f800ec0f4872b6ddb330bb5e8ee170b5597092e3"", ""file"": ""tests/test_list.py"", ""run_id"": 45785946984, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45785946984"", ""conclusion"": ""success""}]",tests/test_list.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_list_length"", ""text"": ""assert len([1, 2, 3]) == 3""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""0/1/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 0, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_list_length"", ""original"": ""assert len([1, 2, 3]) == 5"", ""repaired"": ""assert len([1, 2, 3]) == 3""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_009,test,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"A2: error injected in src/services.py, outside the test file the Test Agent may edit (protocol B)",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_010,test,medium,fixed,1,test,1,0.95,"The error is a test failure where an assertion failed due to unexpected dictionary keys. The test expected a specific dictionary structure but received additional data, indicating a test expectation m",1,1,0,43.84,,0,1,False,,1,"[""tests/test_api.py""]",red,c2cc1882b008b9af0e28589d6866719c3e9fee54,45786057267,green,a49252730d91b7f8bd2aed21b59bf1a0d4bce5f0,45786155685,"[{""attempt"": 1, ""branch"": ""fix/ai-test-2447a3e-t1-094723"", ""base_sha"": ""c2cc1882b008b9af0e28589d6866719c3e9fee54"", ""commit_sha"": ""a49252730d91b7f8bd2aed21b59bf1a0d4bce5f0"", ""file"": ""tests/test_api.py"", ""run_id"": 45786155685, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45786155685"", ""conclusion"": ""success""}]",tests/test_api.py,True,pass,2 passed in 0.00s,2/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""2/0/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 2, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_status_code"", ""text"": ""assert response.status_code == 200""}, {""scope"": ""test_create_item"", ""text"": ""assert result == {'id': 1, 'name': 'item', 'price': 10.0}""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""1/1/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 1, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_status_code"", ""text"": ""assert response.status_code == 200""}], ""modified"": [{""scope"": ""test_create_item"", ""original"": ""assert result == {'id': 1, 'name': 'item'}"", ""repaired"": ""assert result == {'id': 1, 'name': 'item', 'price': 10.0}""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_011,test,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"A2: error injected in src/auth.py, outside the test file the Test Agent may edit (protocol B)",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_012,test,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"A2: error injected in src/db.py, outside the test file the Test Agent may edit (protocol B)",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_013,test,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"A2: error injected in src/mailer.py, outside the test file the Test Agent may edit (protocol B)",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_014,test,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"A2: error injected in src/config.py, outside the test file the Test Agent may edit (protocol B)",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_015,test,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"A2: error injected in src/validator.py, outside the test file the Test Agent may edit (protocol B)",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_016,test,hard,fixed,1,test,1,0.95,The error is a RuntimeError occurring during test execution due to improper asyncio event loop handling. The test fails because `loop.run_until_complete()` is called from inside a loop already started,1,1,0,43.32,,0,1,False,,1,"[""tests/test_async.py""]",red,f4d781619d042704284b329d4b703f893a01579c,45786267081,green,6c8804142456d42765628d925f07d56065ba4ed4,45786366264,"[{""attempt"": 1, ""branch"": ""fix/ai-test-8b393f2-t1-094851"", ""base_sha"": ""f4d781619d042704284b329d4b703f893a01579c"", ""commit_sha"": ""6c8804142456d42765628d925f07d56065ba4ed4"", ""file"": ""tests/test_async.py"", ""run_id"": 45786366264, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45786366264"", ""conclusion"": ""success""}]",tests/test_async.py,True,pass,1 passed in 0.00s,2/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""2/0/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 2, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_fetch_data"", ""text"": ""assert result['status'] == 'success'""}, {""scope"": ""test_fetch_data"", ""text"": ""assert result['data'] == [1, 2, 3]""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""2/0/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 2, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_fetch_data"", ""text"": ""assert result['status'] == 'success'""}, {""scope"": ""test_fetch_data"", ""text"": ""assert result['data'] == [1, 2, 3]""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_017,test,hard,escalated,0,test,1,0.95,"The error shows a test failure with AssertionError and sqlite3 OperationalError, indicating database setup issues. The fixture scope was changed from 'function' to 'session', causing test isolation pr",3,,0,140.83,,1,1,False,,1,"[""tests/test_integration.py""]",red,08d960376e8ceccc2815ca4aa28230af04aa3c36,45786473809,red,ee90db9c61dbc96590e826610d76440db1c7004d,45786810843,"[{""attempt"": 1, ""branch"": ""fix/ai-test-9387958-t1-095019"", ""base_sha"": ""08d960376e8ceccc2815ca4aa28230af04aa3c36"", ""commit_sha"": ""36a3921a964cf514686f2b124e1743a41b34b3c5"", ""file"": ""tests/test_integration.py"", ""run_id"": 45786576752, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45786576752"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-9387958-t2-095101"", ""base_sha"": ""08d960376e8ceccc2815ca4aa28230af04aa3c36"", ""commit_sha"": ""cf2f4bdbb070636d089eb62f9e14c3ddc2f6197c"", ""file"": ""tests/test_integration.py"", ""run_id"": 45786673138, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45786673138"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-test-9387958-t3-095159"", ""base_sha"": ""08d960376e8ceccc2815ca4aa28230af04aa3c36"", ""commit_sha"": ""ee90db9c61dbc96590e826610d76440db1c7004d"", ""file"": ""tests/test_integration.py"", ""run_id"": 45786810843, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45786810843"", ""conclusion"": ""failure""}]",tests/test_integration.py,True,fail,1 error in 0.07s,parse_error,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""parse_error"", ""error"": ""repaired: invalid syntax (<unknown>, line 23)""}, ""vs_injected"": {""summary"": ""parse_error"", ""error"": ""repaired: invalid syntax (<unknown>, line 23)""}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_018,test,hard,fixed,1,test,1,0.95,The error is a test failure with AssertionError where expected value None does not match actual 'old_value'. The change in fake_time from 301 to 250 indicates a timing issue in the test that's causing,1,1,0,44.11,,0,1,False,,1,"[""tests/test_cache.py""]",red,5717dd5d0a09dfcffb17d900ecf6b59485c9fc81,45786917004,green,ebf399469c842d56d249acc8709bf4e859a2f764,45787015639,"[{""attempt"": 1, ""branch"": ""fix/ai-test-bb51c89-t1-095326"", ""base_sha"": ""5717dd5d0a09dfcffb17d900ecf6b59485c9fc81"", ""commit_sha"": ""ebf399469c842d56d249acc8709bf4e859a2f764"", ""file"": ""tests/test_cache.py"", ""run_id"": 45787015639, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45787015639"", ""conclusion"": ""success""}]",tests/test_cache.py,True,pass,1 passed in 0.00s,3/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""3/0/0"", ""counts"": {""original"": 3, ""repaired"": 3, ""kept"": 3, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_cache_invalidation"", ""text"": ""assert cache.get('key') == 'old_value'""}, {""scope"": ""test_cache_invalidation"", ""text"": ""assert cache.get('key') is None""}, {""scope"": ""test_cache_invalidation"", ""text"": ""assert cache.get('key') == 'new_value'""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""3/0/0"", ""counts"": {""original"": 3, ""repaired"": 3, ""kept"": 3, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_cache_invalidation"", ""text"": ""assert cache.get('key') == 'old_value'""}, {""scope"": ""test_cache_invalidation"", ""text"": ""assert cache.get('key') is None""}, {""scope"": ""test_cache_invalidation"", ""text"": ""assert cache.get('key') == 'new_value'""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_019,test,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"A2: error injected in src/serializer.py, outside the test file the Test Agent may edit (protocol B)",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_020,test,hard,fixed,1,test,1,0.95,"The error is a test failure with AssertionError where expected value 100 does not match actual value 80. The git diff shows a code change where worker_b was replaced with worker_a, causing incorrect b",1,1,0,43.17,,0,1,False,,1,"[""tests/test_concurrent.py""]",red,92445dcd9c08159831d4ce63537216a66a3e4e9d,45787126304,green,675cf767246450ed838bf7121105bf18fbd45260,45787225032,"[{""attempt"": 1, ""branch"": ""fix/ai-test-3592fbd-t1-095453"", ""base_sha"": ""92445dcd9c08159831d4ce63537216a66a3e4e9d"", ""commit_sha"": ""675cf767246450ed838bf7121105bf18fbd45260"", ""file"": ""tests/test_concurrent.py"", ""run_id"": 45787225032, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45787225032"", ""conclusion"": ""success""}]",tests/test_concurrent.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_thread_safety"", ""text"": ""assert total == 80""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_thread_safety"", ""text"": ""assert total == 80""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_021,test,easy,escalated,0,test,1,0.95,"The error is a test failure due to floating-point precision issue. The test changed from using pytest.approx() for decimal comparison to direct equality, causing the assertion to fail due to inherent ",3,,0,122.64,,1,1,False,,1,"[""tests/test_math.py""]",red,fb67e9a4e70ee7aafb7730e7bb51d210b8800e02,45787338364,red,900f9496b15bd968647dcb74135ac2132da7e60f,45787627707,"[{""attempt"": 1, ""branch"": ""fix/ai-test-b4c7338-t1-095621"", ""base_sha"": ""fb67e9a4e70ee7aafb7730e7bb51d210b8800e02"", ""commit_sha"": ""3d24fd027426485ff97360eb5e865b0a0a38aca4"", ""file"": ""tests/test_math.py"", ""run_id"": 45787436131, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45787436131"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-b4c7338-t2-095701"", ""base_sha"": ""fb67e9a4e70ee7aafb7730e7bb51d210b8800e02"", ""commit_sha"": ""e07337377c955b59eb4374c6bd8c45570d68fa27"", ""file"": ""tests/test_math.py"", ""run_id"": 45787530530, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45787530530"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-test-b4c7338-t3-095742"", ""base_sha"": ""fb67e9a4e70ee7aafb7730e7bb51d210b8800e02"", ""commit_sha"": ""900f9496b15bd968647dcb74135ac2132da7e60f"", ""file"": ""tests/test_math.py"", ""run_id"": 45787627707, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45787627707"", ""conclusion"": ""failure""}]",tests/test_math.py,True,fail,1 error in 0.07s,parse_error,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""parse_error"", ""error"": ""repaired: invalid syntax (<unknown>, line 21)""}, ""vs_injected"": {""summary"": ""parse_error"", ""error"": ""repaired: invalid syntax (<unknown>, line 21)""}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_022,test,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"A2: error injected in src/parser.py, outside the test file the Test Agent may edit (protocol B)",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_023,test,easy,escalated,0,dependency,0,0.95,ModuleNotFoundError occurs because the test is trying to import from 'app.services.payment' but the file was moved to 'app.billing.payment'. This is a dependency issue caused by a file relocation with,3,,0,153.59,,1,1,False,,1,"[""tests/test_payment.py""]",red,9018335ced0000c5ab32f9cdada978aa1938ce01,45787729306,red,7dc73c36f97bea2a79519abcbe830626a85cff49,45788112611,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-3041a1e-t1-095907"", ""base_sha"": ""9018335ced0000c5ab32f9cdada978aa1938ce01"", ""commit_sha"": ""6875b8debbe39c1b2de0f83673172b3d38312379"", ""file"": ""requirements.txt"", ""run_id"": 45787824659, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45787824659"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-3041a1e-t2-100003"", ""base_sha"": ""9018335ced0000c5ab32f9cdada978aa1938ce01"", ""commit_sha"": ""56846818fa9d93f44b675abb9026cf989c97efe2"", ""file"": ""requirements.txt"", ""run_id"": 45787961763, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45787961763"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-3041a1e-t3-100100"", ""base_sha"": ""9018335ced0000c5ab32f9cdada978aa1938ce01"", ""commit_sha"": ""7dc73c36f97bea2a79519abcbe830626a85cff49"", ""file"": ""requirements.txt"", ""run_id"": 45788112611, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45788112611"", ""conclusion"": ""failure""}]",,,n/a,,n/a,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_024,test,easy,escalated,0,config,0,0.95,The error is a fixture name mismatch where 'db_sesion' is misspelled instead of 'db_session'. This is a configuration issue in the test file that prevents proper fixture injection.,3,,0,136.83,,1,1,False,,1,"[""tests/test_orders.py""]",red,725bec6c714861a26eeb7adfe3a3c52c4c1c1d15,45788224615,red,c2bbe11006b21a36c244d6f8ab38a41b3e9719f9,45788559755,"[{""attempt"": 1, ""branch"": ""fix/ai-config-a44b9bc-t1-100231"", ""base_sha"": ""725bec6c714861a26eeb7adfe3a3c52c4c1c1d15"", ""commit_sha"": ""8602ea9b49bb6173ed519cd0935c437efdd09853"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45788335440, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45788335440"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-config-a44b9bc-t2-100316"", ""base_sha"": ""725bec6c714861a26eeb7adfe3a3c52c4c1c1d15"", ""commit_sha"": ""a4786560636eaef00db808a697a487f16f7d529e"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45788446636, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45788446636"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-config-a44b9bc-t3-100402"", ""base_sha"": ""725bec6c714861a26eeb7adfe3a3c52c4c1c1d15"", ""commit_sha"": ""c2bbe11006b21a36c244d6f8ab38a41b3e9719f9"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45788559755, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45788559755"", ""conclusion"": ""failure""}]",,,n/a,,n/a,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_025,test,easy,fixed,1,test,1,0.95,"The error is a FileNotFoundError in a test file, indicating a test failure due to a missing data file. The commit changed the path handling which broke the test that expects the file to be present at ",1,1,0,43.69,,0,1,False,,1,"[""tests/test_loader.py""]",red,c49cc8ed9c493a27caf2e9d14d47de25307cb0ab,45788666188,green,b27dacd9751a01847629299a3941f7d5084c0d20,45788773456,"[{""attempt"": 1, ""branch"": ""fix/ai-test-c2d7e4f-t1-100528"", ""base_sha"": ""c49cc8ed9c493a27caf2e9d14d47de25307cb0ab"", ""commit_sha"": ""b27dacd9751a01847629299a3941f7d5084c0d20"", ""file"": ""tests/test_loader.py"", ""run_id"": 45788773456, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45788773456"", ""conclusion"": ""success""}]",tests/test_loader.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_load_csv"", ""text"": ""assert 'col1' in content""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_load_csv"", ""text"": ""assert 'col1' in content""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_026,test,easy,fixed,1,test,1,0.95,The error is a test failure due to an AssertionError where expected value 16 does not match actual value 15. The git diff shows a deliberate change in test parameters that caused the test to fail.,1,1,0,43.96,,0,1,False,,1,"[""tests/test_math.py""]",red,83d11532814d2e7a102f6b45511eda01d64e467f,45788894476,green,a52a012ab17e63662400e0948988337167d341f5,45788994271,"[{""attempt"": 1, ""branch"": ""fix/ai-test-f49e0b4-t1-100657"", ""base_sha"": ""83d11532814d2e7a102f6b45511eda01d64e467f"", ""commit_sha"": ""a52a012ab17e63662400e0948988337167d341f5"", ""file"": ""tests/test_math.py"", ""run_id"": 45788994271, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45788994271"", ""conclusion"": ""success""}]",tests/test_math.py,True,pass,5 passed in 0.00s,3/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""3/0/0"", ""counts"": {""original"": 3, ""repaired"": 3, ""kept"": 3, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_power"", ""text"": ""assert power(2, 3) == 8""}, {""scope"": ""test_sum_floats"", ""text"": ""assert result == pytest.approx(0.3)""}, {""scope"": ""test_square"", ""text"": ""assert square(n) == expected""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""3/0/0"", ""counts"": {""original"": 3, ""repaired"": 3, ""kept"": 3, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_power"", ""text"": ""assert power(2, 3) == 8""}, {""scope"": ""test_sum_floats"", ""text"": ""assert result == pytest.approx(0.3)""}, {""scope"": ""test_square"", ""text"": ""assert square(n) == expected""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_027,test,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"A2: error injected in tests/fixtures/sample.json, outside the test file the Test Agent may edit (protocol B)",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_028,test,easy,fixed,1,test,1,0.95,"The error is a failed test due to a typo in the mocked function name. The test expects 'send_email' but the patch decorator references 'send_emial', causing an AttributeError. This is a test configura",1,1,0,58.58,,0,1,False,,1,"[""tests/test_notify.py""]",red,6d0c61caa7b46230d7c192ddfdfbfce852820d47,45789113272,green,b53b35dbf4c0306fe032d9145602664624fda696,45789217789,"[{""attempt"": 1, ""branch"": ""fix/ai-test-7ac0a87-t1-100824"", ""base_sha"": ""6d0c61caa7b46230d7c192ddfdfbfce852820d47"", ""commit_sha"": ""b53b35dbf4c0306fe032d9145602664624fda696"", ""file"": ""tests/test_notify.py"", ""run_id"": 45789217789, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45789217789"", ""conclusion"": ""success""}]",tests/test_notify.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_send_alert"", ""text"": ""mock_send.assert_called_once()""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_send_alert"", ""text"": ""mock_send.assert_called_once()""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_029,test,easy,fixed,1,test,1,0.95,The error is a test failure due to an AssertionError where the order of plugin names in the registry doesn't match the expected order. The change from sorted() to list() in the assertion directly caus,2,2,0,82.59,,0,1,False,,1,"[""tests/test_registry.py""]",red,f0da3bbbc4d0f97642457cb8896e510d507cecba,45789373823,green,b32eff4206dbc4cbbb47bcf1cb0387641e9ea8fd,45789584654,"[{""attempt"": 1, ""branch"": ""fix/ai-test-db705b1-t1-101007"", ""base_sha"": ""f0da3bbbc4d0f97642457cb8896e510d507cecba"", ""commit_sha"": ""8bedbe994b14c6cc6e89b947aad9a96c5fa1d29c"", ""file"": ""tests/test_registry.py"", ""run_id"": 45789475943, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45789475943"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-db705b1-t2-101046"", ""base_sha"": ""f0da3bbbc4d0f97642457cb8896e510d507cecba"", ""commit_sha"": ""b32eff4206dbc4cbbb47bcf1cb0387641e9ea8fd"", ""file"": ""tests/test_registry.py"", ""run_id"": 45789584654, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45789584654"", ""conclusion"": ""success""}]",tests/test_registry.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_registered_plugins"", ""text"": ""assert sorted(registry.keys()) == ['a_plugin', 'b_plugin']""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""0/1/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 0, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_registered_plugins"", ""original"": ""assert list(registry.keys()) == ['a_plugin', 'b_plugin']"", ""repaired"": ""assert sorted(registry.keys()) == ['a_plugin', 'b_plugin']""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_030,test,easy,escalated,0,test,1,0.95,The test failure is due to an XPASS(strict) error where a test that was expected to fail now passes because the bug was fixed in the code change. This indicates a test configuration issue rather than ,3,,0,693.01,,1,1,False,,1,"[""tests/test_legacy.py""]",red,ff40f2131ea9cfe73da14aaece1fe8318e4718ef,45789700173,red,610f57134dd966210238482f7356d47acafd9764,45791439944,"[{""attempt"": 1, ""branch"": ""fix/ai-test-f64d2f5-t1-102127"", ""base_sha"": ""ff40f2131ea9cfe73da14aaece1fe8318e4718ef"", ""commit_sha"": ""828e885b3cfc347669452f25b386e09bfb7e828d"", ""file"": ""tests/test_legacy.py"", ""run_id"": 45791229202, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45791229202"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-f64d2f5-t2-102208"", ""base_sha"": ""ff40f2131ea9cfe73da14aaece1fe8318e4718ef"", ""commit_sha"": ""463753c5b89cb50fcff23dbfd1c40c5f634ab252"", ""file"": ""tests/test_legacy.py"", ""run_id"": 45791333239, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45791333239"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-test-f64d2f5-t3-102250"", ""base_sha"": ""ff40f2131ea9cfe73da14aaece1fe8318e4718ef"", ""commit_sha"": ""610f57134dd966210238482f7356d47acafd9764"", ""file"": ""tests/test_legacy.py"", ""run_id"": 45791439944, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45791439944"", ""conclusion"": ""failure""}]",tests/test_legacy.py,True,fail,1 error in 0.04s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_old_behavior"", ""text"": ""assert normalize('  Hello  ') == 'hello'"", ""moved_to"": ""test_normalize""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_old_behavior"", ""text"": ""assert normalize('  Hello  ') == 'hello'"", ""moved_to"": ""test_normalize""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_031,test,easy,fixed,1,test,1,0.95,"The test failed due to a DeprecationWarning being treated as an error. The commit changed from using datetime.now(timezone.utc) to datetime.utcnow(), which triggers the deprecation warning. This is a ",1,1,0,43.33,,0,1,False,,1,"[""tests/test_dates.py""]",red,47a15f187bd91d39581ea804559e3327f66d163a,45791599045,green,7be63dbd520aa338d660b174f660590b1332345a,45791741614,"[{""attempt"": 1, ""branch"": ""fix/ai-test-75c91dd-t1-102447"", ""base_sha"": ""47a15f187bd91d39581ea804559e3327f66d163a"", ""commit_sha"": ""7be63dbd520aa338d660b174f660590b1332345a"", ""file"": ""tests/test_dates.py"", ""run_id"": 45791741614, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45791741614"", ""conclusion"": ""success""}]",tests/test_dates.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_parse_date"", ""text"": ""assert now.tzinfo is not None""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_parse_date"", ""text"": ""assert now.tzinfo is not None""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_032,test,medium,fixed,1,test,1,0.95,"The error shows a failed test case with AssertionError where 'pending' != 'done'. The git diff confirms a change in test data that directly causes this test failure, indicating a broken test due to co",1,1,0,43.35,,0,1,False,,1,"[""tests/test_worker.py""]",red,ae7ce4e37e29a37c9fff245bbd15a50fb6a70b6f,45791868851,green,fc59508b25fc32d727120cd089c93425880e33bb,45791975464,"[{""attempt"": 1, ""branch"": ""fix/ai-test-4575c74-t1-102616"", ""base_sha"": ""ae7ce4e37e29a37c9fff245bbd15a50fb6a70b6f"", ""commit_sha"": ""fc59508b25fc32d727120cd089c93425880e33bb"", ""file"": ""tests/test_worker.py"", ""run_id"": 45791975464, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45791975464"", ""conclusion"": ""success""}]",tests/test_worker.py,True,pass,1 passed in 0.00s,0/1/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""0/1/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 0, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_background_task"", ""original"": ""assert result == 'done'"", ""repaired"": ""assert result == 'pending'""}], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""0/1/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 0, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_background_task"", ""original"": ""assert result == 'done'"", ""repaired"": ""assert result == 'pending'""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_033,test,medium,escalated,0,test,1,0.95,"The error is a test failure caused by shared mutable state (CONFIG dict) between tests. The test override modifies a global configuration that affects other tests, leading to assertion failures. This ",3,,0,136.81,,1,1,False,,1,"[""tests/test_settings.py""]",red,552bd9478ae41664a5e753a79476a38947097743,45792091278,red,c5b1c9414bbebf4d8d3f4a13bcc9774d50d2c960,45792439455,"[{""attempt"": 1, ""branch"": ""fix/ai-test-07612f3-t1-102743"", ""base_sha"": ""552bd9478ae41664a5e753a79476a38947097743"", ""commit_sha"": ""23166b8da763374137f624e53b5ba5f0fc254e85"", ""file"": ""tests/test_settings.py"", ""run_id"": 45792199173, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45792199173"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-07612f3-t2-102823"", ""base_sha"": ""552bd9478ae41664a5e753a79476a38947097743"", ""commit_sha"": ""7048d3e2f9c4f73b1aed72ea01fd21b2e6312277"", ""file"": ""tests/test_settings.py"", ""run_id"": 45792300669, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45792300669"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-test-07612f3-t3-102919"", ""base_sha"": ""552bd9478ae41664a5e753a79476a38947097743"", ""commit_sha"": ""c5b1c9414bbebf4d8d3f4a13bcc9774d50d2c960"", ""file"": ""tests/test_settings.py"", ""run_id"": 45792439455, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45792439455"", ""conclusion"": ""failure""}]",tests/test_settings.py,True,fail,"1 failed, 1 passed in 0.02s",0/2/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""0/2/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 0, ""modified"": 2, ""removed"": 0, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_override_config"", ""original"": ""assert config['env'] == 'production'"", ""repaired"": ""assert CONFIG['env'] == 'production'""}, {""scope"": ""test_default_config"", ""original"": ""assert CONFIG['env'] == 'debug'"", ""repaired"": ""assert config['env'] == 'debug'""}], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""1/1/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 1, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_override_config"", ""text"": ""assert CONFIG['env'] == 'production'""}], ""modified"": [{""scope"": ""test_default_config"", ""original"": ""assert CONFIG['env'] == 'debug'"", ""repaired"": ""assert config['env'] == 'debug'""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_034,test,medium,escalated,0,test,1,0.95,"The test failed due to a RuntimeError about network unavailability, which indicates the test environment lacks proper networking or the function now requires network access. The change from using a fa",3,,0,138.48,,1,1,False,,1,"[""tests/test_weather.py""]",red,c392d7eb9dd1484ef6fe67bed5ce5810332b5e10,45792554777,red,12430379f38b69ada519c2e33ea60d50e9931b6a,45792921620,"[{""attempt"": 1, ""branch"": ""fix/ai-test-f8d93dc-t1-103046"", ""base_sha"": ""c392d7eb9dd1484ef6fe67bed5ce5810332b5e10"", ""commit_sha"": ""e22b081acffaf04c4561489082fcef6ce5e88b8b"", ""file"": ""tests/test_weather.py"", ""run_id"": 45792670537, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45792670537"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-f8d93dc-t2-103126"", ""base_sha"": ""c392d7eb9dd1484ef6fe67bed5ce5810332b5e10"", ""commit_sha"": ""36284a0767f19ac1e6328f5ff23889f6fd2f1708"", ""file"": ""tests/test_weather.py"", ""run_id"": 45792777592, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45792777592"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-test-f8d93dc-t3-103223"", ""base_sha"": ""c392d7eb9dd1484ef6fe67bed5ce5810332b5e10"", ""commit_sha"": ""12430379f38b69ada519c2e33ea60d50e9931b6a"", ""file"": ""tests/test_weather.py"", ""run_id"": 45792921620, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45792921620"", ""conclusion"": ""failure""}]",tests/test_weather.py,True,fail,1 failed in 0.02s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_get_forecast"", ""text"": ""assert result == 'sunny'""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_get_forecast"", ""text"": ""assert result == 'sunny'""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_035,test,medium,fixed,1,test,1,0.95,"The error is a test failure due to an assertion error in test_sample_distribution. The removal of random.seed(42) causes non-deterministic behavior, making the test fail intermittently. This is a test",1,1,0,43.15,,0,1,False,,1,"[""tests/test_sampler.py""]",red,fd779be3e39fd724e9915a89e1878612f82b9668,45793036245,green,ce9482cd9b6c77d8b9b9fc0bccbb9cedaefc2589,45793143155,"[{""attempt"": 1, ""branch"": ""fix/ai-test-71364dc-t1-103348"", ""base_sha"": ""fd779be3e39fd724e9915a89e1878612f82b9668"", ""commit_sha"": ""ce9482cd9b6c77d8b9b9fc0bccbb9cedaefc2589"", ""file"": ""tests/test_sampler.py"", ""run_id"": 45793143155, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45793143155"", ""conclusion"": ""success""}]",tests/test_sampler.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_sample_distribution"", ""text"": ""assert value == expected""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_sample_distribution"", ""text"": ""assert value == expected""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_036,test,medium,fixed,1,test,1,0.95,The error is a test failure caused by FileExistsError where two tests attempt to write to the same hardcoded file path 'output.csv'. This is a test implementation issue where proper test isolation was,1,1,0,59.09,,0,1,False,,1,"[""tests/test_export.py""]",red,0902142e4dd97ae6a95c8a86d09b10f499082d75,45793260719,green,7454ec6e4a22f737565b7c47c8db69278196d140,45793371511,"[{""attempt"": 1, ""branch"": ""fix/ai-test-5e95ae2-t1-103516"", ""base_sha"": ""0902142e4dd97ae6a95c8a86d09b10f499082d75"", ""commit_sha"": ""7454ec6e4a22f737565b7c47c8db69278196d140"", ""file"": ""tests/test_export.py"", ""run_id"": 45793371511, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45793371511"", ""conclusion"": ""success""}]",tests/test_export.py,True,pass,1 passed in 0.00s,2/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""2/0/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 2, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_write_csv"", ""text"": ""assert (tmp_path / 'output.csv').exists()""}, {""scope"": ""test_write_csv"", ""text"": ""assert (tmp_path / 'output2.csv').exists()""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""2/0/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 2, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_write_csv"", ""text"": ""assert (tmp_path / 'output.csv').exists()""}, {""scope"": ""test_write_csv"", ""text"": ""assert (tmp_path / 'output2.csv').exists()""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_037,test,medium,fixed,1,test,1,0.95,"The error is a test failure due to an assertion mismatch. The test expected 'Total: $1,234.56' but got 'Total: 1234.56', indicating a change in the expected output format. This is a classic test failu",1,1,0,43.74,,0,1,False,,1,"[""tests/test_report.py""]",red,632cf7a147a7ef90ea9d89a17a0100e6fbeeba86,45793536193,green,4cd687e50bff44d11e492b226195c8e443b5792a,45793644188,"[{""attempt"": 1, ""branch"": ""fix/ai-test-d5ecca1-t1-103659"", ""base_sha"": ""632cf7a147a7ef90ea9d89a17a0100e6fbeeba86"", ""commit_sha"": ""4cd687e50bff44d11e492b226195c8e443b5792a"", ""file"": ""tests/test_report.py"", ""run_id"": 45793644188, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45793644188"", ""conclusion"": ""success""}]",tests/test_report.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_render_summary"", ""text"": ""assert result == 'Total: $1,234.56'""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""0/1/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 0, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_render_summary"", ""original"": ""assert result == 'Total: 1234.56'"", ""repaired"": ""assert result == 'Total: $1,234.56'""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_038,test,medium,escalated,0,test,1,0.95,"The error is a test failure due to an assertion mismatch. The test expected 'pending' status but got 'new' status, indicating a test logic error rather than dependency or configuration issues.",3,,0,137.08,,1,1,False,,1,"[""tests/test_orders.py""]",red,b656dae4c3d3c911c94944d2fc09c2fb94b1e7ae,45793765433,red,f2990544c2312439727debb5376bc532f1013b3a,45794113212,"[{""attempt"": 1, ""branch"": ""fix/ai-test-cde148f-t1-103827"", ""base_sha"": ""b656dae4c3d3c911c94944d2fc09c2fb94b1e7ae"", ""commit_sha"": ""360a35fcd6ce09697bd0eb07ab09956cff8f244a"", ""file"": ""tests/test_orders.py"", ""run_id"": 45793871585, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45793871585"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-cde148f-t2-103922"", ""base_sha"": ""b656dae4c3d3c911c94944d2fc09c2fb94b1e7ae"", ""commit_sha"": ""c5946641c9dcfc5b409696744fddae73bad457ba"", ""file"": ""tests/test_orders.py"", ""run_id"": 45794008843, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45794008843"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-test-cde148f-t3-104003"", ""base_sha"": ""b656dae4c3d3c911c94944d2fc09c2fb94b1e7ae"", ""commit_sha"": ""f2990544c2312439727debb5376bc532f1013b3a"", ""file"": ""tests/test_orders.py"", ""run_id"": 45794113212, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45794113212"", ""conclusion"": ""failure""}]",tests/test_orders.py,True,fail,"1 failed, 1 passed in 0.02s",1/1/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/1/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 1, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_create_order"", ""text"": ""assert order['item_id'] == 1""}], ""modified"": [{""scope"": ""test_order_status"", ""original"": ""assert order['status'] == 'pending'"", ""repaired"": ""assert order['status'] == 'new'""}], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""2/0/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 2, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_create_order"", ""text"": ""assert order['item_id'] == 1""}, {""scope"": ""test_order_status"", ""text"": ""assert order['status'] == 'new'""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_039,test,medium,fixed,1,test,1,0.95,"The error is a test failure caused by an IndexError when trying to pop from an empty list. The git diff shows that an empty list [] was passed to run_pipeline instead of the intended queue parameter, ",1,1,0,43.33,,0,1,False,,1,"[""tests/test_queue.py""]",red,b483c27e3314ea90d4c4fbc46ea595153cebcf17,45794228354,green,0ebf390112dfc6c29d90f0c703505f54e7bc932a,45794331827,"[{""attempt"": 1, ""branch"": ""fix/ai-test-3d52e60-t1-104129"", ""base_sha"": ""b483c27e3314ea90d4c4fbc46ea595153cebcf17"", ""commit_sha"": ""0ebf390112dfc6c29d90f0c703505f54e7bc932a"", ""file"": ""tests/test_queue.py"", ""run_id"": 45794331827, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45794331827"", ""conclusion"": ""success""}]",tests/test_queue.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_consumer_processes_message"", ""text"": ""assert result == 'HELLO'""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_consumer_processes_message"", ""text"": ""assert result == 'HELLO'""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_040,test,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"A2: error injected in src/validation.py, outside the test file the Test Agent may edit (protocol B)",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_041,test,medium,fixed,1,test,1,0.95,The error is a test failure due to incorrect assertion expecting '16:30 CEST' while getting '14:30 UTC'. The test assumes a specific timezone (Europe/Rome) but GitHub Actions runners use UTC by defaul,2,2,0,83.88,,0,1,False,,1,"[""tests/test_scheduler.py""]",red,6352b4a69c54ebf66a4747935583c2251285331f,45794451428,green,38e40c1026a2ec2731695aa85eb829e24493685a,45794658233,"[{""attempt"": 1, ""branch"": ""fix/ai-test-cfa324f-t1-104256"", ""base_sha"": ""6352b4a69c54ebf66a4747935583c2251285331f"", ""commit_sha"": ""1361ead6f7d06444f5836e063bc37b682d57ec6a"", ""file"": ""tests/test_scheduler.py"", ""run_id"": 45794553765, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45794553765"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-cfa324f-t2-104337"", ""base_sha"": ""6352b4a69c54ebf66a4747935583c2251285331f"", ""commit_sha"": ""38e40c1026a2ec2731695aa85eb829e24493685a"", ""file"": ""tests/test_scheduler.py"", ""run_id"": 45794658233, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45794658233"", ""conclusion"": ""success""}]",tests/test_scheduler.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_format_local_time"", ""text"": ""assert format_local(dt) == '14:30 UTC'""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""0/1/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 0, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_format_local_time"", ""original"": ""assert format_local(dt) == '16:30 CEST'"", ""repaired"": ""assert format_local(dt) == '14:30 UTC'""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_042,test,hard,escalated,0,test,1,0.95,The error is a test failure with AssertionError where test_increment_counter expects 61 but gets 101. The git diff shows a key change from 'service-b' to 'service-a' which caused the test to access th,3,,0,138.68,,1,1,False,,1,"[""tests/test_metrics.py""]",red,ce68a271dc4458d2a1a39671427821bae25fbcc1,45794778940,red,7862705bbda4b76186e26ede34d701abe2368409,45795105247,"[{""attempt"": 1, ""branch"": ""fix/ai-test-c002469-t1-104505"", ""base_sha"": ""ce68a271dc4458d2a1a39671427821bae25fbcc1"", ""commit_sha"": ""5a08fe412f81583a53d005dee943d21eb1a4e1fd"", ""file"": ""tests/test_metrics.py"", ""run_id"": 45794888863, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45794888863"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-c002469-t2-104545"", ""base_sha"": ""ce68a271dc4458d2a1a39671427821bae25fbcc1"", ""commit_sha"": ""ec7a01f0dc95573c6e06bbcab76542d2b488a7fc"", ""file"": ""tests/test_metrics.py"", ""run_id"": 45794997505, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45794997505"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-test-c002469-t3-104627"", ""base_sha"": ""ce68a271dc4458d2a1a39671427821bae25fbcc1"", ""commit_sha"": ""7862705bbda4b76186e26ede34d701abe2368409"", ""file"": ""tests/test_metrics.py"", ""run_id"": 45795105247, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45795105247"", ""conclusion"": ""failure""}]",tests/test_metrics.py,True,fail,1 failed in 0.02s,0/2/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""0/2/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 0, ""modified"": 2, ""removed"": 0, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_increment_counter"", ""original"": ""assert increment_counter(key_a) == 61"", ""repaired"": ""assert increment_counter(key_a) == 101""}, {""scope"": ""test_increment_counter"", ""original"": ""assert increment_counter(key_b) == 41"", ""repaired"": ""assert increment_counter(key_b) == 101""}], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""0/2/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 0, ""modified"": 2, ""removed"": 0, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_increment_counter"", ""original"": ""assert increment_counter(key_a) == 61"", ""repaired"": ""assert increment_counter(key_a) == 101""}, {""scope"": ""test_increment_counter"", ""original"": ""assert increment_counter(key_b) == 41"", ""repaired"": ""assert increment_counter(key_b) == 101""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_043,test,hard,fixed,1,test,1,0.95,"The error is a test failure due to an assertion error where expected value 3 does not match actual value 0. The git diff shows that cache.clear() was accidentally removed, causing the test to fail bec",1,1,0,43.36,,0,1,False,,1,"[""tests/test_image_processing.py""]",red,3764242696a3300b5372104ac28728ea33e5786a,45795255515,green,54e58a48e97fd32f5fef43109e5853d9c806fa66,45795362975,"[{""attempt"": 1, ""branch"": ""fix/ai-test-21ca4ac-t1-104808"", ""base_sha"": ""3764242696a3300b5372104ac28728ea33e5786a"", ""commit_sha"": ""54e58a48e97fd32f5fef43109e5853d9c806fa66"", ""file"": ""tests/test_image_processing.py"", ""run_id"": 45795362975, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45795362975"", ""conclusion"": ""success""}]",tests/test_image_processing.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_resize_iterations"", ""text"": ""assert cache.size() == 0""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_resize_iterations"", ""text"": ""assert cache.size() == 0""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_044,test,hard,fixed,1,test,1,0.95,"The error is a test failure with AssertionError where the expected result doesn't match the actual result. The git diff shows an intentional test change from ['b', 'a', 'c'] to ['a', 'b', 'c'], indica",1,1,0,59.24,,0,1,False,,1,"[""tests/test_dedup.py""]",red,23aeebd882c93ad0b8add863c1f61deabf4ad933,45795479930,green,626e470a56723410268729bb4e796092009812fe,45795586123,"[{""attempt"": 1, ""branch"": ""fix/ai-test-e9b8567-t1-104936"", ""base_sha"": ""23aeebd882c93ad0b8add863c1f61deabf4ad933"", ""commit_sha"": ""626e470a56723410268729bb4e796092009812fe"", ""file"": ""tests/test_dedup.py"", ""run_id"": 45795586123, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45795586123"", ""conclusion"": ""success""}]",tests/test_dedup.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_deduplicate_preserves_first"", ""text"": ""assert result == ['b', 'a', 'c']""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""0/1/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 0, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_deduplicate_preserves_first"", ""original"": ""assert result == ['a', 'b', 'c']"", ""repaired"": ""assert result == ['b', 'a', 'c']""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_045,test,hard,fixed,1,test,1,0.95,"The error is a pytest failure caused by incorrect fixture scoping. The report_writer fixture was changed from function scope to module scope, but it still depends on db_engine which is session-scoped ",1,1,0,43.6,,0,1,False,,1,"[""tests/test_reports.py""]",red,95fc40b67cfb73a6e01f229136ff0d2888ae08bc,45795753922,green,bfd2621c9d3934aa931910cd73fd455fa1a84aa7,45795861743,"[{""attempt"": 1, ""branch"": ""fix/ai-test-ec6b3c0-t1-105120"", ""base_sha"": ""95fc40b67cfb73a6e01f229136ff0d2888ae08bc"", ""commit_sha"": ""bfd2621c9d3934aa931910cd73fd455fa1a84aa7"", ""file"": ""tests/test_reports.py"", ""run_id"": 45795861743, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45795861743"", ""conclusion"": ""success""}]",tests/test_reports.py,True,pass,2 passed in 0.00s,2/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""2/0/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 2, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_first_export"", ""text"": ""assert report_writer.export() == 'exported'""}, {""scope"": ""test_final_export"", ""text"": ""assert report_writer.export() == 'exported'""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""2/0/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 2, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_first_export"", ""text"": ""assert report_writer.export() == 'exported'""}, {""scope"": ""test_final_export"", ""text"": ""assert report_writer.export() == 'exported'""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_046,test,hard,fixed,1,test,1,0.95,"The error is a test failure due to an exact floating-point comparison that failed. The commit changed from using pytest.approx() to direct equality, causing the test to fail due to rounding difference",1,1,0,44.37,,0,1,False,,1,"[""tests/test_stats.py""]",red,7522ff46935480da4499bb0ba802388175479f89,45795982184,green,c0bc410abc99231e453bede44dc26f603e36258e,45796090187,"[{""attempt"": 1, ""branch"": ""fix/ai-test-3fdda40-t1-105247"", ""base_sha"": ""7522ff46935480da4499bb0ba802388175479f89"", ""commit_sha"": ""c0bc410abc99231e453bede44dc26f603e36258e"", ""file"": ""tests/test_stats.py"", ""run_id"": 45796090187, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45796090187"", ""conclusion"": ""success""}]",tests/test_stats.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_variance_calculation"", ""text"": ""assert result == pytest.approx(0.006666666666666667)""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""0/1/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 0, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_variance_calculation"", ""original"": ""assert result == 0.006666666666666667"", ""repaired"": ""assert result == pytest.approx(0.006666666666666667)""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_047,test,hard,escalated,0,test,1,0.95,"The error shows a test failure due to an assertion mismatch, and a test function was removed from the codebase. This indicates test logic issues rather than dependency or configuration problems.",3,,0,125.44,,1,1,False,,1,"[""tests/test_recommender.py""]",red,673c11b12430b0c24f5ae8ddbe8d76a0ea4688da,45796208784,red,07638100e46779c8ae56e6977f92e74115c733c4,45796531940,"[{""attempt"": 1, ""branch"": ""fix/ai-test-cd0fa06-t1-105416"", ""base_sha"": ""673c11b12430b0c24f5ae8ddbe8d76a0ea4688da"", ""commit_sha"": ""34715567f26f821ff85dffaa10216268c8cf020c"", ""file"": ""tests/test_recommender.py"", ""run_id"": 45796320208, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45796320208"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-test-cd0fa06-t2-105458"", ""base_sha"": ""673c11b12430b0c24f5ae8ddbe8d76a0ea4688da"", ""commit_sha"": ""48bc9a9979f928699cf52a8d1069e4d0ee5f1c0b"", ""file"": ""tests/test_recommender.py"", ""run_id"": 45796425290, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45796425290"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-test-cd0fa06-t3-105540"", ""base_sha"": ""673c11b12430b0c24f5ae8ddbe8d76a0ea4688da"", ""commit_sha"": ""07638100e46779c8ae56e6977f92e74115c733c4"", ""file"": ""tests/test_recommender.py"", ""run_id"": 45796531940, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45796531940"", ""conclusion"": ""failure""}]",tests/test_recommender.py,True,fail,1 failed in 0.02s,0/1/1,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""0/1/1"", ""counts"": {""original"": 2, ""repaired"": 1, ""kept"": 0, ""modified"": 1, ""removed"": 1, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_ranking_order"", ""original"": ""assert recommend(items) == ['a', 'b', 'c']"", ""repaired"": ""assert recommend(items) == ['c', 'a', 'b']""}], ""removed"": [{""scope"": ""test_edge_case_empty_input"", ""text"": ""assert recommend([]) == []""}], ""added"": []}, ""vs_injected"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_ranking_order"", ""text"": ""assert recommend(items) == ['c', 'a', 'b']""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_048,test,hard,fixed,1,test,1,0.95,"The error is a test failure caused by an AssertionError where the test expected ['part1.bin'] but got ['part1.bin', 'part2.bin']. This indicates a logic error in the test setup where client_b was inco",1,1,0,44.43,,0,1,False,,1,"[""tests/test_upload.py""]",red,da30d65abe81099c37e440f5d7321e5989d5e4ff,45796645500,green,d4587f9c07161cb1adad217e130f4fabda7f96a1,45796751808,"[{""attempt"": 1, ""branch"": ""fix/ai-test-d221cba-t1-105708"", ""base_sha"": ""da30d65abe81099c37e440f5d7321e5989d5e4ff"", ""commit_sha"": ""d4587f9c07161cb1adad217e130f4fabda7f96a1"", ""file"": ""tests/test_upload.py"", ""run_id"": 45796751808, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45796751808"", ""conclusion"": ""success""}]",tests/test_upload.py,True,pass,1 passed in 0.00s,2/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""2/0/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 2, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_multipart_upload"", ""text"": ""assert client_a.uploaded == ['part1.bin']""}, {""scope"": ""test_multipart_upload"", ""text"": ""assert client_b.uploaded == ['part2.bin']""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""2/0/0"", ""counts"": {""original"": 2, ""repaired"": 2, ""kept"": 2, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_multipart_upload"", ""text"": ""assert client_a.uploaded == ['part1.bin']""}, {""scope"": ""test_multipart_upload"", ""text"": ""assert client_b.uploaded == ['part2.bin']""}], ""modified"": [], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_049,test,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"A2: error injected in src/logger.py, outside the test file the Test Agent may edit (protocol B)",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,test_050,test,hard,fixed,1,test,1,0.95,The error is a test failure due to an AssertionError where the expected value of 24 hours doesn't match the actual 23 hours during a DST transition. The change in the commit shows a removal of a toler,1,1,0,46.1,,0,1,False,,1,"[""tests/test_billing_cycle.py""]",red,e2e8937ba8c29b36b31beed06bfe0b123483f6ff,45796871796,green,f96280d9d572231d0ee498b8524a07c711b80073,45796977436,"[{""attempt"": 1, ""branch"": ""fix/ai-test-945db71-t1-105839"", ""base_sha"": ""e2e8937ba8c29b36b31beed06bfe0b123483f6ff"", ""commit_sha"": ""f96280d9d572231d0ee498b8524a07c711b80073"", ""file"": ""tests/test_billing_cycle.py"", ""run_id"": 45796977436, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45796977436"", ""conclusion"": ""success""}]",tests/test_billing_cycle.py,True,pass,1 passed in 0.00s,1/0/0,"{""reference"": ""baseline (clean test before injection)"", ""vs_baseline"": {""summary"": ""1/0/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 1, ""modified"": 0, ""removed"": 0, ""added"": 0}, ""kept"": [{""scope"": ""test_hours_between"", ""text"": ""assert delta.total_seconds() / 3600 == pytest.approx(24, abs=1)""}], ""modified"": [], ""removed"": [], ""added"": []}, ""vs_injected"": {""summary"": ""0/1/0"", ""counts"": {""original"": 1, ""repaired"": 1, ""kept"": 0, ""modified"": 1, ""removed"": 0, ""added"": 0}, ""kept"": [], ""modified"": [{""scope"": ""test_hours_between"", ""original"": ""assert delta.total_seconds() / 3600 == 24"", ""repaired"": ""assert delta.total_seconds() / 3600 == pytest.approx(24, abs=1)""}], ""removed"": [], ""added"": []}}",,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_001,config,easy,fixed,1,config,1,0.95,"The error occurs due to an invalid Python version specified in the CI configuration. The version '3.99' is not available in the system, indicating a configuration mistake where an non-existent Python ",1,1,0,65.24,,0,1,False,,1,"["".github/workflows/ci.yml""]",red,5d7004d5a586faf8d040315c397c6989c0ae79af,45797095482,green,eea9d7478acfab755293f008a2750c60def4f08c,45797219314,"[{""attempt"": 1, ""branch"": ""fix/ai-config-08299bb-t1-110014"", ""base_sha"": ""5d7004d5a586faf8d040315c397c6989c0ae79af"", ""commit_sha"": ""eea9d7478acfab755293f008a2750c60def4f08c"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45797219314, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45797219314"", ""conclusion"": ""success""}]",.github/workflows/ci.yml,True,n/a,,n/a,,.github/workflows/ci.yml,True,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_002,config,easy,fixed,1,config,1,0.95,The CI pipeline failed because Python version 3.17 is not available in the runner environment. This is a configuration issue where an unsupported Python version was specified in the workflow file.,1,1,0,48.57,,0,1,False,,1,"["".github/workflows/ci.yml""]",red,937f2dccc9234737ef43de3696e9d02ca6c804c8,45797396536,green,53111ceb2eb6d4d252f8f51a2ada5682135e9afb,45797518454,"[{""attempt"": 1, ""branch"": ""fix/ai-config-096857c-t1-110204"", ""base_sha"": ""937f2dccc9234737ef43de3696e9d02ca6c804c8"", ""commit_sha"": ""53111ceb2eb6d4d252f8f51a2ada5682135e9afb"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45797518454, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45797518454"", ""conclusion"": ""success""}]",.github/workflows/ci.yml,True,n/a,,n/a,,.github/workflows/ci.yml,True,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_003,config,easy,fixed,1,config,1,0.95,"The error occurs because Python 2.7 is no longer supported in GitHub Actions as it reached End of Life. The configuration explicitly tries to use Python 2.7 which is not available, causing the setup t",1,1,0,64.1,,0,1,False,,1,"["".github/workflows/ci.yml""]",red,d2e34b8ad7095468bc4b4388c22d7d27043250a8,45797637081,green,e0ccbfcc6543657648a8e876b659232b46f6bde2,45797761282,"[{""attempt"": 1, ""branch"": ""fix/ai-config-80b1e54-t1-110337"", ""base_sha"": ""d2e34b8ad7095468bc4b4388c22d7d27043250a8"", ""commit_sha"": ""e0ccbfcc6543657648a8e876b659232b46f6bde2"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45797761282, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45797761282"", ""conclusion"": ""success""}]",.github/workflows/ci.yml,True,n/a,,n/a,,.github/workflows/ci.yml,True,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_004,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,adding `with: token:` to checkout needs a multi-line injection (harness change),0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_005,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"setup-python@v1 works today (GITHUB_PATH, forced onto a supported Node): the add-path/set-env failure of the log no longer occurs",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_006,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"the workflow run is not created or stays queued (runs-on: ubuntu-18.04): the CI never turns red, and the red pre-check of the unified protocol cannot verify it",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_007,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,no `working-directory` in ci.yml: needs a change to the clean ci.yml or a multi-line injection,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_008,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,removing the multi-line setup-python step needs a multi-line injection (harness change),0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_009,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"indentation error: inject_error strips both lines, so it cannot change indentation (harness change)",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_010,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,duplicate top-level `on:` cannot be injected (pure insertion); a one-line variant would need new ci_logs/expected_fix,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_011,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,no upload-artifact step in ci.yml; injecting one in place of an existing step would need new ci_logs/expected_fix,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_012,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,the `python-versions` typo only yields an 'Unexpected input' warning: setup-python falls back to the Python on PATH,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_013,config,medium,escalated,0,dependency,0,0.95,"The error shows 'pytest: command not found' indicating missing dependencies. The commit changed from installing requirements.txt to specific packages, likely missing pytest in the new installation.",3,,0,153.1,,1,1,False,,1,"["".github/workflows/ci.yml""]",red,4e00acc3996819a47df56c95ce392fbc53f35479,45797921491,red,0aac2bdfb86b5a82af2c6e520e76e5fd013e1230,45798334189,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-18b7ce5-t1-110519"", ""base_sha"": ""4e00acc3996819a47df56c95ce392fbc53f35479"", ""commit_sha"": ""123488a9405f193858e1490b5fcd66504f3dcdae"", ""file"": ""requirements.txt"", ""run_id"": 45798033523, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45798033523"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-18b7ce5-t2-110615"", ""base_sha"": ""4e00acc3996819a47df56c95ce392fbc53f35479"", ""commit_sha"": ""cb66a435482b420260681a6bca1b6620717e6997"", ""file"": ""requirements.txt"", ""run_id"": 45798181115, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45798181115"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-18b7ce5-t3-110712"", ""base_sha"": ""4e00acc3996819a47df56c95ce392fbc53f35479"", ""commit_sha"": ""0aac2bdfb86b5a82af2c6e520e76e5fd013e1230"", ""file"": ""requirements.txt"", ""run_id"": 45798334189, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45798334189"", ""conclusion"": ""failure""}]",requirements.txt,False,n/a,,n/a,,.github/workflows/ci.yml,False,"pytest==7.2.0
+pytest-cov==4.0.0
+requests==2.31.0
+flask==2.3.3
+click==8.1.7
+itsdangerous==2.1.2
+jinja2==3.1.2
+werkzeug==2.3.7"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_014,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a DATABASE_URL secret and a database test; neither exists in the repository,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_015,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,no schedule trigger; a cron frequency change is not a CI failure,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_016,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,no build matrix; the job-count limit of the log needs a multi-dimensional matrix absent from ci.yml,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_017,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a deployment job with `permissions`; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_018,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,removing the coverage flags does not fail the CI (no coverage upload step),0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_019,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a Docker build step and a Dockerfile; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_020,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a PyPI trusted-publishing job; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_021,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a setup-node step; absent (Python-only workflow),0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_022,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs git submodules; the repository has none,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_023,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a workflow_dispatch input; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_024,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"no `runs-on: [self-hosted, linux]` in ci.yml; changing another runner label would need new ci_logs/expected_fix",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_025,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"no timeout-minutes; the test suite takes well under 5 minutes, so the timeout would not fire",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_026,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,no `if: github.ref == ...` in ci.yml; reusing `if: always()` would need new ci_logs/expected_fix,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_027,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,no `needs: build` in ci.yml; a typo on `needs: A` would need new ci_logs/expected_fix,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_028,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a setup-java step; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_029,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a PR-commenting job with `permissions`; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_030,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a Windows runner and a bash script; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_031,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"CI fails for a different reason than the log: the replacement turns the test job's `env:` into `run:` (invalid workflow), while the log describes a missing API_SECRET",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_032,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,"needs an actions/cache step; a wrong cache key is a cache miss, not a CI failure",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_033,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs an artifact upload/download matrix; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_034,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a deploy job with `concurrency`; not a CI failure in this repository,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_035,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a reusable publish workflow and secrets; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_036,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs branch protection requiring a check name; the repository has none,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_037,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a protected `production` environment; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_038,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a matrix strategy; fail-fast alone does not fail the CI,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_039,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a composite action with inputs; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_040,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a third-party action pinned by SHA; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_041,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs Git LFS files; the repository has none,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_042,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs nested reusable workflows and secrets; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_043,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a matrix with a concurrency group; intermittent cancellation is not reproducible,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_044,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs an actions/cache step and a cache polluted by another branch; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_045,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs AWS OIDC credentials and an IAM trust policy; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_046,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a non-ephemeral self-hosted runner with a stale lock file; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_047,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a ruleset requiring the 'ci/test' check; absent (the rename alone leaves the CI green),0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_048,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs a pull_request_target workflow with secrets and a PR event; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_049,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,needs an actions/cache step and the 10 GB cache limit; not reproducible,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,0,conf_050,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,1,True,removing `if: always()` from job C leaves the CI green (A and B succeed); the skip of B in the log is absent,0,,,,,,,,,,,,,,,,,

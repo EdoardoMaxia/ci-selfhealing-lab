@@ -1,0 +1,258 @@
+model_id,model_name,model_type,dry_run,no_memory,error_id,category,difficulty,final_status,success,router_category,router_correct,router_confidence,router_reasoning,attempts_count,fix_attempt,json_parse_fail,latency_sec,error_msg,memory_hits,memory_active,excluded,exclusion_reason,valid_case,injected_files,pre_ci_status,pre_ci_sha,pre_ci_run_id,post_ci_status,post_ci_sha,post_ci_run_id,post_ci_attempts,agent_modified_file,agent_file_is_injected,test_on_clean_source,clean_source_detail,assertions_preserved,assertions_detail,reference_file,repair_matches_reference,agent_file_content
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_001,config,easy,fixed,1,config,1,0.95,The error occurs because Python version 3.99 is not available in the CI environment. The configuration specifies an invalid Python version that doesn't exist in the allowed versions list.,1,1,0,69.87,,0,0,False,,1,"["".github/workflows/ci.yml""]",red,74d92350625b31a4899ea4ce5fda284ce043773e,45691614395,green,5971b4a16cab1d7a5a120595c5c88e3a08136247,45691756420,"[{""attempt"": 1, ""branch"": ""fix/ai-config-08299bb-t1-210632"", ""base_sha"": ""74d92350625b31a4899ea4ce5fda284ce043773e"", ""commit_sha"": ""5971b4a16cab1d7a5a120595c5c88e3a08136247"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45691756420, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45691756420"", ""conclusion"": ""success""}]",.github/workflows/ci.yml,True,n/a,,n/a,,.github/workflows/ci.yml,True,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_002,config,easy,escalated,0,config,1,0.95,The CI pipeline failed because Python version 3.17 is not available in the runner environment. This is a configuration issue where the specified Python version in the workflow file does not match the ,3,,0,91.41,,0,0,False,,1,"["".github/workflows/ci.yml""]",red,032af8cd63eb506f124b0d86d4230b33d8b89c1b,45691933038,red,7201dab59aefc1016a359d575570b0ef4fb447a0,45692218734,"[{""attempt"": 1, ""branch"": ""fix/ai-config-096857c-t1-210821"", ""base_sha"": ""032af8cd63eb506f124b0d86d4230b33d8b89c1b"", ""commit_sha"": ""09ea5a4a118912662a51399ea526f668eab2bb63"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45692053311, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45692053311"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-config-096857c-t2-210851"", ""base_sha"": ""032af8cd63eb506f124b0d86d4230b33d8b89c1b"", ""commit_sha"": ""c358142e2ede9ea99dad7fccd9de437e0774f21d"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45692138044, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45692138044"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-config-096857c-t3-210922"", ""base_sha"": ""032af8cd63eb506f124b0d86d4230b33d8b89c1b"", ""commit_sha"": ""7201dab59aefc1016a359d575570b0ef4fb447a0"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45692218734, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45692218734"", ""conclusion"": ""failure""}]",.github/workflows/ci.yml,True,n/a,,n/a,,.github/workflows/ci.yml,False,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing
+```"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_003,config,easy,escalated,0,config,1,0.95,"The error occurs because Python 2.7 is no longer supported in GitHub Actions as it reached End of Life. The configuration explicitly tries to use python-version: '2.7' which is not available, causing ",3,,0,90.92,,0,0,False,,1,"["".github/workflows/ci.yml""]",red,673ba3025f0296baebb950f355698e006c7a70cc,45692303239,red,bb3b4928605942f9dcae671f7b590b50dd4897fb,45692596270,"[{""attempt"": 1, ""branch"": ""fix/ai-config-80b1e54-t1-211039"", ""base_sha"": ""673ba3025f0296baebb950f355698e006c7a70cc"", ""commit_sha"": ""2c9c3137d8c6a1aef0eb7d7dab37416144b27c19"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45692430425, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45692430425"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-config-80b1e54-t2-211108"", ""base_sha"": ""673ba3025f0296baebb950f355698e006c7a70cc"", ""commit_sha"": ""eb447b7f2cb778cd7b8870460638542ddda4daff"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45692513689, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45692513689"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-config-80b1e54-t3-211138"", ""base_sha"": ""673ba3025f0296baebb950f355698e006c7a70cc"", ""commit_sha"": ""bb3b4928605942f9dcae671f7b590b50dd4897fb"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45692596270, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45692596270"", ""conclusion"": ""failure""}]",.github/workflows/ci.yml,True,n/a,,n/a,,.github/workflows/ci.yml,False,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing
+```"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_004,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,adding `with: token:` to checkout needs a multi-line injection (harness change),0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_005,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"setup-python@v1 works today (GITHUB_PATH, forced onto a supported Node): the add-path/set-env failure of the log no longer occurs",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_006,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"the workflow run is not created or stays queued (runs-on: ubuntu-18.04): the CI never turns red, and the red pre-check of the unified protocol cannot verify it",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_007,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,no `working-directory` in ci.yml: needs a change to the clean ci.yml or a multi-line injection,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_008,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,removing the multi-line setup-python step needs a multi-line injection (harness change),0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_009,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"indentation error: inject_error strips both lines, so it cannot change indentation (harness change)",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_010,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,duplicate top-level `on:` cannot be injected (pure insertion); a one-line variant would need new ci_logs/expected_fix,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_011,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,no upload-artifact step in ci.yml; injecting one in place of an existing step would need new ci_logs/expected_fix,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_012,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,the `python-versions` typo only yields an 'Unexpected input' warning: setup-python falls back to the Python on PATH,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_013,config,medium,escalated,0,dependency,0,0.9,"The error shows 'pytest: command not found' indicating missing dependencies. The commit changed from installing requirements.txt to specific packages, likely missing pytest in the new installation.",3,,0,154.22,,0,0,False,,1,"["".github/workflows/ci.yml""]",red,c57e605192acb1627911b8094f45a3159be7b166,45692676803,red,4e7f0638b7feff0f0f284dc601b571064fc8e5d6,45693099972,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-18b7ce5-t1-211306"", ""base_sha"": ""c57e605192acb1627911b8094f45a3159be7b166"", ""commit_sha"": ""212f4394cfd70d1890a93ddfff6a7115c2af997d"", ""file"": ""requirements.txt"", ""run_id"": 45692830468, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45692830468"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-18b7ce5-t2-211403"", ""base_sha"": ""c57e605192acb1627911b8094f45a3159be7b166"", ""commit_sha"": ""0b7cb63d8356145907a6aa06640fbbe0279747d7"", ""file"": ""requirements.txt"", ""run_id"": 45692988862, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45692988862"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-18b7ce5-t3-211444"", ""base_sha"": ""c57e605192acb1627911b8094f45a3159be7b166"", ""commit_sha"": ""4e7f0638b7feff0f0f284dc601b571064fc8e5d6"", ""file"": ""requirements.txt"", ""run_id"": 45693099972, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45693099972"", ""conclusion"": ""failure""}]",requirements.txt,False,n/a,,n/a,,.github/workflows/ci.yml,False,"pytest==7.4.0
+pytest-cov==4.1.0
+requests==2.31.0
+flask==2.3.3
+click==8.1.7
+itsdangerous==2.1.2
+jinja2==3.1.2
+werkzeug==2.3.7"
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_014,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a DATABASE_URL secret and a database test; neither exists in the repository,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_015,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,no schedule trigger; a cron frequency change is not a CI failure,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_016,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,no build matrix; the job-count limit of the log needs a multi-dimensional matrix absent from ci.yml,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_017,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a deployment job with `permissions`; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_018,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,removing the coverage flags does not fail the CI (no coverage upload step),0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_019,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a Docker build step and a Dockerfile; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_020,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a PyPI trusted-publishing job; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_021,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a setup-node step; absent (Python-only workflow),0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_022,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs git submodules; the repository has none,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_023,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a workflow_dispatch input; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_024,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"no `runs-on: [self-hosted, linux]` in ci.yml; changing another runner label would need new ci_logs/expected_fix",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_025,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"no timeout-minutes; the test suite takes well under 5 minutes, so the timeout would not fire",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_026,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,no `if: github.ref == ...` in ci.yml; reusing `if: always()` would need new ci_logs/expected_fix,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_027,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,no `needs: build` in ci.yml; a typo on `needs: A` would need new ci_logs/expected_fix,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_028,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a setup-java step; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_029,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a PR-commenting job with `permissions`; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_030,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a Windows runner and a bash script; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_031,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"CI fails for a different reason than the log: the replacement turns the test job's `env:` into `run:` (invalid workflow), while the log describes a missing API_SECRET",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_032,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"needs an actions/cache step; a wrong cache key is a cache miss, not a CI failure",0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_033,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs an artifact upload/download matrix; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_034,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a deploy job with `concurrency`; not a CI failure in this repository,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_035,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a reusable publish workflow and secrets; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_036,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs branch protection requiring a check name; the repository has none,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_037,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a protected `production` environment; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_038,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a matrix strategy; fail-fast alone does not fail the CI,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_039,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a composite action with inputs; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_040,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a third-party action pinned by SHA; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_041,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs Git LFS files; the repository has none,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_042,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs nested reusable workflows and secrets; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_043,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a matrix with a concurrency group; intermittent cancellation is not reproducible,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_044,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs an actions/cache step and a cache polluted by another branch; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_045,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs AWS OIDC credentials and an IAM trust policy; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_046,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a non-ephemeral self-hosted runner with a stale lock file; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_047,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a ruleset requiring the 'ci/test' check; absent (the rename alone leaves the CI green),0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_048,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a pull_request_target workflow with secrets and a PR event; absent,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_049,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs an actions/cache step and the 10 GB cache limit; not reproducible,0,,,,,,,,,,,,,,,,,
+ollama_qwen3coder_30b,Qwen3-Coder 30B,open-source-local,0,1,conf_050,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,removing `if: always()` from job C leaves the CI green (A and B succeed); the skip of B in the log is absent,0,,,,,,,,,,,,,,,,,

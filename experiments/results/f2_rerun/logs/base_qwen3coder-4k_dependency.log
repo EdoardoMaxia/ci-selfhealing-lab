@@ -1,0 +1,2283 @@
+2026-11-25 19:39:38,839 [INFO] Dataset: 50 errors selected, 15 of them excluded (excluded_cases.json)
+2026-11-25 19:39:38,839 [INFO] Models: ['Qwen3-Coder 30B']
+2026-11-25 19:39:38,839 [INFO] Mode: full | memory: OFF
+2026-11-25 19:39:38,839 [INFO] Cleaning up 'fix/ai-*' branches left over from previous runs...
+2026-11-25 19:39:39,995 [INFO] cleanup_fix_branches: no 'fix/ai-*' branch to remove
+2026-11-25 19:39:39,995 [INFO] 
+▶ Starting: Qwen3-Coder 30B
+2026-11-25 19:39:39,996 [INFO] 
+============================================================
+2026-11-25 19:39:39,996 [INFO] MODEL: Qwen3-Coder 30B (ollama_qwen3coder_30b)
+2026-11-25 19:39:39,996 [INFO] Errors: 50 | Timeout: 900s | dry-run: False | no-memory: True | protocol B: all categories
+2026-11-25 19:39:39,996 [INFO] ============================================================
+2026-11-25 19:39:39,996 [INFO] 
+[1/50] dep_001 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_001-193942 @ 7f20173f (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 7f20173f on branch 'fix/ai-precheck-dep_001-193942'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45677439568 in_progress... [15s/300s]
+    CI run 45677439568 completed: failure
+2026-11-25 19:40:20,651 [INFO]   pre-check: CI RED on 7f20173f (run 45677439568) files=['requirements.txt']
+2026-11-25 19:40:26,516 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs because pip cannot find a version of numpy that matches the specified version '99.99.99', which is an invalid and non-existent version. This is a dependency resolution failure caused by an incorrect version specification in requirements.txt.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 19:40:27,966 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- numpy==99.99.99
++ numpy==1.26.4
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-298e45c-t1-194028 @ b3079677 (1 file change(s) on 7f20173f)
+⏳ Waiting for the CI run of b3079677 on branch 'fix/ai-dependency-298e45c-t1-194028'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45677569941 in_progress... [15s/300s]
+   ⏳ CI run 45677569941 in_progress... [30s/300s]
+    CI run 45677569941 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7837
+2026-11-25 19:41:25,199 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 64.13s
+2026-11-25 19:41:28,400 [INFO] 
+[2/50] dep_002 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_002-194130 @ 24badab7 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 24badab7 on branch 'fix/ai-precheck-dep_002-194130'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45677739161 in_progress... [15s/300s]
+    CI run 45677739161 completed: failure
+2026-11-25 19:42:08,651 [INFO]   pre-check: CI RED on 24badab7 (run 45677739161) files=['requirements.txt']
+2026-11-25 19:42:08,838 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs due to an invalid package version specification in requirements.txt. The version '999.0.0' for pandas does not exist, causing pip to fail during dependency installation.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 19:42:09,874 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+- pandas==999.0.0
++ pandas==2.0.3
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-438ad80-t1-194210 @ 84502768 (1 file change(s) on 24badab7)
+⏳ Waiting for the CI run of 84502768 on branch 'fix/ai-dependency-438ad80-t1-194210'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45677852868 in_progress... [15s/300s]
+   ⏳ CI run 45677852868 in_progress... [30s/300s]
+    CI run 45677852868 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7838
+2026-11-25 19:43:06,945 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 58.29s
+2026-11-25 19:43:10,313 [INFO] 
+[3/50] dep_003 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_003-194312 @ ba83809e (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of ba83809e on branch 'fix/ai-precheck-dep_003-194312'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45678019241 in_progress... [15s/300s]
+    CI run 45678019241 completed: failure
+2026-11-25 19:43:50,696 [INFO]   pre-check: CI RED on ba83809e (run 45678019241) files=['requirements.txt']
+2026-11-25 19:43:50,864 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs due to an invalid package version specification in requirements.txt. The version '0.0.1' of scikit-learn was never released, causing pip to fail during dependency installation.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 19:43:51,908 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- scikit-learn==0.0.1
++ scikit-learn==1.3.2
++ ```
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-711fba2-t1-194352 @ b936875a (1 file change(s) on ba83809e)
+⏳ Waiting for the CI run of b936875a on branch 'fix/ai-dependency-711fba2-t1-194352'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45678130400 in_progress... [15s/300s]
+   ⏳ CI run 45678130400 in_progress... [30s/300s]
+    CI run 45678130400 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 19:44:46,675 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- ```
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-711fba2-t2-194447 @ b525f636 (1 file change(s) on ba83809e)
+⏳ Waiting for the CI run of b525f636 on branch 'fix/ai-dependency-711fba2-t2-194447'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45678286609 in_progress... [15s/300s]
+    CI run 45678286609 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7839
+2026-11-25 19:45:28,120 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 2 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 97.42s
+2026-11-25 19:45:31,308 [INFO] 
+[4/50] dep_004 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_004-194533 @ 4de8dc0f (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 4de8dc0f on branch 'fix/ai-precheck-dep_004-194533'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45678423055 in_progress... [15s/300s]
+    CI run 45678423055 completed: failure
+2026-11-25 19:46:12,331 [INFO]   pre-check: CI RED on 4de8dc0f (run 45678423055) files=['requirements.txt']
+2026-11-25 19:46:12,502 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs due to an invalid package version specification in requirements.txt. The requested version '2.99.99' of the 'requests' library does not exist, causing pip to fail during dependency installation.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 19:46:13,501 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- requests==2.99.99
++ requests==2.31.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-616c2d4-t1-194614 @ 45e2b61f (1 file change(s) on 4de8dc0f)
+⏳ Waiting for the CI run of 45e2b61f on branch 'fix/ai-dependency-616c2d4-t1-194614'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45678533005 in_progress... [15s/300s]
+    CI run 45678533005 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7840
+2026-11-25 19:46:55,254 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 42.92s
+2026-11-25 19:46:58,513 [INFO] 
+[5/50] dep_005 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_005-194700 @ ef7bf1c9 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of ef7bf1c9 on branch 'fix/ai-precheck-dep_005-194700'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45678660639 queued... [15s/300s]
+    CI run 45678660639 completed: failure
+2026-11-25 19:47:39,383 [INFO]   pre-check: CI RED on ef7bf1c9 (run 45678660639) files=['requirements.txt']
+2026-11-25 19:47:39,555 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error shows pip cannot find flask==3.99.0 as it's not a valid version. The commit changed flask version from 3.0.3 to 3.99.0, which doesn't exist in available versions.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 19:47:40,643 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- flask==3.99.0
++ flask==3.0.3
++ ```
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-116b52a-t1-194741 @ 5caf7459 (1 file change(s) on ef7bf1c9)
+⏳ Waiting for the CI run of 5caf7459 on branch 'fix/ai-dependency-116b52a-t1-194741'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45678769605 queued... [15s/300s]
+    CI run 45678769605 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 19:48:19,899 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+- ```
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-116b52a-t2-194820 @ 3a2e974f (1 file change(s) on ef7bf1c9)
+⏳ Waiting for the CI run of 3a2e974f on branch 'fix/ai-dependency-116b52a-t2-194820'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45678877064 in_progress... [15s/300s]
+   ⏳ CI run 45678877064 in_progress... [30s/300s]
+    CI run 45678877064 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7841
+2026-11-25 19:49:16,910 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 2 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 97.53s
+2026-11-25 19:49:20,188 [INFO] 
+[6/50] dep_006 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_006-194922 @ dd9b41ad (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of dd9b41ad on branch 'fix/ai-precheck-dep_006-194922'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45679052037 in_progress... [15s/300s]
+   ⏳ CI run 45679052037 in_progress... [30s/300s]
+    CI run 45679052037 completed: failure
+2026-11-25 19:50:15,940 [INFO]   pre-check: CI RED on dd9b41ad (run 45679052037) files=['requirements.txt']
+2026-11-25 19:50:16,096 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs due to an incompatible TensorFlow version specification. The log shows pip cannot find tensorflow==1.0.0 for Python 3.11, and notes that TensorFlow 1.x is incompatible with Python 3.11. The git diff confirms the problematic version change from 2.13.0 to 1.0.0.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 19:50:17,398 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- tensorflow==1.0.0
++ tensorflow==2.13.0
++ ```
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-84dbff0-t1-195018 @ b9acbcc2 (1 file change(s) on dd9b41ad)
+⏳ Waiting for the CI run of b9acbcc2 on branch 'fix/ai-dependency-84dbff0-t1-195018'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45679208795 in_progress... [15s/300s]
+   ⏳ CI run 45679208795 in_progress... [30s/300s]
+    CI run 45679208795 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 19:51:12,082 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- ```
++ numpy==1.24.0
++ protobuf==3.20.3
++ keras==2.13.0
++ scipy==1.10.0
++ six==1.16.0
++ wrapt==1.15.0
++ absl-py==1.4.0
++ opt-einsum==3.3.0
++ grpcio==1.58.0
++ google-pasta==0.2.0
++ termcolor==1.1.0
++ wheel==0.41.0
++ setuptools==68.0.0
++ importlib-metadata==6.8.0
++ typing-extensions==4.7.0
++ packaging==23.1
++ requests==2.31.0
++ urllib3==1.26.15
++ certifi==2023.7.22
++ charset-normalizer==3.3.0
++ idna==3.4
++ colorama==0.4.6
++ threadpoolctl==3.2.0
++ h5py==3.8.0
++ numpy==1.24.0
++ protobuf==3.20.3
++ keras==2.13.0
++ scipy==1.10.0
++ six==1.16.0
++ wrapt==1.15.0
++ absl-py==1.4.0
++ opt-einsum==3.3.0
++ grpcio==1.58.0
++ google-pasta==0.2.0
++ termcolor==1.1.0
++ wheel==0.41.0
++ setuptools==68.0.0
++ importlib-metadata==6.8.0
++ typing-extensions==4.7.0
++ packaging==23.1
++ requests==2.31.0
++ urllib3==1.26.15
++ certifi==2023.7.22
++ charset-normalizer==3.3.0
++ idna==3.4
++ colorama==0.4.6
++ threadpoolctl==3.2.0
++ h5py==3.8.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-84dbff0-t2-195118 @ b523b29f (1 file change(s) on dd9b41ad)
+⏳ Waiting for the CI run of b523b29f on branch 'fix/ai-dependency-84dbff0-t2-195118'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45679372254 in_progress... [15s/300s]
+    CI run 45679372254 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 19:51:57,295 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-84dbff0-t3-195200 @ cc354265 (1 file change(s) on dd9b41ad)
+⏳ Waiting for the CI run of cc354265 on branch 'fix/ai-dependency-84dbff0-t3-195200'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45679486857 in_progress... [15s/300s]
+    CI run 45679486857 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 19:52:39,314 [INFO]   ❌ escalated | router: dependency (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 143.37s
+2026-11-25 19:52:43,208 [INFO] 
+[7/50] dep_007 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_007-195245 @ 11ba92e6 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 11ba92e6 on branch 'fix/ai-precheck-dep_007-195245'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45679608880 in_progress... [15s/300s]
+    CI run 45679608880 completed: failure
+2026-11-25 19:53:23,902 [INFO]   pre-check: CI RED on 11ba92e6 (run 45679608880) files=['requirements.txt']
+2026-11-25 19:53:24,086 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs during dependency installation where pip cannot find a matching distribution for scipy==1.99.0. This is a version compatibility issue with a specific package requirement that doesn't exist in the package repository.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 19:53:25,075 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- scipy==1.99.0
++ scipy==1.11.3
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-257f077-t1-195325 @ 02fc15ae (1 file change(s) on 11ba92e6)
+⏳ Waiting for the CI run of 02fc15ae on branch 'fix/ai-dependency-257f077-t1-195325'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45679720958 in_progress... [15s/300s]
+   ⏳ CI run 45679720958 in_progress... [30s/300s]
+    CI run 45679720958 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7842
+2026-11-25 19:54:21,763 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 57.86s
+2026-11-25 19:54:24,996 [INFO] 
+[8/50] dep_008 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_008-195427 @ 36aa1a99 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 36aa1a99 on branch 'fix/ai-precheck-dep_008-195427'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45679891335 queued... [15s/300s]
+    CI run 45679891335 completed: failure
+2026-11-25 19:55:05,418 [INFO]   pre-check: CI RED on 36aa1a99 (run 45679891335) files=['requirements.txt']
+2026-11-25 19:55:05,572 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error shows a failed pip install due to an unmet dependency requirement. The version 'matplotlib==10.0.0' does not exist or is not available in the package index, causing the installation to fail.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 19:55:06,568 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- matplotlib==10.0.0
++ matplotlib==3.8.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-a174f76-t1-195507 @ 2cca8b6a (1 file change(s) on 36aa1a99)
+⏳ Waiting for the CI run of 2cca8b6a on branch 'fix/ai-dependency-a174f76-t1-195507'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45680007108 in_progress... [15s/300s]
+    CI run 45680007108 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7843
+2026-11-25 19:55:48,156 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 42.74s
+2026-11-25 19:55:51,462 [INFO] 
+[9/50] dep_009 (dependency / medium)
+🌿 Branch created: fix/ai-precheck-dep_009-195553 @ 1bd9ba70 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 1bd9ba70 on branch 'fix/ai-precheck-dep_009-195553'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45680135934 in_progress... [15s/300s]
+   ⏳ CI run 45680135934 in_progress... [30s/300s]
+    CI run 45680135934 completed: failure
+2026-11-25 19:56:48,196 [INFO]   pre-check: CI RED on 1bd9ba70 (run 45680135934) files=['requirements.txt']
+2026-11-25 19:56:48,387 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs due to conflicting dependencies between pandas 2.0.0 and scipy 1.9.0, which have incompatible numpy version requirements. This is a classic dependency resolution issue.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 19:56:49,331 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
++ numpy==1.23.2
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-96019cd-t1-195650 @ 6c2a2924 (1 file change(s) on 1bd9ba70)
+⏳ Waiting for the CI run of 6c2a2924 on branch 'fix/ai-dependency-96019cd-t1-195650'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45680287957 queued... [15s/300s]
+   ⏳ CI run 45680287957 in_progress... [30s/300s]
+    CI run 45680287957 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 19:57:44,357 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- numpy==1.23.2
++ numpy==1.23.5
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-96019cd-t2-195745 @ fff2d1d4 (1 file change(s) on 1bd9ba70)
+⏳ Waiting for the CI run of fff2d1d4 on branch 'fix/ai-dependency-96019cd-t2-195745'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45680432847 in_progress... [15s/300s]
+   ⏳ CI run 45680432847 in_progress... [30s/300s]
+    CI run 45680432847 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 19:58:39,260 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- numpy==1.23.5
++ numpy==1.23.2
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-96019cd-t3-195840 @ 1726417f (1 file change(s) on 1bd9ba70)
+⏳ Waiting for the CI run of 1726417f on branch 'fix/ai-dependency-96019cd-t3-195840'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45680581344 in_progress... [15s/300s]
+   ⏳ CI run 45680581344 in_progress... [30s/300s]
+    CI run 45680581344 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 19:59:34,258 [INFO]   ❌ escalated | router: dependency (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 166.06s
+2026-11-25 19:59:37,886 [INFO] 
+[10/50] dep_010 (dependency / medium)
+2026-11-25 19:59:37,887 [INFO]   Excluded: dep_010 — torch==2.0.0 installs on the runner (CI green, verified 20 Nov); the corrupt-wheel (RECORD) error of the log does not occur
+2026-11-25 19:59:37,887 [INFO] 
+[11/50] dep_011 (dependency / medium)
+🌿 Branch created: fix/ai-precheck-dep_011-195940 @ d89fd820 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of d89fd820 on branch 'fix/ai-precheck-dep_011-195940'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45680737688 in_progress... [15s/300s]
+    CI run 45680737688 completed: failure
+2026-11-25 20:00:18,554 [INFO]   pre-check: CI RED on d89fd820 (run 45680737688) files=['requirements.txt']
+2026-11-25 20:00:18,717 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error shows pip cannot find the specified internal library version. The library is not available on PyPI and requires a custom index URL, indicating a dependency resolution issue with an internal package.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:00:19,651 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ --extra-index-url=https://your-internal-index-url.com/simple/
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-b87215e-t1-200021 @ 1fe34093 (1 file change(s) on d89fd820)
+⏳ Waiting for the CI run of 1fe34093 on branch 'fix/ai-dependency-b87215e-t1-200021'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45680858539 queued... [15s/300s]
+   ⏳ CI run 45680858539 in_progress... [30s/300s]
+    CI run 45680858539 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 20:01:15,534 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-b87215e-t2-200116 @ 9aca9cd7 (1 file change(s) on d89fd820)
+⏳ Waiting for the CI run of 9aca9cd7 on branch 'fix/ai-dependency-b87215e-t2-200116'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45681022723 queued... [15s/300s]
+   ⏳ CI run 45681022723 in_progress... [30s/300s]
+    CI run 45681022723 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 20:02:10,842 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ --trusted-host your-internal-index-url.com
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-b87215e-t3-200211 @ 0fa9040e (1 file change(s) on d89fd820)
+⏳ Waiting for the CI run of 0fa9040e on branch 'fix/ai-dependency-b87215e-t3-200211'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45681170932 in_progress... [15s/300s]
+   ⏳ CI run 45681170932 in_progress... [30s/300s]
+    CI run 45681170932 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 20:03:05,905 [INFO]   ❌ escalated | router: dependency (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 167.35s
+2026-11-25 20:03:09,584 [INFO] 
+[12/50] dep_012 (dependency / medium)
+🌿 Branch created: fix/ai-precheck-dep_012-200311 @ ae54157e (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of ae54157e on branch 'fix/ai-precheck-dep_012-200311'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45681341298 in_progress... [15s/300s]
+   ⏳ CI run 45681341298 in_progress... [30s/300s]
+    CI run 45681341298 completed: failure
+2026-11-25 20:04:05,953 [INFO]   pre-check: CI RED on ae54157e (run 45681341298) files=['requirements.txt']
+2026-11-25 20:04:06,160 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs due to version incompatibility between sqlalchemy 2.0.0 and pydantic 2.0.0 which require typing-extensions>=4.6.0, but only version 4.2.0 is installed. This is a classic dependency resolution conflict.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:04:07,386 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- typing-extensions==4.2.0
+- 
++ typing-extensions==4.6.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-3fa55c2-t1-200408 @ 1057a582 (1 file change(s) on ae54157e)
+⏳ Waiting for the CI run of 1057a582 on branch 'fix/ai-dependency-3fa55c2-t1-200408'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45681493707 in_progress... [15s/300s]
+   ⏳ CI run 45681493707 in_progress... [30s/300s]
+    CI run 45681493707 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 20:05:02,363 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+(no changes detected)
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-3fa55c2-t2-200503 @ 0e9ae627 (1 file change(s) on ae54157e)
+⏳ Waiting for the CI run of 0e9ae627 on branch 'fix/ai-dependency-3fa55c2-t2-200503'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45681651231 in_progress... [15s/300s]
+   ⏳ CI run 45681651231 in_progress... [30s/300s]
+    CI run 45681651231 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 20:05:57,886 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+(no changes detected)
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-3fa55c2-t3-200558 @ 17859504 (1 file change(s) on ae54157e)
+⏳ Waiting for the CI run of 17859504 on branch 'fix/ai-dependency-3fa55c2-t3-200558'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45681801541 in_progress... [15s/300s]
+    CI run 45681801541 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 20:06:37,321 [INFO]   ❌ escalated | router: dependency (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 151.37s
+2026-11-25 20:06:40,899 [INFO] 
+[13/50] dep_013 (dependency / medium)
+2026-11-25 20:06:40,899 [INFO]   Excluded: dep_013 — cryptography==41.0.0 installs from a prebuilt wheel; the gcc build failure of the log does not occur
+2026-11-25 20:06:40,899 [INFO] 
+[14/50] dep_014 (dependency / medium)
+🌿 Branch created: fix/ai-precheck-dep_014-200643 @ d305bb52 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of d305bb52 on branch 'fix/ai-precheck-dep_014-200643'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45681923355 in_progress... [15s/300s]
+   ⏳ CI run 45681923355 in_progress... [30s/300s]
+    CI run 45681923355 completed: failure
+2026-11-25 20:07:37,259 [INFO]   pre-check: CI RED on d305bb52 (run 45681923355) files=['requirements.txt']
+2026-11-25 20:07:37,443 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs because a new package dependency 'newpackage==2.0.0' requires Python 3.10 or higher, but the CI environment is running Python 3.9.18. This is a classic dependency version incompatibility issue.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:07:38,589 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- newpackage==2.0.0
++ newpackage==1.0.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-940a978-t1-200739 @ 54c5bba1 (1 file change(s) on d305bb52)
+⏳ Waiting for the CI run of 54c5bba1 on branch 'fix/ai-dependency-940a978-t1-200739'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45682080884 in_progress... [15s/300s]
+   ⏳ CI run 45682080884 in_progress... [30s/300s]
+    CI run 45682080884 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 20:08:33,081 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+(no changes detected)
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-940a978-t2-200833 @ 5e49ff31 (1 file change(s) on d305bb52)
+⏳ Waiting for the CI run of 5e49ff31 on branch 'fix/ai-dependency-940a978-t2-200833'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45682237262 in_progress... [15s/300s]
+   ⏳ CI run 45682237262 in_progress... [30s/300s]
+    CI run 45682237262 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 20:09:27,641 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+(no changes detected)
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-940a978-t3-200928 @ e5505c82 (1 file change(s) on d305bb52)
+⏳ Waiting for the CI run of e5505c82 on branch 'fix/ai-dependency-940a978-t3-200928'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45682392528 in_progress... [15s/300s]
+    CI run 45682392528 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 20:10:06,822 [INFO]   ❌ escalated | router: dependency (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 149.56s
+2026-11-25 20:10:10,560 [INFO] 
+[15/50] dep_015 (dependency / medium)
+🌿 Branch created: fix/ai-precheck-dep_015-201012 @ bb270076 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of bb270076 on branch 'fix/ai-precheck-dep_015-201012'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45682519861 in_progress... [15s/300s]
+    CI run 45682519861 completed: failure
+2026-11-25 20:10:51,246 [INFO]   pre-check: CI RED on bb270076 (run 45682519861) files=['requirements.txt']
+2026-11-25 20:10:51,397 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error shows pip cannot find the 'broken-lib==0.0.1' package version, indicating a dependency resolution issue. The commit directly added this problematic dependency to requirements.txt.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:10:52,320 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+- broken-lib==0.0.1
++ broken-lib==0.0.2
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-9c1cc23-t1-201053 @ 20e6acc2 (1 file change(s) on bb270076)
+⏳ Waiting for the CI run of 20e6acc2 on branch 'fix/ai-dependency-9c1cc23-t1-201053'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45682635305 in_progress... [15s/300s]
+    CI run 45682635305 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 20:11:31,994 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+(no changes detected)
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-9c1cc23-t2-201132 @ 1b972e6b (1 file change(s) on bb270076)
+⏳ Waiting for the CI run of 1b972e6b on branch 'fix/ai-dependency-9c1cc23-t2-201132'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45682746805 queued... [15s/300s]
+   ⏳ CI run 45682746805 in_progress... [30s/300s]
+    CI run 45682746805 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 20:12:26,602 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+(no changes detected)
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-9c1cc23-t3-201227 @ 02f1268e (1 file change(s) on bb270076)
+⏳ Waiting for the CI run of 02f1268e on branch 'fix/ai-dependency-9c1cc23-t3-201227'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45682901534 in_progress... [15s/300s]
+    CI run 45682901534 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 20:13:05,864 [INFO]   ❌ escalated | router: dependency (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 134.62s
+2026-11-25 20:13:09,564 [INFO] 
+[16/50] dep_016 (dependency / hard)
+2026-11-25 20:13:09,564 [INFO]   Excluded: dep_016 — conflict among the injected pins only, with no pre-existing pin; pip resolves it and the CI is green (verified 20 Nov)
+2026-11-25 20:13:09,564 [INFO] 
+[17/50] dep_017 (dependency / hard)
+2026-11-25 20:13:09,564 [INFO]   Excluded: dep_017 — with the context pin pandas==1.5.3, numpy==2.0.0 still installs: pandas 1.5.3 declares no numpy<1.25 bound on PyPI
+2026-11-25 20:13:09,564 [INFO] 
+[18/50] dep_018 (dependency / hard)
+🌿 Branch created: fix/ai-precheck-dep_018-201311 @ 3bfc33a8 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 3bfc33a8 on branch 'fix/ai-precheck-dep_018-201311'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45683028103 queued... [15s/300s]
+    CI run 45683028103 completed: failure
+2026-11-25 20:13:50,358 [INFO]   pre-check: CI RED on 3bfc33a8 (run 45683028103) files=['requirements.txt']
+2026-11-25 20:13:50,538 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs due to conflicting protobuf version requirements between grpcio and tensorflow packages. The legacy dependency resolver cannot resolve the conflict, causing the installation to fail.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:13:51,451 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- protobuf==3.20.3
++ protobuf==4.21.6
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-08a8548-t1-201352 @ f7eafe24 (1 file change(s) on 3bfc33a8)
+⏳ Waiting for the CI run of f7eafe24 on branch 'fix/ai-dependency-08a8548-t1-201352'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45683135009 in_progress... [15s/300s]
+   ⏳ CI run 45683135009 in_progress... [30s/300s]
+    CI run 45683135009 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7844
+2026-11-25 20:14:49,242 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 58.88s
+2026-11-25 20:14:52,523 [INFO] 
+[19/50] dep_019 (dependency / hard)
+2026-11-25 20:14:52,524 [INFO]   Excluded: dep_019 — the context pin cymem==2.0.1 does not exist on PyPI, so the context alone breaks the install
+2026-11-25 20:14:52,524 [INFO] 
+[20/50] dep_020 (dependency / hard)
+🌿 Branch created: fix/ai-precheck-dep_020-201454 @ e3a5a120 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of e3a5a120 on branch 'fix/ai-precheck-dep_020-201454'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45683310541 in_progress... [15s/300s]
+    CI run 45683310541 completed: failure
+2026-11-25 20:15:33,544 [INFO]   pre-check: CI RED on e3a5a120 (run 45683310541) files=['requirements.txt']
+2026-11-25 20:15:33,745 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs due to version conflicts between celery 5.3.0 and kombu 5.2.0 dependencies. Celery 5.3.0 requires kombu>=5.3.0,<6.0, but kombu 5.2.0 is specified in requirements.txt, creating an incompatible package version conflict.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:15:35,095 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- kombu==5.2.0
++ kombu==5.3.0
++ vine==5.0.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-8f86359-t1-201536 @ 5b0f212c (1 file change(s) on e3a5a120)
+⏳ Waiting for the CI run of 5b0f212c on branch 'fix/ai-dependency-8f86359-t1-201536'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45683430340 in_progress... [15s/300s]
+    CI run 45683430340 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7845
+2026-11-25 20:16:17,133 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 43.59s
+2026-11-25 20:16:20,424 [INFO] 
+[21/50] dep_021 (dependency / easy)
+2026-11-25 20:16:20,424 [INFO]   Excluded: dep_021 — pip installs a yanked version when it is pinned exactly; the 'yanked' failure of the log does not occur
+2026-11-25 20:16:20,424 [INFO] 
+[22/50] dep_022 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_022-201622 @ 8e79f865 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 8e79f865 on branch 'fix/ai-precheck-dep_022-201622'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45683553722 in_progress... [15s/300s]
+    CI run 45683553722 completed: failure
+2026-11-25 20:17:01,179 [INFO]   pre-check: CI RED on 8e79f865 (run 45683553722) files=['requirements.txt']
+2026-11-25 20:17:01,363 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error is a clear package not found issue where 'flaks' is misspelled instead of 'flask'. The pip install fails because the incorrect package name 'flaks' doesn't exist. This is a dependency resolution error caused by a typo in requirements.txt.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:17:02,523 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- flaks==3.0.3
++ flask==3.0.3
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-992ef90-t1-201703 @ b99ad5ca (1 file change(s) on 8e79f865)
+⏳ Waiting for the CI run of b99ad5ca on branch 'fix/ai-dependency-992ef90-t1-201703'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45683668728 queued... [15s/300s]
+    CI run 45683668728 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7846
+2026-11-25 20:17:44,655 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 43.48s
+2026-11-25 20:17:48,075 [INFO] 
+[23/50] dep_023 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_023-201750 @ b563cbdf (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of b563cbdf on branch 'fix/ai-precheck-dep_023-201750'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45683795653 queued... [15s/300s]
+    CI run 45683795653 completed: failure
+2026-11-25 20:18:29,504 [INFO]   pre-check: CI RED on b563cbdf (run 45683795653) files=['requirements.txt']
+2026-11-25 20:18:29,656 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → CONFIG (confidence: 95%)
+   Reasoning: The error is a syntax issue in the requirements.txt file where 'pyyaml=6.0.1' uses incorrect version specification syntax. The commit diff shows the change from correct '==' to incorrect '=' operator.
+→ Routing to: config_agent
+
+⚙️  Config Agent — Attempt 1/3
+2026-11-25 20:18:30,811 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+(no changes)
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-230a7b5-t1-201837 @ 3b5f0db8 (1 file change(s) on b563cbdf)
+⏳ Waiting for the CI run of 3b5f0db8 on branch 'fix/ai-config-230a7b5-t1-201837'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45683929681 in_progress... [15s/300s]
+   ⏳ CI run 45683929681 in_progress... [30s/300s]
+    CI run 45683929681 completed: failure
+❌ CI still red
+🔄 CI still red → retry on config_agent
+
+⚙️  Config Agent — Attempt 2/3
+2026-11-25 20:19:31,318 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+(no changes)
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-230a7b5-t2-201937 @ 392c4799 (1 file change(s) on b563cbdf)
+⏳ Waiting for the CI run of 392c4799 on branch 'fix/ai-config-230a7b5-t2-201937'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45684095521 in_progress... [15s/300s]
+   ⏳ CI run 45684095521 in_progress... [30s/300s]
+    CI run 45684095521 completed: failure
+❌ CI still red
+🔄 CI still red → retry on config_agent
+
+⚙️  Config Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 20:20:32,101 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+(no changes)
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-230a7b5-t3-202038 @ a8f5b728 (1 file change(s) on b563cbdf)
+⏳ Waiting for the CI run of a8f5b728 on branch 'fix/ai-config-230a7b5-t3-202038'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45684270642 in_progress... [15s/300s]
+    CI run 45684270642 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 20:21:16,861 [INFO]   ❌ escalated | router: config (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 167.36s
+2026-11-25 20:21:20,607 [INFO] 
+[24/50] dep_024 (dependency / easy)
+2026-11-25 20:21:20,607 [INFO]   Excluded: dep_024 — psycopg2==2.9.9 builds from source on the runner (libpq-dev present); CI green (verified 20 Nov)
+2026-11-25 20:21:20,607 [INFO] 
+[25/50] dep_025 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_025-202122 @ d492b24e (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of d492b24e on branch 'fix/ai-precheck-dep_025-202122'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45684392563 in_progress... [15s/300s]
+    CI run 45684392563 completed: failure
+2026-11-25 20:22:01,397 [INFO]   pre-check: CI RED on d492b24e (run 45684392563) files=['requirements.txt']
+2026-11-25 20:22:01,571 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error is a double requirement conflict where click==8.0.0 is specified alongside click==8.1.7 in requirements.txt. This is a dependency resolution issue caused by conflicting version specifications.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:22:02,570 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+- click==8.0.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-2346926-t1-202203 @ 982c0fd1 (1 file change(s) on d492b24e)
+⏳ Waiting for the CI run of 982c0fd1 on branch 'fix/ai-dependency-2346926-t1-202203'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45684508951 in_progress... [15s/300s]
+    CI run 45684508951 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7847
+2026-11-25 20:22:44,816 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 43.42s
+2026-11-25 20:22:48,073 [INFO] 
+[26/50] dep_026 (dependency / easy)
+2026-11-25 20:22:48,074 [INFO]   Excluded: dep_026 — depends on requirements.in / pip-compile and on tests importing httpx; absent
+2026-11-25 20:22:48,074 [INFO] 
+[27/50] dep_027 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_027-202251 @ ede426db (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of ede426db on branch 'fix/ai-precheck-dep_027-202251'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45684638937 queued... [15s/300s]
+   ⏳ CI run 45684638937 in_progress... [30s/300s]
+    CI run 45684638937 completed: failure
+2026-11-25 20:23:45,174 [INFO]   pre-check: CI RED on ede426db (run 45684638937) files=['requirements.txt']
+2026-11-25 20:23:45,339 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → CONFIG (confidence: 95%)
+   Reasoning: The error is caused by invalid syntax in requirements.txt file. The dependency specification uses JSON-style syntax instead of pip-compatible format, making it impossible for pip to parse the requirements.
+→ Routing to: config_agent
+
+⚙️  Config Agent — Attempt 1/3
+2026-11-25 20:23:46,508 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+(no changes)
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-3c25a61-t1-202352 @ dbb6bfaf (1 file change(s) on ede426db)
+⏳ Waiting for the CI run of dbb6bfaf on branch 'fix/ai-config-3c25a61-t1-202352'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45684812416 in_progress... [15s/300s]
+    CI run 45684812416 completed: failure
+❌ CI still red
+🔄 CI still red → retry on config_agent
+
+⚙️  Config Agent — Attempt 2/3
+2026-11-25 20:24:31,340 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+(no changes)
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-3c25a61-t2-202437 @ ddbb2c53 (1 file change(s) on ede426db)
+⏳ Waiting for the CI run of ddbb2c53 on branch 'fix/ai-config-3c25a61-t2-202437'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45684928974 in_progress... [15s/300s]
+    CI run 45684928974 completed: failure
+❌ CI still red
+🔄 CI still red → retry on config_agent
+
+⚙️  Config Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 20:25:16,037 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+(no changes)
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-3c25a61-t3-202522 @ fcd7a349 (1 file change(s) on ede426db)
+⏳ Waiting for the CI run of fcd7a349 on branch 'fix/ai-config-3c25a61-t3-202522'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45685060211 in_progress... [15s/300s]
+    CI run 45685060211 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 20:26:00,686 [INFO]   ❌ escalated | router: config (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 135.51s
+2026-11-25 20:26:04,561 [INFO] 
+[28/50] dep_028 (dependency / easy)
+2026-11-25 20:26:04,561 [INFO]   Excluded: dep_028 — depends on tests/test_server.py and app.server importing uvicorn; absent
+2026-11-25 20:26:04,561 [INFO] 
+[29/50] dep_029 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_029-202606 @ 55bd6f75 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 55bd6f75 on branch 'fix/ai-precheck-dep_029-202606'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45685179566 in_progress... [15s/300s]
+    CI run 45685179566 completed: failure
+2026-11-25 20:26:45,077 [INFO]   pre-check: CI RED on 55bd6f75 (run 45685179566) files=['requirements.txt']
+2026-11-25 20:26:45,279 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs because pywin32==306 cannot be installed on Linux platform as it only provides Windows distributions. This is a dependency resolution issue caused by platform-incompatible package version specification.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:26:46,240 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+- pywin32==306
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-36c8a7c-t1-202646 @ 293b7684 (1 file change(s) on 55bd6f75)
+⏳ Waiting for the CI run of 293b7684 on branch 'fix/ai-dependency-36c8a7c-t1-202646'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45685288080 in_progress... [15s/300s]
+   ⏳ CI run 45685288080 in_progress... [30s/300s]
+    CI run 45685288080 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7848
+2026-11-25 20:27:42,956 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 57.88s
+2026-11-25 20:27:46,195 [INFO] 
+[30/50] dep_030 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_030-202748 @ 296bfa0f (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 296bfa0f on branch 'fix/ai-precheck-dep_030-202748'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45685456338 in_progress... [15s/300s]
+   ⏳ CI run 45685456338 in_progress... [30s/300s]
+    CI run 45685456338 completed: failure
+2026-11-25 20:28:42,635 [INFO]   pre-check: CI RED on 296bfa0f (run 45685456338) files=['requirements.txt']
+2026-11-25 20:28:42,817 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The pipeline failed to install the pillow dependency due to specifying a non-existent version (10.99.0) in requirements.txt. This is a clear dependency resolution error where the requested package version doesn't exist on PyPI.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:28:43,866 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- pillow==10.99.0
++ pillow==10.0.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-ace29ac-t1-202845 @ 161bdf73 (1 file change(s) on 296bfa0f)
+⏳ Waiting for the CI run of 161bdf73 on branch 'fix/ai-dependency-ace29ac-t1-202845'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45685608497 in_progress... [15s/300s]
+   ⏳ CI run 45685608497 in_progress... [30s/300s]
+    CI run 45685608497 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7849
+2026-11-25 20:29:42,112 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 59.48s
+2026-11-25 20:29:45,345 [INFO] 
+[31/50] dep_031 (dependency / easy)
+🌿 Branch created: fix/ai-precheck-dep_031-202947 @ 39397f0f (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 39397f0f on branch 'fix/ai-precheck-dep_031-202947'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45685771133 in_progress... [15s/300s]
+    CI run 45685771133 completed: failure
+2026-11-25 20:30:26,245 [INFO]   pre-check: CI RED on 39397f0f (run 45685771133) files=['requirements.txt']
+2026-11-25 20:30:26,421 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → CONFIG (confidence: 95%)
+   Reasoning: The error is caused by an invalid requirement syntax in requirements.txt. The marker 'python_version' is incomplete and missing the comparison operator. This is a configuration issue in the dependency specification.
+→ Routing to: config_agent
+
+⚙️  Config Agent — Attempt 1/3
+2026-11-25 20:30:27,524 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+(no changes)
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-7214122-t1-203033 @ 25da7ce0 (1 file change(s) on 39397f0f)
+⏳ Waiting for the CI run of 25da7ce0 on branch 'fix/ai-config-7214122-t1-203033'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45685903628 in_progress... [15s/300s]
+    CI run 45685903628 completed: failure
+❌ CI still red
+🔄 CI still red → retry on config_agent
+
+⚙️  Config Agent — Attempt 2/3
+2026-11-25 20:31:12,215 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+(no changes)
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-7214122-t2-203118 @ f4f3be29 (1 file change(s) on 39397f0f)
+⏳ Waiting for the CI run of f4f3be29 on branch 'fix/ai-config-7214122-t2-203118'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45686031118 in_progress... [15s/300s]
+    CI run 45686031118 completed: failure
+❌ CI still red
+🔄 CI still red → retry on config_agent
+
+⚙️  Config Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 20:31:57,339 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+(no changes)
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-7214122-t3-203203 @ b5cc55ff (1 file change(s) on 39397f0f)
+⏳ Waiting for the CI run of b5cc55ff on branch 'fix/ai-config-7214122-t3-203203'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45686156299 in_progress... [15s/300s]
+    CI run 45686156299 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 20:32:41,775 [INFO]   ❌ escalated | router: config (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 135.53s
+2026-11-25 20:32:46,128 [INFO] 
+[32/50] dep_032 (dependency / medium)
+🌿 Branch created: fix/ai-precheck-dep_032-203249 @ b68f15e2 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of b68f15e2 on branch 'fix/ai-precheck-dep_032-203249'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45686286688 in_progress... [15s/300s]
+    CI run 45686286688 completed: failure
+2026-11-25 20:33:28,020 [INFO]   pre-check: CI RED on b68f15e2 (run 45686286688) files=['requirements.txt']
+2026-11-25 20:33:28,230 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs due to conflicting package dependencies between sphinx 7.2.6 and docutils 0.22. The sphinx package requires docutils<0.21, but version 0.22 is explicitly requested, causing a dependency resolution failure.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:33:29,406 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- docutils==0.22
++ docutils==0.20.1
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-be8ac9b-t1-203330 @ d4c5c10a (1 file change(s) on b68f15e2)
+⏳ Waiting for the CI run of d4c5c10a on branch 'fix/ai-dependency-be8ac9b-t1-203330'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45686398996 in_progress... [15s/300s]
+    CI run 45686398996 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7850
+2026-11-25 20:34:11,829 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 43.81s
+2026-11-25 20:34:15,059 [INFO] 
+[33/50] dep_033 (dependency / medium)
+🌿 Branch created: fix/ai-precheck-dep_033-203417 @ fab8ded3 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of fab8ded3 on branch 'fix/ai-precheck-dep_033-203417'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45686529185 in_progress... [15s/300s]
+    CI run 45686529185 completed: failure
+2026-11-25 20:34:56,086 [INFO]   pre-check: CI RED on fab8ded3 (run 45686529185) files=['requirements.txt']
+2026-11-25 20:34:56,291 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs because the specified PyTorch version 'torch==2.1.0+cu121' is not available in the default PyPI index. The CI runner lacks GPU support, making the CUDA-specific build incompatible. This is a dependency resolution failure due to an incorrect version specifier.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:34:57,480 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- torch==2.1.0+cu121
++ torch==2.1.0+cpu
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-731a603-t1-203458 @ 3c44dd9b (1 file change(s) on fab8ded3)
+⏳ Waiting for the CI run of 3c44dd9b on branch 'fix/ai-dependency-731a603-t1-203458'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45686644308 in_progress... [15s/300s]
+   ⏳ CI run 45686644308 in_progress... [30s/300s]
+    CI run 45686644308 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 20:35:52,971 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
++ torchvision==0.16.0+cpu
++ torchaudio==2.1.0+cpu
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-731a603-t2-203554 @ e324d19e (1 file change(s) on fab8ded3)
+⏳ Waiting for the CI run of e324d19e on branch 'fix/ai-dependency-731a603-t2-203554'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45686794346 in_progress... [15s/300s]
+    CI run 45686794346 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 20:36:32,559 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+(no changes detected)
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-731a603-t3-203633 @ a49a7c7a (1 file change(s) on fab8ded3)
+⏳ Waiting for the CI run of a49a7c7a on branch 'fix/ai-dependency-731a603-t3-203633'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45686901680 in_progress... [15s/300s]
+    CI run 45686901680 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 20:37:11,774 [INFO]   ❌ escalated | router: dependency (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 135.69s
+2026-11-25 20:37:15,479 [INFO] 
+[34/50] dep_034 (dependency / medium)
+2026-11-25 20:37:15,480 [INFO]   Excluded: dep_034 — depends on `pip install --require-hashes` and hashed pins; absent
+2026-11-25 20:37:15,480 [INFO] 
+[35/50] dep_035 (dependency / medium)
+2026-11-25 20:37:15,480 [INFO]   Excluded: dep_035 — depends on a conda environment.yml; pip ignores the injected line
+2026-11-25 20:37:15,480 [INFO] 
+[36/50] dep_036 (dependency / medium)
+🌿 Branch created: fix/ai-precheck-dep_036-203717 @ 3c0b34fd (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 3c0b34fd on branch 'fix/ai-precheck-dep_036-203717'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45687023510 in_progress... [15s/300s]
+    CI run 45687023510 completed: failure
+2026-11-25 20:37:56,491 [INFO]   pre-check: CI RED on 3c0b34fd (run 45687023510) files=['requirements.txt']
+2026-11-25 20:37:56,667 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs during dependency installation where a package fails due to hash mismatch. The warning indicates the downloaded package doesn't match expected internal package hash, causing the installation to fail.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:37:57,648 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ requests==2.31.0
++ urllib3==2.0.4
++ certifi==2023.7.22
++ charset-normalizer==3.3.2
++ idna==3.4
++ packaging==23.2
++ pluggy==1.3.0
++ iniconfig==2.0.0
++ tomli==2.0.1
++ attrs==23.1.0
++ coverage==7.3.2
++ importlib-metadata==6.8.0
++ zipp==3.17.0
++ typing-extensions==4.8.0
++ exceptiongroup==1.1.3
++ toml==0.10.2
++ setuptools==68.2.2
++ wheel==0.41.2
++ build==0.10.0
++ twine==4.0.2
++ pip==23.3.1
++ pkg_resources==0.0.0
++ configparser==5.3.0
++ contextlib2==21.6.0
++ pathlib2==2.3.7.post1
++ future==0.18.3
++ six==1.16.0
++ python-dateutil==2.8.2
++ pytz==2023.3
++ tzlocal==5.0.1
++ PyYAML==6.0.1
++ jinja2==3.1.2
++ markupsafe==2.1.3
++ click==8.1.7
++ flask==2.3.3
++ werkzeug==2.3.7
++ itsdangerous==2.1.2
++ wsgiref==0.1.2
++ sqlalchemy==2.0.19
++ alembic==1.12.1
++ psycopg2-binary==2.9.7
++ mysql-connector-python==8.1.0
++ pymysql==1.1.0
++ redis==5.0.1
++ celery==5.3.4
++ rq==1.12.0
++ gunicorn==21.2.0
++ gevent==23.9.1
++ eventlet==0.33.3
++ flask-sqlalchemy==3.0.5
++ flask-migrate==4.0.5
++ flask-login==0.6.3
++ flask-wtf==1.1.1
++ wtforms==3.0.1
++ flask-session==0.5.0
++ flask-cors==4.0.0
++ flask-jwt-extended==4.5.2
++ flask-bcrypt==1.0.1
++ flask-limiter==3.5.0
++ flask-restful==0.3.10
++ flask-api==3.0.post1
++ flask-debugtoolbar==0.13.1
++ flask-testing==0.8.0
++ flask-mongoengine==1.0.0
++ flask-pymongo==2.3.0
++ flask-socketio==5.3.6
++ flask-caching==2.1.0
++ flask-compress==1.14
++ flask-talisman==0.8.1
++ flask-seasurf==0.5.0
++ flask-security-too==0.20.1
++ flask-oidc==1.5.0
++ flask-oauthlib==0.9.6
++ flask-oauth2-provider==2.0.0
++ flask-jwt-simple==0.0.3
++ flask-restx==1.1.0
++ flask-apispec==0.11.0
++ flask-marshmallow==0.15.0
++ marshmallow==3.20.1
++ marshmallow-sqlalchemy==0.29.0
++ marshmallow-enum==1.5.1
++ marshmallow-jsonschema==0.14.0
++ marshmallow-oneofschema==3.0.0
++ marshmallow-validators==0.6.0
++ flask-babel==3.1.0
++ babel==2.12.1
++ flask-i18n==0.1.1
++ flask-limiter==3.5.0
++ flask-security==3.0.0
++ flask-admin==1.6.0
++ flask-whooshee==0.8.0
++ flask-principal==0.4.0
++ flask-openid==1.2.5
++ flask-oauth==0.12
++ flask-sqlalchemy-views==0.3.0
++ flask-graphql==3.0.0
++ flask-graphql-relay==0.1.0
++ flask-graphql-cursor==0.1.0
++ flask-graphql-schema==0.1.0
++ flask-graphql-server==0.1.0
++ flask-graphql-client==0.1.0
++ flask-graphql-django==0.1.0
++ flask-graphql-flask==0.1.0
++ flask-graphql-sqlalchemy==0.1.0
++ flask-graphql-mongoengine==0.1.0
++ flask-graphql-pymongo==0.1.0
++ flask-graphql-redis==0.1.0
++ flask-graphql-celery==0.1.0
++ flask-graphql-rq==0.1.0
++ flask-graphql-gunicorn==0.1.0
++ flask-graphql-gevent==0.1.0
++ flask-graphql-eventlet==0.1.0
++ flask-graphql-wsgi==0.1.0
++ flask-graphql-uwsgi==0.1.0
++ flask-graphql-docker==0.1.0
++ flask-graphql-kubernetes==0.1.0
++ flask-graphql-aws==0.1.0
++ flask-graphql-azure==0.1.0
++ flask-graphql-gcp==0.1.0
++ flask-graphql-openstack==0.1.0
++ flask-graphql-ibm==0.1.0
++ flask-graphql-oracle==0.1.0
++ flask-graphql-sap==0.1.0
++ flask-graphql-salesforce==0.1.0
++ flask-graphql-microsoft==0.1.0
++ flask-graphql-google==0.1.0
++ flask-graphql-facebook==0.1.0
++ flask-graphql-twitter==0.1.0
++ flask-graphql-linkedin==0.1.0
++ flask-graphql-github==0.1.0
++ flask-graphql-gitlab==0.1.0
++ flask-graphql-bitbucket==0.1.0
++ flask-graphql-slack==0.1.0
++ flask-graphql-discord==0.1.0
++ flask-graphql-microsoft-teams==0.1.0
++ flask-graphql-zoom==0.1.0
++ flask-graphql-jira==0.1.0
++ flask-graphql-confluence==0.1.0
++ flask-graphql-slackbot==0.1.0
++ flask-graphql-telegram==0.1.0
++ flask-graphql-whatsapp==0.1.0
++ flask-graphql-microsoft-teams-bot==0.1.0
++ flask-graphql-facebook-messenger==0.1.0
++ flask-graphql-twitter-api==0.1.0
++ flask-graphql-linkedin-api==0.1.0
++ flask-graphql-github-api==0.1.0
++ flask-graphql-gitlab-api==0.1.0
++ flask-graphql-bitbucket-api==0.1.0
++ flask-graphql-slack-api==0.1.0
++ flask-graphql-discord-api==0.1.0
++ flask-graphql-zoom-api==0.1.0
++ flask-graphql-jira-api==0.1.0
++ flask-graphql-confluence-api==0.1.0
++ flask-graphql-slackbot-api==0.1.0
++ flask-graphql-telegram-api==0.1.0
++ flask-graphql-whatsapp-api==0.1.0
++ flask-graphql-microsoft-teams-bot-api==0.1.0
++ flask-graphql-facebook-messenger-api==0.1.0
++ flask-graphql-twitter-api-v2==0.1.0
++ flask-graphql-linkedin-api-v2==0.1.0
++ flask-graphql-github-api-v3==0.1.0
++ flask-graphql-gitlab-api-v4==0.1.0
++ flask-graphql-bitbucket-api-v2==0.1.0
++ flask-graphql-slack-api-v1==0.1.0
++ flask-graphql-discord-api-v1==0.1.0
++ flask-graphql-zoom-api-v2==0.1.0
++ flask-graphql-jira-api-v3==0.1.0
++ flask-graphql-confluence-api-v1==0.1.0
++ flask-graphql-slackbot-api-v1==0.1.0
++ flask-graphql-telegram-api-v1==0.1.0
++ flask-graphql-whatsapp-api-v1==0.1.0
++ flask-graphql-microsoft-teams-bot-api-v1==0.1.0
++ flask-graphql-facebook-messenger-api-v1==0.1.0
++ flask-graphql-twitter-api-v2-extended==0.1.0
++ flask-graphql-linkedin-api-v2-extended==0.1.0
++ flask-graphql-github-api-v3-extended==0.1.0
++ flask-graphql-gitlab-api-v4-extended==0.1.0
++ flask-graphql-bitbucket-api-v2-extended==0.1.0
++ flask-graphql-slack-api-v1-extended==0.1.0
++ flask-graphql-discord-api-v1-extended==0.1.0
++ flask-graphql-zoom-api-v2-extended==0.1.0
++ flask-graphql-jira-api-v3-extended==0.1.0
++ flask-graphql-confluence-api-v1-extended==0.1.0
++ flask-graphql-slackbot-api-v1-extended==0.1.0
++ flask-graphql-telegram-api-v1-extended==0.1.0
++ flask-graphql-whatsapp-api-v1-extended==0.1.0
++ flask-graphql-microsoft-teams-bot-api-v1-extended==0.1.0
++ flask-graphql-facebook-messenger-api-v1-extended==0.1.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-d43bb0a-t1-203827 @ 37300b3c (1 file change(s) on 3c0b34fd)
+⏳ Waiting for the CI run of 37300b3c on branch 'fix/ai-dependency-d43bb0a-t1-203827'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45687208303 in_progress... [15s/300s]
+   ⏳ CI run 45687208303 in_progress... [30s/300s]
+    CI run 45687208303 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 20:39:22,340 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+- acme-internal-utils==0.1.0
+- flask-graphql-ibm==0.1.0
+- flask-graphql-oracle==0.1.0
+- flask-graphql-sap==0.1.0
+- flask-graphql-salesforce==0.1.0
+- flask-graphql-microsoft==0.1.0
+- flask-graphql-google==0.1.0
+- flask-graphql-facebook==0.1.0
+- flask-graphql-twitter==0.1.0
+- flask-graphql-linkedin==0.1.0
+- flask-graphql-github==0.1.0
+- flask-graphql-gitlab==0.1.0
+- flask-graphql-bitbucket==0.1.0
+- flask-graphql-slack==0.1.0
+- flask-graphql-discord==0.1.0
+- flask-graphql-microsoft-teams==0.1.0
+- flask-graphql-zoom==0.1.0
+- flask-graphql-jira==0.1.0
+- flask-graphql-confluence==0.1.0
+- flask-graphql-slackbot==0.1.0
+- flask-graphql-telegram==0.1.0
+- flask-graphql-whatsapp==0.1.0
+- flask-graphql-microsoft-teams-bot==0.1.0
+- flask-graphql-facebook-messenger==0.1.0
+- flask-graphql-twitter-api==0.1.0
+- flask-graphql-linkedin-api==0.1.0
+- flask-graphql-github-api==0.1.0
+- flask-graphql-gitlab-api==0.1.0
+- flask-graphql-bitbucket-api==0.1.0
+- flask-graphql-slack-api==0.1.0
+- flask-graphql-discord-api==0.1.0
+- flask-graphql-zoom-api==0.1.0
+- flask-graphql-jira-api==0.1.0
+- flask-graphql-confluence-api==0.1.0
+- flask-graphql-slackbot-api==0.1.0
+- flask-graphql-telegram-api==0.1.0
+- flask-graphql-whatsapp-api==0.1.0
+- flask-graphql-microsoft-teams-bot-api==0.1.0
+- flask-graphql-facebook-messenger-api==0.1.0
+- flask-graphql-twitter-api-v2==0.1.0
+- flask-graphql-linkedin-api-v2==0.1.0
+- flask-graphql-github-api-v3==0.1.0
+- flask-graphql-gitlab-api-v4==0.1.0
+- flask-graphql-bitbucket-api-v2==0.1.0
+- flask-graphql-slack-api-v1==0.1.0
+- flask-graphql-discord-api-v1==0.1.0
+- flask-graphql-zoom-api-v2==0.1.0
+- flask-graphql-jira-api-v3==0.1.0
+- flask-graphql-confluence-api-v1==0.1.0
+- flask-graphql-slackbot-api-v1==0.1.0
+- flask-graphql-telegram-api-v1==0.1.0
+- flask-graphql-whatsapp-api-v1==0.1.0
+- flask-graphql-microsoft-teams-bot-api-v1==0.1.0
+- flask-graphql-facebook-messenger-api-v1==0.1.0
+- flask-graphql-twitter-api-v2-extended==0.1.0
+- flask-graphql-linkedin-api-v2-extended==0.1.0
+- flask-graphql-github-api-v3-extended==0.1.0
+- flask-graphql-gitlab-api-v4-extended==0.1.0
+- flask-graphql-bitbucket-api-v2-extended==0.1.0
+- flask-graphql-slack-api-v1-extended==0.1.0
+- flask-graphql-discord-api-v1-extended==0.1.0
+- flask-graphql-zoom-api-v2-extended==0.1.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-d43bb0a-t2-203941 @ 6d8e958d (1 file change(s) on 3c0b34fd)
+⏳ Waiting for the CI run of 6d8e958d on branch 'fix/ai-dependency-d43bb0a-t2-203941'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45687407151 in_progress... [15s/300s]
+   ⏳ CI run 45687407151 in_progress... [30s/300s]
+    CI run 45687407151 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 20:40:36,308 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ acme-internal-utils==0.1.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-d43bb0a-t3-204055 @ 8c711bdc (1 file change(s) on 3c0b34fd)
+⏳ Waiting for the CI run of 8c711bdc on branch 'fix/ai-dependency-d43bb0a-t3-204055'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45687608113 in_progress... [15s/300s]
+    CI run 45687608113 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 20:41:33,692 [INFO]   ❌ escalated | router: dependency (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 217.2s
+2026-11-25 20:41:37,499 [INFO] 
+[37/50] dep_037 (dependency / medium)
+🌿 Branch created: fix/ai-precheck-dep_037-204140 @ f0bacc5a (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of f0bacc5a on branch 'fix/ai-precheck-dep_037-204140'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45687730200 in_progress... [15s/300s]
+    CI run 45687730200 completed: failure
+2026-11-25 20:42:18,409 [INFO]   pre-check: CI RED on f0bacc5a (run 45687730200) files=['requirements.txt']
+2026-11-25 20:42:18,660 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs during package installation due to a setuptools version incompatibility. The commit changed setuptools requirement from >=65 to >=68, causing a backend import failure. This is a dependency resolution issue.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:42:19,631 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+- requires = ["setuptools>=68"]
++ setuptools==68.0.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-f7502af-t1-204220 @ 6529e97a (1 file change(s) on f0bacc5a)
+⏳ Waiting for the CI run of 6529e97a on branch 'fix/ai-dependency-f7502af-t1-204220'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45687839619 in_progress... [15s/300s]
+    CI run 45687839619 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7851
+2026-11-25 20:43:01,427 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 43.02s
+2026-11-25 20:43:04,703 [INFO] 
+[38/50] dep_038 (dependency / medium)
+🌿 Branch created: fix/ai-precheck-dep_038-204307 @ 7f44d17c (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 7f44d17c on branch 'fix/ai-precheck-dep_038-204307'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45687968166 in_progress... [15s/300s]
+    CI run 45687968166 completed: failure
+2026-11-25 20:43:45,723 [INFO]   pre-check: CI RED on 7f44d17c (run 45687968166) files=['requirements.txt']
+2026-11-25 20:43:45,900 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs during pip install when trying to clone a private GitHub repository. The 'fatal: could not read Username' error indicates authentication failure for the git URL, which is a dependency resolution issue.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:43:46,852 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+- git+https://github.com/myorg/internal-tool.git@v1.2.0
++ git+https://github.com/myorg/internal-tool.git@v1.2.0#egg=internal-tool-v1.2.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-543f5a9-t1-204352 @ bd186e1a (1 file change(s) on 7f44d17c)
+⏳ Waiting for the CI run of bd186e1a on branch 'fix/ai-dependency-543f5a9-t1-204352'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45688090736 queued... [15s/300s]
+    CI run 45688090736 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 20:44:31,740 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ gitpython==3.1.32
++ requests==2.31.0
++ urllib3==2.0.4
++ colorama==0.4.6
++ packaging==23.2
++ setuptools==68.2.2
++ wheel==0.41.2
++ pip==23.3.1
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-543f5a9-t2-204433 @ 81b48029 (1 file change(s) on 7f44d17c)
+⏳ Waiting for the CI run of 81b48029 on branch 'fix/ai-dependency-543f5a9-t2-204433'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45688201650 in_progress... [15s/300s]
+    CI run 45688201650 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 20:45:12,115 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+(no changes detected)
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-543f5a9-t3-204515 @ 7ef40540 (1 file change(s) on 7f44d17c)
+⏳ Waiting for the CI run of 7ef40540 on branch 'fix/ai-dependency-543f5a9-t3-204515'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45688319086 in_progress... [15s/300s]
+    CI run 45688319086 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 20:45:53,634 [INFO]   ❌ escalated | router: dependency (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 127.91s
+2026-11-25 20:45:57,240 [INFO] 
+[39/50] dep_039 (dependency / medium)
+2026-11-25 20:45:57,241 [INFO]   Excluded: dep_039 — depends on requirements-dev.txt (`pip install -r requirements.txt -r requirements-dev.txt`); absent
+2026-11-25 20:45:57,241 [INFO] 
+[40/50] dep_040 (dependency / medium)
+🌿 Branch created: fix/ai-precheck-dep_040-204559 @ 6f7331ac (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 6f7331ac on branch 'fix/ai-precheck-dep_040-204559'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45688440860 in_progress... [15s/300s]
+    CI run 45688440860 completed: failure
+2026-11-25 20:46:37,833 [INFO]   pre-check: CI RED on 6f7331ac (run 45688440860) files=['requirements.txt']
+2026-11-25 20:46:38,028 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs due to a version conflict in the click dependency specification. The requirements.txt file specifies 'click<8.0,>=9.0' which is impossible since 9.0 is greater than 8.0, making the requirement unsatisfiable.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:46:39,158 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+- click<8.0,>=9.0
++ click==8.1.7
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-496fad6-t1-204640 @ f281e22e (1 file change(s) on 6f7331ac)
+⏳ Waiting for the CI run of f281e22e on branch 'fix/ai-dependency-496fad6-t1-204640'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45688546957 in_progress... [15s/300s]
+    CI run 45688546957 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7852
+2026-11-25 20:47:26,726 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 48.89s
+2026-11-25 20:47:30,158 [INFO] 
+[41/50] dep_041 (dependency / medium)
+2026-11-25 20:47:30,159 [INFO]   Excluded: dep_041 — tokenizers==0.15.0 installs from a prebuilt wheel; the missing-Rust build failure of the log does not occur
+2026-11-25 20:47:30,159 [INFO] 
+[42/50] dep_042 (dependency / hard)
+🌿 Branch created: fix/ai-precheck-dep_042-204732 @ c64d203d (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of c64d203d on branch 'fix/ai-precheck-dep_042-204732'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45688685899 in_progress... [15s/300s]
+    CI run 45688685899 completed: failure
+2026-11-25 20:48:11,129 [INFO]   pre-check: CI RED on c64d203d (run 45688685899) files=['requirements.txt']
+2026-11-25 20:48:11,301 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error is a dependency conflict where package-a and package-b require incompatible versions of shared-lib. This is a classic dependency resolution failure caused by the added packages in the commit.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:48:12,188 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
++ shared-lib==2.0.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-065c250-t1-204813 @ b4619630 (1 file change(s) on c64d203d)
+⏳ Waiting for the CI run of b4619630 on branch 'fix/ai-dependency-065c250-t1-204813'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45688798443 in_progress... [15s/300s]
+    CI run 45688798443 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 20:48:52,368 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- shared-lib==2.0.0
++ shared-lib==1.5
++ ```
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+2026-11-25 20:49:08,395 [ERROR]   💥 ERROR: Reference update failed: 422 {"message": "Reference update failed", "documentation_url": "https://docs.github.com/rest/git/refs#create-a-reference", "status": "422"}
+2026-11-25 20:49:16,469 [INFO] 
+[43/50] dep_043 (dependency / hard)
+2026-11-25 20:49:16,469 [INFO]   Excluded: dep_043 — only an import test would expose it (a different oracle); excluded by decision for a single case
+2026-11-25 20:49:16,469 [INFO] 
+[44/50] dep_044 (dependency / hard)
+🌿 Branch created: fix/ai-precheck-dep_044-204919 @ 157217ab (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 157217ab on branch 'fix/ai-precheck-dep_044-204919'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45688964182 in_progress... [15s/300s]
+    CI run 45688964182 completed: failure
+2026-11-25 20:49:58,502 [INFO]   pre-check: CI RED on 157217ab (run 45688964182) files=['requirements.txt']
+2026-11-25 20:49:58,685 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs due to a GLIBC version incompatibility when loading a native Python package. The CI job changed from ubuntu-22.04 to ubuntu-18.04, which has an older GLIBC version that doesn't meet the package's requirements.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:49:59,813 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+- runs-on: ubuntu-18.04
++ somepkg==1.2.3
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-68d1cae-t1-205000 @ ead11d97 (1 file change(s) on 157217ab)
+⏳ Waiting for the CI run of ead11d97 on branch 'fix/ai-dependency-68d1cae-t1-205000'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45689076825 queued... [15s/300s]
+    CI run 45689076825 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 20:50:39,571 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ setuptools==68.0.0
++ wheel==0.41.0
++ pip==23.3.1
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-68d1cae-t2-205040 @ 06b91b65 (1 file change(s) on 157217ab)
+⏳ Waiting for the CI run of 06b91b65 on branch 'fix/ai-dependency-68d1cae-t2-205040'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45689186903 in_progress... [15s/300s]
+    CI run 45689186903 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 20:51:19,561 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ numpy==1.24.0
++ scipy==1.10.0
++ pandas==1.5.3
++ requests==2.31.0
++ urllib3==2.0.3
++ certifi==2023.7.22
++ charset-normalizer==3.3.0
++ idna==3.4
++ packaging==23.2
++ pluggy==1.0.0
++ iniconfig==2.0.0
++ tomli==2.0.1
++ attrs==23.1.0
++ coverage==7.3.0
++ importlib-metadata==6.8.0
++ zipp==3.17.0
++ typing-extensions==4.7.1
++ exceptiongroup==1.1.2
++ toml==0.10.2
++ py==1.11.0
++ six==1.16.0
++ MarkupSafe==2.1.3
++ Jinja2==3.1.2
++ click==8.1.7
++ colorama==0.4.6
++ distlib==0.3.7
++ filelock==3.12.2
++ virtualenv==20.24.3
++ packaging==23.2
++ pyparsing==3.1.1
++ PyYAML==6.0.1
++ ruamel.yaml==0.17.32
++ ruamel.yaml.clib==0.2.7
++ jsonschema==4.18.4
++ jsonschema-specifications==2023.7.1
++ referencing==0.30.0
++ rpds-py==0.10.0
++ packaging==23.2
++ importlib-resources==5.12.0
++ jaraco.classes==3.3.0
++ jaraco.context==4.3.0
++ jaraco.functools==3.5.0
++ jaraco.text==3.7.0
++ keyring==24.2.0
++ keyrings.alt==4.2.0
++ more-itertools==9.1.0
++ ordered-set==4.1.0
++ sortedcontainers==2.4.0
++ threadpoolctl==3.2.0
++ joblib==1.3.2
++ threadpoolctl==3.2.0
++ scikit-learn==1.3.0
++ numba==0.58.1
++ llvmlite==0.40.1
++ networkx==3.1
++ matplotlib==3.7.2
++ seaborn==0.12.2
++ plotly==5.15.0
++ dash==2.13.0
++ flask==2.3.2
++ gunicorn==21.2.0
++ sqlalchemy==2.0.19
++ psycopg2-binary==2.9.7
++ pymysql==1.1.0
++ redis==4.6.0
++ celery==5.3.4
++ flower==1.2.0
++ celery==5.3.4
++ flower==1.2.0
++ openpyxl==3.1.2
++ xlsxwriter==3.1.2
++ pypdf==3.10.0
++ pdfplumber==0.10.3
++ beautifulsoup4==4.12.2
++ lxml==4.9.3
++ html5lib==1.1
++ cssselect==1.2.0
++ pyquery==1.4.3
++ selenium==4.15.0
++ webdriver-manager==4.0.1
++ pytest-html==3.2.0
++ pytest-metadata==3.0.0
++ pytest-xdist==3.3.1
++ pytest-rerunfailures==10.3
++ pytest-sugar==0.9.7
++ pytest-mock==3.11.1
++ pytest-asyncio==0.21.1
++ pytest-benchmark==4.0.0
++ pytest-lazy-fixture==0.6.3
++ pytest-random-order==1.0.4
++ pytest-timeout==2.1.0
++ pytest-xprocess==0.18.0
++ pytest-watch==4.2.0
++ pytest-icdiff==0.5
++ pytest-check==2.1.0
++ pytest-forked==1.6.0
++ pytest-repeat==0.9.1
++ pytest-shard==0.1.2
++ pytest-subtests==0.11.0
++ pytest-testmon==1.4.1
++ pytest-variables==2.0.0
++ pytest-virtualenv==1.7.0
++ pytest-warnings==0.5.0
++ pytest-xdist==3.3.1
++ pytest-html==3.2.0
++ pytest-metadata==3.0.0
++ pytest-rerunfailures==10.3
++ pytest-sugar==0.9.7
++ pytest-mock==3.11.1
++ pytest-asyncio==0.21.1
++ pytest-benchmark==4.0.0
++ pytest-lazy-fixture==0.6.3
++ pytest-random-order==1.0.4
++ pytest-timeout==2.1.0
++ pytest-xprocess==0.18.0
++ pytest-watch==4.2.0
++ pytest-icdiff==0.5
++ pytest-check==2.1.0
++ pytest-forked==1.6.0
++ pytest-repeat==0.9.1
++ pytest-shard==0.1.2
++ pytest-subtests==0.11.0
++ pytest-testmon==1.4.1
++ pytest-variables==2.0.0
++ pytest-virtualenv==1.7.0
++ pytest-warnings==0.5.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-68d1cae-t3-205135 @ 1180b8c5 (1 file change(s) on 157217ab)
+⏳ Waiting for the CI run of 1180b8c5 on branch 'fix/ai-dependency-68d1cae-t3-205135'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45689331803 in_progress... [15s/300s]
+    CI run 45689331803 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 20:52:14,445 [INFO]   ❌ escalated | router: dependency (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 135.94s
+2026-11-25 20:52:18,387 [INFO] 
+[45/50] dep_045 (dependency / hard)
+🌿 Branch created: fix/ai-precheck-dep_045-205221 @ b167c917 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of b167c917 on branch 'fix/ai-precheck-dep_045-205221'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45689451403 queued... [15s/300s]
+    CI run 45689451403 completed: failure
+2026-11-25 20:52:59,534 [INFO]   pre-check: CI RED on b167c917 (run 45689451403) files=['requirements.txt']
+2026-11-25 20:52:59,746 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → CONFIG (confidence: 95%)
+   Reasoning: The error shows pip cannot find 'constraints.txt' file which was added in the commit. This is a configuration issue with missing dependency files.
+→ Routing to: config_agent
+
+⚙️  Config Agent — Attempt 1/3
+2026-11-25 20:53:00,801 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
++           pip install -r constraints.txt
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-95fe969-t1-205306 @ 40dbcaca (1 file change(s) on b167c917)
+⏳ Waiting for the CI run of 40dbcaca on branch 'fix/ai-config-95fe969-t1-205306'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45689575261 in_progress... [15s/300s]
+    CI run 45689575261 completed: failure
+❌ CI still red
+🔄 CI still red → retry on config_agent
+
+⚙️  Config Agent — Attempt 2/3
+2026-11-25 20:53:45,800 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+-           pip install -r constraints.txt
++           if [ -f constraints.txt ]; then pip install -r constraints.txt; fi
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-95fe969-t2-205352 @ 2a7369fb (1 file change(s) on b167c917)
+⏳ Waiting for the CI run of 2a7369fb on branch 'fix/ai-config-95fe969-t2-205352'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45689690493 in_progress... [15s/300s]
+    CI run 45689690493 completed: failure
+❌ CI still red
+🔄 CI still red → retry on config_agent
+
+⚙️  Config Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 20:54:30,784 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+(no changes)
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-95fe969-t3-205436 @ 187bdcb7 (1 file change(s) on b167c917)
+⏳ Waiting for the CI run of 187bdcb7 on branch 'fix/ai-config-95fe969-t3-205436'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45689814685 in_progress... [15s/300s]
+    CI run 45689814685 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 20:55:15,291 [INFO]   ❌ escalated | router: config (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 135.76s
+2026-11-25 20:55:19,093 [INFO] 
+[46/50] dep_046 (dependency / hard)
+2026-11-25 20:55:19,094 [INFO]   Excluded: dep_046 — with the context pins django-filter==22.1 and djangorestframework==3.14.0, django==5.0 still installs: no Django<5.0 bound on PyPI
+2026-11-25 20:55:19,094 [INFO] 
+[47/50] dep_047 (dependency / hard)
+🌿 Branch created: fix/ai-precheck-dep_047-205521 @ c5139c93 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of c5139c93 on branch 'fix/ai-precheck-dep_047-205521'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45689936607 in_progress... [15s/300s]
+    CI run 45689936607 completed: failure
+2026-11-25 20:55:59,947 [INFO]   pre-check: CI RED on c5139c93 (run 45689936607) files=['requirements.txt']
+2026-11-25 20:56:00,147 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error occurs due to version conflicts between streamlit==1.28.0 and protobuf==5.28.0. Streamlit requires protobuf version <5 and >=3.20, but the specified version 5.28.0 creates a dependency conflict.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:56:01,300 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+- protobuf==5.28.0
++ protobuf>=3.20,<5
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-aea2311-t1-205602 @ 7ee8bd96 (1 file change(s) on c5139c93)
+⏳ Waiting for the CI run of 7ee8bd96 on branch 'fix/ai-dependency-aea2311-t1-205602'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45690042324 in_progress... [15s/300s]
+    CI run 45690042324 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7853
+2026-11-25 20:56:43,247 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 43.3s
+2026-11-25 20:56:46,464 [INFO] 
+[48/50] dep_048 (dependency / hard)
+🌿 Branch created: fix/ai-precheck-dep_048-205648 @ daf5699f (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of daf5699f on branch 'fix/ai-precheck-dep_048-205648'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45690167530 in_progress... [15s/300s]
+    CI run 45690167530 completed: failure
+2026-11-25 20:57:27,764 [INFO]   pre-check: CI RED on daf5699f (run 45690167530) files=['requirements.txt']
+2026-11-25 20:57:27,938 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The error is a dependency conflict where boto3==1.34.10 and botocore==1.33.0 have incompatible versions. The commit changed botocore version from 1.34.10 to 1.33.0, causing the conflict.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:57:29,147 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+- botocore==1.33.0
++ botocore==1.34.10
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-dc4d5af-t1-205730 @ ae1a0a27 (1 file change(s) on daf5699f)
+⏳ Waiting for the CI run of ae1a0a27 on branch 'fix/ai-dependency-dc4d5af-t1-205730'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45690273093 in_progress... [15s/300s]
+   ⏳ CI run 45690273093 in_progress... [30s/300s]
+    CI run 45690273093 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7854
+2026-11-25 20:58:26,930 [INFO]   ✅ fixed | router: dependency (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 59.16s
+2026-11-25 20:58:30,134 [INFO] 
+[49/50] dep_049 (dependency / hard)
+🌿 Branch created: fix/ai-precheck-dep_049-205832 @ 61ed0c35 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 61ed0c35 on branch 'fix/ai-precheck-dep_049-205832'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45690436196 in_progress... [15s/300s]
+    CI run 45690436196 completed: failure
+2026-11-25 20:59:10,600 [INFO]   pre-check: CI RED on 61ed0c35 (run 45690436196) files=['requirements.txt']
+2026-11-25 20:59:10,789 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 85%)
+   Reasoning: The log shows a version mismatch where cached dependencies don't match requirements.txt. The git diff indicates a change in cache key from requirements.txt to requirements-base.txt, suggesting dependency resolution issues due to incorrect caching strategy.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 20:59:11,777 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+- key: pip-${{ hashFiles('requirements-base.txt') }}
++ requests==2.31.0
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-ae27863-t1-205913 @ ab05031f (1 file change(s) on 61ed0c35)
+⏳ Waiting for the CI run of ab05031f on branch 'fix/ai-dependency-ae27863-t1-205913'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45690544028 in_progress... [15s/300s]
+    CI run 45690544028 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7855
+2026-11-25 20:59:54,710 [INFO]   ✅ fixed | router: dependency (85%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 44.11s
+2026-11-25 20:59:57,928 [INFO] 
+[50/50] dep_050 (dependency / hard)
+🌿 Branch created: fix/ai-precheck-dep_050-210000 @ b75658a1 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of b75658a1 on branch 'fix/ai-precheck-dep_050-210000'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45690668903 in_progress... [15s/300s]
+    CI run 45690668903 completed: failure
+2026-11-25 21:00:39,063 [INFO]   pre-check: CI RED on b75658a1 (run 45690668903) files=['requirements.txt']
+2026-11-25 21:00:39,244 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 95%)
+   Reasoning: The pipeline failed to install a specific version of mypackage (2.0.0rc1) because it's not available in the package index. The error indicates a dependency resolution issue where the requested pre-release version doesn't exist, likely due to the version bump in the requirements file.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 21:00:40,396 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- mypackage==2.0.0rc1
++ mypackage==1.9.1
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-ca2ed43-t1-210041 @ 9e8ed366 (1 file change(s) on b75658a1)
+⏳ Waiting for the CI run of 9e8ed366 on branch 'fix/ai-dependency-ca2ed43-t1-210041'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45690788772 in_progress... [15s/300s]
+    CI run 45690788772 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 21:01:21,206 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ mypackage==2.0.0rc1
++ mypackage==1.8.0
++ mypackage==1.9.0
++ mypackage==2.0.0rc1
++ mypackage==2.0.0rc1
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-ca2ed43-t2-210123 @ f6be5e04 (1 file change(s) on b75658a1)
+⏳ Waiting for the CI run of f6be5e04 on branch 'fix/ai-dependency-ca2ed43-t2-210123'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45690916889 in_progress... [15s/300s]
+    CI run 45690916889 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 21:02:04,122 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- 
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-ca2ed43-t3-210205 @ f3304e4b (1 file change(s) on b75658a1)
+⏳ Waiting for the CI run of f3304e4b on branch 'fix/ai-dependency-ca2ed43-t3-210205'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45691026439 in_progress... [15s/300s]
+    CI run 45691026439 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 21:02:44,151 [INFO]   ❌ escalated | router: dependency (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 125.09s
+2026-11-25 21:02:58,150 [INFO] Ollama: model qwen3coder-4k unloaded from VRAM
+2026-11-25 21:05:32,751 [INFO] cleanup_fix_branches: removed 67/67 'fix/ai-*' branches
+2026-11-25 21:05:32,755 [INFO] Saved 50 results → benchmark_20261125_193938_ollama_qwen3coder_30b_nomemory_failstate.csv
+2026-11-25 21:05:32,755 [INFO] ✓ Qwen3-Coder 30B completed — results saved
+2026-11-25 21:05:35,759 [INFO] Saved 50 results → benchmark_20261125_193938_ollama_qwen3coder_30b_nomemory_failstate.csv
+
+========================================================================
+BENCHMARK SUMMARY — OVERALL SUCCESS RATE
+========================================================================
+Model                             SR%  Router%   AvgLat  JSONfail    N
+------------------------------------------------------------------------
+Qwen3-Coder 30B                 54.3%    85.7%   119.4s         0   35
+
+SUCCESS RATE BY CATEGORY
+========================================================================
+Model                             depend      test    config
+------------------------------------------------------------
+Qwen3-Coder 30B                    54.3%       N/A       N/A
+
+SUCCESS RATE BY DIFFICULTY
+========================================================================
+Model                               easy    medium      hard
+------------------------------------------------------------
+Qwen3-Coder 30B                    73.3%     27.3%     55.6%
+========================================================================
+
+PROTOCOL B — CASE ACCOUNTING
+========================================================================
+Model                     excl  injF  preR  preG  preE  valid  fixed    SR%     ok✓
+------------------------------------------------------------------------
+Qwen3-Coder 30B             15     0    35     0     0     35     19  54.3%       2
+========================================================================
+
+✅ Benchmark completed — 50 total runs
+📄 CSV: experiments/results/f2_rerun/benchmark_20261125_193938_ollama_qwen3coder_30b_nomemory_failstate.csv
+📁 Results: experiments/results/f2_rerun

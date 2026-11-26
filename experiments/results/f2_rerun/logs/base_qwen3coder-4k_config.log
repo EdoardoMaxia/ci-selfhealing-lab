@@ -1,0 +1,420 @@
+2026-11-25 21:05:36,437 [INFO] Dataset: 50 errors selected, 46 of them excluded (excluded_cases.json)
+2026-11-25 21:05:36,438 [INFO] Models: ['Qwen3-Coder 30B']
+2026-11-25 21:05:36,438 [INFO] Mode: full | memory: OFF
+2026-11-25 21:05:36,438 [INFO] Cleaning up 'fix/ai-*' branches left over from previous runs...
+2026-11-25 21:05:37,679 [INFO] cleanup_fix_branches: no 'fix/ai-*' branch to remove
+2026-11-25 21:05:37,680 [INFO] 
+▶ Starting: Qwen3-Coder 30B
+2026-11-25 21:05:37,680 [INFO] 
+============================================================
+2026-11-25 21:05:37,680 [INFO] MODEL: Qwen3-Coder 30B (ollama_qwen3coder_30b)
+2026-11-25 21:05:37,680 [INFO] Errors: 50 | Timeout: 900s | dry-run: False | no-memory: True | protocol B: all categories
+2026-11-25 21:05:37,680 [INFO] ============================================================
+2026-11-25 21:05:37,680 [INFO] 
+[1/50] conf_001 (config / easy)
+🌿 Branch created: fix/ai-precheck-conf_001-210540 @ 74d92350 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 74d92350 on branch 'fix/ai-precheck-conf_001-210540'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45691614395 in_progress... [15s/300s]
+    CI run 45691614395 completed: failure
+2026-11-25 21:06:18,848 [INFO]   pre-check: CI RED on 74d92350 (run 45691614395) files=['.github/workflows/ci.yml']
+2026-11-25 21:06:24,701 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → CONFIG (confidence: 95%)
+   Reasoning: The error occurs because Python version 3.99 is not available in the CI environment. The configuration specifies an invalid Python version that doesn't exist in the allowed versions list.
+→ Routing to: config_agent
+
+⚙️  Config Agent — Attempt 1/3
+2026-11-25 21:06:25,762 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+-           python-version: "3.99"
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-08299bb-t1-210632 @ 5971b4a1 (1 file change(s) on 74d92350)
+⏳ Waiting for the CI run of 5971b4a1 on branch 'fix/ai-config-08299bb-t1-210632'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45691756420 in_progress... [15s/300s]
+   ⏳ CI run 45691756420 in_progress... [30s/300s]
+    CI run 45691756420 completed: success
+✅ CI green — ready for the PR
+✅ CI green! → creating PR
+DEBUG skip_memory = True
+📬 PR created: https://github.com/EdoardoMaxia/ci-selfhealing-lab/pull/7856
+2026-11-25 21:07:29,156 [INFO]   ✅ fixed | router: config (95%) | attempts: 1 | post-CI: green | clean source: n/a | assertions k/m/r: n/a | 69.87s
+2026-11-25 21:07:32,605 [INFO] 
+[2/50] conf_002 (config / easy)
+🌿 Branch created: fix/ai-precheck-conf_002-210735 @ 032af8cd (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 032af8cd on branch 'fix/ai-precheck-conf_002-210735'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45691933038 in_progress... [15s/300s]
+    CI run 45691933038 completed: failure
+2026-11-25 21:08:13,999 [INFO]   pre-check: CI RED on 032af8cd (run 45691933038) files=['.github/workflows/ci.yml']
+2026-11-25 21:08:14,185 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → CONFIG (confidence: 95%)
+   Reasoning: The CI pipeline failed because Python version 3.17 is not available in the runner environment. This is a configuration issue where the specified Python version in the workflow file does not match the available versions.
+→ Routing to: config_agent
+
+⚙️  Config Agent — Attempt 1/3
+2026-11-25 21:08:15,395 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+-           python-version: "3.17"
++ ```
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-096857c-t1-210821 @ 09ea5a4a (1 file change(s) on 032af8cd)
+⏳ Waiting for the CI run of 09ea5a4a on branch 'fix/ai-config-096857c-t1-210821'...
+    No run for this commit yet, waiting...
+    CI run 45692053311 completed: failure
+❌ CI still red
+🔄 CI still red → retry on config_agent
+
+⚙️  Config Agent — Attempt 2/3
+2026-11-25 21:08:45,363 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+(no changes)
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-096857c-t2-210851 @ c358142e (1 file change(s) on 032af8cd)
+⏳ Waiting for the CI run of c358142e on branch 'fix/ai-config-096857c-t2-210851'...
+    No run for this commit yet, waiting...
+    CI run 45692138044 completed: failure
+❌ CI still red
+🔄 CI still red → retry on config_agent
+
+⚙️  Config Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 21:09:15,957 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+(no changes)
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-096857c-t3-210922 @ 7201dab5 (1 file change(s) on 032af8cd)
+⏳ Waiting for the CI run of 7201dab5 on branch 'fix/ai-config-096857c-t3-210922'...
+    No run for this commit yet, waiting...
+    CI run 45692218734 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 21:09:45,411 [INFO]   ❌ escalated | router: config (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 91.41s
+2026-11-25 21:09:49,544 [INFO] 
+[3/50] conf_003 (config / easy)
+🌿 Branch created: fix/ai-precheck-conf_003-210952 @ 673ba302 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 673ba302 on branch 'fix/ai-precheck-conf_003-210952'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45692303239 in_progress... [15s/300s]
+    CI run 45692303239 completed: failure
+2026-11-25 21:10:31,641 [INFO]   pre-check: CI RED on 673ba302 (run 45692303239) files=['.github/workflows/ci.yml']
+2026-11-25 21:10:31,841 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → CONFIG (confidence: 95%)
+   Reasoning: The error occurs because Python 2.7 is no longer supported in GitHub Actions as it reached End of Life. The configuration explicitly tries to use python-version: '2.7' which is not available, causing the setup to fail.
+→ Routing to: config_agent
+
+⚙️  Config Agent — Attempt 1/3
+2026-11-25 21:10:32,970 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+-           python-version: "2.7"
++ ```
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-80b1e54-t1-211039 @ 2c9c3137 (1 file change(s) on 673ba302)
+⏳ Waiting for the CI run of 2c9c3137 on branch 'fix/ai-config-80b1e54-t1-211039'...
+    No run for this commit yet, waiting...
+    CI run 45692430425 completed: failure
+❌ CI still red
+🔄 CI still red → retry on config_agent
+
+⚙️  Config Agent — Attempt 2/3
+2026-11-25 21:11:02,872 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+(no changes)
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-80b1e54-t2-211108 @ eb447b7f (1 file change(s) on 673ba302)
+⏳ Waiting for the CI run of eb447b7f on branch 'fix/ai-config-80b1e54-t2-211108'...
+    No run for this commit yet, waiting...
+    CI run 45692513689 completed: failure
+❌ CI still red
+🔄 CI still red → retry on config_agent
+
+⚙️  Config Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 21:11:32,625 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+   Changes:
+(no changes)
+✍️  ci.yml updated
+
+🔧 Fix Executor started for category: config
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = '.github/workflows/ci.yml'
+🌿 Branch created: fix/ai-config-80b1e54-t3-211138 @ bb3b4928 (1 file change(s) on 673ba302)
+⏳ Waiting for the CI run of bb3b4928 on branch 'fix/ai-config-80b1e54-t3-211138'...
+    No run for this commit yet, waiting...
+    CI run 45692596270 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 21:12:02,561 [INFO]   ❌ escalated | router: config (95%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 90.92s
+2026-11-25 21:12:06,887 [INFO] 
+[4/50] conf_004 (config / easy)
+2026-11-25 21:12:06,887 [INFO]   Excluded: conf_004 — adding `with: token:` to checkout needs a multi-line injection (harness change)
+2026-11-25 21:12:06,887 [INFO] 
+[5/50] conf_005 (config / easy)
+2026-11-25 21:12:06,887 [INFO]   Excluded: conf_005 — setup-python@v1 works today (GITHUB_PATH, forced onto a supported Node): the add-path/set-env failure of the log no longer occurs
+2026-11-25 21:12:06,887 [INFO] 
+[6/50] conf_006 (config / easy)
+2026-11-25 21:12:06,887 [INFO]   Excluded: conf_006 — the workflow run is not created or stays queued (runs-on: ubuntu-18.04): the CI never turns red, and the red pre-check of the unified protocol cannot verify it
+2026-11-25 21:12:06,887 [INFO] 
+[7/50] conf_007 (config / easy)
+2026-11-25 21:12:06,887 [INFO]   Excluded: conf_007 — no `working-directory` in ci.yml: needs a change to the clean ci.yml or a multi-line injection
+2026-11-25 21:12:06,887 [INFO] 
+[8/50] conf_008 (config / easy)
+2026-11-25 21:12:06,887 [INFO]   Excluded: conf_008 — removing the multi-line setup-python step needs a multi-line injection (harness change)
+2026-11-25 21:12:06,887 [INFO] 
+[9/50] conf_009 (config / medium)
+2026-11-25 21:12:06,887 [INFO]   Excluded: conf_009 — indentation error: inject_error strips both lines, so it cannot change indentation (harness change)
+2026-11-25 21:12:06,887 [INFO] 
+[10/50] conf_010 (config / medium)
+2026-11-25 21:12:06,887 [INFO]   Excluded: conf_010 — duplicate top-level `on:` cannot be injected (pure insertion); a one-line variant would need new ci_logs/expected_fix
+2026-11-25 21:12:06,887 [INFO] 
+[11/50] conf_011 (config / medium)
+2026-11-25 21:12:06,887 [INFO]   Excluded: conf_011 — no upload-artifact step in ci.yml; injecting one in place of an existing step would need new ci_logs/expected_fix
+2026-11-25 21:12:06,887 [INFO] 
+[12/50] conf_012 (config / medium)
+2026-11-25 21:12:06,887 [INFO]   Excluded: conf_012 — the `python-versions` typo only yields an 'Unexpected input' warning: setup-python falls back to the Python on PATH
+2026-11-25 21:12:06,887 [INFO] 
+[13/50] conf_013 (config / medium)
+🌿 Branch created: fix/ai-precheck-conf_013-211209 @ c57e6051 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of c57e6051 on branch 'fix/ai-precheck-conf_013-211209'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45692676803 in_progress... [15s/300s]
+   ⏳ CI run 45692676803 in_progress... [30s/300s]
+    CI run 45692676803 completed: failure
+2026-11-25 21:13:04,725 [INFO]   pre-check: CI RED on c57e6051 (run 45692676803) files=['.github/workflows/ci.yml']
+2026-11-25 21:13:04,903 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 90%)
+   Reasoning: The error shows 'pytest: command not found' indicating missing dependencies. The commit changed from installing requirements.txt to specific packages, likely missing pytest in the new installation.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 21:13:05,789 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ requests==2.31.0
++ flask==2.3.3
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-18b7ce5-t1-211306 @ 212f4394 (1 file change(s) on c57e6051)
+⏳ Waiting for the CI run of 212f4394 on branch 'fix/ai-dependency-18b7ce5-t1-211306'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45692830468 in_progress... [15s/300s]
+   ⏳ CI run 45692830468 in_progress... [30s/300s]
+    CI run 45692830468 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 21:14:02,227 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ click==8.1.7
++ itsdangerous==2.1.2
++ jinja2==3.1.2
++ werkzeug==2.3.7
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-18b7ce5-t2-211403 @ 0b7cb63d (1 file change(s) on c57e6051)
+⏳ Waiting for the CI run of 0b7cb63d on branch 'fix/ai-dependency-18b7ce5-t2-211403'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45692988862 in_progress... [15s/300s]
+    CI run 45692988862 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 21:14:43,331 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+(no changes detected)
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-18b7ce5-t3-211444 @ 4e7f0638 (1 file change(s) on c57e6051)
+⏳ Waiting for the CI run of 4e7f0638 on branch 'fix/ai-dependency-18b7ce5-t3-211444'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45693099972 in_progress... [15s/300s]
+   ⏳ CI run 45693099972 in_progress... [30s/300s]
+    CI run 45693099972 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 21:15:38,945 [INFO]   ❌ escalated | router: dependency (90%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 154.22s
+2026-11-25 21:15:42,905 [INFO] 
+[14/50] conf_014 (config / medium)
+2026-11-25 21:15:42,905 [INFO]   Excluded: conf_014 — needs a DATABASE_URL secret and a database test; neither exists in the repository
+2026-11-25 21:15:42,905 [INFO] 
+[15/50] conf_015 (config / medium)
+2026-11-25 21:15:42,905 [INFO]   Excluded: conf_015 — no schedule trigger; a cron frequency change is not a CI failure
+2026-11-25 21:15:42,905 [INFO] 
+[16/50] conf_016 (config / hard)
+2026-11-25 21:15:42,905 [INFO]   Excluded: conf_016 — no build matrix; the job-count limit of the log needs a multi-dimensional matrix absent from ci.yml
+2026-11-25 21:15:42,905 [INFO] 
+[17/50] conf_017 (config / hard)
+2026-11-25 21:15:42,905 [INFO]   Excluded: conf_017 — needs a deployment job with `permissions`; absent
+2026-11-25 21:15:42,905 [INFO] 
+[18/50] conf_018 (config / hard)
+2026-11-25 21:15:42,905 [INFO]   Excluded: conf_018 — removing the coverage flags does not fail the CI (no coverage upload step)
+2026-11-25 21:15:42,905 [INFO] 
+[19/50] conf_019 (config / hard)
+2026-11-25 21:15:42,905 [INFO]   Excluded: conf_019 — needs a Docker build step and a Dockerfile; absent
+2026-11-25 21:15:42,906 [INFO] 
+[20/50] conf_020 (config / hard)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_020 — needs a PyPI trusted-publishing job; absent
+2026-11-25 21:15:42,906 [INFO] 
+[21/50] conf_021 (config / easy)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_021 — needs a setup-node step; absent (Python-only workflow)
+2026-11-25 21:15:42,906 [INFO] 
+[22/50] conf_022 (config / easy)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_022 — needs git submodules; the repository has none
+2026-11-25 21:15:42,906 [INFO] 
+[23/50] conf_023 (config / easy)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_023 — needs a workflow_dispatch input; absent
+2026-11-25 21:15:42,906 [INFO] 
+[24/50] conf_024 (config / easy)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_024 — no `runs-on: [self-hosted, linux]` in ci.yml; changing another runner label would need new ci_logs/expected_fix
+2026-11-25 21:15:42,906 [INFO] 
+[25/50] conf_025 (config / easy)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_025 — no timeout-minutes; the test suite takes well under 5 minutes, so the timeout would not fire
+2026-11-25 21:15:42,906 [INFO] 
+[26/50] conf_026 (config / easy)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_026 — no `if: github.ref == ...` in ci.yml; reusing `if: always()` would need new ci_logs/expected_fix
+2026-11-25 21:15:42,906 [INFO] 
+[27/50] conf_027 (config / easy)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_027 — no `needs: build` in ci.yml; a typo on `needs: A` would need new ci_logs/expected_fix
+2026-11-25 21:15:42,906 [INFO] 
+[28/50] conf_028 (config / easy)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_028 — needs a setup-java step; absent
+2026-11-25 21:15:42,906 [INFO] 
+[29/50] conf_029 (config / easy)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_029 — needs a PR-commenting job with `permissions`; absent
+2026-11-25 21:15:42,906 [INFO] 
+[30/50] conf_030 (config / easy)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_030 — needs a Windows runner and a bash script; absent
+2026-11-25 21:15:42,906 [INFO] 
+[31/50] conf_031 (config / easy)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_031 — CI fails for a different reason than the log: the replacement turns the test job's `env:` into `run:` (invalid workflow), while the log describes a missing API_SECRET
+2026-11-25 21:15:42,906 [INFO] 
+[32/50] conf_032 (config / medium)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_032 — needs an actions/cache step; a wrong cache key is a cache miss, not a CI failure
+2026-11-25 21:15:42,906 [INFO] 
+[33/50] conf_033 (config / medium)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_033 — needs an artifact upload/download matrix; absent
+2026-11-25 21:15:42,906 [INFO] 
+[34/50] conf_034 (config / medium)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_034 — needs a deploy job with `concurrency`; not a CI failure in this repository
+2026-11-25 21:15:42,906 [INFO] 
+[35/50] conf_035 (config / medium)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_035 — needs a reusable publish workflow and secrets; absent
+2026-11-25 21:15:42,906 [INFO] 
+[36/50] conf_036 (config / medium)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_036 — needs branch protection requiring a check name; the repository has none
+2026-11-25 21:15:42,906 [INFO] 
+[37/50] conf_037 (config / medium)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_037 — needs a protected `production` environment; absent
+2026-11-25 21:15:42,906 [INFO] 
+[38/50] conf_038 (config / medium)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_038 — needs a matrix strategy; fail-fast alone does not fail the CI
+2026-11-25 21:15:42,906 [INFO] 
+[39/50] conf_039 (config / medium)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_039 — needs a composite action with inputs; absent
+2026-11-25 21:15:42,906 [INFO] 
+[40/50] conf_040 (config / medium)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_040 — needs a third-party action pinned by SHA; absent
+2026-11-25 21:15:42,906 [INFO] 
+[41/50] conf_041 (config / medium)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_041 — needs Git LFS files; the repository has none
+2026-11-25 21:15:42,906 [INFO] 
+[42/50] conf_042 (config / hard)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_042 — needs nested reusable workflows and secrets; absent
+2026-11-25 21:15:42,906 [INFO] 
+[43/50] conf_043 (config / hard)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_043 — needs a matrix with a concurrency group; intermittent cancellation is not reproducible
+2026-11-25 21:15:42,906 [INFO] 
+[44/50] conf_044 (config / hard)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_044 — needs an actions/cache step and a cache polluted by another branch; absent
+2026-11-25 21:15:42,906 [INFO] 
+[45/50] conf_045 (config / hard)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_045 — needs AWS OIDC credentials and an IAM trust policy; absent
+2026-11-25 21:15:42,906 [INFO] 
+[46/50] conf_046 (config / hard)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_046 — needs a non-ephemeral self-hosted runner with a stale lock file; absent
+2026-11-25 21:15:42,906 [INFO] 
+[47/50] conf_047 (config / hard)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_047 — needs a ruleset requiring the 'ci/test' check; absent (the rename alone leaves the CI green)
+2026-11-25 21:15:42,906 [INFO] 
+[48/50] conf_048 (config / hard)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_048 — needs a pull_request_target workflow with secrets and a PR event; absent
+2026-11-25 21:15:42,906 [INFO] 
+[49/50] conf_049 (config / hard)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_049 — needs an actions/cache step and the 10 GB cache limit; not reproducible
+2026-11-25 21:15:42,906 [INFO] 
+[50/50] conf_050 (config / hard)
+2026-11-25 21:15:42,906 [INFO]   Excluded: conf_050 — removing `if: always()` from job C leaves the CI green (A and B succeed); the skip of B in the log is absent
+2026-11-25 21:15:47,924 [INFO] Ollama: model qwen3coder-4k unloaded from VRAM
+2026-11-25 21:16:20,938 [INFO] cleanup_fix_branches: removed 10/10 'fix/ai-*' branches
+2026-11-25 21:16:20,942 [INFO] Saved 50 results → benchmark_20261125_210536_ollama_qwen3coder_30b_nomemory_failstate.csv
+2026-11-25 21:16:20,942 [INFO] ✓ Qwen3-Coder 30B completed — results saved
+2026-11-25 21:16:23,945 [INFO] Saved 50 results → benchmark_20261125_210536_ollama_qwen3coder_30b_nomemory_failstate.csv
+
+========================================================================
+BENCHMARK SUMMARY — OVERALL SUCCESS RATE
+========================================================================
+Model                             SR%  Router%   AvgLat  JSONfail    N
+------------------------------------------------------------------------
+Qwen3-Coder 30B                 25.0%    75.0%   101.6s         0    4
+
+SUCCESS RATE BY CATEGORY
+========================================================================
+Model                             depend      test    config
+------------------------------------------------------------
+Qwen3-Coder 30B                      N/A       N/A     25.0%
+
+SUCCESS RATE BY DIFFICULTY
+========================================================================
+Model                               easy    medium      hard
+------------------------------------------------------------
+Qwen3-Coder 30B                    33.3%      0.0%       N/A
+========================================================================
+
+PROTOCOL B — CASE ACCOUNTING
+========================================================================
+Model                     excl  injF  preR  preG  preE  valid  fixed    SR%     ok✓
+------------------------------------------------------------------------
+Qwen3-Coder 30B             46     0     4     0     0      4      1  25.0%       1
+========================================================================
+
+✅ Benchmark completed — 50 total runs
+📄 CSV: experiments/results/f2_rerun/benchmark_20261125_210536_ollama_qwen3coder_30b_nomemory_failstate.csv
+📁 Results: experiments/results/f2_rerun

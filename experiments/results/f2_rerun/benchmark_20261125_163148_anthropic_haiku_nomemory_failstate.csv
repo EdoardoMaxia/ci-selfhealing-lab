@@ -1,0 +1,252 @@
+model_id,model_name,model_type,dry_run,no_memory,error_id,category,difficulty,final_status,success,router_category,router_correct,router_confidence,router_reasoning,attempts_count,fix_attempt,json_parse_fail,latency_sec,error_msg,memory_hits,memory_active,excluded,exclusion_reason,valid_case,injected_files,pre_ci_status,pre_ci_sha,pre_ci_run_id,post_ci_status,post_ci_sha,post_ci_run_id,post_ci_attempts,agent_modified_file,agent_file_is_injected,test_on_clean_source,clean_source_detail,assertions_preserved,assertions_detail,reference_file,repair_matches_reference,agent_file_content
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_001,config,easy,fixed,1,config,1,0.95,"Invalid Python version 3.99 specified in CI configuration. The version does not exist; available versions are 3.8.18, 3.9.18, 3.10.13, 3.11.7, 3.12.1.",1,1,0,47.02,,0,0,False,,1,"["".github/workflows/ci.yml""]",red,391e324f3e8f63bb6e9153689e2ebbc187a91cb5,45646221889,green,1d7cc8dc9f5c37580abae275bff4a6a9b9f612a9,45646363617,"[{""attempt"": 1, ""branch"": ""fix/ai-config-08299bb-t1-163237"", ""base_sha"": ""391e324f3e8f63bb6e9153689e2ebbc187a91cb5"", ""commit_sha"": ""1d7cc8dc9f5c37580abae275bff4a6a9b9f612a9"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45646363617, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45646363617"", ""conclusion"": ""success""}]",.github/workflows/ci.yml,True,n/a,,n/a,,.github/workflows/ci.yml,True,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing"
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_002,config,easy,fixed,1,config,1,0.95,"The CI pipeline is configured to use Python 3.17, which is not available in the runner environment. This is a configuration error in the CI workflow file where an unsupported Python version was specif",1,1,0,61.8,,0,0,False,,1,"["".github/workflows/ci.yml""]",red,5787a44b1126464bdd9fe53097e7e3be81337e77,45646507188,green,2c2bf2a5edbd89d16c8586a5459540bb90a2c5e6,45646644258,"[{""attempt"": 1, ""branch"": ""fix/ai-config-096857c-t1-163406"", ""base_sha"": ""5787a44b1126464bdd9fe53097e7e3be81337e77"", ""commit_sha"": ""2c2bf2a5edbd89d16c8586a5459540bb90a2c5e6"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45646644258, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45646644258"", ""conclusion"": ""success""}]",.github/workflows/ci.yml,True,n/a,,n/a,,.github/workflows/ci.yml,True,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing"
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_003,config,easy,fixed,1,config,1,0.95,The error is caused by an invalid Python version configuration in the CI workflow file. Python 2.7 is no longer supported in GitHub Actions and the version specification in the YAML is incorrect.,1,1,0,47.18,,0,0,False,,1,"["".github/workflows/ci.yml""]",red,b0c9ab6dbf2c9b470999369d99c88d364ef4c9b2,45646849385,green,8e225a3c2cca20e171a8bd842125e69b67fb9366,45646990505,"[{""attempt"": 1, ""branch"": ""fix/ai-config-80b1e54-t1-163551"", ""base_sha"": ""b0c9ab6dbf2c9b470999369d99c88d364ef4c9b2"", ""commit_sha"": ""8e225a3c2cca20e171a8bd842125e69b67fb9366"", ""file"": "".github/workflows/ci.yml"", ""run_id"": 45646990505, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45646990505"", ""conclusion"": ""success""}]",.github/workflows/ci.yml,True,n/a,,n/a,,.github/workflows/ci.yml,True,"name: CI Pipeline
+
+on:
+  push:
+    branches: [main, fix/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  A:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job A tasks
+        run: echo ""Running tasks for job A""
+
+  B:
+    needs: A
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run job B tasks
+        run: echo ""Running tasks for job B""
+
+  C:
+    needs: [A, B]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Run additional tasks
+        run: echo ""Running additional tasks for job C""
+
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: ""3.11""
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests with coverage
+        run: |
+          pytest tests/ -v --cov=src --cov-report=term-missing"
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_004,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,adding `with: token:` to checkout needs a multi-line injection (harness change),0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_005,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"setup-python@v1 works today (GITHUB_PATH, forced onto a supported Node): the add-path/set-env failure of the log no longer occurs",0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_006,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"the workflow run is not created or stays queued (runs-on: ubuntu-18.04): the CI never turns red, and the red pre-check of the unified protocol cannot verify it",0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_007,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,no `working-directory` in ci.yml: needs a change to the clean ci.yml or a multi-line injection,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_008,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,removing the multi-line setup-python step needs a multi-line injection (harness change),0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_009,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"indentation error: inject_error strips both lines, so it cannot change indentation (harness change)",0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_010,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,duplicate top-level `on:` cannot be injected (pure insertion); a one-line variant would need new ci_logs/expected_fix,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_011,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,no upload-artifact step in ci.yml; injecting one in place of an existing step would need new ci_logs/expected_fix,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_012,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,the `python-versions` typo only yields an 'Unexpected input' warning: setup-python falls back to the Python on PATH,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_013,config,medium,escalated,0,dependency,0,0.95,"pytest command not found after changing pip install from requirements.txt to selective packages. The requirements.txt likely contained pytest as a dev dependency, which is now missing.",3,,0,151.59,,0,0,False,,1,"["".github/workflows/ci.yml""]",red,3ab2023723a765cc5d61e4bc2a7f5aaa65288704,45647135641,red,ae66b82b5a8bb2e1addf8e4ceb5a1aff0be7f6d5,45647600643,"[{""attempt"": 1, ""branch"": ""fix/ai-dependency-18b7ce5-t1-163719"", ""base_sha"": ""3ab2023723a765cc5d61e4bc2a7f5aaa65288704"", ""commit_sha"": ""21f650be35703dc9ba83c6c756f174a29ade44d6"", ""file"": ""requirements.txt"", ""run_id"": 45647260742, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45647260742"", ""conclusion"": ""failure""}, {""attempt"": 2, ""branch"": ""fix/ai-dependency-18b7ce5-t2-163814"", ""base_sha"": ""3ab2023723a765cc5d61e4bc2a7f5aaa65288704"", ""commit_sha"": ""602ca2a73e58baa894e9266dcdcbe4c2ad3835f4"", ""file"": ""requirements.txt"", ""run_id"": 45647433088, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45647433088"", ""conclusion"": ""failure""}, {""attempt"": 3, ""branch"": ""fix/ai-dependency-18b7ce5-t3-163909"", ""base_sha"": ""3ab2023723a765cc5d61e4bc2a7f5aaa65288704"", ""commit_sha"": ""ae66b82b5a8bb2e1addf8e4ceb5a1aff0be7f6d5"", ""file"": ""requirements.txt"", ""run_id"": 45647600643, ""run_url"": ""https://github.com/EdoardoMaxia/ci-selfhealing-lab/actions/runs/45647600643"", ""conclusion"": ""failure""}]",requirements.txt,False,n/a,,n/a,,.github/workflows/ci.yml,False,"pytest==7.4.0
+pytest-cov==4.1.0
+requests
+flask"
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_014,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a DATABASE_URL secret and a database test; neither exists in the repository,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_015,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,no schedule trigger; a cron frequency change is not a CI failure,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_016,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,no build matrix; the job-count limit of the log needs a multi-dimensional matrix absent from ci.yml,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_017,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a deployment job with `permissions`; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_018,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,removing the coverage flags does not fail the CI (no coverage upload step),0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_019,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a Docker build step and a Dockerfile; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_020,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a PyPI trusted-publishing job; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_021,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a setup-node step; absent (Python-only workflow),0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_022,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs git submodules; the repository has none,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_023,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a workflow_dispatch input; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_024,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"no `runs-on: [self-hosted, linux]` in ci.yml; changing another runner label would need new ci_logs/expected_fix",0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_025,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"no timeout-minutes; the test suite takes well under 5 minutes, so the timeout would not fire",0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_026,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,no `if: github.ref == ...` in ci.yml; reusing `if: always()` would need new ci_logs/expected_fix,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_027,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,no `needs: build` in ci.yml; a typo on `needs: A` would need new ci_logs/expected_fix,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_028,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a setup-java step; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_029,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a PR-commenting job with `permissions`; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_030,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a Windows runner and a bash script; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_031,config,easy,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"CI fails for a different reason than the log: the replacement turns the test job's `env:` into `run:` (invalid workflow), while the log describes a missing API_SECRET",0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_032,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,"needs an actions/cache step; a wrong cache key is a cache miss, not a CI failure",0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_033,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs an artifact upload/download matrix; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_034,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a deploy job with `concurrency`; not a CI failure in this repository,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_035,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a reusable publish workflow and secrets; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_036,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs branch protection requiring a check name; the repository has none,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_037,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a protected `production` environment; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_038,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a matrix strategy; fail-fast alone does not fail the CI,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_039,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a composite action with inputs; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_040,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a third-party action pinned by SHA; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_041,config,medium,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs Git LFS files; the repository has none,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_042,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs nested reusable workflows and secrets; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_043,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a matrix with a concurrency group; intermittent cancellation is not reproducible,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_044,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs an actions/cache step and a cache polluted by another branch; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_045,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs AWS OIDC credentials and an IAM trust policy; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_046,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a non-ephemeral self-hosted runner with a stale lock file; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_047,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a ruleset requiring the 'ci/test' check; absent (the rename alone leaves the CI green),0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_048,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs a pull_request_target workflow with secrets and a PR event; absent,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_049,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,needs an actions/cache step and the 10 GB cache limit; not reproducible,0,,,,,,,,,,,,,,,,,
+anthropic_haiku,Claude Haiku,proprietary,0,1,conf_050,config,hard,excluded,0,,0,0.0,,0,,0,0.0,,0,0,True,removing `if: always()` from job C leaves the CI green (A and B succeed); the skip of B in the log is absent,0,,,,,,,,,,,,,,,,,

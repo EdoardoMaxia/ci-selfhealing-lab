@@ -1,0 +1,466 @@
+2026-11-25 22:48:15,697 [INFO] Dataset: 50 errors selected, 46 of them excluded (excluded_cases.json)
+2026-11-25 22:48:15,697 [INFO] Models: ['Llama 3.1 8B']
+2026-11-25 22:48:15,697 [INFO] Mode: full | memory: OFF
+2026-11-25 22:48:15,697 [INFO] Cleaning up 'fix/ai-*' branches left over from previous runs...
+2026-11-25 22:48:16,782 [INFO] cleanup_fix_branches: no 'fix/ai-*' branch to remove
+2026-11-25 22:48:16,782 [INFO] 
+▶ Starting: Llama 3.1 8B
+2026-11-25 22:48:16,782 [INFO] 
+============================================================
+2026-11-25 22:48:16,782 [INFO] MODEL: Llama 3.1 8B (ollama_llama8b)
+2026-11-25 22:48:16,782 [INFO] Errors: 50 | Timeout: 900s | dry-run: False | no-memory: True | protocol B: all categories
+2026-11-25 22:48:16,782 [INFO] ============================================================
+2026-11-25 22:48:16,782 [INFO] 
+[1/50] conf_001 (config / easy)
+🌿 Branch created: fix/ai-precheck-conf_001-224818 @ baa12c7b (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of baa12c7b on branch 'fix/ai-precheck-conf_001-224818'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45707687910 in_progress... [15s/300s]
+    CI run 45707687910 completed: failure
+2026-11-25 22:48:57,396 [INFO]   pre-check: CI RED on baa12c7b (run 45707687910) files=['.github/workflows/ci.yml']
+2026-11-25 22:49:01,339 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 100%)
+   Reasoning: Error occurred during setup of Python 3.99 due to unavailable version, indicating a dependency issue.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 22:49:02,536 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ python==3.99
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-08299bb-t1-224903 @ 67d6505b (1 file change(s) on baa12c7b)
+⏳ Waiting for the CI run of 67d6505b on branch 'fix/ai-dependency-08299bb-t1-224903'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45707798233 in_progress... [15s/300s]
+    CI run 45707798233 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 22:49:42,939 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- python==3.99
++ python==3.11
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-08299bb-t2-224943 @ 07d2223b (1 file change(s) on baa12c7b)
+⏳ Waiting for the CI run of 07d2223b on branch 'fix/ai-dependency-08299bb-t2-224943'...
+    No run for this commit yet, waiting...
+    CI run 45707890730 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 22:50:07,408 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+(no changes detected)
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-08299bb-t3-225008 @ 78b02dbf (1 file change(s) on baa12c7b)
+⏳ Waiting for the CI run of 78b02dbf on branch 'fix/ai-dependency-08299bb-t3-225008'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45707954286 in_progress... [15s/300s]
+    CI run 45707954286 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 22:50:47,411 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 109.56s
+2026-11-25 22:50:51,036 [INFO] 
+[2/50] conf_002 (config / easy)
+🌿 Branch created: fix/ai-precheck-conf_002-225053 @ 6adeaa98 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 6adeaa98 on branch 'fix/ai-precheck-conf_002-225053'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45708068730 in_progress... [15s/300s]
+    CI run 45708068730 completed: failure
+2026-11-25 22:51:31,615 [INFO]   pre-check: CI RED on 6adeaa98 (run 45708068730) files=['.github/workflows/ci.yml']
+2026-11-25 22:51:31,747 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 100%)
+   Reasoning: Error occurred during Python setup due to unavailable version, indicating a dependency issue
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 22:51:32,768 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ python==3.17
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-096857c-t1-225133 @ 718f4ca8 (1 file change(s) on 6adeaa98)
+⏳ Waiting for the CI run of 718f4ca8 on branch 'fix/ai-dependency-096857c-t1-225133'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45708168379 in_progress... [15s/300s]
+    CI run 45708168379 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 22:52:12,679 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ python-venv==20.5.0
++ setuptools==64.0.2
++ wheel==0.37.1
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-096857c-t2-225214 @ 61461523 (1 file change(s) on 6adeaa98)
+⏳ Waiting for the CI run of 61461523 on branch 'fix/ai-dependency-096857c-t2-225214'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45708269165 in_progress... [15s/300s]
+    CI run 45708269165 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 22:52:53,000 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ python==3.8
++ python==3.9
++ python==3.10
++ python==3.11
++ python==3.12
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-096857c-t3-225255 @ d9af8042 (1 file change(s) on 6adeaa98)
+⏳ Waiting for the CI run of d9af8042 on branch 'fix/ai-dependency-096857c-t3-225255'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45708366953 in_progress... [15s/300s]
+    CI run 45708366953 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 22:53:33,585 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 121.97s
+2026-11-25 22:53:37,168 [INFO] 
+[3/50] conf_003 (config / easy)
+🌿 Branch created: fix/ai-precheck-conf_003-225339 @ 57339c77 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of 57339c77 on branch 'fix/ai-precheck-conf_003-225339'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45708469735 in_progress... [15s/300s]
+    CI run 45708469735 completed: failure
+2026-11-25 22:54:17,474 [INFO]   pre-check: CI RED on 57339c77 (run 45708469735) files=['.github/workflows/ci.yml']
+2026-11-25 22:54:17,597 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 100%)
+   Reasoning: Error is due to an incompatible Python version, which is no longer supported
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 22:54:18,638 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ python==2.7
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-80b1e54-t1-225419 @ ab83363b (1 file change(s) on 57339c77)
+⏳ Waiting for the CI run of ab83363b on branch 'fix/ai-dependency-80b1e54-t1-225419'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45708574027 in_progress... [15s/300s]
+    CI run 45708574027 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 22:54:58,414 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+- python==2.7
++ [pkg-resources==0.0.0]
++ setuptools==60.10.0
++ wheel==0.37.1
++ python==3.11
++ pip==22.2.2
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-80b1e54-t2-225500 @ c436df10 (1 file change(s) on 57339c77)
+⏳ Waiting for the CI run of c436df10 on branch 'fix/ai-dependency-80b1e54-t2-225500'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45708670285 queued... [15s/300s]
+    CI run 45708670285 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 22:55:38,541 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ 
++ Note: The error message indicates that the issue is not with the dependencies, but with the Python version being used in the CI pipeline. The `python-version` in the Git diff has been changed to 2.7, which is no longer supported. Therefore, the requirements.txt file remains the same as it does not affect the Python version being used.
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-80b1e54-t3-225541 @ 4dd4e655 (1 file change(s) on 57339c77)
+⏳ Waiting for the CI run of 4dd4e655 on branch 'fix/ai-dependency-80b1e54-t3-225541'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45708771407 in_progress... [15s/300s]
+    CI run 45708771407 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 22:56:20,243 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 122.77s
+2026-11-25 22:56:23,961 [INFO] 
+[4/50] conf_004 (config / easy)
+2026-11-25 22:56:23,962 [INFO]   Excluded: conf_004 — adding `with: token:` to checkout needs a multi-line injection (harness change)
+2026-11-25 22:56:23,962 [INFO] 
+[5/50] conf_005 (config / easy)
+2026-11-25 22:56:23,962 [INFO]   Excluded: conf_005 — setup-python@v1 works today (GITHUB_PATH, forced onto a supported Node): the add-path/set-env failure of the log no longer occurs
+2026-11-25 22:56:23,962 [INFO] 
+[6/50] conf_006 (config / easy)
+2026-11-25 22:56:23,962 [INFO]   Excluded: conf_006 — the workflow run is not created or stays queued (runs-on: ubuntu-18.04): the CI never turns red, and the red pre-check of the unified protocol cannot verify it
+2026-11-25 22:56:23,962 [INFO] 
+[7/50] conf_007 (config / easy)
+2026-11-25 22:56:23,962 [INFO]   Excluded: conf_007 — no `working-directory` in ci.yml: needs a change to the clean ci.yml or a multi-line injection
+2026-11-25 22:56:23,962 [INFO] 
+[8/50] conf_008 (config / easy)
+2026-11-25 22:56:23,962 [INFO]   Excluded: conf_008 — removing the multi-line setup-python step needs a multi-line injection (harness change)
+2026-11-25 22:56:23,962 [INFO] 
+[9/50] conf_009 (config / medium)
+2026-11-25 22:56:23,962 [INFO]   Excluded: conf_009 — indentation error: inject_error strips both lines, so it cannot change indentation (harness change)
+2026-11-25 22:56:23,962 [INFO] 
+[10/50] conf_010 (config / medium)
+2026-11-25 22:56:23,962 [INFO]   Excluded: conf_010 — duplicate top-level `on:` cannot be injected (pure insertion); a one-line variant would need new ci_logs/expected_fix
+2026-11-25 22:56:23,962 [INFO] 
+[11/50] conf_011 (config / medium)
+2026-11-25 22:56:23,962 [INFO]   Excluded: conf_011 — no upload-artifact step in ci.yml; injecting one in place of an existing step would need new ci_logs/expected_fix
+2026-11-25 22:56:23,962 [INFO] 
+[12/50] conf_012 (config / medium)
+2026-11-25 22:56:23,962 [INFO]   Excluded: conf_012 — the `python-versions` typo only yields an 'Unexpected input' warning: setup-python falls back to the Python on PATH
+2026-11-25 22:56:23,962 [INFO] 
+[13/50] conf_013 (config / medium)
+🌿 Branch created: fix/ai-precheck-conf_013-225626 @ eb126759 (1 file change(s) on 020a1904)
+⏳ Waiting for the CI run of eb126759 on branch 'fix/ai-precheck-conf_013-225626'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45708882356 queued... [15s/300s]
+    CI run 45708882356 completed: failure
+2026-11-25 22:57:04,886 [INFO]   pre-check: CI RED on eb126759 (run 45708882356) files=['.github/workflows/ci.yml']
+2026-11-25 22:57:05,004 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+🧭 Router → DEPENDENCY (confidence: 100%)
+   Reasoning: The error message '/bin/bash: pytest: command not found' indicates that pytest is not installed, which is a dependency issue.
+→ Routing to: dependency_agent
+
+📦 Dependency Agent — Attempt 1/3
+2026-11-25 22:57:06,283 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ requests==2.28.2
++ flask==2.2.2
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-18b7ce5-t1-225707 @ b9b553f0 (1 file change(s) on eb126759)
+⏳ Waiting for the CI run of b9b553f0 on branch 'fix/ai-dependency-18b7ce5-t1-225707'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45708979113 in_progress... [15s/300s]
+   ⏳ CI run 45708979113 in_progress... [30s/300s]
+    CI run 45708979113 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 2/3
+2026-11-25 22:58:01,140 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
++ pip==22.2.2
++ setuptools==63.4.3
++ wheel==0.37.1
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-18b7ce5-t2-225803 @ 2f0871e7 (1 file change(s) on eb126759)
+⏳ Waiting for the CI run of 2f0871e7 on branch 'fix/ai-dependency-18b7ce5-t2-225803'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45709117461 in_progress... [15s/300s]
+    CI run 45709117461 completed: failure
+❌ CI still red
+🔄 CI still red → retry on dependency_agent
+
+📦 Dependency Agent — Attempt 3/3
+||||:__ OpenAI Embeddings :__||||
+2026-11-25 22:58:42,656 [INFO] HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+    Changes:
+(no changes detected)
+✍️  requirements.txt updated in requirements.txt
+
+🔧 Fix Executor started for category: dependency
+🔍 DEBUG modified_file = None
+🔍 DEBUG final file_path = 'requirements.txt'
+🌿 Branch created: fix/ai-dependency-18b7ce5-t3-225845 @ 7e877644 (1 file change(s) on eb126759)
+⏳ Waiting for the CI run of 7e877644 on branch 'fix/ai-dependency-18b7ce5-t3-225845'...
+    No run for this commit yet, waiting...
+   ⏳ CI run 45709215820 in_progress... [15s/300s]
+    CI run 45709215820 completed: failure
+❌ CI still red
+🚨 3 attempts exhausted → escalation
+escalation...
+2026-11-25 22:59:23,937 [INFO]   ❌ escalated | router: dependency (100%) | attempts: 3 | post-CI: red | clean source: n/a | assertions k/m/r: n/a | 139.05s
+2026-11-25 22:59:27,748 [INFO] 
+[14/50] conf_014 (config / medium)
+2026-11-25 22:59:27,748 [INFO]   Excluded: conf_014 — needs a DATABASE_URL secret and a database test; neither exists in the repository
+2026-11-25 22:59:27,748 [INFO] 
+[15/50] conf_015 (config / medium)
+2026-11-25 22:59:27,748 [INFO]   Excluded: conf_015 — no schedule trigger; a cron frequency change is not a CI failure
+2026-11-25 22:59:27,748 [INFO] 
+[16/50] conf_016 (config / hard)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_016 — no build matrix; the job-count limit of the log needs a multi-dimensional matrix absent from ci.yml
+2026-11-25 22:59:27,749 [INFO] 
+[17/50] conf_017 (config / hard)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_017 — needs a deployment job with `permissions`; absent
+2026-11-25 22:59:27,749 [INFO] 
+[18/50] conf_018 (config / hard)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_018 — removing the coverage flags does not fail the CI (no coverage upload step)
+2026-11-25 22:59:27,749 [INFO] 
+[19/50] conf_019 (config / hard)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_019 — needs a Docker build step and a Dockerfile; absent
+2026-11-25 22:59:27,749 [INFO] 
+[20/50] conf_020 (config / hard)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_020 — needs a PyPI trusted-publishing job; absent
+2026-11-25 22:59:27,749 [INFO] 
+[21/50] conf_021 (config / easy)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_021 — needs a setup-node step; absent (Python-only workflow)
+2026-11-25 22:59:27,749 [INFO] 
+[22/50] conf_022 (config / easy)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_022 — needs git submodules; the repository has none
+2026-11-25 22:59:27,749 [INFO] 
+[23/50] conf_023 (config / easy)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_023 — needs a workflow_dispatch input; absent
+2026-11-25 22:59:27,749 [INFO] 
+[24/50] conf_024 (config / easy)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_024 — no `runs-on: [self-hosted, linux]` in ci.yml; changing another runner label would need new ci_logs/expected_fix
+2026-11-25 22:59:27,749 [INFO] 
+[25/50] conf_025 (config / easy)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_025 — no timeout-minutes; the test suite takes well under 5 minutes, so the timeout would not fire
+2026-11-25 22:59:27,749 [INFO] 
+[26/50] conf_026 (config / easy)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_026 — no `if: github.ref == ...` in ci.yml; reusing `if: always()` would need new ci_logs/expected_fix
+2026-11-25 22:59:27,749 [INFO] 
+[27/50] conf_027 (config / easy)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_027 — no `needs: build` in ci.yml; a typo on `needs: A` would need new ci_logs/expected_fix
+2026-11-25 22:59:27,749 [INFO] 
+[28/50] conf_028 (config / easy)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_028 — needs a setup-java step; absent
+2026-11-25 22:59:27,749 [INFO] 
+[29/50] conf_029 (config / easy)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_029 — needs a PR-commenting job with `permissions`; absent
+2026-11-25 22:59:27,749 [INFO] 
+[30/50] conf_030 (config / easy)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_030 — needs a Windows runner and a bash script; absent
+2026-11-25 22:59:27,749 [INFO] 
+[31/50] conf_031 (config / easy)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_031 — CI fails for a different reason than the log: the replacement turns the test job's `env:` into `run:` (invalid workflow), while the log describes a missing API_SECRET
+2026-11-25 22:59:27,749 [INFO] 
+[32/50] conf_032 (config / medium)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_032 — needs an actions/cache step; a wrong cache key is a cache miss, not a CI failure
+2026-11-25 22:59:27,749 [INFO] 
+[33/50] conf_033 (config / medium)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_033 — needs an artifact upload/download matrix; absent
+2026-11-25 22:59:27,749 [INFO] 
+[34/50] conf_034 (config / medium)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_034 — needs a deploy job with `concurrency`; not a CI failure in this repository
+2026-11-25 22:59:27,749 [INFO] 
+[35/50] conf_035 (config / medium)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_035 — needs a reusable publish workflow and secrets; absent
+2026-11-25 22:59:27,749 [INFO] 
+[36/50] conf_036 (config / medium)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_036 — needs branch protection requiring a check name; the repository has none
+2026-11-25 22:59:27,749 [INFO] 
+[37/50] conf_037 (config / medium)
+2026-11-25 22:59:27,749 [INFO]   Excluded: conf_037 — needs a protected `production` environment; absent
+2026-11-25 22:59:27,750 [INFO] 
+[38/50] conf_038 (config / medium)
+2026-11-25 22:59:27,750 [INFO]   Excluded: conf_038 — needs a matrix strategy; fail-fast alone does not fail the CI
+2026-11-25 22:59:27,750 [INFO] 
+[39/50] conf_039 (config / medium)
+2026-11-25 22:59:27,750 [INFO]   Excluded: conf_039 — needs a composite action with inputs; absent
+2026-11-25 22:59:27,750 [INFO] 
+[40/50] conf_040 (config / medium)
+2026-11-25 22:59:27,750 [INFO]   Excluded: conf_040 — needs a third-party action pinned by SHA; absent
+2026-11-25 22:59:27,750 [INFO] 
+[41/50] conf_041 (config / medium)
+2026-11-25 22:59:27,750 [INFO]   Excluded: conf_041 — needs Git LFS files; the repository has none
+2026-11-25 22:59:27,750 [INFO] 
+[42/50] conf_042 (config / hard)
+2026-11-25 22:59:27,750 [INFO]   Excluded: conf_042 — needs nested reusable workflows and secrets; absent
+2026-11-25 22:59:27,750 [INFO] 
+[43/50] conf_043 (config / hard)
+2026-11-25 22:59:27,750 [INFO]   Excluded: conf_043 — needs a matrix with a concurrency group; intermittent cancellation is not reproducible
+2026-11-25 22:59:27,750 [INFO] 
+[44/50] conf_044 (config / hard)
+2026-11-25 22:59:27,750 [INFO]   Excluded: conf_044 — needs an actions/cache step and a cache polluted by another branch; absent
+2026-11-25 22:59:27,750 [INFO] 
+[45/50] conf_045 (config / hard)
+2026-11-25 22:59:27,750 [INFO]   Excluded: conf_045 — needs AWS OIDC credentials and an IAM trust policy; absent
+2026-11-25 22:59:27,750 [INFO] 
+[46/50] conf_046 (config / hard)
+2026-11-25 22:59:27,750 [INFO]   Excluded: conf_046 — needs a non-ephemeral self-hosted runner with a stale lock file; absent
+2026-11-25 22:59:27,750 [INFO] 
+[47/50] conf_047 (config / hard)
+2026-11-25 22:59:27,750 [INFO]   Excluded: conf_047 — needs a ruleset requiring the 'ci/test' check; absent (the rename alone leaves the CI green)
+2026-11-25 22:59:27,750 [INFO] 
+[48/50] conf_048 (config / hard)
+2026-11-25 22:59:27,750 [INFO]   Excluded: conf_048 — needs a pull_request_target workflow with secrets and a PR event; absent
+2026-11-25 22:59:27,750 [INFO] 
+[49/50] conf_049 (config / hard)
+2026-11-25 22:59:27,750 [INFO]   Excluded: conf_049 — needs an actions/cache step and the 10 GB cache limit; not reproducible
+2026-11-25 22:59:27,750 [INFO] 
+[50/50] conf_050 (config / hard)
+2026-11-25 22:59:27,750 [INFO]   Excluded: conf_050 — removing `if: always()` from job C leaves the CI green (A and B succeed); the skip of B in the log is absent
+2026-11-25 22:59:32,763 [INFO] Ollama: model llama31-4k unloaded from VRAM
+2026-11-25 23:00:06,799 [INFO] cleanup_fix_branches: removed 12/12 'fix/ai-*' branches
+2026-11-25 23:00:06,802 [INFO] Saved 50 results → benchmark_20261125_224815_ollama_llama8b_nomemory_failstate.csv
+2026-11-25 23:00:06,802 [INFO] ✓ Llama 3.1 8B completed — results saved
+2026-11-25 23:00:09,806 [INFO] Saved 50 results → benchmark_20261125_224815_ollama_llama8b_nomemory_failstate.csv
+
+========================================================================
+BENCHMARK SUMMARY — OVERALL SUCCESS RATE
+========================================================================
+Model                             SR%  Router%   AvgLat  JSONfail    N
+------------------------------------------------------------------------
+Llama 3.1 8B                     0.0%     0.0%   123.3s         0    4
+
+SUCCESS RATE BY CATEGORY
+========================================================================
+Model                             depend      test    config
+------------------------------------------------------------
+Llama 3.1 8B                         N/A       N/A      0.0%
+
+SUCCESS RATE BY DIFFICULTY
+========================================================================
+Model                               easy    medium      hard
+------------------------------------------------------------
+Llama 3.1 8B                        0.0%      0.0%       N/A
+========================================================================
+
+PROTOCOL B — CASE ACCOUNTING
+========================================================================
+Model                     excl  injF  preR  preG  preE  valid  fixed    SR%     ok✓
+------------------------------------------------------------------------
+Llama 3.1 8B                46     0     4     0     0      4      0   0.0%       0
+========================================================================
+
+✅ Benchmark completed — 50 total runs
+📄 CSV: experiments/results/f2_rerun/benchmark_20261125_224815_ollama_llama8b_nomemory_failstate.csv
+📁 Results: experiments/results/f2_rerun
