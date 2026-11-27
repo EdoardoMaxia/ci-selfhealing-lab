@@ -83,11 +83,12 @@ def load_corrections(path: Path):
         return []
     items = json.loads(Path(path).read_text(encoding="utf-8"))["corrections"]
     for c in items:
-        assert c["action"] in ("success", "drop") and c["arm"] in ("baseline", "memory", "both"), c
+        assert c["action"] in ("success", "drop", "router") and c["arm"] in ("baseline", "memory", "both"), c
     return items
 
 
-def summarize(f2_dir: Path, a2_dir: Path = None, steps: Path = None, corrections: Path = None) -> str:
+def build(f2_dir: Path, a2_dir: Path = None, corrections: Path = None) -> dict:
+    """Merged rows {arm: {model: {case: row}}} with the corrections applied (also used by f6_analysis.py)."""
     cases = included_cases()
     fixes = load_corrections(corrections)
     expected = {"baseline": {c for c, cat in cases.items() if cat != "test"}, "memory": set(cases)}
@@ -121,12 +122,25 @@ def summarize(f2_dir: Path, a2_dir: Path = None, steps: Path = None, corrections
             row = merged[arm].get(c["model_id"], {}).get(c["case_id"])
             if row is None or not is_valid(row):
                 raise SystemExit(f"correction does not apply (no valid row): {c}")
-            row = dict(row, success="1", final_status="fixed (corrected)", error_msg="")
+            row = dict(row)
+            if c["action"] == "success":
+                row.update(success="1", final_status="fixed (corrected)", error_msg="")
+            if c.get("router_category"):
+                row.update(router_category=c["router_category"],
+                           router_correct=str(int(c["router_category"] == row["category"])))
             merged[arm][c["model_id"]][c["case_id"]] = row
         applied.append(c)
 
     models = [m for m in MODEL_ORDER if any(m in merged[a] for a in merged)] + \
              sorted({m for a in merged for m in merged[a]} - set(MODEL_ORDER))
+    return {"cases": cases, "merged": merged, "dropped": dropped, "applied": applied,
+            "models": models, "f2_files": f2_files, "a2_files": a2_files}
+
+
+def summarize(f2_dir: Path, a2_dir: Path = None, steps: Path = None, corrections: Path = None) -> str:
+    b = build(f2_dir, a2_dir, corrections)
+    cases, merged, dropped, applied = b["cases"], b["merged"], b["dropped"], b["applied"]
+    models, f2_files, a2_files = b["models"], b["f2_files"], b["a2_files"]
 
     n_cat = Counter(cases.values())
     lines = ["# F2 rerun — corrected benchmark (78 cases, --failing-state)", ""]

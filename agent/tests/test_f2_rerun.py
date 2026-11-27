@@ -65,7 +65,7 @@ def test_runner_dry_run_steps(tmp_path):
 
 # ── summary ───────────────────────────────────────────────────
 
-FIELDS = ["model_id", "model_name", "error_id", "category", "final_status", "success", "valid_case",
+FIELDS = ["model_id", "model_name", "error_id", "category", "final_status", "success", "valid_case", "router_category",
           "router_correct", "error_msg"]
 
 
@@ -117,7 +117,9 @@ def test_corrections_file_is_well_formed():
     path = REPO_ROOT / "experiments" / "f2_corrections.json"
     items = summary.load_corrections(path)
     assert {(c["model_id"], c["case_id"], c["action"]) for c in items} == {
-        ("openai_gpt4o", "dep_002", "success"), ("ollama_qwen3coder_30b", "dep_042", "drop")}
+        ("openai_gpt4o", "dep_002", "success"), ("ollama_qwen3coder_30b", "dep_042", "drop"),
+        ("ollama_llama8b", "test_016", "router")}
+    assert all(c.get("router_category") == "dependency" for c in items)
     for c in items:
         assert c["case_id"] in INCLUDED and c["model_id"] in summary.MODEL_ORDER
         assert c["reason"] and c["evidence"].get("log", "").startswith("experiments/results/f2_rerun/logs/")
@@ -157,3 +159,19 @@ def test_corrections_success_and_drop(tmp_path):
         {"arm": "memory", "model_id": m, "case_id": "dep_999", "action": "success", "reason": "x", "evidence": {}}]}))
     with pytest.raises(SystemExit):
         summary.summarize(f2, None, None, bad)
+
+
+def test_router_correction(tmp_path):
+    f2 = tmp_path / "f2"; f2.mkdir()
+    m = "openai_gpt4o"
+    dep = [c for c, k in INCLUDED.items() if k == "dependency"]
+    rows = [dict(_row(m, c, True), router_category="dependency") for c in dep]
+    rows[0] = dict(_row(m, dep[0], False, status="error"), router_category="", router_correct=0)
+    _write(f2 / f"benchmark_20261126_100000_{m}_nomemory_failstate.csv", rows)
+    corr = tmp_path / "c.json"
+    corr.write_text(json.dumps({"corrections": [{"arm": "baseline", "model_id": m, "case_id": dep[0],
+                                                 "action": "router", "router_category": "dependency",
+                                                 "reason": "r", "evidence": {}}]}))
+    b = summary.build(f2, None, corr)
+    row = b["merged"]["baseline"][m][dep[0]]
+    assert (row["router_category"], row["router_correct"], row["success"]) == ("dependency", "1", "0")   # CSV values are strings

@@ -1,0 +1,536 @@
+{
+ "description": "Manual review of the CI-green repairs that the automatic F6 classification leaves open (dependency/config class E, test fixes not AST-identical to the original). Single annotator (Claude), 27 Nov 2026, criterion approved the same day; to be declared as in A2. Classes: E-extra = expected fix plus a package the case does not declare; E-touch = other lines changed; E-incoherent = version not coherent with expected_fix; valid/adapted/weakened/incomplete as in A2 §5.5.",
+ "reviews": [
+  {
+   "arm": "memory",
+   "model_id": "openai_gpt4o",
+   "case_id": "conf_002",
+   "category": "config",
+   "class": "E-touch",
+   "correct": false,
+   "reason": "python-version restored, but the four step names 'Set up Python 3.11' renamed (other lines touched)"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "ollama_llama8b",
+   "case_id": "dep_006",
+   "category": "dependency",
+   "class": "E-incoherent",
+   "correct": false,
+   "reason": "tensorflow>=2.0 admits versions below the 2.13.0 that expected_fix requires"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "ollama_mistral7b",
+   "case_id": "dep_006",
+   "category": "dependency",
+   "class": "E-incoherent",
+   "correct": false,
+   "reason": "tensorflow>=2.0 admits versions below the 2.13.0 that expected_fix requires"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_llama8b",
+   "case_id": "dep_006",
+   "category": "dependency",
+   "class": "E-incoherent",
+   "correct": false,
+   "reason": "tensorflow>=2.0 admits versions below the 2.13.0 that expected_fix requires"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_mistral7b",
+   "case_id": "dep_006",
+   "category": "dependency",
+   "class": "E-incoherent",
+   "correct": false,
+   "reason": "tensorflow>=2.0 admits versions below the 2.13.0 that expected_fix requires"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "anthropic_haiku",
+   "case_id": "dep_009",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "scipy upgraded to 1.10.0 as expected_fix, but a numpy pin was added: a package the case does not declare"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "ollama_qwen38_27b",
+   "case_id": "dep_009",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "scipy upgraded to 1.10.0 as expected_fix, but a numpy pin was added: a package the case does not declare"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "openai_gpt4o",
+   "case_id": "dep_009",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "scipy upgraded to 1.10.0 as expected_fix, but a numpy pin was added: a package the case does not declare"
+  },
+  {
+   "arm": "memory",
+   "model_id": "anthropic_haiku",
+   "case_id": "dep_009",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "scipy upgraded to 1.10.0 as expected_fix, but a numpy pin was added: a package the case does not declare"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_qwen38_27b",
+   "case_id": "dep_009",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "scipy upgraded to 1.10.0 as expected_fix, but a numpy pin was added: a package the case does not declare"
+  },
+  {
+   "arm": "memory",
+   "model_id": "openai_gpt4o",
+   "case_id": "dep_009",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "scipy upgraded to 1.10.0 as expected_fix, but a numpy pin was added: a package the case does not declare"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "ollama_qwen38_27b",
+   "case_id": "dep_011",
+   "category": "dependency",
+   "class": "E-incoherent",
+   "correct": false,
+   "reason": "CI green only because a public PyPI package named my-internal-lib satisfies the loosened pin >=1.2.0; the internal index does not exist (dependency confusion)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_qwen38_27b",
+   "case_id": "dep_011",
+   "category": "dependency",
+   "class": "D",
+   "correct": true,
+   "reason": "my-internal-lib removed (admitted by expected_fix); the --extra-index-url / --trusted-host lines are the index configuration expected_fix mentions"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "ollama_llama8b",
+   "case_id": "dep_018",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "protobuf upgraded to 4.21.6 as expected_fix, but tensorflow and google-cloud-storage pins added"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_llama8b",
+   "case_id": "dep_018",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "protobuf upgraded to 4.21.6 as expected_fix, but tensorflow and google-cloud-storage pins added"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "ollama_qwen3coder_30b",
+   "case_id": "dep_020",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "kombu upgraded to 5.3.0 as expected_fix, but vine==5.0.0 added: a package the case does not declare"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_qwen3coder_30b",
+   "case_id": "dep_020",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "kombu upgraded to 5.3.0 as expected_fix, but vine==5.0.0 added: a package the case does not declare"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "anthropic_haiku",
+   "case_id": "dep_044",
+   "category": "dependency",
+   "class": "E-touch",
+   "correct": false,
+   "reason": "injected YAML line removed, but pytest and pytest-cov downgraded (clean lines changed)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "anthropic_haiku",
+   "case_id": "dep_044",
+   "category": "dependency",
+   "class": "E-touch",
+   "correct": false,
+   "reason": "injected YAML line removed, but pytest and pytest-cov downgraded (clean lines changed)"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "ollama_mistral7b",
+   "case_id": "dep_045",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "-c constraints.txt removed as expected_fix, but numpy==1.24.0 added"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_mistral7b",
+   "case_id": "dep_045",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "-c constraints.txt removed as expected_fix, but numpy==1.24.0 added"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "ollama_qwen3coder_30b",
+   "case_id": "dep_047",
+   "category": "dependency",
+   "class": "C-loose",
+   "correct": true,
+   "reason": "protobuf>=3.20,<5 is exactly the range expected_fix requires; streamlit kept"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_qwen3coder_30b",
+   "case_id": "dep_047",
+   "category": "dependency",
+   "class": "C-loose",
+   "correct": true,
+   "reason": "protobuf>=3.20,<5 is exactly the range expected_fix requires; streamlit kept"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "anthropic_haiku",
+   "case_id": "dep_049",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "injected YAML line replaced by a requests pin: a package the case does not declare"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "ollama_qwen38_27b",
+   "case_id": "dep_049",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "injected YAML line replaced by a requests pin: a package the case does not declare"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "ollama_qwen3coder_30b",
+   "case_id": "dep_049",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "injected YAML line replaced by a requests pin: a package the case does not declare"
+  },
+  {
+   "arm": "baseline",
+   "model_id": "openai_gpt4o",
+   "case_id": "dep_049",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "injected YAML line replaced by a requests pin: a package the case does not declare"
+  },
+  {
+   "arm": "memory",
+   "model_id": "anthropic_haiku",
+   "case_id": "dep_049",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "injected YAML line replaced by a requests pin: a package the case does not declare"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_qwen38_27b",
+   "case_id": "dep_049",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "injected YAML line replaced by a requests pin: a package the case does not declare"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_qwen3coder_30b",
+   "case_id": "dep_049",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "injected YAML line replaced by a requests pin: a package the case does not declare"
+  },
+  {
+   "arm": "memory",
+   "model_id": "openai_gpt4o",
+   "case_id": "dep_049",
+   "category": "dependency",
+   "class": "E-extra",
+   "correct": false,
+   "reason": "injected YAML line replaced by a requests pin: a package the case does not declare"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_mistral7b",
+   "case_id": "test_005",
+   "category": "test",
+   "class": "adapted",
+   "correct": false,
+   "reason": "same change as the A2 §5.5 fix of this case: fixture becomes status_code=404 to match the wrong assert"
+  },
+  {
+   "arm": "memory",
+   "model_id": "anthropic_haiku",
+   "case_id": "test_007",
+   "category": "test",
+   "class": "valid",
+   "correct": true,
+   "reason": "same change as the A2 §5.5 fix of this case: power(2,4) == 16 instead of power(2,3) == 8 (correct alternative assert)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_mistral7b",
+   "case_id": "test_007",
+   "category": "test",
+   "class": "valid",
+   "correct": true,
+   "reason": "original assert loosened to approx(8, abs=1), but a new test asserts power(2,3) == 2**3 exactly: the file still checks the exact value (borderline)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_qwen38_27b",
+   "case_id": "test_007",
+   "category": "test",
+   "class": "valid",
+   "correct": true,
+   "reason": "same change as the A2 §5.5 fix of this case: power(2,4) == 16 (correct alternative assert)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_qwen3coder_30b",
+   "case_id": "test_007",
+   "category": "test",
+   "class": "valid",
+   "correct": true,
+   "reason": "same change as the A2 §5.5 fix of this case: power(2,4) == 16 (correct alternative assert)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "openai_gpt4o",
+   "case_id": "test_016",
+   "category": "test",
+   "class": "valid",
+   "correct": true,
+   "reason": "same change as the A2 §5.5 fix of this case: runner() awaiting fetch_data() (equivalent)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "anthropic_haiku",
+   "case_id": "test_017",
+   "category": "test",
+   "class": "valid",
+   "correct": true,
+   "reason": "scope 'function' kept and an explicit db reset added in teardown (expected_fix: 'or add an explicit db reset')"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_qwen38_27b",
+   "case_id": "test_017",
+   "category": "test",
+   "class": "adapted",
+   "correct": false,
+   "reason": "same change as the A2 §5.5 fix of this case: scope 'session' kept, an insert added in the test: passes only because of the execution order"
+  },
+  {
+   "arm": "memory",
+   "model_id": "openai_gpt4o",
+   "case_id": "test_017",
+   "category": "test",
+   "class": "valid",
+   "correct": true,
+   "reason": "db_setup stays 'session', but test_full_pipeline moves to a new function-scoped fixture with reset; isolation holds in both execution orders"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_mistral7b",
+   "case_id": "test_018",
+   "category": "test",
+   "class": "weakened",
+   "correct": false,
+   "reason": "same change as the A2 §5.5 fix of this case: check before the TTL expiry removed"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_mistral7b",
+   "case_id": "test_021",
+   "category": "test",
+   "class": "weakened",
+   "correct": false,
+   "reason": "same change as the A2 §5.5 fix of this case: test_power and test_square deleted from the file"
+  },
+  {
+   "arm": "memory",
+   "model_id": "openai_gpt4o",
+   "case_id": "test_025",
+   "category": "test",
+   "class": "weakened",
+   "correct": false,
+   "reason": "the test no longer reads tests/data/sample.csv: it writes a temporary CSV containing col1 and asserts that col1 is in it (tautology)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "anthropic_haiku",
+   "case_id": "test_032",
+   "category": "test",
+   "class": "adapted",
+   "correct": false,
+   "reason": "same change as the A2 §5.5 fix of this case: queue reduced to [done]: the test no longer checks the progression"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_llama8b",
+   "case_id": "test_032",
+   "category": "test",
+   "class": "adapted",
+   "correct": false,
+   "reason": "import of src.worker.process_queue replaced by a local stub and assert changed to 'pending': the test no longer exercises the source"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_qwen38_27b",
+   "case_id": "test_032",
+   "category": "test",
+   "class": "adapted",
+   "correct": false,
+   "reason": "same change as the A2 §5.5 fix of this case: assert changed to 'pending' with the truncated queue"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_qwen3coder_30b",
+   "case_id": "test_032",
+   "category": "test",
+   "class": "adapted",
+   "correct": false,
+   "reason": "same change as the A2 §5.5 fix of this case: assert changed to 'pending' with the truncated queue"
+  },
+  {
+   "arm": "memory",
+   "model_id": "openai_gpt4o",
+   "case_id": "test_032",
+   "category": "test",
+   "class": "adapted",
+   "correct": false,
+   "reason": "same change as the A2 §5.5 fix of this case: queue reduced to [done]: the test no longer checks the progression"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_mistral7b",
+   "case_id": "test_033",
+   "category": "test",
+   "class": "weakened",
+   "correct": false,
+   "reason": "same change as the A2 §5.5 fix of this case: test_override_config left without assertions"
+  },
+  {
+   "arm": "memory",
+   "model_id": "openai_gpt4o",
+   "case_id": "test_033",
+   "category": "test",
+   "class": "valid",
+   "correct": true,
+   "reason": "same change as the A2 §5.5 fix of this case: CONFIG mutated and restored at the end of the test (valid isolation, not exception-safe)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_mistral7b",
+   "case_id": "test_035",
+   "category": "test",
+   "class": "weakened",
+   "correct": false,
+   "reason": "same change as the A2 §5.5 fix of this case: equality replaced by value > random.uniform(0.38, 0.46)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "openai_gpt4o",
+   "case_id": "test_035",
+   "category": "test",
+   "class": "valid",
+   "correct": true,
+   "reason": "same change as the A2 §5.5 fix of this case: seeded value written as a constant (equivalent)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_qwen3coder_30b",
+   "case_id": "test_041",
+   "category": "test",
+   "class": "valid",
+   "correct": true,
+   "reason": "original test restored plus an unused import and two comments"
+  },
+  {
+   "arm": "memory",
+   "model_id": "anthropic_haiku",
+   "case_id": "test_045",
+   "category": "test",
+   "class": "valid",
+   "correct": true,
+   "reason": "same change as the A2 §5.5 fix of this case: db_engine aligned to scope 'module' (alternative given by expected_fix)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "openai_gpt4o",
+   "case_id": "test_045",
+   "category": "test",
+   "class": "valid",
+   "correct": true,
+   "reason": "same change as the A2 §5.5 fix of this case: db_engine aligned to scope 'module' (alternative given by expected_fix)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_llama8b",
+   "case_id": "test_046",
+   "category": "test",
+   "class": "valid",
+   "correct": true,
+   "reason": "same change as the A2 §5.5 fix of this case: pytest.approx literal differing in the last digit (irrelevant)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_mistral7b",
+   "case_id": "test_046",
+   "category": "test",
+   "class": "valid",
+   "correct": true,
+   "reason": "same change as the A2 §5.5 fix of this case: pytest.approx literal differing in the last digit (irrelevant)"
+  },
+  {
+   "arm": "memory",
+   "model_id": "openai_gpt4o",
+   "case_id": "test_047",
+   "category": "test",
+   "class": "incomplete",
+   "correct": false,
+   "reason": "same change as the A2 §5.5 fix of this case: ordering fixed but test_edge_case_empty_input not restored"
+  },
+  {
+   "arm": "memory",
+   "model_id": "ollama_mistral7b",
+   "case_id": "test_050",
+   "category": "test",
+   "class": "adapted",
+   "correct": false,
+   "reason": "same change as the A2 §5.5 fix of this case: UTC conversion removed, reintroducing the daylight-saving bug the test must catch"
+  }
+ ]
+}
