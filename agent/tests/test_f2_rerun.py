@@ -7,6 +7,7 @@ copy placed in a temporary directory (it writes nothing into the repository).
 Run:  python -m pytest agent/tests/test_f2_rerun.py -v
 """
 import csv
+import json
 import os
 import shutil
 import subprocess
@@ -110,3 +111,49 @@ def test_summary_counts_and_skips(tmp_path):
     cols = [x.strip() for x in paired.split("|")]
     assert (cols[6], cols[7]) == ("20", "1")        # b: 19 test + conf_001 gained; c: dep_001 lost (timeout)
     assert summary.mcnemar_p(20, 1) == pytest.approx(22 / 2 ** 21 * 2)
+
+
+def test_corrections_file_is_well_formed():
+    path = REPO_ROOT / "experiments" / "f2_corrections.json"
+    items = summary.load_corrections(path)
+    assert {(c["model_id"], c["case_id"], c["action"]) for c in items} == {
+        ("openai_gpt4o", "dep_002", "success"), ("ollama_qwen3coder_30b", "dep_042", "drop")}
+    for c in items:
+        assert c["case_id"] in INCLUDED and c["model_id"] in summary.MODEL_ORDER
+        assert c["reason"] and c["evidence"].get("log", "").startswith("experiments/results/f2_rerun/logs/")
+
+
+def test_corrections_success_and_drop(tmp_path):
+    f2 = tmp_path / "f2"; f2.mkdir()
+    m = "openai_gpt4o"
+    dep = [c for c, k in INCLUDED.items() if k == "dependency"]
+    base = [_row(m, c, True) for c in dep]
+    base[1] = _row(m, dep[1], False, status="error")          # harness error after a green CI
+    base[2] = _row(m, dep[2], False, status="error")          # harness error, outcome unknown
+    _write(f2 / f"benchmark_20261126_100000_{m}_nomemory_failstate.csv", base)
+    mem = [_row(m, c, True) for c in dep]
+    mem[2] = _row(m, dep[2], False)
+    _write(f2 / f"benchmark_20261127_100000_{m}_memory_failstate.csv", mem)
+    corr = tmp_path / "corr.json"
+    corr.write_text(json.dumps({"corrections": [
+        {"arm": "baseline", "model_id": m, "case_id": dep[1], "action": "success", "reason": "r1", "evidence": {}},
+        {"arm": "both", "model_id": m, "case_id": dep[2], "action": "drop", "reason": "r2", "evidence": {}}]}))
+
+    raw = summary.summarize(f2, None, None, None)
+    out = summary.summarize(f2, None, None, corr)
+    assert f"| {m} | 34/35 |" in raw and f"| {m} | 35/35 |" not in raw
+    base_line = next(l for l in out.splitlines() if l.startswith(f"| {m} |"))
+    assert base_line.startswith(f"| {m} | 34/34 |")            # dep[1] corrected, dep[2] dropped
+    paired = next(l for l in out.splitlines() if l.startswith(f"| {m} | 34 |"))
+    cols = [x.strip() for x in paired.split("|")]
+    assert (cols[6], cols[7]) == ("0", "0")                    # no spurious gain left
+    assert "Corrections applied" in out and "r1" in out and "r2" in out
+    assert "| error |" not in out.split("## Timeouts")[1]
+    skipped = out.split("## Skipped")[1].split("## Timeouts")[0]
+    assert f"| {dep[2]} |" not in skipped and f"| {dep[1]} |" not in skipped   # dropped/corrected: not "missing"
+
+    bad = tmp_path / "bad.json"
+    bad.write_text(json.dumps({"corrections": [
+        {"arm": "memory", "model_id": m, "case_id": "dep_999", "action": "success", "reason": "x", "evidence": {}}]}))
+    with pytest.raises(SystemExit):
+        summary.summarize(f2, None, None, bad)

@@ -12,10 +12,16 @@ row has valid_case = 1 (red pre-check, agent run); an included case that is skip
 pre-check, not injectable) or missing is reported under "skipped by reason". Timeouts and
 errors after a red pre-check are failures, reported separately.
 
+Corrections (experiments/f2_corrections.json, --corrections): harness errors only, never model
+outcomes. "success" = the benchmark criterion (CI green on the fix commit) is in the log before
+the harness failed; "drop" = the run stopped before an outcome existed, the case leaves that
+model's comparison in both arms. The raw CSVs are never edited; applied corrections are listed.
+
 Usage:
   python experiments/f2_rerun_summary.py --dir experiments/results/f2_rerun \
       --a2-dir experiments/results/a2_test_rerun --steps experiments/results/f2_rerun/steps.tsv
 """
+import json
 import argparse
 import csv
 import re
@@ -72,8 +78,18 @@ def mcnemar_p(b: int, c: int) -> float:
     return min(1.0, 2 * sum(comb(n, k) for k in range(min(b, c) + 1)) / 2 ** n)
 
 
-def summarize(f2_dir: Path, a2_dir: Path = None, steps: Path = None) -> str:
+def load_corrections(path: Path):
+    if not path or not Path(path).is_file():
+        return []
+    items = json.loads(Path(path).read_text(encoding="utf-8"))["corrections"]
+    for c in items:
+        assert c["action"] in ("success", "drop") and c["arm"] in ("baseline", "memory", "both"), c
+    return items
+
+
+def summarize(f2_dir: Path, a2_dir: Path = None, steps: Path = None, corrections: Path = None) -> str:
     cases = included_cases()
+    fixes = load_corrections(corrections)
     expected = {"baseline": {c for c, cat in cases.items() if cat != "test"}, "memory": set(cases)}
     f2, f2_files = load_rows(f2_dir, "failstate")
     a2, a2_files = (load_rows(a2_dir, "protob") if a2_dir and a2_dir.is_dir() else ({}, []))
@@ -90,6 +106,25 @@ def summarize(f2_dir: Path, a2_dir: Path = None, steps: Path = None) -> str:
         for cid, row in rows.items():
             if cases.get(cid) == "test":
                 merged["baseline"][model][cid] = row
+    # corrections: applied on copies, after the merge, before any count
+    dropped = set()                                   # (model, case): out of both arms
+    applied = []
+    for c in fixes:
+        arms = ("baseline", "memory") if c["arm"] == "both" else (c["arm"],)
+        if c["action"] == "drop":
+            dropped.add((c["model_id"], c["case_id"]))
+            for arm in ("baseline", "memory"):
+                merged[arm].get(c["model_id"], {}).pop(c["case_id"], None)
+            applied.append(c)
+            continue
+        for arm in arms:
+            row = merged[arm].get(c["model_id"], {}).get(c["case_id"])
+            if row is None or not is_valid(row):
+                raise SystemExit(f"correction does not apply (no valid row): {c}")
+            row = dict(row, success="1", final_status="fixed (corrected)", error_msg="")
+            merged[arm][c["model_id"]][c["case_id"]] = row
+        applied.append(c)
+
     models = [m for m in MODEL_ORDER if any(m in merged[a] for a in merged)] + \
              sorted({m for a in merged for m in merged[a]} - set(MODEL_ORDER))
 
@@ -100,6 +135,11 @@ def summarize(f2_dir: Path, a2_dir: Path = None, steps: Path = None) -> str:
     lines.append(f"F2 files: {len(f2_files)}; A2 files (test baseline): {len(a2_files)}"
                  + ("" if a2_files else " — **missing: the baseline lacks the test category**") + ".")
     lines.append("")
+    if applied:
+        lines += ["## Corrections applied (harness errors; raw CSVs unchanged)", "",
+                  "| Arm | Model | Case | Action | Reason |", "|---|---|---|---|---|"]
+        lines += [f"| {c['arm']} | {c['model_id']} | {c['case_id']} | {c['action']} | {c['reason']} |" for c in applied]
+        lines.append("")
 
     skipped_rows, timeouts = [], []
     sr = {}
@@ -120,6 +160,8 @@ def summarize(f2_dir: Path, a2_dir: Path = None, steps: Path = None) -> str:
                 tot_ok += ok; tot_valid += len(valid)
                 rc += sum(str(r.get("router_correct")) in ("1", "True") for r in valid); rv += len(valid)
                 for c in want:
+                    if (model, c) in dropped:
+                        continue
                     if cat == "test" and arm == "baseline":
                         src = "A2"
                     else:
@@ -189,8 +231,11 @@ def main():
     ap.add_argument("--dir", type=Path, default=ROOT / "experiments" / "results" / "f2_rerun")
     ap.add_argument("--a2-dir", type=Path, default=ROOT / "experiments" / "results" / "a2_test_rerun")
     ap.add_argument("--steps", type=Path, default=None)
+    ap.add_argument("--corrections", type=Path, default=ROOT / "experiments" / "f2_corrections.json",
+                    help="harness-error corrections (default: experiments/f2_corrections.json); 'none' to disable")
     args = ap.parse_args()
-    print(summarize(args.dir, args.a2_dir, args.steps or args.dir / "steps.tsv"))
+    corr = None if str(args.corrections).lower() == "none" else args.corrections
+    print(summarize(args.dir, args.a2_dir, args.steps or args.dir / "steps.tsv", corr))
 
 
 if __name__ == "__main__":

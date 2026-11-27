@@ -1,0 +1,24 @@
+{
+  "description": "Corrections applied by experiments/f2_rerun_summary.py to the F2 rerun (MSR 2027 revision, 25-26 Nov 2026). The raw CSVs in experiments/results/f2_rerun are never edited. Only harness errors are corrected, never model outcomes: 'success' when the benchmark criterion (CI green on the fix commit) is met in the log before the harness failed; 'drop' when the run stopped before an outcome existed (the case leaves the comparison of that model, in both arms).",
+  "corrections": [
+    {
+      "arm": "baseline",
+      "model_id": "openai_gpt4o",
+      "case_id": "dep_002",
+      "action": "success",
+      "reason": "harness error after a successful repair: CI green on the fix commit at attempt 1, then PR creation failed with GitHub 422 'A pull request already exists' (POST retried by PyGithub's default GithubRetry)",
+      "evidence": {"precheck_run_id": 45648124144, "fix_branch": "fix/ai-dependency-438ad80-t1-164240",
+                   "fix_sha": "6c99d8e8", "fix_ci_run_id": 45648256399, "fix_ci_conclusion": "success",
+                   "log": "experiments/results/f2_rerun/logs/base_gpt4o_dependency.log"}
+    },
+    {
+      "arm": "both",
+      "model_id": "ollama_qwen3coder_30b",
+      "case_id": "dep_042",
+      "action": "drop",
+      "reason": "harness error: GitHub 422 'Reference update failed' while creating the attempt-2 fix branch; the run stopped before attempt 2 reached the CI, so its outcome is unknown",
+      "evidence": {"attempt_1_ci_run_id": 45688798443, "attempt_1_conclusion": "failure",
+                   "log": "experiments/results/f2_rerun/logs/base_qwen3coder-4k_dependency.log"}
+    }
+  ]
+}
